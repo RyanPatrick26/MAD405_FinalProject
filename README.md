@@ -5,6 +5,7 @@ Utility Application for the popular, casual tabletop RPG (Role-playing Game) Dud
 
 ## Contributors
 Ryan Patrick - RyanPatrick26
+
 Nicholas Allaire - nicholasallaire85
 
 ## Copyright Information
