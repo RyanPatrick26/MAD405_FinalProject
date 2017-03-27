@@ -40,14 +40,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/button"
             android:elevation="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button" />
 
         <Button
             android:text="@string/viewCharactersButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button" />
 
     </LinearLayout>
 
@@ -60,14 +62,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button3"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button" />
 
         <Button
             android:text="@string/viewSpellsButtonText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button4"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            style="@style/Base.Widget.AppCompat.Button" />
 
     </LinearLayout>
 
