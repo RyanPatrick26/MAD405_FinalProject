@@ -10,14 +10,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/homeTitleTextView"
-        android:text="Dudes In A Dungeon"
+        android:text="@string/homepageTitle"
         android:gravity="center_horizontal" />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_menu_slideshow"
         android:id="@+id/imageView2"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:adjustViewBounds="false" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/introductionTextView"
+        tools:text="@string/introductionTextView" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:text="@string/createCharacterButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button"
+            android:elevation="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="@string/viewCharactersButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:text="@string/viewItemsButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="@string/viewSpellsButtonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </LinearLayout>

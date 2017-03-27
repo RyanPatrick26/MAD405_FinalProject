@@ -6,6 +6,14 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Homepage string values -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homepageTitle">Dudes In A Dungeon</string>
+    <string name="introductionTextView">Man-of-war hempen halter Sea Legs coxswain spanker booty jolly boat fire in the hole ballast to go on account. Bilged on her anchor interloper bowsprit hail-shot come about Jolly Roger chase guns splice the main brace crack Jennys tea cup wherry. Jolly boat Davy Jones\' Locker belaying pin pink hail-shot Chain Shot matey strike colors bilge rat case shot.</string>
+    <string name="createCharacterButtonText">Create A Character</string>
+    <string name="viewCharactersButtonText">View Characters</string>
+    <string name="viewItemsButtonText">Items</string>
+    <string name="viewSpellsButtonText">Spells</string>
+
+
 </resources>
