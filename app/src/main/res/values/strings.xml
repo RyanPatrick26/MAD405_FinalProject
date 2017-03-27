@@ -5,4 +5,16 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+
+    <!-- Navigation Drawer strings -->
+    <string name="nav_about_text">About</string>
+    <string name="nav_create_char">Create Character</string>
+    <string name="nav_view_char">View Characters</string>
+    <string name="nav_items">Items</string>
+    <string name="nav_spells">Spells</string>
+    <string name="nav_email">Email Creator</string>
+    <string name="nav_share_sms">Share App</string>
+    <string name="nav_website">Visit Website</string>
+
 </resources>
