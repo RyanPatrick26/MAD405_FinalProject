@@ -8,4 +8,33 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="charcacter_creator">Character Creator</string>
+    <string name="race">Race</string>
+    <string name="character_class">Class</string>
+    <string name="random_atts">Randomize\nAttributes</string>
+    <string name="character_name">Character Name</string>
+    <string name="randomize_name">Random Name</string>
+    <string name="strength">Strength</string>
+    <string name="agility">Agility</string>
+    <string name="resilience">Resilience</string>
+    <string name="luck">Luck</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="attributes">Attributes</string>
+    <string name="skill">Skills</string>
+    <string name="remaining_att">Attribute Points Remaining:</string>
+
+    <string name="fighting">Fighting</string>
+    <string name="shooting">Shooting</string>
+    <string name="acrobatics">Acrobatics</string>
+    <string name="casting">Casting</string>
+    <string name="crafting">Crafting</string>
+    <string name="gambling">Gambling</string>
+    <string name="lying">Lying</string>
+    <string name="persuasion">Persuasion</string>
+    <string name="sneaking">Sneaking</string>
+    <string name="survival">Survival</string>
+    <string name="remaing_skill">Skill Points\nRemaining:</string>
+    <string name="reset_skills">Reset\nSkills</string>
+    <string name="confirm">Confirm</string>
+
 </resources>
