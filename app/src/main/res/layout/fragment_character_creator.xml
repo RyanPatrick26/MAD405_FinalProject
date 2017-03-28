@@ -7,17 +7,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:text="@string/gambling"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/gambling_label"
-        android:layout_column="5"
-        android:layout_columnSpan="2"
-        tools:ignore="HardcodedText"
-        android:layout_row="0"
-        android:textColor="@android:color/background_dark" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -76,18 +65,6 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
-            <TextView
-                android:text="TextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/attributes_view"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                tools:text="@string/attributes"
-                android:textColor="@android:color/background_dark"
-                tools:ignore="HardcodedText"
-                android:padding="5dp" />
-
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -124,6 +101,17 @@
                     android:id="@+id/class_spinner"
                     android:layout_weight="1" />
             </LinearLayout>
+
+            <TextView
+                android:text="@string/attributes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/attributes_view"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textColor="@android:color/background_dark"
+                tools:ignore="HardcodedText"
+                android:padding="5dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -471,6 +459,17 @@
                 </LinearLayout>
 
                 /
+
+                <TextView
+                    android:text="@string/gambling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gambling_label"
+                    android:layout_column="5"
+                    android:layout_columnSpan="2"
+                    tools:ignore="HardcodedText"
+                    android:layout_row="0"
+                    android:textColor="@android:color/background_dark" />
 
                 <EditText
                     android:layout_width="wrap_content"
