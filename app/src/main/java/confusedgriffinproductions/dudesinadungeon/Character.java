@@ -2,6 +2,11 @@ package confusedgriffinproductions.dudesinadungeon;
 
 import java.util.ArrayList;
 
+/**
+ * Character Class
+ * User-created characters for the Dudes In A Dungeon tabletop RPG
+ * @author Nicholas Allaire
+ */
 public class Character {
 
     // Declare properties for Characters
@@ -28,6 +33,115 @@ public class Character {
     // Items and Spells
     private ArrayList<Item> items;
     private ArrayList<Spell> spells;
+
+    // Constructors
+    // Empty Constructor
+    public Character() {}
+
+    // Constructor w/everything
+    public Character(int id, String name, String race, String charClass, int strength,
+                     int agility, int resilience, int luck, int intelligence, int fighting,
+                     int gambling, int shooting, int lying, int casting, int acrobatics,
+                     int sneaking, int crafting, int survival, ArrayList<Item> items,
+                     ArrayList<Spell> spells) {
+        this.id = id;
+        this.name = name;
+        this.race = race;
+        this.charClass = charClass;
+        this.strength = strength;
+        this.agility = agility;
+        this.resilience = resilience;
+        this.luck = luck;
+        this.intelligence = intelligence;
+        this.fighting = fighting;
+        this.gambling = gambling;
+        this.shooting = shooting;
+        this.lying = lying;
+        this.casting = casting;
+        this.acrobatics = acrobatics;
+        this.sneaking = sneaking;
+        this.crafting = crafting;
+        this.survival = survival;
+        this.items = items;
+        this.spells = spells;
+    }
+
+    // Constructor w.o/ id
+    public Character(String name, String race, String charClass, int strength,
+                     int agility, int resilience, int luck, int intelligence, int fighting,
+                     int gambling, int shooting, int lying, int casting, int acrobatics, int sneaking,
+                     int crafting, int survival, ArrayList<Item> items, ArrayList<Spell> spells) {
+        this.name = name;
+        this.race = race;
+        this.charClass = charClass;
+        this.strength = strength;
+        this.agility = agility;
+        this.resilience = resilience;
+        this.luck = luck;
+        this.intelligence = intelligence;
+        this.fighting = fighting;
+        this.gambling = gambling;
+        this.shooting = shooting;
+        this.lying = lying;
+        this.casting = casting;
+        this.acrobatics = acrobatics;
+        this.sneaking = sneaking;
+        this.crafting = crafting;
+        this.survival = survival;
+        this.items = items;
+        this.spells = spells;
+    }
+
+    // Constructor w.o/ spells
+    public Character(int id, String name, String race, String charClass, int strength,
+                     int agility, int resilience, int luck, int intelligence, int fighting,
+                     int gambling, int shooting, int lying, int casting, int acrobatics,
+                     int sneaking, int crafting, int survival, ArrayList<Item> items) {
+        this.id = id;
+        this.name = name;
+        this.race = race;
+        this.charClass = charClass;
+        this.strength = strength;
+        this.agility = agility;
+        this.resilience = resilience;
+        this.luck = luck;
+        this.intelligence = intelligence;
+        this.fighting = fighting;
+        this.gambling = gambling;
+        this.shooting = shooting;
+        this.lying = lying;
+        this.casting = casting;
+        this.acrobatics = acrobatics;
+        this.sneaking = sneaking;
+        this.crafting = crafting;
+        this.survival = survival;
+        this.items = items;
+    }
+
+    // Constructor w.o/ spells or id
+    public Character(String name, String race, String charClass, int strength,
+                     int agility, int resilience, int luck, int intelligence, int fighting,
+                     int gambling, int shooting, int lying, int casting, int acrobatics,
+                     int sneaking, int crafting, int survival, ArrayList<Item> items) {
+        this.name = name;
+        this.race = race;
+        this.charClass = charClass;
+        this.strength = strength;
+        this.agility = agility;
+        this.resilience = resilience;
+        this.luck = luck;
+        this.intelligence = intelligence;
+        this.fighting = fighting;
+        this.gambling = gambling;
+        this.shooting = shooting;
+        this.lying = lying;
+        this.casting = casting;
+        this.acrobatics = acrobatics;
+        this.sneaking = sneaking;
+        this.crafting = crafting;
+        this.survival = survival;
+        this.items = items;
+    }
 
     public int getId() {
         return id;
