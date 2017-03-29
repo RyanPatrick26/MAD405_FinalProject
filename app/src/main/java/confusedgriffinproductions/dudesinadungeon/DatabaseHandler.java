@@ -17,12 +17,14 @@ public class DatabaseHandler {
     // Name of all the tables
     private static final String TABLE_CHARACTERS = "characters";
     private static final String TABLE_TRIPS = "trip";
-    private static final String TABLE_PICTURES = "picture";
-    private static final String TABLE_IMAGELOCATION = "image_location";
+    private static final String TABLE_PORTRAITS = "portrait";
+    private static final String TABLE_CHARACTER_PORTRAIT = "character_portrait";
+    private static final String TABLE_ITEM_PORTRAIT = "item_portrait";
 
     // Common Table Column names
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_DESCRIPTION = "description";
 
     /**
      * Character Table Column Names
@@ -43,5 +45,20 @@ public class DatabaseHandler {
     private static final String COLUMN_SNEAKING = "sneaking";
     private static final String COLUMN_CRAFTING = "crafting";
     private static final String COLUMN_SURVIVAL = "survival";
+
+    /**
+     * Item Table Column Names
+     */
+    private static final String COLUMN_PRICE = "price";
+    private static final String COLUMN_TYPE = "type";
+    private static final String COLUMN_DMG_DEF = "dmg_def";
+
+    /**
+     * Spell Table Column Names
+     */
+    private static final String COLUMN_SPELLTYPE = "spelltype";
+    private static final String COLUMN_DMG_HEAL = "dmg_heal";
+
+
 
 }
