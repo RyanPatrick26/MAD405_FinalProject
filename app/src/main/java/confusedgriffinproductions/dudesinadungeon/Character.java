@@ -5,7 +5,9 @@ import java.util.ArrayList;
 /**
  * Character Class
  * User-created characters for the Dudes In A Dungeon tabletop RPG
+ *
  * @author Nicholas Allaire
+ * @version 1.0
  */
 public class Character {
 
