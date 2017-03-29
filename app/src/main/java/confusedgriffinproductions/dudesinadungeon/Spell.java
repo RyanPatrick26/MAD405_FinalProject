@@ -14,6 +14,8 @@ public class Spell {
     private String name;
     private String description;
     private String spellType;
+    private String components;
+    private String effects;
     // Damage or healing
     private int dmg_heal;
 
@@ -22,20 +24,27 @@ public class Spell {
     public Spell() {}
 
     // Constructor for spells that damage or heal
-    public Spell(int id, String name, String description, String spellType, int dmg_heal) {
+    public Spell(int id, String name, String description, String spellType,
+                 String components, String effects, int dmg_heal) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.spellType = spellType;
+
+        this.components = components;
+        this.effects = effects;
         this.dmg_heal = dmg_heal;
     }
 
     // Constructor for non-healing, non-damage spells
-    public Spell(int id, String name, String description, String spellType) {
+    public Spell(int id, String name, String description, String spellType,
+                 String components, String effects) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.spellType = spellType;
+        this.components = components;
+        this.effects = effects;
     }
 
     // Getters & Setters
@@ -77,6 +86,22 @@ public class Spell {
 
     public void setDmg_heal(int dmg_heal) {
         this.dmg_heal = dmg_heal;
+    }
+
+    public String getComponents() {
+        return components;
+    }
+
+    public void setComponents(String components) {
+        this.components = components;
+    }
+
+    public String getEffects() {
+        return effects;
+    }
+
+    public void setEffects(String effects) {
+        this.effects = effects;
     }
 
     public String toString() {
