@@ -143,6 +143,7 @@ public class Character {
         this.items = items;
     }
 
+    // Setters & Getters
     public int getId() {
         return id;
     }
