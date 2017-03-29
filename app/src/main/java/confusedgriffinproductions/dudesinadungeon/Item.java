@@ -9,8 +9,6 @@ package confusedgriffinproductions.dudesinadungeon;
  */
 public class Item {
 
-    // TODO: toString methods
-
     // Declare Item properties
     private int id;
     private String name;
@@ -90,5 +88,9 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String toString() {
+        return getName();
     }
 }

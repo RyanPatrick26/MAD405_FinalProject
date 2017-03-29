@@ -78,4 +78,8 @@ public class Spell {
     public void setDmg_heal(int dmg_heal) {
         this.dmg_heal = dmg_heal;
     }
+
+    public String toString() {
+        return getName();
+    }
 }

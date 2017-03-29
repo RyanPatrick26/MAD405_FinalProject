@@ -305,4 +305,8 @@ public class Character {
     public void setSpells(ArrayList<Spell> spells) {
         this.spells = spells;
     }
+
+    public String toString() {
+        return getName();
+    }
 }
