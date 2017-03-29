@@ -30,6 +30,7 @@ public class Spell {
         this.name = name;
         this.description = description;
         this.spellType = spellType;
+
         this.components = components;
         this.effects = effects;
         this.dmg_heal = dmg_heal;
@@ -85,6 +86,22 @@ public class Spell {
 
     public void setDmg_heal(int dmg_heal) {
         this.dmg_heal = dmg_heal;
+    }
+
+    public String getComponents() {
+        return components;
+    }
+
+    public void setComponents(String components) {
+        this.components = components;
+    }
+
+    public String getEffects() {
+        return effects;
+    }
+
+    public void setEffects(String effects) {
+        this.effects = effects;
     }
 
     public String toString() {
