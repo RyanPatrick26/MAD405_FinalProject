@@ -54,8 +54,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_SNEAKING = "sneaking";
     private static final String COLUMN_CRAFTING = "crafting";
     private static final String COLUMN_SURVIVAL = "survival";
-    private static final String COLUMN_ITEMS = "items";
-    private static final String COLUMN_SPELLS = "spells";
 
     /**
      * Item Table Column Names
@@ -105,9 +103,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_ACROBATICS + " INTEGER,"
             + COLUMN_SNEAKING + " INTEGER,"
             + COLUMN_CRAFTING + " INTEGER,"
-            + COLUMN_SURVIVAL + " INTEGER,"
-            + COLUMN_ITEMS + " TEXT,"
-            + COLUMN_SPELLS + " TEXT" + ")";
+            + COLUMN_SURVIVAL + " INTEGER" + ")";
 
     private static final String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -207,9 +203,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_SNEAKING, character.getSneaking());
         values.put(COLUMN_CRAFTING, character.getCrafting());
         values.put(COLUMN_SURVIVAL, character.getSurvival());
-        // TODO: THIS MAY NEED TO BE FIXED
-        values.put(COLUMN_ITEMS, character.getItems().toString());
-        values.put(COLUMN_SPELLS, character.getSpells().toString());
 
         // Execute the insert statement
         db.insert(TABLE_CHARACTERS, null, values);
@@ -340,7 +333,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_RACE, COLUMN_CHAR_CLASS, COLUMN_STRENGTH,
                         COLUMN_AGILITY, COLUMN_RESILIENCE, COLUMN_LUCK, COLUMN_INTELLIGENCE, COLUMN_FIGHTING,
                         COLUMN_GAMBLING, COLUMN_SHOOTING, COLUMN_LYING, COLUMN_CASTING, COLUMN_ACROBATICS,
-                        COLUMN_SNEAKING, COLUMN_CRAFTING, COLUMN_SURVIVAL, COLUMN_ITEMS, COLUMN_SPELLS},
+                        COLUMN_SNEAKING, COLUMN_CRAFTING, COLUMN_SURVIVAL},
                         COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
@@ -349,7 +342,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5),
                 cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9), cursor.getInt(10),
                 cursor.getInt(11), cursor.getInt(12), cursor.getInt(13), cursor.getInt(14), cursor.getInt(15),
-                cursor.getInt(16), cursor.getInt(17), cursor.get, cursor.getString(19).toString());
+                cursor.getInt(16));
         return character;
     }
 
