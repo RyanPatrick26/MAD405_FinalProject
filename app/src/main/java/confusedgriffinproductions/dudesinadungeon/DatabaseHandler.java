@@ -1,12 +1,16 @@
 package confusedgriffinproductions.dudesinadungeon;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 /**
  * DatabaseHandler to create the database and handle database interactions
  *
  * @author Nicholas Allaire
  * @version 1.0
  */
-public class DatabaseHandler {
+public class DatabaseHandler extends SQLiteOpenHelper {
 
     // Database version
     private static final int DATABASE_VERSION = 1;
@@ -130,6 +134,45 @@ public class DatabaseHandler {
             + COLUMN_ITEM_ID + " INTEGER REFRENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
             + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_RESOURCE+")";
 
+    public DatabaseHandler(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    // CREATE AND UPGRADE FOR THE DATABASE
+    /**
+     * Method to create the tables inside of the database.
+     *
+     * @param db - DatabaseHandler
+     */
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_CHARACTERS_TABLE);
+        db.execSQL(CREATE_ITEMS_TABLE);
+        db.execSQL(CREATE_SPELLS_TABLE);
+        db.execSQL(CREATE_PORTRAITS_TABLE);
+        db.execSQL(CREATE_CHARACTER_PORTRAITS_TABLE);
+        db.execSQL(CREATE_ITEM_PORTRAITS_TABLE);
+    }
+
+    /**
+     * When the database upgrades, delete the old database and replace it with the upgraded one
+     *
+     * @param db - DatabaseHandler
+     * @param oldVersion - Old version of the database
+     * @param newVersion - New version of the database
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEMS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPELLS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTRAITS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTER_PORTRAIT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM_PORTRAIT);
+        onCreate(db);
+    }
+
+    // CRUD OPERATIONS FOR THE DATABASE AND FOR THE TABLES
     
 
 
