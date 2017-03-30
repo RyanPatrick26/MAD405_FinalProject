@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 /**
  * DatabaseHandler to create the database and handle database interactions
  *
@@ -176,7 +178,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // CRUD OPERATIONS FOR THE DATABASE AND FOR THE TABLES
     /**
-     * Add new Objects to the database
+     * ADD NEW OBJECTS TO THE DATABASE
      */
     /**
      * Adds a new character to the database
@@ -329,7 +331,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-
+    /**
+     * READ OBJECTS FROM THE DATABASE
+     */
+    public Character getCharater(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_CHARACTERS,
+                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_RACE, COLUMN_CHAR_CLASS, COLUMN_STRENGTH,
+                        COLUMN_AGILITY, COLUMN_RESILIENCE, COLUMN_LUCK, COLUMN_INTELLIGENCE, COLUMN_FIGHTING,
+                        COLUMN_GAMBLING, COLUMN_SHOOTING, COLUMN_LYING, COLUMN_CASTING, COLUMN_ACROBATICS,
+                        COLUMN_SNEAKING, COLUMN_CRAFTING, COLUMN_SURVIVAL, COLUMN_ITEMS, COLUMN_SPELLS},
+                        COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        Character character = new Character(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5),
+                cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9), cursor.getInt(10),
+                cursor.getInt(11), cursor.getInt(12), cursor.getInt(13), cursor.getInt(14), cursor.getInt(15),
+                cursor.getInt(16), cursor.getInt(17), cursor.get, cursor.getString(19).toString());
+        return character;
+    }
 
 
 
