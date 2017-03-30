@@ -7,6 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +32,35 @@ public class CharacterCreatorFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    /**
+     * Create variables to store the EditTexts
+     */
+    EditText characterNameField;
+    EditText[] attributeFields;
+    EditText[] skillFields;
+
+    /**
+     * Create variables to store the Spinners
+     */
+    Spinner raceSpinner;
+    Spinner classSpinner;
+
+    /**
+     * Create variables to store the TextViews
+     */
+    TextView remainingAttsView;
+    TextView remainingSkillsView;
+
+    /**
+     * Create variables to store the buttons
+     */
+    Button randomizeNameButton;
+    Button[] attributeButtons;
+    Button randomizeAttsButton;
+    Button[] skillButtons;
+    Button resetSkillsButton;
+    Button confirmButton;
 
     public CharacterCreatorFragment() {
         // Required empty public constructor
@@ -64,7 +97,87 @@ public class CharacterCreatorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_character_creator, container, false);
+        View view = inflater.inflate(R.layout.fragment_character_creator, container, false);
+
+        /**
+         * Instantiate the EditTexts
+         */
+        characterNameField = (EditText)view.findViewById(R.id.name_field);
+        attributeFields = new EditText[]{
+                (EditText) view.findViewById(R.id.strength_field),
+                (EditText) view.findViewById(R.id.agility_field),
+                (EditText) view.findViewById(R.id.resilience_field),
+                (EditText) view.findViewById(R.id.luck_field),
+                (EditText) view.findViewById(R.id.intelligence_field)
+        };
+
+        skillFields = new EditText[]{
+                (EditText)view.findViewById(R.id.fighting_field),
+                (EditText)view.findViewById(R.id.shooting_field),
+                (EditText)view.findViewById(R.id.casting_field),
+                (EditText)view.findViewById(R.id.acrobatics_field),
+                (EditText)view.findViewById(R.id.crafting_field),
+                (EditText)view.findViewById(R.id.gambling_field),
+                (EditText)view.findViewById(R.id.lying_field),
+                (EditText)view.findViewById(R.id.persuasion_field),
+                (EditText)view.findViewById(R.id.sneaking_field),
+                (EditText)view.findViewById(R.id.survival_field)
+        };
+
+        /**
+         * Instantiate the Spinners
+         */
+        raceSpinner = (Spinner)view.findViewById(R.id.race_spinner);
+        classSpinner = (Spinner)view.findViewById(R.id.class_spinner);
+
+        /**
+         * Instantiate the TextViews
+         */
+        remainingAttsView = (TextView)view.findViewById(R.id.remaining_att_field);
+        remainingSkillsView = (TextView)view.findViewById(R.id.remaining_skill_field);
+
+        /**
+         * Instantaite the Buttons
+         */
+        randomizeNameButton = (Button)view.findViewById(R.id.random_name_button);
+        attributeButtons = new Button[]{
+                (Button)view.findViewById(R.id.add_strength_button),
+                (Button)view.findViewById(R.id.subtract_strength_button),
+                (Button)view.findViewById(R.id.add_agility_button),
+                (Button)view.findViewById(R.id.subtract_agility_button),
+                (Button)view.findViewById(R.id.add_resilience_button),
+                (Button)view.findViewById(R.id.subtract_resilience_button),
+                (Button)view.findViewById(R.id.add_luck_button),
+                (Button)view.findViewById(R.id.subtract_luck_button),
+                (Button)view.findViewById(R.id.add_intelligence_button),
+                (Button)view.findViewById(R.id.subtract_intelligence_button)
+        };
+        randomizeAttsButton = (Button)view.findViewById(R.id.random_atts_button);
+        skillButtons = new Button[]{
+                (Button)view.findViewById(R.id.add_fighting),
+                (Button)view.findViewById(R.id.subtract_fighting),
+                (Button)view.findViewById(R.id.add_shooting),
+                (Button)view.findViewById(R.id.subtract_shooting),
+                (Button)view.findViewById(R.id.add_casting),
+                (Button)view.findViewById(R.id.subtract_casting),
+                (Button)view.findViewById(R.id.add_acrobatics),
+                (Button)view.findViewById(R.id.subtract_acrobatics),
+                (Button)view.findViewById(R.id.add_crafting),
+                (Button)view.findViewById(R.id.subtract_crafting),
+                (Button)view.findViewById(R.id.add_gambling),
+                (Button)view.findViewById(R.id.subtract_gambling),
+                (Button)view.findViewById(R.id.add_lying),
+                (Button)view.findViewById(R.id.subtract_lying),
+                (Button)view.findViewById(R.id.add_persuasion),
+                (Button)view.findViewById(R.id.subtract_persuasion),
+                (Button)view.findViewById(R.id.add_sneaking),
+                (Button)view.findViewById(R.id.subtract_sneaking),
+                (Button)view.findViewById(R.id.add_survival),
+                (Button)view.findViewById(R.id.subtract_survival)
+        };
+        confirmButton = (Button)view.findViewById(R.id.confirm_button);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
