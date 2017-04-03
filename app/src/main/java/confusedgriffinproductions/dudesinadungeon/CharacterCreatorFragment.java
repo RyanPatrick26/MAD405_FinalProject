@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,8 +38,6 @@ public class CharacterCreatorFragment extends Fragment {
      * Create variables to store the EditTexts
      */
     EditText characterNameField;
-    EditText[] attributeFields;
-    EditText[] skillFields;
 
     /**
      * Create variables to store the Spinners
@@ -49,6 +48,8 @@ public class CharacterCreatorFragment extends Fragment {
     /**
      * Create variables to store the TextViews
      */
+    TextView[] attributeFields;
+    TextView[] skillFields;
     TextView remainingAttsView;
     TextView remainingSkillsView;
 
@@ -61,6 +62,12 @@ public class CharacterCreatorFragment extends Fragment {
     Button[] skillButtons;
     Button resetSkillsButton;
     Button confirmButton;
+
+    /**
+     * Create variables to store the ListViews
+     */
+    ListView itemListView;
+    ListView spellListView;
 
     public CharacterCreatorFragment() {
         // Required empty public constructor
@@ -103,25 +110,25 @@ public class CharacterCreatorFragment extends Fragment {
          * Instantiate the EditTexts
          */
         characterNameField = (EditText)view.findViewById(R.id.name_field);
-        attributeFields = new EditText[]{
-                (EditText) view.findViewById(R.id.strength_field),
-                (EditText) view.findViewById(R.id.agility_field),
-                (EditText) view.findViewById(R.id.resilience_field),
-                (EditText) view.findViewById(R.id.luck_field),
-                (EditText) view.findViewById(R.id.intelligence_field)
+        attributeFields = new TextView[]{
+                (TextView) view.findViewById(R.id.strength_field),
+                (TextView) view.findViewById(R.id.agility_field),
+                (TextView) view.findViewById(R.id.resilience_field),
+                (TextView) view.findViewById(R.id.luck_field),
+                (TextView) view.findViewById(R.id.intelligence_field)
         };
 
-        skillFields = new EditText[]{
-                (EditText)view.findViewById(R.id.fighting_field),
-                (EditText)view.findViewById(R.id.shooting_field),
-                (EditText)view.findViewById(R.id.casting_field),
-                (EditText)view.findViewById(R.id.acrobatics_field),
-                (EditText)view.findViewById(R.id.crafting_field),
-                (EditText)view.findViewById(R.id.gambling_field),
-                (EditText)view.findViewById(R.id.lying_field),
-                (EditText)view.findViewById(R.id.persuasion_field),
-                (EditText)view.findViewById(R.id.sneaking_field),
-                (EditText)view.findViewById(R.id.survival_field)
+        skillFields = new TextView[]{
+                (TextView)view.findViewById(R.id.fighting_field),
+                (TextView)view.findViewById(R.id.shooting_field),
+                (TextView)view.findViewById(R.id.casting_field),
+                (TextView)view.findViewById(R.id.acrobatics_field),
+                (TextView)view.findViewById(R.id.crafting_field),
+                (TextView)view.findViewById(R.id.gambling_field),
+                (TextView)view.findViewById(R.id.lying_field),
+                (TextView)view.findViewById(R.id.persuasion_field),
+                (TextView)view.findViewById(R.id.sneaking_field),
+                (TextView)view.findViewById(R.id.survival_field)
         };
 
         /**
@@ -137,7 +144,7 @@ public class CharacterCreatorFragment extends Fragment {
         remainingSkillsView = (TextView)view.findViewById(R.id.remaining_skill_field);
 
         /**
-         * Instantaite the Buttons
+         * Instantiate the Buttons
          */
         randomizeNameButton = (Button)view.findViewById(R.id.random_name_button);
         attributeButtons = new Button[]{
@@ -175,7 +182,16 @@ public class CharacterCreatorFragment extends Fragment {
                 (Button)view.findViewById(R.id.add_survival),
                 (Button)view.findViewById(R.id.subtract_survival)
         };
+
+        resetSkillsButton = (Button)view.findViewById(R.id.reset_button);
+
         confirmButton = (Button)view.findViewById(R.id.confirm_button);
+
+        /**
+         * Instantiate the ListViews
+         */
+        itemListView = (ListView)view.findViewById(R.id.item_list);
+        spellListView = (ListView)view.findViewById(R.id.spell_list);
 
         return view;
     }
