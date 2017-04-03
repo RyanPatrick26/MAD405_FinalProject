@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Dudes Dans Un Cachot</string>
-    <string name="action_settings"></string>
+    <string name="action_settings">Paramètres</string>
+    <string name="navigation_drawer_close">Fermer tiroir de navigation</string>
+    <string name="navigation_drawer_open">Ouvrir tiroir de navigation</string>
 </resources>
