@@ -22,4 +22,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Snackbar Strings -->
+    <string name="snackbar_no_software">No installed software to complete the task. Sorry!</string>
+
+    <!-- Email Intent Strings -->
+    <string name="email_subject">Question regarding Dudes In A Dungeon App</string>
+    <string name="email_body">Hello, I have a question about...</string>
+
 </resources>

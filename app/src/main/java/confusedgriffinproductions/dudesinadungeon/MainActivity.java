@@ -1,5 +1,6 @@
 package confusedgriffinproductions.dudesinadungeon;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity
 
     // Fragment manager to allow us to display, remove, and create fragments
     FragmentManager fm = getSupportFragmentManager();
+
+    // Email address of the application creators
+    // TODO: REMOVE MY EMAIL ADDRESS
+    String creatorEmail = "nicholas.allaire@stclairconnect.ca";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +123,8 @@ public class MainActivity extends AppCompatActivity
             tran.replace(R.id.content_main, new SpellListFragment());
             tran.commit();
         } else if (id == R.id.nav_email) {
-            // Send an email to the application creators
+            // Send an email to the app creators
+            emailAppCreators();
         } else if (id == R.id.nav_share) {
             // Share the application with a friend via SMS
         } else if (id == R.id.nav_website) {
@@ -139,4 +145,33 @@ public class MainActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+    /**
+     * Sends an email to the application creators
+     * @author Nicholas Allaire
+     */
+    public void emailAppCreators() {
+        // Get the email address of the app creators
+        String[] emailaddresses = {creatorEmail};
+        // Create a SendTo intent
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        // Put the email address, body, and subject into the email
+        intent.putExtra(Intent.EXTRA_EMAIL, emailaddresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.email_body));
+        // If the device has email capabilities, launch the intent
+        if(intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }
+        else{
+            // if the device does not have email capabilities, display a snackbar
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                    getString(R.string.snackbar_no_software), Snackbar.LENGTH_SHORT);
+            snackbar.show();
+        }
+    }
+
+
+
 }
