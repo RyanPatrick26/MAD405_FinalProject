@@ -93,21 +93,36 @@ public class MainActivity extends AppCompatActivity
 
         // If Else Statement to navigate to each fragment throught the nav drawer
         if (id == R.id.nav_about) {
-
+            // Navigate to the Main Fragment
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new MainFragment());
+            tran.commit();
         } else if (id == R.id.nav_create_char) {
-
+            // Navigate to the Create Character Fragment
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new CreateCharacterFragment());
+            tran.commit();
         } else if (id == R.id.nav_view_char) {
-
+            // Navigate to the View Character List Fragment
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new CharacterListFragment());
+            tran.commit();
         } else if (id == R.id.nav_items) {
-
+            // Navigate to the Item List Fragment
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new ItemListFragment());
+            tran.commit();
         } else if (id == R.id.nav_spells) {
-
+            // Navigate to the Spells List Fragment
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new SpellListFragment());
+            tran.commit();
         } else if (id == R.id.nav_email) {
-
+            // Send an email to the application creators
         } else if (id == R.id.nav_share) {
-
+            // Share the application with a friend via SMS
         } else if (id == R.id.nav_website) {
-
+            // Navigate to the company website
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
