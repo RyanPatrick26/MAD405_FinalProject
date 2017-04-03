@@ -17,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import static java.net.Proxy.Type.HTTP;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         MainFragment.OnFragmentInteractionListener,
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity
     // Email address of the application creators
     // TODO: REMOVE MY EMAIL ADDRESS
     String creatorEmail = "nicholas.allaire@stclairconnect.ca";
+    // SMS Message String
+    String smsMessage = "Get some dudes and get in a dungeon! Check out this amazing app that helps me keep track of my characters, items, and spells: https://www.diad.app.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +131,7 @@ public class MainActivity extends AppCompatActivity
             emailAppCreators();
         } else if (id == R.id.nav_share) {
             // Share the application with a friend via SMS
+            shareViaSMS();
         } else if (id == R.id.nav_website) {
             // Navigate to the company website
         }
@@ -170,6 +175,28 @@ public class MainActivity extends AppCompatActivity
                     getString(R.string.snackbar_no_software), Snackbar.LENGTH_SHORT);
             snackbar.show();
         }
+    }
+
+    public void shareViaSMS() {
+        // Create the SMS intent
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        // Set the type
+        intent.setType("vnd.android-dir/mms-sms");
+        // Set the body of the SMS
+        intent.putExtra("sms_body", smsMessage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // if the device has SMS capabilities, launch the intent
+            startActivity(intent);
+        } else {
+            // if the device does not have SMS capabilities, display a snackbar
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                    getString(R.string.snackbar_no_software), Snackbar.LENGTH_SHORT);
+            snackbar.show();
+        }
+    }
+
+    public void visitWebsite() {
+
     }
 
 
