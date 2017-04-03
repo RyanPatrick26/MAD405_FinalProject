@@ -69,6 +69,8 @@ public class CharacterCreatorFragment extends Fragment {
     ListView itemListView;
     ListView spellListView;
 
+    int index;
+
     public CharacterCreatorFragment() {
         // Required empty public constructor
     }
@@ -110,6 +112,16 @@ public class CharacterCreatorFragment extends Fragment {
          * Instantiate the EditTexts
          */
         characterNameField = (EditText)view.findViewById(R.id.name_field);
+
+        /**
+         * Instantiate the Spinners
+         */
+        raceSpinner = (Spinner)view.findViewById(R.id.race_spinner);
+        classSpinner = (Spinner)view.findViewById(R.id.class_spinner);
+
+        /**
+         * Instantiate the TextViews
+         */
         attributeFields = new TextView[]{
                 (TextView) view.findViewById(R.id.strength_field),
                 (TextView) view.findViewById(R.id.agility_field),
@@ -131,15 +143,6 @@ public class CharacterCreatorFragment extends Fragment {
                 (TextView)view.findViewById(R.id.survival_field)
         };
 
-        /**
-         * Instantiate the Spinners
-         */
-        raceSpinner = (Spinner)view.findViewById(R.id.race_spinner);
-        classSpinner = (Spinner)view.findViewById(R.id.class_spinner);
-
-        /**
-         * Instantiate the TextViews
-         */
         remainingAttsView = (TextView)view.findViewById(R.id.remaining_att_field);
         remainingSkillsView = (TextView)view.findViewById(R.id.remaining_skill_field);
 
@@ -159,6 +162,37 @@ public class CharacterCreatorFragment extends Fragment {
                 (Button)view.findViewById(R.id.add_intelligence_button),
                 (Button)view.findViewById(R.id.subtract_intelligence_button)
         };
+
+        /**
+         * Add functionality to the attribute buttons
+         */
+        for(index = 0; index < attributeButtons.length; index++){
+            final Button button = attributeButtons[index];
+            button.setTag(index);
+            if(index%2 == 0){
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(!remainingAttsView.getText().toString().equals("0")){
+                            int attributeIndex = ((Integer)button.getTag()/2);
+                            addValue(attributeFields[attributeIndex]);
+                        }
+                    }
+                });
+            }
+            else{
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!attributeFields[attributeIndex].getText().toString().equals("0")){
+                            subtractValue(attributeFields[attributeIndex]);
+                        }
+                    }
+                });
+            }
+        }
+
         randomizeAttsButton = (Button)view.findViewById(R.id.random_atts_button);
         skillButtons = new Button[]{
                 (Button)view.findViewById(R.id.add_fighting),
@@ -194,6 +228,30 @@ public class CharacterCreatorFragment extends Fragment {
         spellListView = (ListView)view.findViewById(R.id.spell_list);
 
         return view;
+    }
+
+    public void addValue(TextView textView){
+        String stringValue = textView.getText().toString();
+        int value = Integer.parseInt(stringValue);
+        value++;
+        textView.setText(String.valueOf(value));
+
+        stringValue = remainingAttsView.getText().toString();
+        value = Integer.parseInt(stringValue);
+        value--;
+        remainingAttsView.setText(String.valueOf(value));
+    }
+
+    public void subtractValue(TextView textView){
+        String stringValue = textView.getText().toString();
+        int value = Integer.parseInt(stringValue);
+        value--;
+        textView.setText(String.valueOf(value));
+
+        stringValue = remainingAttsView.getText().toString();
+        value = Integer.parseInt(stringValue);
+        value++;
+        remainingAttsView.setText(String.valueOf(value));
     }
 
     // TODO: Rename method, update argument and hook method into UI event
