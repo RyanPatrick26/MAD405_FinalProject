@@ -90,28 +90,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_NAME + " TEXT,"
             + COLUMN_RACE + " TEXT,"
             + COLUMN_CHAR_CLASS + " TEXT,"
-            + COLUMN_STRENGTH + " INTEGER,"
-            + COLUMN_AGILITY + " INTEGER,"
-            + COLUMN_RESILIENCE + " INTEGER,"
-            + COLUMN_LUCK + " INTEGER,"
-            + COLUMN_INTELLIGENCE + " INTEGER,"
-            + COLUMN_FIGHTING + " INTEGER,"
-            + COLUMN_GAMBLING + " INTEGER,"
-            + COLUMN_SHOOTING + " INTEGER,"
-            + COLUMN_LYING + " INTEGER,"
-            + COLUMN_CASTING + " INTEGER,"
-            + COLUMN_ACROBATICS + " INTEGER,"
-            + COLUMN_SNEAKING + " INTEGER,"
-            + COLUMN_CRAFTING + " INTEGER,"
-            + COLUMN_SURVIVAL + " INTEGER" + ")";
+            + COLUMN_STRENGTH + " TEXT,"
+            + COLUMN_AGILITY + " TEXT,"
+            + COLUMN_RESILIENCE + " TEXT,"
+            + COLUMN_LUCK + " TEXT,"
+            + COLUMN_INTELLIGENCE + " TEXT,"
+            + COLUMN_FIGHTING + " TEXT,"
+            + COLUMN_GAMBLING + " TEXT,"
+            + COLUMN_SHOOTING + " TEXT,"
+            + COLUMN_LYING + " TEXT,"
+            + COLUMN_CASTING + " TEXT,"
+            + COLUMN_ACROBATICS + " TEXT,"
+            + COLUMN_SNEAKING + " TEXT,"
+            + COLUMN_CRAFTING + " TEXT,"
+            + COLUMN_SURVIVAL + " TEXT" + ")";
 
     private static final String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
             + COLUMN_NAME + " TEXT,"
-            + COLUMN_PRICE + " NUMERIC(15,0),"
+            + COLUMN_PRICE + " TEXT,"
             + COLUMN_TYPE + " TEXT,"
             + COLUMN_DESCRIPTION + " TEXT,"
-            + COLUMN_DMG_DEF + " INTEGER" + ")";
+            + COLUMN_DMG_DEF + " TEXT" + ")";
 
     private static final String CREATE_SPELLS_TABLE = "CREATE TABLE " + TABLE_SPELLS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -120,7 +120,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_SPELLTYPE + " TEXT,"
             + COLUMN_COMPONENTS + " TEXT,"
             + COLUMN_EFFECTS + " TEXT,"
-            + COLUMN_DMG_HEAL + " INTEGER";
+            + COLUMN_DMG_HEAL + " TEXT";
 
     private static final String CREATE_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_PORTRAITS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -128,11 +128,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String CREATE_CHARACTER_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_CHARACTER_PORTRAIT + "("
             + COLUMN_CHAR_ID + " INTEGER REFRENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
-            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_RESOURCE+")";
+            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")";
 
     private static final String CREATE_ITEM_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_ITEM_PORTRAIT + "("
             + COLUMN_ITEM_ID + " INTEGER REFRENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
-            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_RESOURCE+")";
+            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -327,6 +327,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * READ OBJECTS FROM THE DATABASE
      */
+    /**
+     * Method to get a Character from the database
+     */
     public Character getCharater(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_CHARACTERS,
@@ -338,12 +341,48 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-        Character character = new Character(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5),
-                cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9), cursor.getInt(10),
-                cursor.getInt(11), cursor.getInt(12), cursor.getInt(13), cursor.getInt(14), cursor.getInt(15),
-                cursor.getInt(16));
+        Character character = new Character(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),
+                cursor.getString(3), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)),
+                Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor.getString(8)),
+                Integer.parseInt(cursor.getString(9)), Integer.parseInt(cursor.getString(10)), Integer.parseInt(cursor.getString(11)),
+                Integer.parseInt(cursor.getString(12)), Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
+                Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)), Integer.parseInt(cursor.getString(17)));
         return character;
+    }
+
+    /**
+     * Method to get All Characters from the Database
+     */
+    public ArrayList<Character> getAllCharacters() {
+        ArrayList<Character> characterList = new ArrayList<Character>();
+        String selectQuery = "SELECT  * FROM " + TABLE_CHARACTERS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Character character = new Character();
+                character.setId(Integer.parseInt(cursor.getString(0)));
+                character.setName(cursor.getString(1));
+                character.setRace(cursor.getString(2));
+                character.setCharClass(cursor.getString(3));
+                character.setStrength(Integer.parseInt(cursor.getString(4)));
+                character.setAgility(Integer.parseInt(cursor.getString(5)));
+                character.setResilience(Integer.parseInt(cursor.getString(6)));
+                character.setLuck(Integer.parseInt(cursor.getString(7)));
+                character.setIntelligence(Integer.parseInt(cursor.getString(8)));
+                character.setFighting(Integer.parseInt(cursor.getString(9)));
+                character.setGambling(Integer.parseInt(cursor.getString(10)));
+                character.setShooting(Integer.parseInt(cursor.getString(11)));
+                character.setLying(Integer.parseInt(cursor.getString(12)));
+                character.setCasting(Integer.parseInt(cursor.getString(13)));
+                character.setAcrobatics(Integer.parseInt(cursor.getString(14)));
+                character.setSneaking(Integer.parseInt(cursor.getString(15)));
+                character.setCrafting(Integer.parseInt(cursor.getString(16)));
+                character.setSurvival(Integer.parseInt(cursor.getString(17)));
+            } while (cursor.moveToNext());
+        }
+        return characterList;
     }
 
 
