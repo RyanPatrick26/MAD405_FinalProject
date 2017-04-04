@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 /**
  * DatabaseHandler to create the database and handle database interactions
+ * Contains CREATE, READ, UPDATE, DELETE methods.
  *
  * @author Nicholas Allaire
  * @version 1.0
@@ -177,8 +178,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * ADD NEW OBJECTS TO THE DATABASE
      */
     /**
-     * Adds a new character to the database
-     * @param character - Character to be added to the database
+     * Method that will CREATE a CHARACTER record in the database
+     * @param character object
      */
     public void addCharacter(Character character) {
         // Get a writable Database
@@ -211,8 +212,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Adds a new item to the database
-     * @param item - item to be added
+     * Method that will CREATE an ITEM record in the database
+     * @param item object
      */
     public void addItem(Item item) {
         // Get a writable Database
@@ -233,8 +234,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Adds a new spell to the spell list
-     * @param spell - spell to be added
+     * Method that will CREATE a SPELL record in the database
+     * @param spell object
      */
     public void addSpell(Spell spell) {
         // Get a writable Database
@@ -256,10 +257,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Adds a Portrait to the database
-     *
-     * @param portrait - portrait to be added
-     * @return integer (row location)
+     * Method that will CREATE a PORTRAIT record in the database
+     * @param portrait object
      */
     public int addPortrait(Portrait portrait) {
         // Get a writable Database
@@ -285,10 +284,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Method that will add a Character Portrait record
+     * Method that will CREATE a CHARACTER_PORTRAIT record in the database
      *
-     * @param portrait
-     * @param character
+     * @param portrait object
+     * @param character object
      */
     public void addCharacterPortrait(int portrait, int character){
         // Get a writable Database
@@ -305,10 +304,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Method that will add an Item Portrait record
+     * Method that will CREATE an ITEM_PORTRAIT record
      *
-     * @param portrait
-     * @param item
+     * @param portrait object
+     * @param item object
      */
     public void addItemPortrait(int portrait, int item){
         // Get a writable Database
@@ -328,10 +327,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * READ OBJECTS FROM THE DATABASE
      */
     /**
-     * Method to get a Character from the database
+     * Method to GET a CHARACTER from the database
      */
     public Character getCharater(int id) {
+        // Get a readable database
         SQLiteDatabase db = this.getReadableDatabase();
+        // Create a cursor to store all the values
         Cursor cursor = db.query(TABLE_CHARACTERS,
                 new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_RACE, COLUMN_CHAR_CLASS, COLUMN_STRENGTH,
                         COLUMN_AGILITY, COLUMN_RESILIENCE, COLUMN_LUCK, COLUMN_INTELLIGENCE, COLUMN_FIGHTING,
@@ -341,26 +342,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
+        // Create a new character
         Character character = new Character(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2),
                 cursor.getString(3), Integer.parseInt(cursor.getString(4)), Integer.parseInt(cursor.getString(5)),
                 Integer.parseInt(cursor.getString(6)), Integer.parseInt(cursor.getString(7)), Integer.parseInt(cursor.getString(8)),
                 Integer.parseInt(cursor.getString(9)), Integer.parseInt(cursor.getString(10)), Integer.parseInt(cursor.getString(11)),
                 Integer.parseInt(cursor.getString(12)), Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
                 Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)), Integer.parseInt(cursor.getString(17)));
+        // Return the new character
         return character;
     }
 
     /**
-     * Method to get All Characters from the Database
+     * Method to get ALL CHARACTERS from the Database
      */
     public ArrayList<Character> getAllCharacters() {
+        // Create an ArrayList of characters
         ArrayList<Character> characterList = new ArrayList<Character>();
+        // Create a sql query string to get all the characters
         String selectQuery = "SELECT  * FROM " + TABLE_CHARACTERS;
-
+        // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store all the values
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
+                // Create each character and set all their properties
                 Character character = new Character();
                 character.setId(Integer.parseInt(cursor.getString(0)));
                 character.setName(cursor.getString(1));
@@ -382,7 +389,52 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 character.setSurvival(Integer.parseInt(cursor.getString(17)));
             } while (cursor.moveToNext());
         }
+        // Return the list of characters
         return characterList;
+    }
+
+    /**
+     * Method to get a PORTRAIT from the database
+     */
+    public Portrait getPortrait(int id) {
+        // Get a readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.query(TABLE_PORTRAITS, new String[] {COLUMN_ID, COLUMN_RESOURCE}, COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        // Create a new portrait
+        Portrait portrait = new Portrait(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1));
+        // Return the new portrait
+        return portrait;
+    }
+
+    /**
+     * Method to get ALL PORTRAITS from the database
+     */
+    public ArrayList<Portrait> getAllPortraits() {
+        // Create an arrayList of portraits
+        ArrayList<Portrait> portraitList = new ArrayList<Portrait>();
+        // Create a SQL string query to get all records from the portraits table
+        String selectQuery = "SELECT  * FROM " + TABLE_PORTRAITS;
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store the SQL string
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Create a new portrait and set all its properties
+                Portrait portrait = new Portrait();
+                portrait.setId(Integer.parseInt(cursor.getString(0)));
+                portrait.setResource(cursor.getString(1));
+                portraitList.add(portrait);
+            } while (cursor.moveToNext());
+        }
+        // Return the new portrait list
+        return portraitList;
     }
 
 
