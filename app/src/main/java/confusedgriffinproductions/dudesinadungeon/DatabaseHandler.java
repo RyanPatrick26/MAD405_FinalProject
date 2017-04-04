@@ -40,7 +40,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Character Table Column Names
      */
     private static final String COLUMN_RACE = "race";
-    private static final String COLUMN_CHAR_CLASS = "charClass";
+    private static final String COLUMN_CHAR_CLASS = "class";
     private static final String COLUMN_STRENGTH = "strength";
     private static final String COLUMN_AGILITY = "agility";
     private static final String COLUMN_RESILIENCE = "resilience";
@@ -175,7 +175,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // CRUD OPERATIONS FOR THE DATABASE AND FOR THE TABLES
     /**
-     * ADD NEW OBJECTS TO THE DATABASE
+     * CREATE OBJECTS AND STORE THEM IN THE DATABASE
      */
     /**
      * Method that will CREATE a CHARACTER record in the database
@@ -327,7 +327,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * READ OBJECTS FROM THE DATABASE
      */
     /**
-     * Method to GET a CHARACTER from the database
+     * Method to READ a CHARACTER from the database
      */
     public Character getCharater(int id) {
         // Get a readable database
@@ -354,7 +354,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
-     * Method to get ALL CHARACTERS from the Database
+     * Method to READ ALL CHARACTERS from the Database
      */
     public ArrayList<Character> getAllCharacters() {
         // Create an ArrayList of characters
@@ -392,6 +392,106 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Return the list of characters
         return characterList;
     }
+
+    /**
+     * Method to READ an ITEM from the database
+     */
+    public Item getItem(int id) {
+        // Get a readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.query(TABLE_ITEMS,
+                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_PRICE, COLUMN_TYPE,
+                        COLUMN_DESCRIPTION, COLUMN_DMG_DEF},
+                COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        // Create a new item
+        Item item = new Item(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
+                Double.parseDouble(cursor.getString(2)), cursor.getString(3), cursor.getString(4), Integer.parseInt(cursor.getString(5)));
+        // Return the new item
+        return item;
+    }
+
+    /**
+     * Method to READ ALL ITEMS from the database
+     */
+    public ArrayList<Item> getAllItems() {
+        // Create an ArrayList of items
+        ArrayList<Item> itemList = new ArrayList<Item>();
+        // Create a sql query string to get all the items
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS;
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Create each item and set all their properties
+                Item item = new Item();
+                item.setId(Integer.parseInt(cursor.getString(0)));
+                item.setName(cursor.getString(1));
+                item.setPrice(Double.parseDouble(cursor.getString(2)));
+                item.setType(cursor.getString(3));
+                item.setDescription(cursor.getString(4));
+                item.setDmg_def(Integer.parseInt(cursor.getString(5)));
+            } while (cursor.moveToNext());
+        }
+        // Return the list of items
+        return itemList;
+    }
+
+    /**
+     * Method to READ a SPELL from the database
+     */
+    public Spell getSpell(int id) {
+        // Get a readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.query(TABLE_SPELLS,
+                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_DESCRIPTION, COLUMN_SPELLTYPE,
+                        COLUMN_COMPONENTS, COLUMN_EFFECTS, COLUMN_DMG_HEAL},
+                COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        // Create a new spell
+        Spell spell = new Spell(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3),
+                cursor.getString(4), cursor.getString(5), Integer.parseInt(cursor.getString(6)));
+        // Return the new spell
+        return spell;
+    }
+
+    /**
+     * Method to READ ALL SPELLS from the database
+     */
+    public ArrayList<Spell> getAllSpells() {
+        // Create an ArrayList of spells
+        ArrayList<Spell> spellList = new ArrayList<Spell>();
+        // Create a sql query string to get all the spells
+        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS;
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Create each spell and set all their properties
+                Spell spell = new Spell();
+                spell.setId(Integer.parseInt(cursor.getString(0)));
+                spell.setName(cursor.getString(1));
+                spell.setDescription(cursor.getString(2));
+                spell.setSpellType(cursor.getString(3));
+                spell.setComponents(cursor.getString(4));
+                spell.setEffects(cursor.getString(5));
+                spell.setDmg_heal(Integer.parseInt(cursor.getString(6)));
+            } while (cursor.moveToNext());
+        }
+        // Return the list of spells
+        return spellList;
+    }
+
 
     /**
      * Method to get a PORTRAIT from the database
@@ -507,6 +607,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         // return the portrait list
         return portraitList;
+    }
+
+    /**
+     * UPDATE RECORDS IN THE DATABASE
+     */
+    /**
+     * Method to UPDATE a CHARACTER in the database
+     */
+    public int updateCharacter(Character character) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        return db.update(TABLE_CHARACTERS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(character.getId()) });
     }
 
 
