@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Sends an email to the application creators
+     * Prepares an email to send to the application creators
      * @author Nicholas Allaire
      */
     public void emailAppCreators() {
@@ -177,11 +177,15 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Prepares a text message to send to someone in regards to the application
+     * @author Nicholas Allaire
+     */
     public void shareViaSMS() {
         // Create the SMS intent
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        // Set the type
-        intent.setType("vnd.android-dir/mms-sms");
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        // Set the type to SMS
+        intent.setData(Uri.parse("sms:"));
         // Set the body of the SMS
         intent.putExtra("sms_body", smsMessage);
         if (intent.resolveActivity(getPackageManager()) != null) {
