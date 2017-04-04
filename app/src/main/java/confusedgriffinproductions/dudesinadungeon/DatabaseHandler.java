@@ -437,6 +437,77 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return portraitList;
     }
 
+    /**
+     * Method to get ALL PORTRAITS associated with CHARACTERS from the database
+     */
+    public ArrayList<Portrait> getAllCharacterPortraits(int character) {
+        // Create an array of portraits
+        ArrayList<Portrait> portraitList = new ArrayList<Portrait>();
+        // Create a SQL string query to get all records from the Character Portrait Table
+        //  where the Character ID is equal to character
+        String selectQuery = "SELECT  * FROM " + TABLE_CHARACTER_PORTRAIT + " WHERE " + COLUMN_CHAR_ID + " = " + character;
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store the selectQuery
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Create a string query to select all Portraits in the Portraits where the ID is equal
+                //  to the outer portrait ID
+                String innerQuery = "SELECT * FROM " + TABLE_PORTRAITS + " WHERE " + COLUMN_ID + "=" + cursor.getInt(1);
+                // store the results inside of an inner cursor
+                Cursor innerCursor = db.rawQuery(innerQuery, null);
+                if (innerCursor.moveToFirst()) {
+                    do {
+                        // Create a new portrait and set its values
+                        Portrait portrait = new Portrait();
+                        portrait.setId(Integer.parseInt(innerCursor.getString(0)));
+                        portrait.setResource(innerCursor.getString(1));
+                        // add it to the portrait list
+                        portraitList.add(portrait);
+                    } while (innerCursor.moveToNext());
+                }
+            }while (cursor.moveToNext());
+        }
+        // return the portrait list
+        return portraitList;
+    }
+
+    /**
+     * Method to get ALL PORTRAITS associated with ITEMS from the database
+     */
+    public ArrayList<Portrait> getAllItemPortraits(int character) {
+        // Create an array of portraits
+        ArrayList<Portrait> portraitList = new ArrayList<Portrait>();
+        // Create a SQL string query to get all records from the Item Portrait Table
+        //  where the Character ID is equal to character
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEM_PORTRAIT + " WHERE " + COLUMN_ITEM_ID + " = " + character;
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store the selectQuery
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Create a string query to select all Portraits in the Portraits where the ID is equal
+                //  to the outer portrait ID
+                String innerQuery = "SELECT * FROM " + TABLE_PORTRAITS + " WHERE " + COLUMN_ID + "=" + cursor.getInt(1);
+                // store the results inside of an inner cursor
+                Cursor innerCursor = db.rawQuery(innerQuery, null);
+                if (innerCursor.moveToFirst()) {
+                    do {
+                        // Create a new portrait and set its values
+                        Portrait portrait = new Portrait();
+                        portrait.setId(Integer.parseInt(innerCursor.getString(0)));
+                        portrait.setResource(innerCursor.getString(1));
+                        // add it to the portrait list
+                        portraitList.add(portrait);
+                    } while (innerCursor.moveToNext());
+                }
+            }while (cursor.moveToNext());
+        }
+        // return the portrait list
+        return portraitList;
+    }
 
 
 
