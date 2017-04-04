@@ -576,12 +576,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Method to get ALL PORTRAITS associated with ITEMS from the database
      */
-    public ArrayList<Portrait> getAllItemPortraits(int character) {
+    public ArrayList<Portrait> getAllItemPortraits(int item) {
         // Create an array of portraits
         ArrayList<Portrait> portraitList = new ArrayList<Portrait>();
         // Create a SQL string query to get all records from the Item Portrait Table
-        //  where the Character ID is equal to character
-        String selectQuery = "SELECT  * FROM " + TABLE_ITEM_PORTRAIT + " WHERE " + COLUMN_ITEM_ID + " = " + character;
+        //  where the Item ID is equal to item
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEM_PORTRAIT + " WHERE " + COLUMN_ITEM_ID + " = " + item;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store the selectQuery
@@ -616,11 +616,74 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Method to UPDATE a CHARACTER in the database
      */
     public int updateCharacter(Character character) {
+        // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
+        // Create a contentValues to store all the values
         ContentValues values = new ContentValues();
-
+        // Put all properties into values
+        values.put(COLUMN_NAME, character.getName());
+        values.put(COLUMN_RACE, character.getRace());
+        values.put(COLUMN_CHAR_CLASS, character.getCharClass());
+        values.put(COLUMN_STRENGTH, character.getStrength());
+        values.put(COLUMN_AGILITY, character.getAgility());
+        values.put(COLUMN_RESILIENCE, character.getResilience());
+        values.put(COLUMN_LUCK, character.getLuck());
+        values.put(COLUMN_INTELLIGENCE, character.getIntelligence());
+        values.put(COLUMN_FIGHTING, character.getFighting());
+        values.put(COLUMN_GAMBLING, character.getGambling());
+        values.put(COLUMN_SHOOTING, character.getShooting());
+        values.put(COLUMN_LYING, character.getLying());
+        values.put(COLUMN_CASTING, character.getCasting());
+        values.put(COLUMN_ACROBATICS, character.getAcrobatics());
+        values.put(COLUMN_SNEAKING, character.getSneaking());
+        values.put(COLUMN_CRAFTING, character.getCrafting());
+        values.put(COLUMN_SURVIVAL, character.getSurvival());
+        // Update the database
         return db.update(TABLE_CHARACTERS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(character.getId()) });
     }
+
+    /**
+     * Method to UPDATE an ITEM in the database
+     */
+    public int updateItem(Item item) {
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a contentValues to store all the values
+        ContentValues values = new ContentValues();
+        // Put all properties into values
+        values.put(COLUMN_NAME, item.getName());
+        values.put(COLUMN_PRICE, item.getPrice());
+        values.put(COLUMN_TYPE, item.getType());
+        values.put(COLUMN_DESCRIPTION, item.getDescription());
+        values.put(COLUMN_DMG_DEF, item.getDmg_def());
+
+        // Update the database
+        return db.update(TABLE_ITEMS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(item.getId()) });
+    }
+
+    /**
+     * Method to UPDATE a SPELL in the database
+     */
+    public int updateSpell(Spell spell) {
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a contentValues to store all the values
+        ContentValues values = new ContentValues();
+        // Put all properties into values
+        values.put(COLUMN_NAME, spell.getName());
+        values.put(COLUMN_DESCRIPTION, spell.getDescription());
+        values.put(COLUMN_SPELLTYPE, spell.getSpellType());
+        values.put(COLUMN_COMPONENTS, spell.getComponents());
+        values.put(COLUMN_EFFECTS, spell.getEffects());
+        values.put(COLUMN_DMG_HEAL, spell.getDmg_heal());
+
+        // Update the database
+        return db.update(TABLE_ITEMS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(spell.getId()) });
+    }
+
+    /**
+     * DELETE RECORDS FROM THE DATABASE
+     */
 
 
 
