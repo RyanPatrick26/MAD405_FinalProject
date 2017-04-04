@@ -694,6 +694,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * DELETE RECORDS FROM THE DATABASE
      */
+    /**
+     * Method to DELETE a CHARACTER from the database
+     */
+    public void deleteCharacter(long character_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_CHARACTERS, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(character_id) });
+    }
+
+    /**
+     * Method to DELETE an ITEM from the database
+     */
+    public void deleteItem(long item_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_ITEMS, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(item_id) });
+    }
+
+    /**
+     * Method to DELETE a SPELL from the database
+     */
+    public void deleteSpell(long spell_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_SPELLS, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(spell_id) });
+    }
+
+    /**
+     * Method to DELETE a PORTRAIT from the database
+     */
+    public void deletePortrait(long portrait_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PORTRAITS, COLUMN_ID + " = ?",
+                new String[] { String.valueOf(portrait_id) });
+    }
 
 
 
