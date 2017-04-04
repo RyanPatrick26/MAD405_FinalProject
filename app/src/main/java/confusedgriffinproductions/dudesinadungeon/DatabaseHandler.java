@@ -682,6 +682,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
+     * Method to UPDATE a PORTRAIT in the database
+     */
+    public int updatePortrait(Portrait portrait) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_RESOURCE, portrait.getResource());
+        return db.update(TABLE_PORTRAITS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(portrait.getId()) });
+    }
+
+    /**
      * DELETE RECORDS FROM THE DATABASE
      */
 
