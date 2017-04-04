@@ -29,4 +29,7 @@
     <string name="email_subject">Question regarding Dudes In A Dungeon App</string>
     <string name="email_body">Hello, I have a question about...</string>
 
+    <!-- SMS Intent Strings -->
+    <string name="sms_message">Get some dudes and get in a dungeon! Check out this amazing app that helps me keep track of my characters, items, and spells:</string>
+
 </resources>

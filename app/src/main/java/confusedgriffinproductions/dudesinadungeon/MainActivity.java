@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     // TODO: REMOVE MY EMAIL ADDRESS
     String creatorEmail = "nicholas.allaire@stclairconnect.ca";
     // SMS Message String
-    String smsMessage = "Get some dudes and get in a dungeon! Check out this amazing app that helps me keep track of my characters, items, and spells: https://www.diad.app.com/";
+    String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity
             shareViaSMS();
         } else if (id == R.id.nav_website) {
             // Navigate to the company website
+            visitWebsite();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -199,8 +200,26 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Opens the user's device's web browser and navigates to the game website
+     * @author Nicholas Allaire
+     */
     public void visitWebsite() {
-
+        // Create a string of the website URL
+        String url = "https://en.wikipedia.org/wiki/Tabletop_role-playing_game";
+        // Set the type of intent
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        // Set the URL for the intent
+        intent.setData(Uri.parse(url));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // if the device has SMS capabilities, launch the intent
+            startActivity(intent);
+        } else {
+            // if the device does not have Web Browsing capabilities, display a snackbar
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                    getString(R.string.snackbar_no_software), Snackbar.LENGTH_SHORT);
+            snackbar.show();
+        }
     }
 
 
