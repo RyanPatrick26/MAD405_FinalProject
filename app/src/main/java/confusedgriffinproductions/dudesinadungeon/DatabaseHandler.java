@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * DatabaseHandler to create the database and handle database interactions
- * Contains CREATE, READ, UPDATE, DELETE methods.
+ * Contains CREATE, READ, UPDATE, DELETE, CLOSE Database methods.
  *
  * @author Nicholas Allaire
  * @version 1.0
