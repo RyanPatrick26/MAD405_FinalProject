@@ -685,9 +685,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Method to UPDATE a PORTRAIT in the database
      */
     public int updatePortrait(Portrait portrait) {
+        // Get the writable database
         SQLiteDatabase db = this.getWritableDatabase();
+        // Create and set the content values
         ContentValues values = new ContentValues();
         values.put(COLUMN_RESOURCE, portrait.getResource());
+        // Update the database
         return db.update(TABLE_PORTRAITS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(portrait.getId()) });
     }
 
@@ -698,7 +701,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Method to DELETE a CHARACTER from the database
      */
     public void deleteCharacter(long character_id) {
+        // Get the writable database
         SQLiteDatabase db = this.getWritableDatabase();
+        // Delete the record from the database
         db.delete(TABLE_CHARACTERS, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(character_id) });
     }
@@ -707,7 +712,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Method to DELETE an ITEM from the database
      */
     public void deleteItem(long item_id) {
+        // Get the writable database
         SQLiteDatabase db = this.getWritableDatabase();
+        // Delete the record from the database
         db.delete(TABLE_ITEMS, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(item_id) });
     }
@@ -716,7 +723,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Method to DELETE a SPELL from the database
      */
     public void deleteSpell(long spell_id) {
+        // Get the writable database
         SQLiteDatabase db = this.getWritableDatabase();
+        // Delete the record from the database
         db.delete(TABLE_SPELLS, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(spell_id) });
     }
@@ -725,13 +734,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Method to DELETE a PORTRAIT from the database
      */
     public void deletePortrait(long portrait_id) {
+        // Get the writable database
         SQLiteDatabase db = this.getWritableDatabase();
+        // Delete the record from the database
         db.delete(TABLE_PORTRAITS, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(portrait_id) });
     }
 
-
-
-
+    /**
+     * Method to CLOSE the database connection
+     */
+    public void closeDB() {
+        // Get the readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+        // If the database exists and is open, close it
+        if (db != null && db.isOpen())
+            db.close();
+    }
 
 }
