@@ -121,7 +121,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_SPELLTYPE + " TEXT,"
             + COLUMN_COMPONENTS + " TEXT,"
             + COLUMN_EFFECTS + " TEXT,"
-            + COLUMN_DMG_HEAL + " TEXT";
+            + COLUMN_DMG_HEAL + " TEXT" + ")";
 
     private static final String CREATE_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_PORTRAITS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -129,11 +129,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String CREATE_CHARACTER_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_CHARACTER_PORTRAIT + "("
             + COLUMN_CHAR_ID + " INTEGER REFRENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
-            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")";
+            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
 
     private static final String CREATE_ITEM_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_ITEM_PORTRAIT + "("
             + COLUMN_ITEM_ID + " INTEGER REFRENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
-            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")";
+            + COLUMN_PORTRAIT + " INTEGER REFRENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
