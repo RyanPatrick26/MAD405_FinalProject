@@ -3,15 +3,21 @@ package confusedgriffinproductions.dudesinadungeon;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.Random;
 
 
 /**
@@ -56,11 +62,11 @@ public class CharacterCreatorFragment extends Fragment {
     /**
      * Create variables to store the buttons
      */
-    Button randomizeNameButton;
     Button[] attributeButtons;
     Button randomizeAttsButton;
     Button[] skillButtons;
     Button resetSkillsButton;
+    Button resetCharacterButton;
     Button confirmButton;
 
     /**
@@ -68,6 +74,12 @@ public class CharacterCreatorFragment extends Fragment {
      */
     ListView itemListView;
     ListView spellListView;
+
+    /**
+     * Create arrays to store the available races and classes
+     */
+    String[] raceArray;
+    String[] classArray;
 
     int index;
 
@@ -119,6 +131,15 @@ public class CharacterCreatorFragment extends Fragment {
         raceSpinner = (Spinner)view.findViewById(R.id.race_spinner);
         classSpinner = (Spinner)view.findViewById(R.id.class_spinner);
 
+        raceArray = new String[]{"Human", "Elf", "Dwarf"};
+        classArray = new String[]{"Warrior", "Rogue", "Wizard", "Priest"};
+
+        ArrayAdapter raceAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, raceArray);
+        raceSpinner.setAdapter(raceAdapter);
+
+        ArrayAdapter classAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, classArray);
+        classSpinner.setAdapter(classAdapter);
+
         /**
          * Instantiate the TextViews
          */
@@ -149,7 +170,6 @@ public class CharacterCreatorFragment extends Fragment {
         /**
          * Instantiate the Buttons
          */
-        randomizeNameButton = (Button)view.findViewById(R.id.random_name_button);
         attributeButtons = new Button[]{
                 (Button)view.findViewById(R.id.add_strength_button),
                 (Button)view.findViewById(R.id.subtract_strength_button),
@@ -162,38 +182,8 @@ public class CharacterCreatorFragment extends Fragment {
                 (Button)view.findViewById(R.id.add_intelligence_button),
                 (Button)view.findViewById(R.id.subtract_intelligence_button)
         };
-
-        /**
-         * Add functionality to the attribute buttons
-         */
-        for(index = 0; index < attributeButtons.length; index++){
-            final Button button = attributeButtons[index];
-            button.setTag(index);
-            if(index%2 == 0){
-                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(!remainingAttsView.getText().toString().equals("0")){
-                            int attributeIndex = ((Integer)button.getTag()/2);
-                            addValue(attributeFields[attributeIndex]);
-                        }
-                    }
-                });
-            }
-            else{
-                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int attributeIndex = ((Integer)button.getTag()/2);
-                        if(!attributeFields[attributeIndex].getText().toString().equals("0")){
-                            subtractValue(attributeFields[attributeIndex]);
-                        }
-                    }
-                });
-            }
-        }
-
         randomizeAttsButton = (Button)view.findViewById(R.id.random_atts_button);
+
         skillButtons = new Button[]{
                 (Button)view.findViewById(R.id.add_fighting),
                 (Button)view.findViewById(R.id.subtract_fighting),
@@ -216,9 +206,8 @@ public class CharacterCreatorFragment extends Fragment {
                 (Button)view.findViewById(R.id.add_survival),
                 (Button)view.findViewById(R.id.subtract_survival)
         };
-
         resetSkillsButton = (Button)view.findViewById(R.id.reset_button);
-
+        resetCharacterButton = (Button)view.findViewById(R.id.reset_character);
         confirmButton = (Button)view.findViewById(R.id.confirm_button);
 
         /**
@@ -227,31 +216,193 @@ public class CharacterCreatorFragment extends Fragment {
         itemListView = (ListView)view.findViewById(R.id.item_list);
         spellListView = (ListView)view.findViewById(R.id.spell_list);
 
+        /**
+         * Add functionality to the buttons
+         */
+        for(index = 0; index < attributeButtons.length; index++){
+            final Button button = attributeButtons[index];
+            button.setTag(index);
+            if(index%2 == 0){
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(!remainingAttsView.getText().toString().equals("0")){
+                            int attributeIndex = ((Integer)button.getTag()/2);
+                            addValue(attributeFields[attributeIndex], remainingAttsView);
+                        }
+                    }
+                });
+            }
+            else{
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!attributeFields[attributeIndex].getText().toString().equals("1")){
+                            subtractValue(attributeFields[attributeIndex], remainingAttsView);
+                        }
+                    }
+                });
+            }
+        }
+
+        randomizeAttsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int[] randomAtts = randSum();
+
+                for(int i = 0; i < 5; i++){
+                    attributeFields[i].setText(String.valueOf(randomAtts[i]));
+                }
+
+                remainingAttsView.setText("0");
+            }
+        });
+
+        for(index = 0; index < skillButtons.length; index++){
+            final Button button = skillButtons[index];
+            button.setTag(index);
+            if(index%2 == 0){
+                skillButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(!remainingSkillsView.getText().toString().equals("0")){
+                            int attributeIndex = ((Integer)button.getTag()/2);
+                            addValue(skillFields[attributeIndex], remainingSkillsView);
+                        }
+                    }
+                });
+            }
+            else{
+                skillButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!skillFields[attributeIndex].getText().toString().equals("0")){
+                            subtractValue(skillFields[attributeIndex], remainingSkillsView);
+                        }
+                    }
+                });
+            }
+        }
+
+        resetSkillsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for(index = 0; index < skillFields.length; index++){
+                    skillFields[index].setText("0");
+                    remainingSkillsView.setText("15");
+                }
+            }
+        });
+
+        resetCharacterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                characterNameField.setText("");
+
+                raceSpinner.setSelection(0);
+                classSpinner.setSelection(0);
+
+                for(int i = 0; i < 5; i++){
+                    attributeFields[i].setText("5");
+                }
+                remainingAttsView.setText("10");
+
+                for(int i = 0; i < 10; i++){
+                    skillFields[i].setText("0");
+                }
+                remainingSkillsView.setText("15");
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar snackbar;
+
+                if(remainingAttsView.getText().toString().equals("0") &&
+                        remainingSkillsView.getText().toString().equals("0")){
+                    Character character = new Character();
+                    character.setName(characterNameField.getText().toString());
+
+                    character.setRace(raceSpinner.getSelectedItem().toString());
+                    character.setCharClass(classSpinner.getSelectedItem().toString());
+
+                    character.setStrength(Integer.parseInt(attributeFields[0].getText().toString()));
+                    character.setAgility(Integer.parseInt(attributeFields[1].getText().toString()));
+                    character.setResilience(Integer.parseInt(attributeFields[2].getText().toString()));
+                    character.setLuck(Integer.parseInt(attributeFields[3].getText().toString()));
+                    character.setIntelligence(Integer.parseInt(attributeFields[4].getText().toString()));
+
+                    character.setFighting(Integer.parseInt(skillFields[0].getText().toString()));
+                    character.setShooting(Integer.parseInt(skillFields[1].getText().toString()));
+                    character.setCasting(Integer.parseInt(skillFields[2].getText().toString()));
+                    character.setAcrobatics(Integer.parseInt(skillFields[3].getText().toString()));
+                    character.setCrafting(Integer.parseInt(skillFields[4].getText().toString()));
+                    character.setGambling(Integer.parseInt(skillFields[5].getText().toString()));
+                    character.setLying(Integer.parseInt(skillFields[6].getText().toString()));
+                    character.setPersuasion(Integer.parseInt(skillFields[7].getText().toString()));
+                    character.setSneaking(Integer.parseInt(skillFields[8].getText().toString()));
+                    character.setSurvival(Integer.parseInt(skillFields[9].getText().toString()));
+
+                    DatabaseHandler db = new DatabaseHandler(getContext());
+                    db.addCharacter(character);
+                    db.closeDB();
+
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Character successfully created!",
+                            Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else if(!remainingAttsView.getText().toString().equals("0")
+                        && remainingSkillsView.getText().toString().equals("0")){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Please finish filling in your attributes",
+                            Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
+                else if(remainingAttsView.getText().toString().equals("0") &&
+                        !remainingSkillsView.getText().toString().equals("0")){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Please finish filling in your skills",
+                            Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
+                else{
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "Please finish filling in your attributes and skills",
+                            Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
+            }
+        });
+
         return view;
     }
 
-    public void addValue(TextView textView){
-        String stringValue = textView.getText().toString();
+    public void addValue(TextView startTextView, TextView remainingTextView){
+        String stringValue = startTextView.getText().toString();
         int value = Integer.parseInt(stringValue);
         value++;
-        textView.setText(String.valueOf(value));
+        startTextView.setText(String.valueOf(value));
 
-        stringValue = remainingAttsView.getText().toString();
+        stringValue = remainingTextView.getText().toString();
         value = Integer.parseInt(stringValue);
         value--;
-        remainingAttsView.setText(String.valueOf(value));
+        remainingTextView.setText(String.valueOf(value));
     }
 
-    public void subtractValue(TextView textView){
-        String stringValue = textView.getText().toString();
+    public void subtractValue(TextView startTextView, TextView remainingTextView){
+        String stringValue = startTextView.getText().toString();
         int value = Integer.parseInt(stringValue);
         value--;
-        textView.setText(String.valueOf(value));
+        startTextView.setText(String.valueOf(value));
 
-        stringValue = remainingAttsView.getText().toString();
+        stringValue = remainingTextView.getText().toString();
         value = Integer.parseInt(stringValue);
         value++;
-        remainingAttsView.setText(String.valueOf(value));
+        remainingTextView.setText(String.valueOf(value));
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -291,5 +442,47 @@ public class CharacterCreatorFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    /**
+     * Custom function to randomize the characters attributes
+     * takes no paramaters
+     * randomly creates an array of integers whose elements
+     * add up to be the maximum attribute total at character
+     * creation(35)
+     * @return and array of integers
+     */
+    private static int[] randSum(){
+        //create a new random object and array of integers
+        Random r = new Random();
+        int[] nums = new int[5];
+        Arrays.fill(nums, 1);
+
+        //create integer variables to store the maximum total attribute points a character has
+        //and to store the next random attribute
+        int max = 30;
+        int diff;
+        for(int i = 0; i < 4 && max> 0; i++){
+            if(max > 11){
+                 diff = r.nextInt(max-11);
+            }
+            else{
+                diff = r.nextInt(max);
+            }
+            nums[i] += diff;
+            max -= diff;
+        }
+
+        nums[4] += max;
+
+        //randomize the ordering of the array
+        for(int i = 4; i > 0; i--){
+            diff = r.nextInt(5);
+            int temp = nums[diff];
+            nums[diff] = nums[0];
+            nums[0] = temp;
+        }
+
+        return nums;
     }
 }
