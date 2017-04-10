@@ -62,6 +62,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_PRICE = "price";
     private static final String COLUMN_TYPE = "type";
     private static final String COLUMN_DMG_DEF = "dmg_def";
+    private static final String COLUMN_RANGE = "range";
 
     /**
      * Spell Table Column Names
@@ -112,7 +113,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_PRICE + " TEXT,"
             + COLUMN_TYPE + " TEXT,"
             + COLUMN_DESCRIPTION + " TEXT,"
-            + COLUMN_DMG_DEF + " TEXT" + ")";
+            + COLUMN_DMG_DEF + " TEXT"
+            + COLUMN_RANGE + " TEXT" + ")";
 
     private static final String CREATE_SPELLS_TABLE = "CREATE TABLE " + TABLE_SPELLS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -153,6 +155,123 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_PORTRAITS_TABLE);
         db.execSQL(CREATE_CHARACTER_PORTRAITS_TABLE);
         db.execSQL(CREATE_ITEM_PORTRAITS_TABLE);
+
+        initializeItemsTable();
+        //initializeSpellsTable();
+    }
+
+    /**
+     * Method to initialize the Items Table
+     */
+    public void initializeItemsTable(){
+        Item sword = new Item();
+        sword.setName("Sword");
+        sword.setPrice(15);
+        sword.setType("Weapon");
+        sword.setDmg_def(4);
+        sword.setDescription("Basic sword, most warriors learn the basics using one of these");
+
+        Item axe = new Item();
+        axe.setName("Axe");
+        axe.setPrice(17);
+        axe.setType("Weapon");
+        axe.setDmg_def(5);
+        axe.setDescription("Very basic weapon, easy to use, though somewhat unwieldy");
+
+        Item spear = new Item();
+        spear.setName("Spear");
+        spear.setPrice(10);
+        spear.setType("Weapon");
+        spear.setDmg_def(3);
+        spear.setDescription("Oldest weapon, and easiest to wield, though still effective");
+
+        Item bow = new Item();
+        spear.setName("Bow");
+        bow.setPrice(15);
+        bow.setType("Weapon");
+        bow.setDmg_def(3);
+        bow.setRange(50);
+        bow.setDescription("Quick to make, though difficult to learn, very widespread ranged weapon");
+
+        Item crossbow = new Item();
+        crossbow.setName("Crossbow");
+        crossbow.setPrice(18);
+        crossbow.setType("Weapon");
+        crossbow.setDmg_def(4);
+        crossbow.setRange(35);
+        crossbow.setDescription("More widespread and easier to use than a bow, still very effective");
+
+        Item leatherArmor = new Item();
+        leatherArmor.setName("Leather Armor");
+        leatherArmor.setPrice(10);
+        leatherArmor.setType("Armor");
+        leatherArmor.setDmg_def(-3);
+        leatherArmor.setDescription("Easily manufactured armor, provides only basic defense, better than nothing");
+
+        Item chainMail = new Item();
+        chainMail.setName("Chain Mail");
+        chainMail.setPrice(25);
+        chainMail.setType("Armor");
+        chainMail.setDmg_def(-8);
+        chainMail.setDescription("Provides a good amount of protection, while still allowing the wearer a range of mobility");
+
+        Item plateMail = new Item();
+        plateMail.setName("Plate Mail");
+        plateMail.setPrice(100);
+        plateMail.setType("Armor");
+        plateMail.setDmg_def(-15);
+        plateMail.setDescription("Very heavy armor, provides a lot of protection, but limits mobility");
+
+        Item backPack = new Item();
+        backPack.setName("Back Pack");
+        backPack.setPrice(3);
+        backPack.setType("Equipment");
+        backPack.setDescription("Easy way to carry around your items");
+
+        Item waterSkin = new Item();
+        waterSkin.setName("Water Skin");
+        waterSkin.setPrice(2);
+        waterSkin.setType("Equipment");
+        waterSkin.setDescription("Small pouch to carry and keep your water clean");
+
+        Item tinderBox = new Item();
+        tinderBox.setName("Tinder Box");
+        tinderBox.setPrice(4);
+        tinderBox.setType("Equipment");
+        tinderBox.setDescription("A box that contains all tools needed to start a fire");
+
+        Item tent = new Item();
+        tent.setName("Tent");
+        tent.setPrice(12);
+        tent.setType("Equipment");
+        tent.setDescription("A necessity for those who travel in the wilderness");
+
+        Item sleepingBag = new Item();
+        sleepingBag.setName("Sleeping Bag");
+        sleepingBag.setPrice(4);
+        sleepingBag.setType("Equipment");
+        sleepingBag.setDescription("Person sized bag to sleep in.  Keeps the bugs out");
+
+        Item rations = new Item();
+        rations.setName("Rations");
+        rations.setPrice(2);
+        rations.setType("Equipment");
+        rations.setDescription("Dried foods, easy to preserve");
+
+        addItem(sword);
+        addItem(axe);
+        addItem(spear);
+        addItem(bow);
+        addItem(crossbow);
+        addItem(leatherArmor);
+        addItem(chainMail);
+        addItem(plateMail);
+        addItem(backPack);
+        addItem(waterSkin);
+        addItem(tinderBox);
+        addItem(tent);
+        addItem(sleepingBag);
+        addItem(rations);
     }
 
     /**
