@@ -32,6 +32,7 @@ public class Character {
     private int sneaking;
     private int crafting;
     private int survival;
+    private int persuasion;
     // Items and Spells
     private ArrayList<Item> items;
     private ArrayList<Spell> spells;
@@ -44,7 +45,7 @@ public class Character {
     public Character(int id, String name, String race, String charClass, int strength,
                      int agility, int resilience, int luck, int intelligence, int fighting,
                      int gambling, int shooting, int lying, int casting, int acrobatics,
-                     int sneaking, int crafting, int survival) {
+                     int sneaking, int crafting, int survival, int persuasion) {
         this.id = id;
         this.name = name;
         this.race = race;
@@ -63,6 +64,8 @@ public class Character {
         this.sneaking = sneaking;
         this.crafting = crafting;
         this.survival = survival;
+        this.persuasion = persuasion;
+
     }
 
     // Constructor w.o/ id
@@ -232,6 +235,14 @@ public class Character {
 
     public void setSurvival(int survival) {
         this.survival = survival;
+    }
+
+    public int getPersuasion() {
+        return persuasion;
+    }
+
+    public void setPersuasion(int persuasion) {
+        this.persuasion = persuasion;
     }
 
     public ArrayList<Item> getItems() {

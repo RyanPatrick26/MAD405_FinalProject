@@ -18,8 +18,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                    TestFragment.OnFragmentInteractionListener{
-
+                    CharacterCreatorFragment.OnFragmentInteractionListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
-        trans.replace(R.id.content_main, new TestFragment());
+        trans.replace(R.id.content_main, new CharacterCreatorFragment());
         trans.addToBackStack(null);
         trans.commit();
 
