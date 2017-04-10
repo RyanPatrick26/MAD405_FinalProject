@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
+    private Context context;
 
     // Database version
     private static final int DATABASE_VERSION = 1;
@@ -113,7 +114,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_PRICE + " TEXT,"
             + COLUMN_TYPE + " TEXT,"
             + COLUMN_DESCRIPTION + " TEXT,"
-            + COLUMN_DMG_DEF + " TEXT"
+            + COLUMN_DMG_DEF + " TEXT,"
             + COLUMN_RANGE + " TEXT" + ")";
 
     private static final String CREATE_SPELLS_TABLE = "CREATE TABLE " + TABLE_SPELLS + "("
@@ -139,6 +140,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     // CREATE AND UPGRADE FOR THE DATABASE
@@ -156,122 +158,140 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_CHARACTER_PORTRAITS_TABLE);
         db.execSQL(CREATE_ITEM_PORTRAITS_TABLE);
 
-        initializeItemsTable();
+        this.initializeItemsTable(db);
         //initializeSpellsTable();
     }
 
     /**
      * Method to initialize the Items Table
      */
-    public void initializeItemsTable(){
+    public void initializeItemsTable(SQLiteDatabase db){
         Item sword = new Item();
-        sword.setName("Sword");
+        sword.setName(context.getResources().getString(R.string.sword));
         sword.setPrice(15);
         sword.setType("Weapon");
         sword.setDmg_def(4);
-        sword.setDescription("Basic sword, most warriors learn the basics using one of these");
+        sword.setDescription(context.getResources().getString(R.string.sword_description));
 
         Item axe = new Item();
-        axe.setName("Axe");
+        axe.setName(context.getResources().getString(R.string.axe));
         axe.setPrice(17);
         axe.setType("Weapon");
         axe.setDmg_def(5);
-        axe.setDescription("Very basic weapon, easy to use, though somewhat unwieldy");
+        axe.setDescription(context.getResources().getString(R.string.axe_description));
 
         Item spear = new Item();
-        spear.setName("Spear");
+        spear.setName(context.getResources().getString(R.string.spear));
         spear.setPrice(10);
         spear.setType("Weapon");
         spear.setDmg_def(3);
-        spear.setDescription("Oldest weapon, and easiest to wield, though still effective");
+        spear.setDescription(context.getResources().getString(R.string.spear_description));
 
         Item bow = new Item();
-        spear.setName("Bow");
+        spear.setName(context.getResources().getString(R.string.bow));
         bow.setPrice(15);
         bow.setType("Weapon");
         bow.setDmg_def(3);
         bow.setRange(50);
-        bow.setDescription("Quick to make, though difficult to learn, very widespread ranged weapon");
+        bow.setDescription(context.getResources().getString(R.string.bow_description));
 
         Item crossbow = new Item();
-        crossbow.setName("Crossbow");
+        crossbow.setName(context.getResources().getString(R.string.crossbow));
         crossbow.setPrice(18);
         crossbow.setType("Weapon");
         crossbow.setDmg_def(4);
         crossbow.setRange(35);
-        crossbow.setDescription("More widespread and easier to use than a bow, still very effective");
+        crossbow.setDescription(context.getResources().getString(R.string.crossbow_description));
 
         Item leatherArmor = new Item();
-        leatherArmor.setName("Leather Armor");
+        leatherArmor.setName(context.getResources().getString(R.string.leather_armor));
         leatherArmor.setPrice(10);
         leatherArmor.setType("Armor");
         leatherArmor.setDmg_def(-3);
-        leatherArmor.setDescription("Easily manufactured armor, provides only basic defense, better than nothing");
+        leatherArmor.setDescription(context.getResources().getString(R.string.leather_armor_description));
 
         Item chainMail = new Item();
-        chainMail.setName("Chain Mail");
+        chainMail.setName(context.getResources().getString(R.string.chain_mail));
         chainMail.setPrice(25);
         chainMail.setType("Armor");
         chainMail.setDmg_def(-8);
-        chainMail.setDescription("Provides a good amount of protection, while still allowing the wearer a range of mobility");
+        chainMail.setDescription(context.getResources().getString(R.string.chain_mail_description));
 
         Item plateMail = new Item();
-        plateMail.setName("Plate Mail");
+        plateMail.setName(context.getResources().getString(R.string.plate_mail));
         plateMail.setPrice(100);
         plateMail.setType("Armor");
         plateMail.setDmg_def(-15);
-        plateMail.setDescription("Very heavy armor, provides a lot of protection, but limits mobility");
+        plateMail.setDescription(context.getResources().getString(R.string.plate_mail_description));
 
-        Item backPack = new Item();
-        backPack.setName("Back Pack");
-        backPack.setPrice(3);
-        backPack.setType("Equipment");
-        backPack.setDescription("Easy way to carry around your items");
+        Item backpack = new Item();
+        backpack.setName(context.getResources().getString(R.string.backpack));
+        backpack.setPrice(3);
+        backpack.setType("Equipment");
+        backpack.setDescription(context.getResources().getString(R.string.backpack_description));
 
         Item waterSkin = new Item();
-        waterSkin.setName("Water Skin");
+        waterSkin.setName(context.getResources().getString(R.string.water_skin));
         waterSkin.setPrice(2);
         waterSkin.setType("Equipment");
-        waterSkin.setDescription("Small pouch to carry and keep your water clean");
+        waterSkin.setDescription(context.getResources().getString(R.string.water_skin_description));
 
         Item tinderBox = new Item();
-        tinderBox.setName("Tinder Box");
+        tinderBox.setName(context.getResources().getString(R.string.tinder_box));
         tinderBox.setPrice(4);
         tinderBox.setType("Equipment");
-        tinderBox.setDescription("A box that contains all tools needed to start a fire");
+        tinderBox.setDescription(context.getResources().getString(R.string.tinder_box_description));
 
         Item tent = new Item();
-        tent.setName("Tent");
+        tent.setName(context.getResources().getString(R.string.tent));
         tent.setPrice(12);
         tent.setType("Equipment");
-        tent.setDescription("A necessity for those who travel in the wilderness");
+        tent.setDescription(context.getResources().getString(R.string.tent_description));
 
         Item sleepingBag = new Item();
-        sleepingBag.setName("Sleeping Bag");
+        sleepingBag.setName(context.getResources().getString(R.string.sleeping_bag));
         sleepingBag.setPrice(4);
         sleepingBag.setType("Equipment");
-        sleepingBag.setDescription("Person sized bag to sleep in.  Keeps the bugs out");
+        sleepingBag.setDescription(context.getResources().getString(R.string.sleeping_bag_description));
 
         Item rations = new Item();
-        rations.setName("Rations");
+        rations.setName(context.getResources().getString(R.string.rations));
         rations.setPrice(2);
         rations.setType("Equipment");
-        rations.setDescription("Dried foods, easy to preserve");
+        rations.setDescription(context.getResources().getString(R.string.rations_description));
 
-        addItem(sword);
-        addItem(axe);
-        addItem(spear);
-        addItem(bow);
-        addItem(crossbow);
-        addItem(leatherArmor);
-        addItem(chainMail);
-        addItem(plateMail);
-        addItem(backPack);
-        addItem(waterSkin);
-        addItem(tinderBox);
-        addItem(tent);
-        addItem(sleepingBag);
-        addItem(rations);
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(sword);
+        items.add(axe);
+        items.add(spear);
+        items.add(bow);
+        items.add(crossbow);
+        items.add(leatherArmor);
+        items.add(chainMail);
+        items.add(plateMail);
+        items.add(backpack);
+        items.add(waterSkin);
+        items.add(tinderBox);
+        items.add(tent);
+        items.add(sleepingBag);
+        items.add(rations);
+
+        for(int i = 0; i < items.size(); i++){
+            String query = "INSERT INTO " + TABLE_ITEMS + "("
+                    + COLUMN_NAME + ","
+                    + COLUMN_PRICE + ","
+                    + COLUMN_TYPE + ","
+                    + COLUMN_DESCRIPTION + ","
+                    + COLUMN_DMG_DEF + ","
+                    + COLUMN_RANGE + ")"+ " VALUES ("
+                    + "'" + items.get(i).getName() + "', "
+                    + "'" + items.get(i).getPrice() + "', "
+                    + "'" + items.get(i).getType() + "', "
+                    + "'" + items.get(i).getDescription() + "', "
+                    + "'" + items.get(i).getDmg_def() + "', "
+                    + "'" + items.get(i).getRange() + "')";
+            db.execSQL(query);
+        }
     }
 
     /**
@@ -345,6 +365,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_TYPE, item.getType());
         values.put(COLUMN_DESCRIPTION, item.getDescription());
         values.put(COLUMN_DMG_DEF, item.getDmg_def());
+        values.put(COLUMN_RANGE, item.getRange());
 
         // Execute the insert statement
         db.insert(TABLE_ITEMS, null, values);
@@ -775,6 +796,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_TYPE, item.getType());
         values.put(COLUMN_DESCRIPTION, item.getDescription());
         values.put(COLUMN_DMG_DEF, item.getDmg_def());
+        values.put(COLUMN_RANGE, item.getRange());
 
         // Update the database
         return db.update(TABLE_ITEMS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(item.getId()) });
