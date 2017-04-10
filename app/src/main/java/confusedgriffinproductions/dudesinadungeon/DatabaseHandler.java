@@ -2,9 +2,11 @@ package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 
@@ -131,8 +133,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_RESOURCE + " TEXT" + ")";
 
     private static final String CREATE_CHARACTER_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_CHARACTER_PORTRAIT + "("
-            + COLUMN_CHAR_ID + " INTEGER REFERENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
-            + COLUMN_PORTRAIT + " INTEGER REFERENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
+            + COLUMN_CHAR_ID + " INTEGER REFERENCES "
+            + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
+            + COLUMN_PORTRAIT + " INTEGER REFERENCES "
+            + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
 
     private static final String CREATE_ITEM_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_ITEM_PORTRAIT + "("
             + COLUMN_ITEM_ID + " INTEGER REFERENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
@@ -159,11 +163,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_ITEM_PORTRAITS_TABLE);
 
         this.initializeItemsTable(db);
+        this.initializeItemPortraitsTable(db);
         //initializeSpellsTable();
     }
 
     /**
-     * Method to initialize the Items Table
+     * Create a function to initialize the items table
+     * @param db
      */
     public void initializeItemsTable(SQLiteDatabase db){
         Item sword = new Item();
@@ -237,11 +243,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         backpack.setType("Equipment");
         backpack.setDescription(context.getResources().getString(R.string.backpack_description));
 
-        Item waterSkin = new Item();
-        waterSkin.setName(context.getResources().getString(R.string.water_skin));
-        waterSkin.setPrice(2);
-        waterSkin.setType("Equipment");
-        waterSkin.setDescription(context.getResources().getString(R.string.water_skin_description));
+        Item canteen = new Item();
+        canteen.setName(context.getResources().getString(R.string.canteen));
+        canteen.setPrice(2);
+        canteen.setType("Equipment");
+        canteen.setDescription(context.getResources().getString(R.string.canteen_description));
 
         Item tinderBox = new Item();
         tinderBox.setName(context.getResources().getString(R.string.tinder_box));
@@ -278,28 +284,80 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         items.add(plateMail);
         items.add(shield);
         items.add(backpack);
-        items.add(waterSkin);
+        items.add(canteen);
         items.add(tinderBox);
         items.add(tent);
         items.add(sleepingBag);
         items.add(rations);
 
         for(int i = 0; i < items.size(); i++){
-            String query = "INSERT INTO " + TABLE_ITEMS + "("
-                    + COLUMN_NAME + ","
-                    + COLUMN_PRICE + ","
-                    + COLUMN_TYPE + ","
-                    + COLUMN_DESCRIPTION + ","
-                    + COLUMN_DMG_DEF + ","
-                    + COLUMN_RANGE + ")"+ " VALUES ("
-                    + "'" + items.get(i).getName() + "', "
-                    + "'" + items.get(i).getPrice() + "', "
-                    + "'" + items.get(i).getType() + "', "
-                    + "'" + items.get(i).getDescription() + "', "
-                    + "'" + items.get(i).getDmg_def() + "', "
-                    + "'" + items.get(i).getRange() + "')";
-            db.execSQL(query);
+            addItem(items.get(i));
         }
+    }
+
+    public void initializeItemPortraitsTable(SQLiteDatabase db){
+        Portrait swordPortrait = new Portrait();
+        Portrait axePortrait = new Portrait();
+        Portrait spearPortrait = new Portrait();
+        Portrait bowPortrait = new Portrait();
+        Portrait crossbowPortrait = new Portrait();
+        Portrait plateMailPortrait = new Portrait();
+        Portrait shieldPortrait = new Portrait();
+        Portrait backpackPortrait = new Portrait();
+        Portrait canteenPortrait = new Portrait();
+        Portrait tinderBoxPortrait = new Portrait();
+        Portrait tentPortrait = new Portrait();
+        Portrait sleepingBagPortrait = new Portrait();
+        Portrait rationsPortrait = new Portrait();
+
+        String sword = context.getResources().getIdentifier("sword", "drawable", context.getPackageName()) + "";
+        String axe = context.getResources().getIdentifier("axe", "drawable", context.getPackageName()) + "";
+        String spear = context.getResources().getIdentifier("spear", "drawable", context.getPackageName()) + "";
+        String bow = context.getResources().getIdentifier("bow", "drawable", context.getPackageName()) + "";
+        String crossbow = context.getResources().getIdentifier("crossbow", "drawable", context.getPackageName()) + "";
+        String plateMail = context.getResources().getIdentifier("plate_mail", "drawable", context.getPackageName()) + "";
+        String shield = context.getResources().getIdentifier("shield", "drawable", context.getPackageName()) + "";
+        String backpack = context.getResources().getIdentifier("backpack", "drawable", context.getPackageName()) + "";
+        String canteen = context.getResources().getIdentifier("canteen", "drawable", context.getPackageName()) + "";
+        String tinderbox = context.getResources().getIdentifier("tinder_box", "drawable", context.getPackageName()) + "";
+        String tent = context.getResources().getIdentifier("tent", "drawable", context.getPackageName()) + "";
+        String sleepingBag = context.getResources().getIdentifier("sleeping_bag", "drawable", context.getPackageName()) + "";
+        String rations = context.getResources().getIdentifier("rations", "drawable", context.getPackageName()) + "";
+
+        swordPortrait.setResource(sword);
+        axePortrait.setResource(axe);
+        spearPortrait.setResource(spear);
+        bowPortrait.setResource(bow);
+        crossbowPortrait.setResource(crossbow);
+        plateMailPortrait.setResource(plateMail);
+        shieldPortrait.setResource(shield);
+        backpackPortrait.setResource(backpack);
+        canteenPortrait.setResource(canteen);
+        tinderBoxPortrait.setResource(tinderbox);
+        tentPortrait.setResource(tent);
+        sleepingBagPortrait.setResource(sleepingBag);
+        rationsPortrait.setResource(rations);
+
+        int[] portraitIds = new int[]{
+                addPortrait(swordPortrait),
+                addPortrait(axePortrait),
+                addPortrait(spearPortrait),
+                addPortrait(bowPortrait),
+                addPortrait(crossbowPortrait),
+                addPortrait(plateMailPortrait),
+                addPortrait(shieldPortrait),
+                addPortrait(backpackPortrait),
+                addPortrait(canteenPortrait),
+                addPortrait(tinderBoxPortrait),
+                addPortrait(sleepingBagPortrait),
+                addPortrait(tentPortrait),
+                addPortrait(rationsPortrait)
+        };
+
+        for(int i = 0; i < portraitIds.length; i++){
+            addItemPortrait(portraitIds[i], i);
+        }
+
     }
 
     /**
