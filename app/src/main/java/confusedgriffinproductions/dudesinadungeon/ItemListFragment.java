@@ -9,11 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -42,7 +45,11 @@ public class ItemListFragment extends Fragment {
     TextView[] tabs;
     FrameLayout tabContent;
 
-    //create
+    //create variables to store the ListViews
+    ListView allItemsListView;
+    ListView weaponsListView;
+    ListView armorListView;
+    ListView equipmentListView;
 
     public ItemListFragment() {
         // Required empty public constructor
@@ -128,6 +135,16 @@ public class ItemListFragment extends Fragment {
             tv.setTextSize(12);
             tv.setGravity(Gravity.CENTER);
         }
+
+        //instantiate the listviews
+        allItemsListView = (ListView)view.findViewById(R.id.all_items_list);
+        weaponsListView = (ListView)view.findViewById(R.id.weapons_list);
+        armorListView = (ListView)view.findViewById(R.id.armor_list);
+        equipmentListView = (ListView)view.findViewById(R.id.other_items_list);
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+
+        ArrayList<Item> allItemsList = db.getAllItems();
 
         return view;
     }

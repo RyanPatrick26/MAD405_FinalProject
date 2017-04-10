@@ -70,9 +70,9 @@
     <string name="confirm">Confirm</string>
     <string name="reset_character">Reset your\nCharacter</string>
     <string name="all_items">View\nAll Items</string>
-    <string name="weapons">View Weapons</string>
-    <string name="armor">View Armor</string>
-    <string name="other_items">View\nOther Items</string>
+    <string name="weapons">View\nWeapons</string>
+    <string name="armor">View\nArmor</string>
+    <string name="other_items">View\nEquipment</string>
 
     <!--These resources contain the website links for reference -->
     <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
