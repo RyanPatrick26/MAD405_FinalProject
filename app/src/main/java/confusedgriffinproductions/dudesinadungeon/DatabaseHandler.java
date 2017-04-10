@@ -224,6 +224,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         plateMail.setDmg_def(-15);
         plateMail.setDescription(context.getResources().getString(R.string.plate_mail_description));
 
+        Item shield = new Item();
+        shield.setName(context.getResources().getString(R.string.shield));
+        shield.setPrice(3);
+        shield.setType("Armor");
+        shield.setDmg_def(-1);
+        shield.setDescription(context.getResources().getString(R.string.shield_description));
+
         Item backpack = new Item();
         backpack.setName(context.getResources().getString(R.string.backpack));
         backpack.setPrice(3);
@@ -269,6 +276,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         items.add(leatherArmor);
         items.add(chainMail);
         items.add(plateMail);
+        items.add(shield);
         items.add(backpack);
         items.add(waterSkin);
         items.add(tinderBox);

@@ -14,8 +14,9 @@
     <string name="leather_armor">Leather Armor</string>
     <string name="chain_mail">Chain Mail</string>
     <string name="plate_mail">Plate Mail</string>
+    <string name="shield">Shield</string>
     <string name="backpack">Backpack</string>
-    <string name="water_skin">Water Skin</string>
+    <string name="canteen">Canteen</string>
     <string name="tinder_box">Tinder Box</string>
     <string name="tent">Tent</string>
     <string name="sleeping_bag">Sleeping Bag</string>
@@ -29,8 +30,9 @@
     <string name="leather_armor_description">Easily manufactured armor, provides only basic defense, better than nothing</string>
     <string name="chain_mail_description">Provides a good amount of protection, while still allowing the wearer a range of mobility</string>
     <string name="plate_mail_description">Very heavy armor, provides a lot of protection, but limits mobility</string>
+    <string name="shield_description">Easy to carry in one hand, provides that little bit extra every adventurer needs</string>
     <string name="backpack_description">Easy way to carry around your items</string>
-    <string name="water_skin_description">Small pouch to carry and keep your water clean</string>
+    <string name="canteen_description">Small container to carry and keep your water clean</string>
     <string name="tinder_box_description">A box that contains all tools needed to start a fire</string>
     <string name="tent_description">A necessity for those who travel in the wilderness</string>
     <string name="sleeping_bag_description">Person sized bag to sleep in.  Keeps the bugs out</string>
@@ -71,5 +73,23 @@
     <string name="weapons">View Weapons</string>
     <string name="armor">View Armor</string>
     <string name="other_items">View\nOther Items</string>
+
+    <!--These resources contain the website links for reference -->
+    <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
+    <string name="axe_image">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
+    <string name="spear_image">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
+    <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
+    <string name="crossbow_image">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
+    <string name="leather_image"></string>
+    <string name="chain_mail_image"></string>
+    <string name="plate_mail_image">https://pixabay.com/en/armor-battle-knight-1297111/</string>
+    <string name="backpack_image">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
+    <string name="canteen_image">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
+    <string name="tinder_box_image">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
+    <string name="tent_image">https://pixabay.com/en/camping-camp-tent-mountains-field-2169976/</string>
+    <string name="sleeping_bag_image">https://pixabay.com/p-1294371/?no_redirect</string>
+    <string name="rations_image">https://pixabay.com/en/food-junk-food-pack-package-2029493/</string>
+    <string name="shield_image">https://pixabay.com/en/shield-escutcheon-heater-shield-31869/</string>
+
 
 </resources>
