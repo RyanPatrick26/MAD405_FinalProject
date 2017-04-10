@@ -145,6 +145,9 @@ public class ItemListFragment extends Fragment {
         DatabaseHandler db = new DatabaseHandler(getContext());
 
         ArrayList<Item> allItemsList = db.getAllItems();
+        ArrayList<Item> weaponsList = db.getAllItems("Weapon");
+        ArrayList<Item> armorList = db.getAllItems("Armor");
+        ArrayList<Item> equipmentList = db.getAllItems("Equipment");
 
         return view;
     }

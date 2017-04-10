@@ -650,6 +650,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
+     * Method to grab all items of a specific type
+     * @return
+     */
+    public ArrayList<Item> getAllItems(String type) {
+        // Create an ArrayList of items
+        ArrayList<Item> itemList = new ArrayList<Item>();
+        // Create a sql query string to get all the items
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS + " WHERE " + COLUMN_TYPE + " = '" + type + "'";
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Create each item and set all their properties
+                Item item = new Item();
+                item.setId(Integer.parseInt(cursor.getString(0)));
+                item.setName(cursor.getString(1));
+                item.setPrice(Double.parseDouble(cursor.getString(2)));
+                item.setType(cursor.getString(3));
+                item.setDescription(cursor.getString(4));
+                item.setDmg_def(Integer.parseInt(cursor.getString(5)));
+            } while (cursor.moveToNext());
+        }
+        // Return the list of items
+        return itemList;
+    }
+
+    /**
      * Method to READ a SPELL from the database
      */
     public Spell getSpell(int id) {
