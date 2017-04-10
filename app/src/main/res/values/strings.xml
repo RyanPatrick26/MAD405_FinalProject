@@ -15,7 +15,7 @@
     <string name="nav_view_char">Characters</string>
     <string name="nav_items">Items</string>
     <string name="nav_spells">Spells</string>
-    <string name="nav_email">Email Creator</string>
+    <string name="nav_email">Email Developers</string>
     <string name="nav_share_sms">Share via SMS</string>
     <string name="nav_website">Visit Website</string>
 
@@ -31,5 +31,8 @@
 
     <!-- SMS Intent Strings -->
     <string name="sms_message">Get some dudes and get in a dungeon! Check out this amazing app that helps me keep track of my characters, items, and spells:</string>
+
+    <!-- Nav Header Main Strings -->
+    <string name="nav_header_appname">Dudes In A Dunegeon Application</string>
 
 </resources>
