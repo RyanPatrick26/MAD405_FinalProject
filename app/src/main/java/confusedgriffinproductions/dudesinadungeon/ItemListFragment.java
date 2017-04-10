@@ -4,20 +4,27 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.TabHost;
+import android.widget.TabHost.TabContentFactory;
+import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ItemList.OnFragmentInteractionListener} interface
+ * {@link ItemListFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ItemList#newInstance} factory method to
+ * Use the {@link ItemListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ItemList extends Fragment {
+public class ItemListFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,7 +36,15 @@ public class ItemList extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ItemList() {
+    //create variables to store the views
+    TabHost tabHost;
+    TabWidget tabWidget;
+    TextView[] tabs;
+    FrameLayout tabContent;
+
+    //create
+
+    public ItemListFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +54,11 @@ public class ItemList extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ItemList.
+     * @return A new instance of fragment ItemListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ItemList newInstance(String param1, String param2) {
-        ItemList fragment = new ItemList();
+    public static ItemListFragment newInstance(String param1, String param2) {
+        ItemListFragment fragment = new ItemListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +79,57 @@ public class ItemList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+
+        //instantiate at start the TabHost
+        tabHost = (TabHost)view.findViewById(R.id.items_tab_host);
+        tabHost.setup();
+
+        //instantiate the TabWidget
+        tabWidget = tabHost.getTabWidget();
+        tabContent = tabHost.getTabContentView();
+
+        //instantiate the TextViews
+        tabs = new TextView[tabWidget.getTabCount()];
+        for (int index = 0; index < tabs.length; index++) {
+            tabs[index] = (TextView)tabWidget.getChildTabViewAt(index);
+        }
+        tabWidget.removeAllViews();
+
+        // Ensure that all tab content childs are not visible at startup.
+        for (int index = 0; index < tabs.length; index++) {
+            tabContent.getChildAt(index).setVisibility(View.GONE);
+        }
+
+        // Create the TabSpec based on the TextViews
+        for (int index = 0; index < tabs.length; index++) {
+            TextView tabWidgetTextView = tabs[index];
+            final View tabContentView = tabContent.getChildAt(index);
+            TabSpec tabSpec = tabHost.newTabSpec((String) tabWidgetTextView.getTag());
+            tabSpec.setContent(new TabContentFactory() {
+                @Override
+                public View createTabContent(String tag) {
+                    return tabContentView;
+                }
+            });
+            if (tabWidgetTextView.getBackground() == null) {
+                tabSpec.setIndicator(tabWidgetTextView.getText());
+            } else {
+                tabSpec.setIndicator(tabWidgetTextView.getText(), tabWidgetTextView.getBackground());
+            }
+            tabHost.addTab(tabSpec);
+        }
+
+        //prevent the textviews from being clipped
+        for(int index = 0; index < tabs.length; index++){
+            View tabView = tabHost.getTabWidget().getChildTabViewAt(index);
+            tabView.setPadding(0,0,0,0);
+            TextView tv = (TextView)tabHost.getTabWidget().getChildAt(index).findViewById(android.R.id.title);
+            tv.setTextSize(12);
+            tv.setGravity(Gravity.CENTER);
+        }
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
