@@ -1,5 +1,4 @@
 package confusedgriffinproductions.dudesinadungeon;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         MainFragment.OnFragmentInteractionListener,
         CharacterListFragment.OnFragmentInteractionListener,
-        CreateCharacterFragment.OnFragmentInteractionListener,
+        CharacterCreatorFragment.OnFragmentInteractionListener,
         ItemListFragment.OnFragmentInteractionListener,
         SpellListFragment.OnFragmentInteractionListener{
 
@@ -42,6 +41,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction trans = fm.beginTransaction();
+        trans.replace(R.id.content_main, new MainFragment());
+        trans.addToBackStack(null);
+        trans.commit();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +99,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -109,7 +113,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_create_char) {
             // Navigate to the Create Character Fragment
             FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new CreateCharacterFragment());
+            tran.replace(R.id.content_main, new CharacterCreatorFragment());
             tran.commit();
         } else if (id == R.id.nav_view_char) {
             // Navigate to the View Character List Fragment
@@ -221,7 +225,5 @@ public class MainActivity extends AppCompatActivity
             snackbar.show();
         }
     }
-
-
 
 }

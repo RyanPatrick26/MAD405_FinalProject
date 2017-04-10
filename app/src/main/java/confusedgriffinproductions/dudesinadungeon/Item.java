@@ -12,17 +12,18 @@ public class Item {
     // Declare Item properties
     private int id;
     private String name;
-    private int price;
+    private double price;
     private String type;
     private String description;
     private int dmg_def;
+    private int range;
 
     // Constructors
     // Empty constructor
     public Item() {}
 
     // Constructor for weapons/shields
-    public Item(int id, String name, int price, String type, String description, int dmg_def) {
+    public Item(int id, String name, double price, String type, String description, int dmg_def) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -32,7 +33,7 @@ public class Item {
     }
 
     // Constructor for non-weapons/shields
-    public Item(int id, String name, int price, String type, String description) {
+    public Item(int id, String name, double price, String type, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -58,11 +59,11 @@ public class Item {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -88,6 +89,12 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getRange() { return range; }
+
+    public void setRange(int range) {
+        this.range = range;
     }
 
     public String toString() {
