@@ -16,6 +16,7 @@ public class Item {
     private String type;
     private String description;
     private int dmg_def;
+    private int range;
 
     // Constructors
     // Empty constructor
@@ -88,6 +89,12 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getRange() { return range; }
+
+    public void setRange(int range) {
+        this.range = range;
     }
 
     public String toString() {

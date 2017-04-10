@@ -6,6 +6,36 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="sword">Sword</string>
+    <string name="axe">Axe</string>
+    <string name="spear">Spear</string>
+    <string name="bow">Bow</string>
+    <string name="crossbow">Crossbow</string>
+    <string name="leather_armor">Leather Armor</string>
+    <string name="chain_mail">Chain Mail</string>
+    <string name="plate_mail">Plate Mail</string>
+    <string name="backpack">Backpack</string>
+    <string name="water_skin">Water Skin</string>
+    <string name="tinder_box">Tinder Box</string>
+    <string name="tent">Tent</string>
+    <string name="sleeping_bag">Sleeping Bag</string>
+    <string name="rations">Rations</string>
+
+    <string name="sword_description">Basic sword, most warriors learn the basics using one of these</string>
+    <string name="axe_description">Very basic weapon, easy to use, though somewhat unwieldy</string>
+    <string name="spear_description">Oldest weapon, and easiest to wield, though still effective</string>
+    <string name="bow_description">Quick to make, though difficult to learn, very widespread ranged weapon</string>
+    <string name="crossbow_description">More widespread and easier to use than a bow, still very effective</string>
+    <string name="leather_armor_description">Easily manufactured armor, provides only basic defense, better than nothing</string>
+    <string name="chain_mail_description">Provides a good amount of protection, while still allowing the wearer a range of mobility</string>
+    <string name="plate_mail_description">Very heavy armor, provides a lot of protection, but limits mobility</string>
+    <string name="backpack_description">Easy way to carry around your items</string>
+    <string name="water_skin_description">Small pouch to carry and keep your water clean</string>
+    <string name="tinder_box_description">A box that contains all tools needed to start a fire</string>
+    <string name="tent_description">A necessity for those who travel in the wilderness</string>
+    <string name="sleeping_bag_description">Person sized bag to sleep in.  Keeps the bugs out</string>
+    <string name="rations_description">Dried foods easy to preserve</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="charcacter_creator">Character Creator</string>
