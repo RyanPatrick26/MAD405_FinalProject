@@ -662,9 +662,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 spell.setName(cursor.getString(1));
                 spell.setDescription(cursor.getString(2));
                 spell.setSpellType(cursor.getString(3));
-                spell.setComponents(cursor.getString(4));
-                spell.setEffects(cursor.getString(5));
-                spell.setDmg_heal(Integer.parseInt(cursor.getString(6)));
+                spell.setSpellClass(cursor.getString(4));
+                spell.setComponents(cursor.getString(5));
+                spell.setEffects(cursor.getString(6));
+                spell.setDmg_heal(Integer.parseInt(cursor.getString(7)));
+
+                spellList.add(spell);
             } while (cursor.moveToNext());
         }
         // Return the list of spells
