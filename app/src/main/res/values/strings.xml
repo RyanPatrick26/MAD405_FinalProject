@@ -34,22 +34,7 @@
     <!-- Nav Header Main Strings -->
     <string name="nav_header_appname">Dudes In A Dunegeon Application</string>
 
-    <string name="sword">Sword</string>
-    <string name="axe">Axe</string>
-    <string name="spear">Spear</string>
-    <string name="bow">Bow</string>
-    <string name="crossbow">Crossbow</string>
-    <string name="leather_armor">Leather Armor</string>
-    <string name="chain_mail">Chain Mail</string>
-    <string name="plate_mail">Plate Mail</string>
-    <string name="shield">Shield</string>
-    <string name="backpack">Backpack</string>
-    <string name="canteen">Canteen</string>
-    <string name="tinder_box">Tinder Box</string>
-    <string name="tent">Tent</string>
-    <string name="sleeping_bag">Sleeping Bag</string>
-    <string name="rations">Rations</string>
-
+    <!-- Descriptions for all the Items -->
     <string name="sword_description">Basic sword, most warriors learn the basics using one of these</string>
     <string name="axe_description">Very basic weapon, easy to use, though somewhat unwieldy</string>
     <string name="spear_description">Oldest weapon, and easiest to wield, though still effective</string>
@@ -66,22 +51,28 @@
     <string name="sleeping_bag_description">Person sized bag to sleep in.  Keeps the bugs out</string>
     <string name="rations_description">Dried foods easy to preserve</string>
 
-
+    <!-- String resources for the character creator -->
     <string name="charcacter_creator">Character Creator</string>
     <string name="race">Race</string>
     <string name="character_class">Class</string>
     <string name="random_atts">Randomize\nAttributes</string>
     <string name="character_name">Character Name</string>
-    <string name="randomize_name">Random Name</string>
+    <string name="skill">Skills</string>
+    <string name="remaining_att">Attribute Points Remaining:</string>
+    <string name="remaing_skill">Skill Points\nRemaining:</string>
+    <string name="reset_skills">Reset\nSkills</string>
+    <string name="confirm">Confirm</string>
+    <string name="reset_character">Reset your\nCharacter</string>
+
+    <!-- String resources for the attributes -->
     <string name="strength">Strength</string>
     <string name="agility">Agility</string>
     <string name="resilience">Resilience</string>
     <string name="luck">Luck</string>
     <string name="intelligence">Intelligence</string>
     <string name="attributes">Attributes</string>
-    <string name="skill">Skills</string>
-    <string name="remaining_att">Attribute Points Remaining:</string>
 
+    <!-- String resources for the skills -->
     <string name="fighting">Fighting</string>
     <string name="shooting">Shooting</string>
     <string name="acrobatics">Acrobatics</string>
@@ -92,14 +83,29 @@
     <string name="persuasion">Persuasion</string>
     <string name="sneaking">Sneaking</string>
     <string name="survival">Survival</string>
-    <string name="remaing_skill">Skill Points\nRemaining:</string>
-    <string name="reset_skills">Reset\nSkills</string>
-    <string name="confirm">Confirm</string>
-    <string name="reset_character">Reset your\nCharacter</string>
+
+    <!-- String resources for the ItemList tab names -->
     <string name="all_items">View\nAll Items</string>
     <string name="weapons">View\nWeapons</string>
     <string name="armor">View\nArmor</string>
     <string name="other_items">View\nEquipment</string>
+
+    <!-- Names for all the Items -->
+    <string name="sword">Sword</string>
+    <string name="axe">Axe</string>
+    <string name="spear">Spear</string>
+    <string name="bow">Bow</string>
+    <string name="crossbow">Crossbow</string>
+    <string name="leather_armor">Leather Armor</string>
+    <string name="chain_mail">Chain Mail</string>
+    <string name="plate_mail">Plate Mail</string>
+    <string name="shield">Shield</string>
+    <string name="backpack">Backpack</string>
+    <string name="canteen">Canteen</string>
+    <string name="tinder_box">Tinder Box</string>
+    <string name="tent">Tent</string>
+    <string name="sleeping_bag">Sleeping Bag</string>
+    <string name="rations">Rations</string>
 
     <!--These resources contain the website links for reference -->
     <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
@@ -117,6 +123,11 @@
     <string name="sleeping_bag_image">https://pixabay.com/p-1294371/?no_redirect</string>
     <string name="rations_image">https://pixabay.com/en/food-junk-food-pack-package-2029493/</string>
     <string name="shield_image">https://pixabay.com/en/shield-escutcheon-heater-shield-31869/</string>
+
+    <!-- String resources for the SpellList tab names -->
+    <string name="all_spells">View\nAll Spells</string>
+    <string name="spells_by_type">View\nSpells by Type</string>
+    <string name="spells_by_class">View\nSpells by Class</string>
 
 
 </resources>
