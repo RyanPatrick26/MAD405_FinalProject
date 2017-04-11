@@ -18,13 +18,11 @@ import java.util.ArrayList;
 public class ItemListAdapter extends ArrayAdapter<Item> {
     private final Activity context;
     private final ArrayList<Item> itemsList;
-    private final int[] portraits;
 
-    public ItemListAdapter(Activity context, ArrayList<Item> itemsList, int[] portraits){
+    public ItemListAdapter(Activity context, ArrayList<Item> itemsList){
         super(context, 0, itemsList);
         this.context = context;
         this.itemsList = itemsList;
-        this.portraits = portraits;
     }
 
     public View getView(int position, View view, ViewGroup parent){
@@ -41,10 +39,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 
         itemName.setText(itemsList.get(position).getName());
         itemDescription.setText(itemsList.get(position).getDescription());
-
-        if(itemsList.get(position).getId() == portraits[position]){
-            itemImage.setImageResource(portraits[position]);
-        }
+        itemImage.setImageResource(itemsList.get(position).getImageId());
 
         return view;
     }

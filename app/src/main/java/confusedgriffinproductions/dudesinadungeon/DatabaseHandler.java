@@ -2,6 +2,7 @@ package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -27,7 +28,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     // Name of all the tables
     private static final String TABLE_CHARACTERS = "characters";
-    private static final String TABLE_ITEMS = "trips";
+    private static final String TABLE_ITEMS = "items";
     private static final String TABLE_SPELLS = "spells";
     private static final String TABLE_PORTRAITS = "portraits";
     private static final String TABLE_CHARACTER_PORTRAIT = "character_portrait";
@@ -64,6 +65,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_TYPE = "type";
     private static final String COLUMN_DMG_DEF = "dmg_def";
     private static final String COLUMN_RANGE = "range";
+    private static final String COLUMN_PORTRAIT_ID = "portrait_id";
 
     /**
      * Spell Table Column Names
@@ -114,7 +116,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_TYPE + " TEXT,"
             + COLUMN_DESCRIPTION + " TEXT,"
             + COLUMN_DMG_DEF + " TEXT,"
-            + COLUMN_RANGE + " TEXT" + ")";
+            + COLUMN_RANGE + " TEXT,"
+            + COLUMN_PORTRAIT_ID + " INTEGER)";
 
     private static final String CREATE_SPELLS_TABLE = "CREATE TABLE " + TABLE_SPELLS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -168,6 +171,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         sword.setType("Weapon");
         sword.setDmg_def(4);
         sword.setDescription(context.getResources().getString(R.string.sword_description));
+        sword.setImageId(R.drawable.sword);
 
         Item axe = new Item();
         axe.setName(context.getResources().getString(R.string.axe));
@@ -175,6 +179,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         axe.setType("Weapon");
         axe.setDmg_def(5);
         axe.setDescription(context.getResources().getString(R.string.axe_description));
+        axe.setImageId(R.drawable.axe);
 
         Item spear = new Item();
         spear.setName(context.getResources().getString(R.string.spear));
@@ -182,6 +187,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spear.setType("Weapon");
         spear.setDmg_def(3);
         spear.setDescription(context.getResources().getString(R.string.spear_description));
+        spear.setImageId(R.drawable.spear);
 
         Item bow = new Item();
         bow.setName(context.getResources().getString(R.string.bow));
@@ -190,6 +196,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         bow.setDmg_def(3);
         bow.setRange(50);
         bow.setDescription(context.getResources().getString(R.string.bow_description));
+        bow.setImageId(R.drawable.bow);
 
         Item crossbow = new Item();
         crossbow.setName(context.getResources().getString(R.string.crossbow));
@@ -198,6 +205,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         crossbow.setDmg_def(4);
         crossbow.setRange(35);
         crossbow.setDescription(context.getResources().getString(R.string.crossbow_description));
+        crossbow.setImageId(R.drawable.crossbow);
 
         Item leatherArmor = new Item();
         leatherArmor.setName(context.getResources().getString(R.string.leather_armor));
@@ -205,6 +213,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         leatherArmor.setType("Armor");
         leatherArmor.setDmg_def(-3);
         leatherArmor.setDescription(context.getResources().getString(R.string.leather_armor_description));
+        leatherArmor.setImageId(R.drawable.leather_armor);
 
         Item chainMail = new Item();
         chainMail.setName(context.getResources().getString(R.string.chain_mail));
@@ -212,6 +221,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         chainMail.setType("Armor");
         chainMail.setDmg_def(-8);
         chainMail.setDescription(context.getResources().getString(R.string.chain_mail_description));
+        chainMail.setImageId(R.drawable.chain_mail);
 
         Item plateMail = new Item();
         plateMail.setName(context.getResources().getString(R.string.plate_mail));
@@ -219,6 +229,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         plateMail.setType("Armor");
         plateMail.setDmg_def(-15);
         plateMail.setDescription(context.getResources().getString(R.string.plate_mail_description));
+        plateMail.setImageId(R.drawable.plate_mail);
 
         Item shield = new Item();
         shield.setName(context.getResources().getString(R.string.shield));
@@ -226,44 +237,49 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         shield.setType("Armor");
         shield.setDmg_def(-1);
         shield.setDescription(context.getResources().getString(R.string.shield_description));
+        shield.setImageId(R.drawable.shield);
 
         Item backpack = new Item();
         backpack.setName(context.getResources().getString(R.string.backpack));
         backpack.setPrice(3);
         backpack.setType("Equipment");
         backpack.setDescription(context.getResources().getString(R.string.backpack_description));
+        backpack.setImageId(R.drawable.backpack);
 
         Item canteen = new Item();
         canteen.setName(context.getResources().getString(R.string.canteen));
         canteen.setPrice(2);
         canteen.setType("Equipment");
         canteen.setDescription(context.getResources().getString(R.string.canteen_description));
+        canteen.setImageId(R.drawable.canteen);
 
         Item tinderBox = new Item();
         tinderBox.setName(context.getResources().getString(R.string.tinder_box));
         tinderBox.setPrice(4);
         tinderBox.setType("Equipment");
         tinderBox.setDescription(context.getResources().getString(R.string.tinder_box_description));
+        tinderBox.setImageId(R.drawable.tinder_box);
 
         Item tent = new Item();
         tent.setName(context.getResources().getString(R.string.tent));
         tent.setPrice(12);
         tent.setType("Equipment");
         tent.setDescription(context.getResources().getString(R.string.tent_description));
+        tent.setImageId(R.drawable.tent);
 
         Item sleepingBag = new Item();
         sleepingBag.setName(context.getResources().getString(R.string.sleeping_bag));
         sleepingBag.setPrice(4);
         sleepingBag.setType("Equipment");
         sleepingBag.setDescription(context.getResources().getString(R.string.sleeping_bag_description));
+        sleepingBag.setImageId(R.drawable.sleeping_bag);
 
         Item rations = new Item();
         rations.setName(context.getResources().getString(R.string.rations));
         rations.setPrice(2);
         rations.setType("Equipment");
         rations.setDescription(context.getResources().getString(R.string.rations_description));
-
-        Log.d("spear", spear.getName() + "");
+        rations.setImageId(R.drawable.rations);
 
         ArrayList<Item> items = new ArrayList<>();
         items.add(sword);
@@ -291,6 +307,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             values.put(COLUMN_DESCRIPTION, items.get(i).getDescription());
             values.put(COLUMN_DMG_DEF, items.get(i).getDmg_def());
             values.put(COLUMN_RANGE, items.get(i).getRange());
+            values.put(COLUMN_PORTRAIT_ID, items.get(i).getImageId());
 
             db.insert(TABLE_ITEMS, null, values);
         }
@@ -524,14 +541,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create a cursor to store all the values
         Cursor cursor = db.query(TABLE_ITEMS,
                 new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_PRICE, COLUMN_TYPE,
-                        COLUMN_DESCRIPTION, COLUMN_DMG_DEF},
+                        COLUMN_DESCRIPTION, COLUMN_DMG_DEF, COLUMN_RANGE, COLUMN_PORTRAIT_ID},
                 COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
         // Create a new item
         Item item = new Item(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
-                Double.parseDouble(cursor.getString(2)), cursor.getString(3), cursor.getString(4), Integer.parseInt(cursor.getString(5)));
+                Double.parseDouble(cursor.getString(2)), cursor.getString(3), cursor.getString(4),
+                Integer.parseInt(cursor.getString(5)), Integer.parseInt(cursor.getString(6)), cursor.getInt(7));
         // Return the new item
         return item;
     }
@@ -558,6 +576,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 item.setType(cursor.getString(3));
                 item.setDescription(cursor.getString(4));
                 item.setDmg_def(Integer.parseInt(cursor.getString(5)));
+                item.setRange(Integer.parseInt(cursor.getString(6)));
+                item.setImageId(cursor.getInt(7));
 
                 itemList.add(item);
             } while (cursor.moveToNext());
@@ -589,6 +609,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 item.setType(cursor.getString(3));
                 item.setDescription(cursor.getString(4));
                 item.setDmg_def(Integer.parseInt(cursor.getString(5)));
+                item.setRange(Integer.parseInt(cursor.getString(6)));
+                item.setImageId(cursor.getInt(7));
 
                 itemList.add(item);
             } while (cursor.moveToNext());

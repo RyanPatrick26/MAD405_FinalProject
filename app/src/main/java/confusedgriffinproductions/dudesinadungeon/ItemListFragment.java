@@ -139,10 +139,10 @@ public class ItemListFragment extends Fragment {
         armorListView = (ListView)view.findViewById(R.id.armor_list);
         equipmentListView = (ListView)view.findViewById(R.id.other_items_list);
 
-        allItemsListView.setAdapter(new ItemListAdapter(getActivity(), allItemsList, portraitsList));
-        weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList, portraitsList));
-        armorListView.setAdapter(new ItemListAdapter(getActivity(), armorList, portraitsList));
-        equipmentListView.setAdapter(new ItemListAdapter(getActivity(), equipmentList, portraitsList));
+        allItemsListView.setAdapter(new ItemListAdapter(getActivity(), allItemsList));
+        weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList));
+        armorListView.setAdapter(new ItemListAdapter(getActivity(), armorList));
+        equipmentListView.setAdapter(new ItemListAdapter(getActivity(), equipmentList));
 
         // add views to tab host
         TabSpec tabSpec1 = tabHost.newTabSpec((String)allItemsTab.getTag());
