@@ -31,7 +31,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String TABLE_SPELLS = "spells";
     private static final String TABLE_PORTRAITS = "portraits";
     private static final String TABLE_CHARACTER_PORTRAIT = "character_portrait";
-    private static final String TABLE_ITEM_PORTRAIT = "item_portraits";
 
     // Common Table Column names
     private static final String COLUMN_ID = "id";
@@ -84,7 +83,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      */
     private static final String COLUMN_PORTRAIT = "id_portrait";
     private static final String COLUMN_CHAR_ID = "id_character";
-    private static final String COLUMN_ITEM_ID = "id_item";
 
     /**
      * CREATE Statements for all the tables
@@ -137,10 +135,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_PORTRAIT + " INTEGER REFERENCES "
             + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
 
-    private static final String CREATE_ITEM_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_ITEM_PORTRAIT + "("
-            + COLUMN_ITEM_ID + " INTEGER REFERENCES " + TABLE_ITEMS + "("+COLUMN_ID+"),"
-            + COLUMN_PORTRAIT + " INTEGER REFERENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
-
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -159,10 +153,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_SPELLS_TABLE);
         db.execSQL(CREATE_PORTRAITS_TABLE);
         db.execSQL(CREATE_CHARACTER_PORTRAITS_TABLE);
-        db.execSQL(CREATE_ITEM_PORTRAITS_TABLE);
 
         this.initializeItemsTable(db);
-        this.initializeItemPortraitsTable(db);
         //initializeSpellsTable();
     }
 
@@ -304,72 +296,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void initializeItemPortraitsTable(SQLiteDatabase db){
-        Portrait swordPortrait = new Portrait();
-        Portrait axePortrait = new Portrait();
-        Portrait spearPortrait = new Portrait();
-        Portrait bowPortrait = new Portrait();
-        Portrait crossbowPortrait = new Portrait();
-        Portrait leatherArmorPortrait = new Portrait();
-        Portrait chainMailPortrait = new Portrait();
-        Portrait plateMailPortrait = new Portrait();
-        Portrait shieldPortrait = new Portrait();
-        Portrait backpackPortrait = new Portrait();
-        Portrait canteenPortrait = new Portrait();
-        Portrait tinderBoxPortrait = new Portrait();
-        Portrait tentPortrait = new Portrait();
-        Portrait sleepingBagPortrait = new Portrait();
-        Portrait rationsPortrait = new Portrait();
-
-        String sword = context.getResources().getIdentifier("sword", "drawable", context.getPackageName()) + "";
-        String axe = context.getResources().getIdentifier("axe", "drawable", context.getPackageName()) + "";
-        String spear = context.getResources().getIdentifier("spear", "drawable", context.getPackageName()) + "";
-        String bow = context.getResources().getIdentifier("bow", "drawable", context.getPackageName()) + "";
-        String crossbow = context.getResources().getIdentifier("crossbow", "drawable", context.getPackageName()) + "";
-        String leatherArmor = context.getResources().getIdentifier("leather_armor", "drawable", context.getPackageName()) + "";
-        String chainMail = context.getResources().getIdentifier("chain_mail", "drawable", context.getPackageName()) + "";
-        String plateMail = context.getResources().getIdentifier("plate_mail", "drawable", context.getPackageName()) + "";
-        String shield = context.getResources().getIdentifier("shield", "drawable", context.getPackageName()) + "";
-        String backpack = context.getResources().getIdentifier("backpack", "drawable", context.getPackageName()) + "";
-        String canteen = context.getResources().getIdentifier("canteen", "drawable", context.getPackageName()) + "";
-        String tinderbox = context.getResources().getIdentifier("tinder_box", "drawable", context.getPackageName()) + "";
-        String tent = context.getResources().getIdentifier("tent", "drawable", context.getPackageName()) + "";
-        String sleepingBag = context.getResources().getIdentifier("sleeping_bag", "drawable", context.getPackageName()) + "";
-        String rations = context.getResources().getIdentifier("rations", "drawable", context.getPackageName()) + "";
-
-        swordPortrait.setResource(sword);
-        axePortrait.setResource(axe);
-        spearPortrait.setResource(spear);
-        bowPortrait.setResource(bow);
-        crossbowPortrait.setResource(crossbow);
-        leatherArmorPortrait.setResource(leatherArmor);
-        chainMailPortrait.setResource(chainMail);
-        plateMailPortrait.setResource(plateMail);
-        shieldPortrait.setResource(shield);
-        backpackPortrait.setResource(backpack);
-        canteenPortrait.setResource(canteen);
-        tinderBoxPortrait.setResource(tinderbox);
-        tentPortrait.setResource(tent);
-        sleepingBagPortrait.setResource(sleepingBag);
-        rationsPortrait.setResource(rations);
-
-        Portrait[] portraitList = new Portrait[]{
-                swordPortrait, axePortrait, spearPortrait, bowPortrait, crossbowPortrait,
-                leatherArmorPortrait, chainMailPortrait, plateMailPortrait, shieldPortrait,
-                backpackPortrait, canteenPortrait, tinderBoxPortrait, tentPortrait,
-                sleepingBagPortrait, rationsPortrait
-        };
-
-        ContentValues values = new ContentValues();
-
-        for(int i = 0; i < portraitList.length; i++){
-            values.put(COLUMN_RESOURCE, portraitList[i].getResource());
-            db.insert(TABLE_PORTRAITS, null, values);
-        }
-
-
-    }
-
     /**
      * When the database upgrades, delete the old database and replace it with the upgraded one
      *
@@ -384,7 +310,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPELLS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTRAITS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTER_PORTRAIT);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEM_PORTRAIT);
         onCreate(db);
     }
 
@@ -516,26 +441,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // Execute the insert statement
         db.insert(TABLE_CHARACTER_PORTRAIT, null, values);
-        db.close();
-    }
-
-    /**
-     * Method that will CREATE an ITEM_PORTRAIT record
-     *
-     * @param portrait object
-     * @param item object
-     */
-    public void addItemPortrait(int portrait, int item){
-        // Get a writable Database
-        SQLiteDatabase db = this.getWritableDatabase();
-        // Create a ContentValues to store values
-        ContentValues values = new ContentValues();
-        // Put the values for the insert command
-        values.put(COLUMN_ITEM_ID, item);
-        values.put(COLUMN_PORTRAIT, portrait);
-
-        // Execute the insert statement
-        db.insert(TABLE_ITEM_PORTRAIT, null, values);
         db.close();
     }
 
@@ -796,42 +701,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create a SQL string query to get all records from the Character Portrait Table
         //  where the Character ID is equal to character
         String selectQuery = "SELECT  * FROM " + TABLE_CHARACTER_PORTRAIT + " WHERE " + COLUMN_CHAR_ID + " = " + character;
-        // Get a writable database
-        SQLiteDatabase db = this.getWritableDatabase();
-        // Create a cursor to store the selectQuery
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                // Create a string query to select all Portraits in the Portraits where the ID is equal
-                //  to the outer portrait ID
-                String innerQuery = "SELECT * FROM " + TABLE_PORTRAITS + " WHERE " + COLUMN_ID + "=" + cursor.getInt(1);
-                // store the results inside of an inner cursor
-                Cursor innerCursor = db.rawQuery(innerQuery, null);
-                if (innerCursor.moveToFirst()) {
-                    do {
-                        // Create a new portrait and set its values
-                        Portrait portrait = new Portrait();
-                        portrait.setId(Integer.parseInt(innerCursor.getString(0)));
-                        portrait.setResource(innerCursor.getString(1));
-                        // add it to the portrait list
-                        portraitList.add(portrait);
-                    } while (innerCursor.moveToNext());
-                }
-            }while (cursor.moveToNext());
-        }
-        // return the portrait list
-        return portraitList;
-    }
-
-    /**
-     * Method to get ALL PORTRAITS associated with ITEMS from the database
-     */
-    public ArrayList<Portrait> getAllItemPortraits(){
-        // Create an array of portraits
-        ArrayList<Portrait> portraitList = new ArrayList<Portrait>();
-        // Create a SQL string query to get all records from the Item Portrait Table
-        //  where the Item ID is equal to item
-        String selectQuery = "SELECT  * FROM " + TABLE_ITEM_PORTRAIT;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store the selectQuery

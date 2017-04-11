@@ -52,6 +52,12 @@ public class ItemListFragment extends Fragment {
     ListView armorListView;
     ListView equipmentListView;
 
+    //create arraylists for the items
+    ArrayList<Item> allItemsList;
+    ArrayList<Item> weaponsList;
+    ArrayList<Item> armorList;
+    ArrayList<Item> equipmentList;
+
     public ItemListFragment() {
         // Required empty public constructor
     }
@@ -87,7 +93,7 @@ public class ItemListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
+        final View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         //instantiate at start the TabHost
         tabHost = (TabHost)view.findViewById(R.id.items_tab_host);
@@ -98,12 +104,29 @@ public class ItemListFragment extends Fragment {
 
         DatabaseHandler db = new DatabaseHandler(getContext());
 
-        ArrayList<Item> allItemsList = db.getAllItems();
-        ArrayList<Item> weaponsList = db.getAllItems("Weapon");
-        ArrayList<Item> armorList = db.getAllItems("Armor");
-        ArrayList<Item> equipmentList = db.getAllItems("Equipment");
+        allItemsList = db.getAllItems();
+        weaponsList = db.getAllItems("Weapon");
+        armorList = db.getAllItems("Armor");
+        equipmentList = db.getAllItems("Equipment");
+        int[] portraitsList = new int[]{
+                R.drawable.sword,
+                R.drawable.axe,
+                R.drawable.spear,
+                R.drawable.bow,
+                R.drawable.crossbow,
+                R.drawable.leather_armor,
+                R.drawable.chain_mail,
+                R.drawable.plate_mail,
+                R.drawable.shield,
+                R.drawable.backpack,
+                R.drawable.canteen,
+                R.drawable.tinder_box,
+                R.drawable.tent,
+                R.drawable.sleeping_bag,
+                R.drawable.rations
+        };
 
-        ArrayList<Portrait> portraitsList = db.getAllItemPortraits();
+        Log.d("allItemsSize", "" + allItemsList.size());
 
         TextView allItemsTab = (TextView)view.findViewById(R.id.all_items_tab);
         TextView weaponsTab = (TextView)view.findViewById(R.id.weapons_tab);
@@ -112,12 +135,13 @@ public class ItemListFragment extends Fragment {
 
         //instantiate the listviews
         allItemsListView = (ListView)view.findViewById(R.id.all_items_list);
-        allItemsListView.setAdapter(new ItemListAdapter(getActivity(), allItemsList, portraitsList));
         weaponsListView = (ListView)view.findViewById(R.id.weapons_list);
-        weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList, portraitsList));
         armorListView = (ListView)view.findViewById(R.id.armor_list);
-        armorListView.setAdapter(new ItemListAdapter(getActivity(), armorList, portraitsList));
         equipmentListView = (ListView)view.findViewById(R.id.other_items_list);
+
+        allItemsListView.setAdapter(new ItemListAdapter(getActivity(), allItemsList, portraitsList));
+        weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList, portraitsList));
+        armorListView.setAdapter(new ItemListAdapter(getActivity(), armorList, portraitsList));
         equipmentListView.setAdapter(new ItemListAdapter(getActivity(), equipmentList, portraitsList));
 
         // add views to tab host
@@ -129,6 +153,7 @@ public class ItemListFragment extends Fragment {
             }
         });
         tabSpec1.setIndicator(allItemsTab.getText());
+
         TabSpec tabSpec2 = tabHost.newTabSpec((String)weaponsTab.getTag());
         tabSpec2.setContent(new TabContentFactory() {
             @Override
@@ -137,6 +162,7 @@ public class ItemListFragment extends Fragment {
             }
         });
         tabSpec2.setIndicator(weaponsTab.getText());
+
         TabSpec tabSpec3 = tabHost.newTabSpec((String)armorTab.getTag());
         tabSpec3.setContent(new TabContentFactory() {
             @Override
@@ -145,6 +171,7 @@ public class ItemListFragment extends Fragment {
             }
         });
         tabSpec3.setIndicator(armorTab.getText());
+
         TabSpec tabSpec4 = tabHost.newTabSpec((String)equipmentTab.getTag());
         tabSpec4.setContent(new TabContentFactory() {
             @Override
@@ -161,12 +188,15 @@ public class ItemListFragment extends Fragment {
         tabHost.addTab(tabSpec3);
         tabHost.addTab(tabSpec4);
 
+
         for(int i = 0; i < tabWidget.getTabCount(); i++){
             View tabView = tabHost.getTabWidget().getChildTabViewAt(i);
             tabView.setPadding(0,0,0,0);
             TextView tv = (TextView)tabView.findViewById(android.R.id.title);
             tv.setGravity(Gravity.CENTER);
+            tabHost.setCurrentTab(i);
         }
+        tabHost.setCurrentTab(0);
 
         return view;
     }

@@ -18,17 +18,20 @@ import java.util.ArrayList;
 public class ItemListAdapter extends ArrayAdapter<Item> {
     private final Activity context;
     private final ArrayList<Item> itemsList;
-    private final ArrayList<Portrait> portraitsList;
+    private final int[] portraits;
 
-    public ItemListAdapter(Activity context, ArrayList<Item> itemsList, ArrayList<Portrait> portraitsList){
+    public ItemListAdapter(Activity context, ArrayList<Item> itemsList, int[] portraits){
         super(context, 0, itemsList);
         this.context = context;
         this.itemsList = itemsList;
-        this.portraitsList = portraitsList;
+        this.portraits = portraits;
     }
 
     public View getView(int position, View view, ViewGroup parent){
         LayoutInflater layoutInflater = context.getLayoutInflater();
+
+        Log.d("position", "" + position);
+
         view = layoutInflater.inflate(R.layout.item_list_item, null, true);
         TextView itemName = (TextView)view.findViewById(R.id.item_name);
         TextView itemDescription = (TextView)view.findViewById(R.id.item_description);
@@ -38,7 +41,10 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 
         itemName.setText(itemsList.get(position).getName());
         itemDescription.setText(itemsList.get(position).getDescription());
-        //itemImage.setImageResource(Integer.parseInt(portraitsList.get(position).getResource()));
+
+        if(itemsList.get(position).getId() == portraits[position]){
+            itemImage.setImageResource(portraits[position]);
+        }
 
         return view;
     }
