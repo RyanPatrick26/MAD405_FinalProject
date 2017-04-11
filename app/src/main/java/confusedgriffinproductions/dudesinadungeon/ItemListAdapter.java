@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 /**
@@ -39,7 +41,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 
         itemName.setText(itemsList.get(position).getName());
         itemDescription.setText(itemsList.get(position).getDescription());
-        itemImage.setImageResource(itemsList.get(position).getImageId());
+        Picasso.with(context).load(itemsList.get(position).getImageId()).resize(100,100).into(itemImage);
 
         return view;
     }
