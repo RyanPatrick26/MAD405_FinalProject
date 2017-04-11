@@ -338,6 +338,40 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Spell chainLightning = new Spell();
         Spell magicMissile = new Spell();
         Spell moveEarth = new Spell();
+        Spell teleport = new Spell();
+        Spell makeFog = new Spell();
+        Spell raiseDead = new Spell();
+        Spell inflictCurse = new Spell();
+        Spell controlPlants = new Spell();
+
+        //Create spell objects for priest spells
+        Spell heal = new Spell();
+        Spell convert = new Spell();
+        Spell confuse = new Spell();
+        Spell inflictPain = new Spell();
+        Spell resurrect = new Spell();
+        Spell callMiracle = new Spell();
+        Spell removeCurse = new Spell();
+        Spell bless = new Spell();
+
+        //Create spell objects for warriors
+        Spell battleCry = new Spell();
+        Spell brutalSwing = new Spell();
+        Spell cleave = new Spell();
+        Spell protectAlly = new Spell();
+        Spell taunt = new Spell();
+        Spell smite = new Spell();
+        Spell wildCharge = new Spell();
+
+        //Create spell objects for rogue
+        Spell turnInvisible = new Spell();
+        Spell backStab = new Spell();
+        Spell steal = new Spell();
+        Spell shadowStep = new Spell();
+        Spell imbuePoison = new Spell();
+        Spell bladeFlurry = new Spell();
+        Spell feignDeath = new Spell();
+
     }
 
     // CRUD OPERATIONS FOR THE DATABASE AND FOR THE TABLES
@@ -665,7 +699,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 // Create each spell and set all their properties
-                Spell spell = new Spell();g
+                Spell spell = new Spell();
                 spell.setId(Integer.parseInt(cursor.getString(0)));
                 spell.setName(cursor.getString(1));
                 spell.setDescription(cursor.getString(2));
