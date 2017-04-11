@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,53 +95,6 @@ public class ItemListFragment extends Fragment {
 
         //instantiate the TabWidget
         tabWidget = tabHost.getTabWidget();
-        tabContent = tabHost.getTabContentView();
-
-        //instantiate the TextViews
-        tabs = new TextView[tabWidget.getTabCount()];
-        for (int index = 0; index < tabs.length; index++) {
-            tabs[index] = (TextView)tabWidget.getChildTabViewAt(index);
-        }
-        tabWidget.removeAllViews();
-
-        // Ensure that all tab content childs are not visible at startup.
-        for (int index = 0; index < tabs.length; index++) {
-            tabContent.getChildAt(index).setVisibility(View.GONE);
-        }
-
-        // Create the TabSpec based on the TextViews
-        for (int index = 0; index < tabs.length; index++) {
-            TextView tabWidgetTextView = tabs[index];
-            final View tabContentView = tabContent.getChildAt(index);
-            TabSpec tabSpec = tabHost.newTabSpec((String) tabWidgetTextView.getTag());
-            tabSpec.setContent(new TabContentFactory() {
-                @Override
-                public View createTabContent(String tag) {
-                    return tabContentView;
-                }
-            });
-            if (tabWidgetTextView.getBackground() == null) {
-                tabSpec.setIndicator(tabWidgetTextView.getText());
-            } else {
-                tabSpec.setIndicator(tabWidgetTextView.getText(), tabWidgetTextView.getBackground());
-            }
-            tabHost.addTab(tabSpec);
-        }
-
-        //prevent the textviews from being clipped
-        for(int index = 0; index < tabs.length; index++){
-            View tabView = tabHost.getTabWidget().getChildTabViewAt(index);
-            tabView.setPadding(0,0,0,0);
-            TextView tv = (TextView)tabHost.getTabWidget().getChildAt(index).findViewById(android.R.id.title);
-            tv.setTextSize(12);
-            tv.setGravity(Gravity.CENTER);
-        }
-
-        //instantiate the listviews
-        allItemsListView = (ListView)view.findViewById(R.id.all_items_list);
-        weaponsListView = (ListView)view.findViewById(R.id.weapons_list);
-        armorListView = (ListView)view.findViewById(R.id.armor_list);
-        equipmentListView = (ListView)view.findViewById(R.id.other_items_list);
 
         DatabaseHandler db = new DatabaseHandler(getContext());
 
@@ -148,6 +102,71 @@ public class ItemListFragment extends Fragment {
         ArrayList<Item> weaponsList = db.getAllItems("Weapon");
         ArrayList<Item> armorList = db.getAllItems("Armor");
         ArrayList<Item> equipmentList = db.getAllItems("Equipment");
+
+        ArrayList<Portrait> portraitsList = db.getAllItemPortraits();
+
+        TextView allItemsTab = (TextView)view.findViewById(R.id.all_items_tab);
+        TextView weaponsTab = (TextView)view.findViewById(R.id.weapons_tab);
+        TextView armorTab = (TextView)view.findViewById(R.id.armor_tab);
+        TextView equipmentTab = (TextView)view.findViewById(R.id.other_items_tab);
+
+        //instantiate the listviews
+        allItemsListView = (ListView)view.findViewById(R.id.all_items_list);
+        allItemsListView.setAdapter(new ItemListAdapter(getActivity(), allItemsList, portraitsList));
+        weaponsListView = (ListView)view.findViewById(R.id.weapons_list);
+        weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList, portraitsList));
+        armorListView = (ListView)view.findViewById(R.id.armor_list);
+        armorListView.setAdapter(new ItemListAdapter(getActivity(), armorList, portraitsList));
+        equipmentListView = (ListView)view.findViewById(R.id.other_items_list);
+        equipmentListView.setAdapter(new ItemListAdapter(getActivity(), equipmentList, portraitsList));
+
+        // add views to tab host
+        TabSpec tabSpec1 = tabHost.newTabSpec((String)allItemsTab.getTag());
+        tabSpec1.setContent(new TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return allItemsListView;
+            }
+        });
+        tabSpec1.setIndicator(allItemsTab.getText());
+        TabSpec tabSpec2 = tabHost.newTabSpec((String)weaponsTab.getTag());
+        tabSpec2.setContent(new TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return weaponsListView;
+            }
+        });
+        tabSpec2.setIndicator(weaponsTab.getText());
+        TabSpec tabSpec3 = tabHost.newTabSpec((String)armorTab.getTag());
+        tabSpec3.setContent(new TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return armorListView;
+            }
+        });
+        tabSpec3.setIndicator(armorTab.getText());
+        TabSpec tabSpec4 = tabHost.newTabSpec((String)equipmentTab.getTag());
+        tabSpec4.setContent(new TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return equipmentListView;
+            }
+        });
+        tabSpec4.setIndicator(equipmentTab.getText());
+
+        tabWidget.removeAllViews();
+
+        tabHost.addTab(tabSpec1);
+        tabHost.addTab(tabSpec2);
+        tabHost.addTab(tabSpec3);
+        tabHost.addTab(tabSpec4);
+
+        for(int i = 0; i < tabWidget.getTabCount(); i++){
+            View tabView = tabHost.getTabWidget().getChildTabViewAt(i);
+            tabView.setPadding(0,0,0,0);
+            TextView tv = (TextView)tabView.findViewById(android.R.id.title);
+            tv.setGravity(Gravity.CENTER);
+        }
 
         return view;
     }

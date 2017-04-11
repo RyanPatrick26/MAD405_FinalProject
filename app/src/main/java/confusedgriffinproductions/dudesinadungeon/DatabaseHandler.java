@@ -2,11 +2,10 @@ package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -139,7 +138,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
 
     private static final String CREATE_ITEM_PORTRAITS_TABLE = "CREATE TABLE " + TABLE_ITEM_PORTRAIT + "("
-            + COLUMN_ITEM_ID + " INTEGER REFERENCES " + TABLE_CHARACTERS + "("+COLUMN_ID+"),"
+            + COLUMN_ITEM_ID + " INTEGER REFERENCES " + TABLE_ITEMS + "("+COLUMN_ID+"),"
             + COLUMN_PORTRAIT + " INTEGER REFERENCES " + TABLE_PORTRAITS + "("+COLUMN_ID+")" + ")";
 
     public DatabaseHandler(Context context) {
@@ -169,7 +168,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     /**
      * Create a function to initialize the items table
-     * @param db
      */
     public void initializeItemsTable(SQLiteDatabase db){
         Item sword = new Item();
@@ -194,7 +192,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spear.setDescription(context.getResources().getString(R.string.spear_description));
 
         Item bow = new Item();
-        spear.setName(context.getResources().getString(R.string.bow));
+        bow.setName(context.getResources().getString(R.string.bow));
         bow.setPrice(15);
         bow.setType("Weapon");
         bow.setDmg_def(3);
@@ -273,6 +271,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         rations.setType("Equipment");
         rations.setDescription(context.getResources().getString(R.string.rations_description));
 
+        Log.d("spear", spear.getName() + "");
+
         ArrayList<Item> items = new ArrayList<>();
         items.add(sword);
         items.add(axe);
@@ -290,8 +290,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         items.add(sleepingBag);
         items.add(rations);
 
+        ContentValues values = new ContentValues();
+
         for(int i = 0; i < items.size(); i++){
-            addItem(items.get(i));
+            values.put(COLUMN_NAME, items.get(i).getName());
+            values.put(COLUMN_PRICE, items.get(i).getPrice());
+            values.put(COLUMN_TYPE, items.get(i).getType());
+            values.put(COLUMN_DESCRIPTION, items.get(i).getDescription());
+            values.put(COLUMN_DMG_DEF, items.get(i).getDmg_def());
+            values.put(COLUMN_RANGE, items.get(i).getRange());
+
+            db.insert(TABLE_ITEMS, null, values);
         }
     }
 
@@ -301,6 +310,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Portrait spearPortrait = new Portrait();
         Portrait bowPortrait = new Portrait();
         Portrait crossbowPortrait = new Portrait();
+        Portrait leatherArmorPortrait = new Portrait();
+        Portrait chainMailPortrait = new Portrait();
         Portrait plateMailPortrait = new Portrait();
         Portrait shieldPortrait = new Portrait();
         Portrait backpackPortrait = new Portrait();
@@ -315,6 +326,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String spear = context.getResources().getIdentifier("spear", "drawable", context.getPackageName()) + "";
         String bow = context.getResources().getIdentifier("bow", "drawable", context.getPackageName()) + "";
         String crossbow = context.getResources().getIdentifier("crossbow", "drawable", context.getPackageName()) + "";
+        String leatherArmor = context.getResources().getIdentifier("leather_armor", "drawable", context.getPackageName()) + "";
+        String chainMail = context.getResources().getIdentifier("chain_mail", "drawable", context.getPackageName()) + "";
         String plateMail = context.getResources().getIdentifier("plate_mail", "drawable", context.getPackageName()) + "";
         String shield = context.getResources().getIdentifier("shield", "drawable", context.getPackageName()) + "";
         String backpack = context.getResources().getIdentifier("backpack", "drawable", context.getPackageName()) + "";
@@ -329,6 +342,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spearPortrait.setResource(spear);
         bowPortrait.setResource(bow);
         crossbowPortrait.setResource(crossbow);
+        leatherArmorPortrait.setResource(leatherArmor);
+        chainMailPortrait.setResource(chainMail);
         plateMailPortrait.setResource(plateMail);
         shieldPortrait.setResource(shield);
         backpackPortrait.setResource(backpack);
@@ -338,25 +353,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         sleepingBagPortrait.setResource(sleepingBag);
         rationsPortrait.setResource(rations);
 
-        int[] portraitIds = new int[]{
-                addPortrait(swordPortrait),
-                addPortrait(axePortrait),
-                addPortrait(spearPortrait),
-                addPortrait(bowPortrait),
-                addPortrait(crossbowPortrait),
-                addPortrait(plateMailPortrait),
-                addPortrait(shieldPortrait),
-                addPortrait(backpackPortrait),
-                addPortrait(canteenPortrait),
-                addPortrait(tinderBoxPortrait),
-                addPortrait(sleepingBagPortrait),
-                addPortrait(tentPortrait),
-                addPortrait(rationsPortrait)
+        Portrait[] portraitList = new Portrait[]{
+                swordPortrait, axePortrait, spearPortrait, bowPortrait, crossbowPortrait,
+                leatherArmorPortrait, chainMailPortrait, plateMailPortrait, shieldPortrait,
+                backpackPortrait, canteenPortrait, tinderBoxPortrait, tentPortrait,
+                sleepingBagPortrait, rationsPortrait
         };
 
-        for(int i = 0; i < portraitIds.length; i++){
-            addItemPortrait(portraitIds[i], i);
+        ContentValues values = new ContentValues();
+
+        for(int i = 0; i < portraitList.length; i++){
+            values.put(COLUMN_RESOURCE, portraitList[i].getResource());
+            db.insert(TABLE_PORTRAITS, null, values);
         }
+
 
     }
 
@@ -643,6 +653,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 item.setType(cursor.getString(3));
                 item.setDescription(cursor.getString(4));
                 item.setDmg_def(Integer.parseInt(cursor.getString(5)));
+
+                itemList.add(item);
             } while (cursor.moveToNext());
         }
         // Return the list of items
@@ -672,6 +684,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 item.setType(cursor.getString(3));
                 item.setDescription(cursor.getString(4));
                 item.setDmg_def(Integer.parseInt(cursor.getString(5)));
+
+                itemList.add(item);
             } while (cursor.moveToNext());
         }
         // Return the list of items
@@ -812,12 +826,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     /**
      * Method to get ALL PORTRAITS associated with ITEMS from the database
      */
-    public ArrayList<Portrait> getAllItemPortraits(int item) {
+    public ArrayList<Portrait> getAllItemPortraits(){
         // Create an array of portraits
         ArrayList<Portrait> portraitList = new ArrayList<Portrait>();
         // Create a SQL string query to get all records from the Item Portrait Table
         //  where the Item ID is equal to item
-        String selectQuery = "SELECT  * FROM " + TABLE_ITEM_PORTRAIT + " WHERE " + COLUMN_ITEM_ID + " = " + item;
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEM_PORTRAIT;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store the selectQuery
