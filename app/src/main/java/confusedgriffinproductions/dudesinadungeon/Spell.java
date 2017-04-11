@@ -18,7 +18,7 @@ public class Spell {
     private String components;
     private String effects;
     // Damage or healing
-    private int dmg_heal;
+    private String dmg_heal;
 
     // Constructors
     // Empty constructor
@@ -26,7 +26,7 @@ public class Spell {
 
     // Constructor for spells that damage or heal
     public Spell(int id, String name, String description, String spellType,
-                 String spellClass, String components, String effects, int dmg_heal) {
+                 String spellClass, String components, String effects, String dmg_heal) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -90,11 +90,11 @@ public class Spell {
         this.spellClass = spellClass;
     }
 
-    public int getDmg_heal() {
+    public String getDmg_heal() {
         return dmg_heal;
     }
 
-    public void setDmg_heal(int dmg_heal) {
+    public void setDmg_heal(String dmg_heal) {
         this.dmg_heal = dmg_heal;
     }
 
