@@ -71,6 +71,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Spell Table Column Names
      */
     private static final String COLUMN_SPELLTYPE = "spelltype";
+    private static final String COLUMN_CLASS = "class";
     private static final String COLUMN_DMG_HEAL = "dmg_heal";
     private static final String COLUMN_COMPONENTS = "components";
     private static final String COLUMN_EFFECTS = "effects";
@@ -124,6 +125,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_NAME + " TEXT,"
             + COLUMN_DESCRIPTION + " TEXT,"
             + COLUMN_SPELLTYPE + " TEXT,"
+            + COLUMN_CLASS + " TEXT,"
             + COLUMN_COMPONENTS + " TEXT,"
             + COLUMN_EFFECTS + " TEXT,"
             + COLUMN_DMG_HEAL + " TEXT" + ")";
@@ -635,7 +637,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
         // Create a new spell
         Spell spell = new Spell(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3),
-                cursor.getString(4), cursor.getString(5), Integer.parseInt(cursor.getString(6)));
+                                cursor.getString(4), cursor.getString(5), cursor.getString(6), Integer.parseInt(cursor.getString(7)));
         // Return the new spell
         return spell;
     }
