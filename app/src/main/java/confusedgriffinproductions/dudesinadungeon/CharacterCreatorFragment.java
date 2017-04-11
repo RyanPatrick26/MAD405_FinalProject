@@ -131,8 +131,17 @@ public class CharacterCreatorFragment extends Fragment {
         raceSpinner = (Spinner)view.findViewById(R.id.race_spinner);
         classSpinner = (Spinner)view.findViewById(R.id.class_spinner);
 
-        raceArray = new String[]{"Human", "Elf", "Dwarf"};
-        classArray = new String[]{"Warrior", "Rogue", "Wizard", "Priest"};
+        raceArray = new String[]{
+                getContext().getResources().getString(R.string.human),
+                getContext().getResources().getString(R.string.elf),
+                getContext().getResources().getString(R.string.dwarf)
+        };
+        classArray = new String[]{
+                getContext().getResources().getString(R.string.warrior),
+                getContext().getResources().getString(R.string.rogue),
+                getContext().getResources().getString(R.string.wizard),
+                getContext().getResources().getString(R.string.priest)
+        };
 
         ArrayAdapter raceAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, raceArray);
         raceSpinner.setAdapter(raceAdapter);
