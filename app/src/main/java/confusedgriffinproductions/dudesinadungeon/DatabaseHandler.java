@@ -189,6 +189,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spear.setDescription(context.getResources().getString(R.string.spear_description));
         spear.setImageId(R.drawable.spear);
 
+        Item dagger = new Item();
+        dagger.setName(context.getResources().getString(R.string.dagger));
+        dagger.setPrice(4);
+        dagger.setType("Weapon");
+        dagger.setDmg_def(1);
+        dagger.setDescription(context.getResources().getString(R.string.dagger_description));
+        dagger.setImageId(R.drawable.dagger);
+
         Item bow = new Item();
         bow.setName(context.getResources().getString(R.string.bow));
         bow.setPrice(15);
@@ -285,6 +293,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         items.add(sword);
         items.add(axe);
         items.add(spear);
+        items.add(dagger);
         items.add(bow);
         items.add(crossbow);
         items.add(leatherArmor);

@@ -34,23 +34,6 @@
     <!-- Nav Header Main Strings -->
     <string name="nav_header_appname">Dudes In A Dunegeon Application</string>
 
-    <!-- Descriptions for all the Items -->
-    <string name="sword_description">Basic sword, most warriors learn the basics using one of these</string>
-    <string name="axe_description">Very basic weapon, easy to use, though somewhat unwieldy</string>
-    <string name="spear_description">Oldest weapon, and easiest to wield, though still effective</string>
-    <string name="bow_description">Quick to make, though difficult to learn, very widespread ranged weapon</string>
-    <string name="crossbow_description">More widespread and easier to use than a bow, still very effective</string>
-    <string name="leather_armor_description">Easily manufactured armor, provides only basic defense, better than nothing</string>
-    <string name="chain_mail_description">Provides a good amount of protection, while still allowing the wearer a range of mobility</string>
-    <string name="plate_mail_description">Very heavy armor, provides a lot of protection, but limits mobility</string>
-    <string name="shield_description">Easy to carry in one hand, provides that little bit extra every adventurer needs</string>
-    <string name="backpack_description">Easy way to carry around your items</string>
-    <string name="canteen_description">Small container to carry and keep your water clean</string>
-    <string name="tinder_box_description">A box that contains all tools needed to start a fire</string>
-    <string name="tent_description">A necessity for those who travel in the wilderness</string>
-    <string name="sleeping_bag_description">Person sized bag to sleep in.  Keeps the bugs out</string>
-    <string name="rations_description">Dried foods easy to preserve</string>
-
     <!-- String resources for the character creator -->
     <string name="charcacter_creator">Character Creator</string>
     <string name="race">Race</string>
@@ -94,6 +77,7 @@
     <string name="sword">Sword</string>
     <string name="axe">Axe</string>
     <string name="spear">Spear</string>
+    <string name="dagger">Dagger</string>
     <string name="bow">Bow</string>
     <string name="crossbow">Crossbow</string>
     <string name="leather_armor">Leather Armor</string>
@@ -107,15 +91,31 @@
     <string name="sleeping_bag">Sleeping Bag</string>
     <string name="rations">Rations</string>
 
+    <!-- Descriptions for all the Items -->
+    <string name="sword_description">Basic sword, most warriors learn the basics using one of these</string>
+    <string name="axe_description">Very basic weapon, easy to use, though somewhat unwieldy</string>
+    <string name="spear_description">Oldest weapon, and easiest to wield, though still effective</string>
+    <string name="dagger_description">Very small, easy to conceal, best used in pairs</string>
+    <string name="bow_description">Quick to make, though difficult to learn, very widespread ranged weapon</string>
+    <string name="crossbow_description">More widespread and easier to use than a bow, still very effective</string>
+    <string name="leather_armor_description">Easily manufactured armor, provides only basic defense, better than nothing</string>
+    <string name="chain_mail_description">Provides a good amount of protection, while still allowing the wearer a range of mobility</string>
+    <string name="plate_mail_description">Very heavy armor, provides a lot of protection, but limits mobility</string>
+    <string name="shield_description">Easy to carry in one hand, provides that little bit extra every adventurer needs</string>
+    <string name="backpack_description">Easy way to carry around your items</string>
+    <string name="canteen_description">Small container to carry and keep your water clean</string>
+    <string name="tinder_box_description">A box that contains all tools needed to start a fire</string>
+    <string name="tent_description">A necessity for those who travel in the wilderness</string>
+    <string name="sleeping_bag_description">Person sized bag to sleep in.  Keeps the bugs out</string>
+    <string name="rations_description">Dried foods easy to preserve</string>
+
     <!--These resources contain the website links for reference -->
     <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
     <string name="axe_image">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
     <string name="spear_image">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
+    <string name="dagger_image">https://pixabay.com/p-34231/?no_redirect</string>
     <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
     <string name="crossbow_image">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
-    <string name="leather_image"></string>
-    <string name="chain_mail_image"></string>
-    <string name="plate_mail_image">https://pixabay.com/en/armor-battle-knight-1297111/</string>
     <string name="backpack_image">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
     <string name="canteen_image">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
     <string name="tinder_box_image">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
