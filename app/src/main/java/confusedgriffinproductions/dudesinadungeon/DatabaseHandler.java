@@ -2,11 +2,9 @@ package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -164,6 +162,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     /**
+     * When the database upgrades, delete the old database and replace it with the upgraded one
+     *
+     * @param db - DatabaseHandler
+     * @param oldVersion - Old version of the database
+     * @param newVersion - New version of the database
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEMS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPELLS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTRAITS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTER_PORTRAIT);
+        onCreate(db);
+    }
+
+
+    /**
      * Create a function to initialize the items table
      */
     public void initializeItemsTable(SQLiteDatabase db){
@@ -315,21 +331,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    /**
-     * When the database upgrades, delete the old database and replace it with the upgraded one
-     *
-     * @param db - DatabaseHandler
-     * @param oldVersion - Old version of the database
-     * @param newVersion - New version of the database
-     */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTERS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEMS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPELLS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTRAITS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTER_PORTRAIT);
-        onCreate(db);
+    public void initializeSpellTable(SQLiteDatabase db){
+        //Create spell objects for wizard spells
+        Spell fireball = new Spell();
+        Spell iceBlast = new Spell();
+        Spell chainLightning = new Spell();
+        Spell magicMissile = new Spell();
+        Spell moveEarth = new Spell();
     }
 
     // CRUD OPERATIONS FOR THE DATABASE AND FOR THE TABLES
@@ -657,7 +665,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 // Create each spell and set all their properties
-                Spell spell = new Spell();
+                Spell spell = new Spell();g
                 spell.setId(Integer.parseInt(cursor.getString(0)));
                 spell.setName(cursor.getString(1));
                 spell.setDescription(cursor.getString(2));
