@@ -9,14 +9,4 @@
     tools:context="confusedgriffinproductions.dudesinadungeon.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:padding="10dp">
-
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
-=======
 </FrameLayout>
->>>>>>> staging
