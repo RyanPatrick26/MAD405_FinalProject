@@ -17,28 +17,33 @@ public class Item {
     private String description;
     private int dmg_def;
     private int range;
+    private int imageId;
+
+
 
     // Constructors
     // Empty constructor
     public Item() {}
 
     // Constructor for weapons/shields
-    public Item(int id, String name, double price, String type, String description, int dmg_def) {
+    public Item(int id, String name, double price, String type, String description, int dmg_def, int range, int imageId) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.type = type;
         this.description = description;
         this.dmg_def = dmg_def;
+        this.imageId = imageId;
     }
 
     // Constructor for non-weapons/shields
-    public Item(int id, String name, double price, String type, String description) {
+    public Item(int id, String name, double price, String type, String description, int imageId) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.type = type;
         this.description = description;
+        this.imageId = imageId;
 
     }
 
@@ -97,6 +102,13 @@ public class Item {
         this.range = range;
     }
 
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
     public String toString() {
         return getName();
     }
