@@ -9,5 +9,4 @@
     tools:context="confusedgriffinproductions.dudesinadungeon.MainActivity"
     tools:showIn="@layout/app_bar_main"
     android:padding="10dp">
-
 </FrameLayout>

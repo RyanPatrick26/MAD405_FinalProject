@@ -57,7 +57,6 @@ public class ItemListFragment extends Fragment {
     ArrayList<Item> weaponsList;
     ArrayList<Item> armorList;
     ArrayList<Item> equipmentList;
-
     public ItemListFragment() {
         // Required empty public constructor
     }
@@ -96,7 +95,7 @@ public class ItemListFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         //instantiate at start the TabHost
-        tabHost = (TabHost)view.findViewById(R.id.items_tab_host);
+        tabHost = (TabHost) view.findViewById(R.id.items_tab_host);
         tabHost.setup();
 
         //instantiate the TabWidget
@@ -128,16 +127,16 @@ public class ItemListFragment extends Fragment {
 
         Log.d("allItemsSize", "" + allItemsList.size());
 
-        TextView allItemsTab = (TextView)view.findViewById(R.id.all_items_tab);
-        TextView weaponsTab = (TextView)view.findViewById(R.id.weapons_tab);
-        TextView armorTab = (TextView)view.findViewById(R.id.armor_tab);
-        TextView equipmentTab = (TextView)view.findViewById(R.id.other_items_tab);
+        TextView allItemsTab = (TextView) view.findViewById(R.id.all_items_tab);
+        TextView weaponsTab = (TextView) view.findViewById(R.id.weapons_tab);
+        TextView armorTab = (TextView) view.findViewById(R.id.armor_tab);
+        TextView equipmentTab = (TextView) view.findViewById(R.id.other_items_tab);
 
         //instantiate the listviews
-        allItemsListView = (ListView)view.findViewById(R.id.all_items_list);
-        weaponsListView = (ListView)view.findViewById(R.id.weapons_list);
-        armorListView = (ListView)view.findViewById(R.id.armor_list);
-        equipmentListView = (ListView)view.findViewById(R.id.other_items_list);
+        allItemsListView = (ListView) view.findViewById(R.id.all_items_list);
+        weaponsListView = (ListView) view.findViewById(R.id.weapons_list);
+        armorListView = (ListView) view.findViewById(R.id.armor_list);
+        equipmentListView = (ListView) view.findViewById(R.id.other_items_list);
 
         allItemsListView.setAdapter(new ItemListAdapter(getActivity(), allItemsList));
         weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList));
@@ -145,7 +144,7 @@ public class ItemListFragment extends Fragment {
         equipmentListView.setAdapter(new ItemListAdapter(getActivity(), equipmentList));
 
         // add views to tab host
-        TabSpec tabSpec1 = tabHost.newTabSpec((String)allItemsTab.getTag());
+        TabSpec tabSpec1 = tabHost.newTabSpec((String) allItemsTab.getTag());
         tabSpec1.setContent(new TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
@@ -154,7 +153,7 @@ public class ItemListFragment extends Fragment {
         });
         tabSpec1.setIndicator(allItemsTab.getText());
 
-        TabSpec tabSpec2 = tabHost.newTabSpec((String)weaponsTab.getTag());
+        TabSpec tabSpec2 = tabHost.newTabSpec((String) weaponsTab.getTag());
         tabSpec2.setContent(new TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
@@ -163,7 +162,7 @@ public class ItemListFragment extends Fragment {
         });
         tabSpec2.setIndicator(weaponsTab.getText());
 
-        TabSpec tabSpec3 = tabHost.newTabSpec((String)armorTab.getTag());
+        TabSpec tabSpec3 = tabHost.newTabSpec((String) armorTab.getTag());
         tabSpec3.setContent(new TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
@@ -172,7 +171,7 @@ public class ItemListFragment extends Fragment {
         });
         tabSpec3.setIndicator(armorTab.getText());
 
-        TabSpec tabSpec4 = tabHost.newTabSpec((String)equipmentTab.getTag());
+        TabSpec tabSpec4 = tabHost.newTabSpec((String) equipmentTab.getTag());
         tabSpec4.setContent(new TabContentFactory() {
             @Override
             public View createTabContent(String tag) {
@@ -189,10 +188,10 @@ public class ItemListFragment extends Fragment {
         tabHost.addTab(tabSpec4);
 
 
-        for(int i = 0; i < tabWidget.getTabCount(); i++){
+        for (int i = 0; i < tabWidget.getTabCount(); i++) {
             View tabView = tabHost.getTabWidget().getChildTabViewAt(i);
-            tabView.setPadding(0,0,0,0);
-            TextView tv = (TextView)tabView.findViewById(android.R.id.title);
+            tabView.setPadding(0, 0, 0, 0);
+            TextView tv = (TextView) tabView.findViewById(android.R.id.title);
             tv.setGravity(Gravity.CENTER);
             tabHost.setCurrentTab(i);
         }

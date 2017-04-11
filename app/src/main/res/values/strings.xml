@@ -1,10 +1,38 @@
 <resources>
+
+    <!-- Defualt Strings -->
     <string name="app_name">Dudes In A Dungeon</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- Navigation Drawer strings -->
+    <string name="nav_about_text">About</string>
+    <string name="nav_create_char">Create Character</string>
+    <string name="nav_view_char">Characters</string>
+    <string name="nav_items">Items</string>
+    <string name="nav_spells">Spells</string>
+    <string name="nav_email">Email Developers</string>
+    <string name="nav_share_sms">Share via SMS</string>
+    <string name="nav_website">Visit Website</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Snackbar Strings -->
+    <string name="snackbar_no_software">No installed software to complete the task. Sorry!</string>
+
+    <!-- Email Intent Strings -->
+    <string name="email_subject">Question regarding Dudes In A Dungeon App</string>
+    <string name="email_body">Hello, I have a question about...</string>
+
+    <!-- SMS Intent Strings -->
+    <string name="sms_message">Get some dudes and get in a dungeon! Check out this amazing app that helps me keep track of my characters, items, and spells:</string>
+
+    <!-- Nav Header Main Strings -->
+    <string name="nav_header_appname">Dudes In A Dunegeon Application</string>
 
     <string name="sword">Sword</string>
     <string name="axe">Axe</string>
@@ -38,8 +66,7 @@
     <string name="sleeping_bag_description">Person sized bag to sleep in.  Keeps the bugs out</string>
     <string name="rations_description">Dried foods easy to preserve</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="charcacter_creator">Character Creator</string>
     <string name="race">Race</string>
     <string name="character_class">Class</string>
