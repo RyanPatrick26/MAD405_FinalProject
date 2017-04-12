@@ -44,6 +44,63 @@
     <!-- Nav Header Main Strings -->
     <string name="nav_header_appname">Dudes In A Dunegeon Application</string>
 
+    <!-- String resources containing all the class and race names -->
+    <string name="human">Human</string>
+    <string name="dwarf">Dwarf</string>
+    <string name="elf">Elf</string>
+
+    <string name="warrior">Warrior</string>
+    <string name="wizard">Wizard</string>
+    <string name="rogue">Rogue</string>
+    <string name="priest">Priest</string>
+
+    <!--String resources containing all spell types -->
+    <string name="offensive">Offensive</string>
+    <string name="debuff">Debuff</string>
+    <string name="support">Support</string>
+    <string name="healing">Healing</string>
+    <string name="buff">Buff</string>
+
+    <!-- String resources for the character creator -->
+    <string name="charcacter_creator">Character Creator</string>
+    <string name="race">Race</string>
+    <string name="character_class">Class</string>
+    <string name="random_atts">Randomize\nAttributes</string>
+    <string name="character_name">Character Name</string>
+    <string name="skill">Skills</string>
+    <string name="remaining_att">Attribute Points Remaining:</string>
+    <string name="remaing_skill">Skill Points\nRemaining:</string>
+    <string name="reset_skills">Reset\nSkills</string>
+    <string name="confirm">Confirm</string>
+    <string name="reset_character">Reset your\nCharacter</string>
+
+    <!-- String resources for the attributes -->
+    <string name="strength">Strength</string>
+    <string name="agility">Agility</string>
+    <string name="resilience">Resilience</string>
+    <string name="luck">Luck</string>
+    <string name="intelligence">Intelligence</string>
+    <string name="attributes">Attributes</string>
+
+    <!-- String resources for the skills -->
+    <string name="fighting">Fighting</string>
+    <string name="shooting">Shooting</string>
+    <string name="acrobatics">Acrobatics</string>
+    <string name="casting">Casting</string>
+    <string name="crafting">Crafting</string>
+    <string name="gambling">Gambling</string>
+    <string name="lying">Lying</string>
+    <string name="persuasion">Persuasion</string>
+    <string name="sneaking">Sneaking</string>
+    <string name="survival">Survival</string>
+
+    <!-- String resources for the ItemList tab names -->
+    <string name="all_items">View\nAll Items</string>
+    <string name="weapons">View\nWeapons</string>
+    <string name="armor">View\nArmor</string>
+    <string name="other_items">View\nEquipment</string>
+
+    <!-- Names for all the Items -->
     <string name="sword">Sword</string>
     <string name="axe">Axe</string>
     <string name="spear">Spear</string>
@@ -61,6 +118,7 @@
     <string name="sleeping_bag">Sleeping Bag</string>
     <string name="rations">Rations</string>
 
+    <!-- Descriptions for all the Items -->
     <string name="sword_description">Basic sword, most warriors learn the basics using one of these</string>
     <string name="axe_description">Very basic weapon, easy to use, though somewhat unwieldy</string>
     <string name="spear_description">Oldest weapon, and easiest to wield, though still effective</string>
@@ -78,41 +136,6 @@
     <string name="sleeping_bag_description">Person sized bag to sleep in.  Keeps the bugs out</string>
     <string name="rations_description">Dried foods easy to preserve</string>
 
-
-    <string name="charcacter_creator">Character Creator</string>
-    <string name="race">Race</string>
-    <string name="character_class">Class</string>
-    <string name="random_atts">Randomize\nAttributes</string>
-    <string name="character_name">Character Name</string>
-    <string name="randomize_name">Random Name</string>
-    <string name="strength">Strength</string>
-    <string name="agility">Agility</string>
-    <string name="resilience">Resilience</string>
-    <string name="luck">Luck</string>
-    <string name="intelligence">Intelligence</string>
-    <string name="attributes">Attributes</string>
-    <string name="skill">Skills</string>
-    <string name="remaining_att">Attribute Points Remaining:</string>
-
-    <string name="fighting">Fighting</string>
-    <string name="shooting">Shooting</string>
-    <string name="acrobatics">Acrobatics</string>
-    <string name="casting">Casting</string>
-    <string name="crafting">Crafting</string>
-    <string name="gambling">Gambling</string>
-    <string name="lying">Lying</string>
-    <string name="persuasion">Persuasion</string>
-    <string name="sneaking">Sneaking</string>
-    <string name="survival">Survival</string>
-    <string name="remaing_skill">Skill Points\nRemaining:</string>
-    <string name="reset_skills">Reset\nSkills</string>
-    <string name="confirm">Confirm</string>
-    <string name="reset_character">Reset your\nCharacter</string>
-    <string name="all_items">View\nAll Items</string>
-    <string name="weapons">View\nWeapons</string>
-    <string name="armor">View\nArmor</string>
-    <string name="other_items">View\nEquipment</string>
-
     <!--These resources contain the website links for reference -->
     <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
     <string name="axe_image">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
@@ -120,6 +143,7 @@
     <string name="dagger_image">https://pixabay.com/p-34231/?no_redirect</string>
     <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
     <string name="crossbow_image">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
+    <string name="plate_mail_image">https://pixabay.com/en/armor-battle-knight-1297111/</string>
     <string name="backpack_image">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
     <string name="canteen_image">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
     <string name="tinder_box_image">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
@@ -127,6 +151,160 @@
     <string name="sleeping_bag_image">https://pixabay.com/p-1294371/?no_redirect</string>
     <string name="rations_image">https://pixabay.com/en/food-junk-food-pack-package-2029493/</string>
     <string name="shield_image">https://pixabay.com/en/shield-escutcheon-heater-shield-31869/</string>
+
+    <!-- Names for all spells -->
+    <string name="fireball">Fireball</string>
+    <string name="ice_blast">Ice Blast</string>
+    <string name="chain_lightning">Chain Lightning</string>
+    <string name="magic_missile">Magic Missile</string>
+    <string name="chilling_wind">Chilling Wind</string>
+    <string name="move_earth">Move Earth</string>
+    <string name="teleport">Teleport</string>
+    <string name="make_fog">Make Fog</string>
+    <string name="raise_dead">Raise Dead</string>
+    <string name="inflict_curse">Inflict Curse</string>
+    <string name="control_plants">Control Plants</string>
+    <string name="drain_life">Drain Life</string>
+    <string name="magic_armor">Magic Armor</string>
+
+    <string name="heal">Heal</string>
+    <string name="convert">Convert</string>
+    <string name="confuse">Confuse</string>
+    <string name="inflict_pain">Inflict Pain</string>
+    <string name="resurrect">Resurrect</string>
+    <string name="call_miracle">Call Miracle</string>
+    <string name="remove_curse">Remove Curse</string>
+    <string name="bless">Bless</string>
+
+    <string name="battle_cry">Battle Cry</string>
+    <string name="brutal_swing">Brutal Swing</string>
+    <string name="cleave">Cleave</string>
+    <string name="cover_ally">Cover Ally</string>
+    <string name="taunt">Taunt</string>
+    <string name="smite">Smite</string>
+    <string name="frenzied_charge">Frenzied Charge</string>
+
+    <string name="turn_invisible">Turn Invisible</string>
+    <string name="back_stab">Back Stab</string>
+    <string name="steal">Steal</string>
+    <string name="shadow_step">Shadow Step</string>
+    <string name="imbue_poison">Imbue Poison</string>
+    <string name="blade_flurry">Blade Flurry</string>
+    <string name="feign_death">Feign Death</string>
+
+    <!-- Descriptions for all the spells -->
+    <string name="fireball_description">Simple, but effective, there\'s no better feeling the frying the monsters with this spell</string>
+    <string name="ice_blast_description">Throw a bolt of ice at the enemy, quite good at slowing them down before they can reach you</string>
+    <string name="chain_lightning_description">One of the most complex spells, but at the same time, one of the strongest</string>
+    <string name="magic_missile_description">Rudementary spell of only the most basic use, still everyone has to start from the basics</string>
+    <string name="chilling_wind_description">While not able to actually inflict bodily harm, very good at keeping the enemy in place and your drinks cool</string>
+    <string name="move_earth_description">Much easier than using a shovel, just look at the ground and the hole will dig itself</string>
+    <string name="teleport_description">Moving from place to place has never been this easy</string>
+    <string name="make_fog_description">Hide yourself and your friends in a dense cloud of fog</string>
+    <string name="raise_dead_description">Ever want a legion of the undead at your disposal, the here, is the spell for you</string>
+    <string name="inflict_curse_description">There are all manners of curses in the world, just be careful, the words can be a bit nasty</string>
+    <string name="drain_life_description">For the more sinister out there, feel free to steal the life of the enemy</string>
+    <string name="magic_armor_description">Who cares about all that heavy armor the warriors have to wear, just conjure up some of your own</string>
+
+    <string name="heal_description">Your friends gotten beat up, they\'ll be glad you were here after you cast this</string>
+    <string name="convert_description">Why fight they enemy when you can just turn them to your side?</string>
+    <string name="confuse_description">Make things easier for you and your friends but sowing a bit of confusion</string>
+    <string name="inflict_pain_description">Opposite of heal, causes a fair bit of damage to an enemy</string>
+    <string name="resurrect_description">If a friend has died, don\'t worry, just bring them back</string>
+    <string name="call_miracle_description">For those times when you\'re in real trouble, try calling on an act of god</string>
+    <string name="remove_curse_description">For all those times that you or your friends get cursed, just clear them of it</string>
+    <string name="bless_description">Give your friends a bit of a blessing for their times in need</string>
+    
+    <string name="battle_cry_description">Let loose a cry that will both spook the enemy and give yourself the courage to continue</string>
+    <string name="brutal_swing_description">Put all your strength into this one swing, be careful though, results may tire</string>
+    <string name="cleave_description">Swing with such force that it will hit two enemies at once</string>
+    <string name="cover_ally_description">Step in the way of an attack for one of your nearby friends, they\'ll appreciate it</string>
+    <string name="taunt_description">Let loose some fowl words to distract the enemy, or bring them to you</string>
+    <string name="smite_description">Smash an enemy with such force that enemies nearby will feel it</string>
+    <string name="frenzied_charge_description">What\'s more fun than sending yourself at full force into the enemy, the squishy noises are a bonus</string>
+    
+    <string name="turn_invisible_description">Turn yourself invisible, makes things even easier to sneak around and cut throats</string>
+    <string name="back_stab_description">Stab the enemy while they can\'t see you, proven more effective than while they can</string>
+    <string name="steal_description">Nobody really needs the stuff that isn\'t bolted down anyways, take it for your own</string>
+    <string name="shadow_step_description">Slinking through the shadows has never been easier than just teleporting between them</string>
+    <string name="imbue_poison_description">There are all manners of deadly poisons in the world, why not put a little on your weapons</string>
+    <string name="blade_flurry_description">Spin in place with your weapons drawn, easy right?</string>
+    <string name="feign_death_description">They wouldn\'t hit a dead guy right?  Just fake it and see</string>
+
+    <!-- Effects for all the spells -->
+    <string name="fireball_effects">Deal damage to all friendly and enemy characters in an area.  Those in the center take 6,
+                                    those caught in the plast take 4</string>
+    <string name="ice_blast_effects">Deal damage to a single character and reduce their speed and agility by 3</string>
+    <string name="chain_lightning_effects">Deal 5 damage to an character.  Repeat for three nearby characters</string>
+    <string name="magic_missile_effects">No additional effects</string>
+    <string name="chilling_wind_effects">Reduce the speed of all nearby enemies by 3</string>
+    <string name="move_earth_effects">Move all earth in an area to another area over a course of time</string>
+    <string name="teleport_effects">Instantly teleport to a nearby place you can see</string>
+    <string name="make_fog_effects">Create a dense cloud of fog in an area nearby, blocks line of sight through it
+                                        and obscures those within it</string>
+    <string name="raise_dead_effects">Raise a skeleton or zombie from a nearby corpse under your command</string>
+    <string name="inflict_curse_effects">Choose a curse to inflict:\n
+                                            1. Curse of years: reduce the targets strength, agility and resilience by 3\n
+                                            2. Curse of blindess: blind the enemy, reducing their attack skills by 5\n
+                                            3. Curse of illness: Decrease the targets strength and resilience by 4 and their
+                                                Fighting skill by 3</string>
+    <string name="control_plants_effects">Take control of a nearby group of plants.  Plants controlled this way can be used to
+                                            attack or entangle the enemy</string>
+    <string name="drain_life_effects">Deal 3 damage to target and heal for 2</string>
+    <string name="magic_armor_effects">Conjure a magic suit of armor that increases your defense by 4</string>
+
+    <string name="heal_effects">Restore 3 health to an ally</string>
+    <string name="convert_effects">Temporarily take control of target enemy</string>
+    <string name="confuse_effects">Reduce nearby enemies intelligence and agility by 3</string>
+    <string name="inflict_pain_effects">Deal 3 damage to target and reduce their strength and agility by 2</string>
+    <string name="resurrect_effects">Bring a dead character back to life at half health</string>
+    <string name="call_miracle_effect">Call upon your god to bring about one of the following miracle:\n
+                                        1. Heal all nearby allies for 4\n
+                                        2. Deal 3 damage to all nearby enemies\n
+                                        3. Remove all curses on all nearby allies</string>
+    <string name="remove_curse_effects">Remove a single curse from a nearby ally</string>
+    <string name="bless_effects">Bless an ally, giving them one of the following effects:\n
+                            1. Increase one attribute of an ally by 3\n
+                            2. Give an ally +3 to their next attack\n
+                            3. Increase the defense of a nearby ally by 2</string>
+
+    <string name="battle_cry_effects">Increase your fighting skill by 3 and your strength by 3 for a duration.
+                                        Reduce the fighting skill of nearby enemies by 2</string>
+    <string name="brutal_swing_effect">Attack with a weapon and deal it\'s damage by 4.  Afterwards, reduce your
+                                        strength by 3 for a duration</string>
+    <string name="cleave_effects">Attack with a weapon against 2 nearby enemies, dealing it\'s damage +2</string>
+    <string name="cover_ally_effects">Use only when a nearby ally is attacked, you suffer the attack instead</string>
+    <string name="taunt_effects">Nearby enemies must either attack you or suffer -2 to their fighting skill for a duration</string>
+    <string name="smite_effects">Attack with a weapon and deal it\'s damage +3 to a single enemy.  Deal half that much to all
+                                    adjacent enemies</string>
+    <string name="frenzie_charge_effect">Only use if not in melee.  Charge at full force at an enemy and make an attack with a weapon
+                                            increasing your fighting skill by 4 for this attack and deal it\'s
+                                            damage +3</string>
+
+    <string name="turn_invisible_effects">Turn yourself invisible, making it impossible for the enemy to see you
+                                            for a duration</string>
+    <string name="back_stab_effects">Use only if the enemy can\'t see you.  Make an attack with a weapon and
+                                        deal it\'s damage +5.  Doing this immediately reveals you</string>
+    <string name="steal_effects">Instantly steal an object of your choice not currently being held by anyone that is within range</string>
+    <string name="shadow_step_effects">Use only if the enemy can\'t see you.  Instantly teleport to another nearby location you can see
+                                            where the enemy can\'t see you</string>
+    <string name="imbue_poison_effects">Coat a weapon in poison, choosing one of the following effects, lasts until after
+                                            your next attack:\n
+                                            1. Bloodblossom Poison: Your next attack deals +2 damage and reduces the targets
+                                                strength and agility by 2 for the duration\n
+                                            2. Kingsrose Poison: Your next attack deals +1 damage and causes the enemy to suffer
+                                                1 damage at the start of their turn for the duration\n
+                                            3. Thistleweed Poison: your next attack deals +3 damage and prevents the target from casting
+                                                spells for the duration</string>
+    <string name="blade_flurry_effects">Draw all weapons and spin in place, dealing 4 damage all adjacent enemies</string>
+    <string name="feign_death_effects">Use only if you were hit by an enemy. Fall to the ground and pretend to be dead
+                                            enemies must successfully notice that you are pretending to be able to attack you</string>
+
+
+    <!-- String resources for the SpellList tab names -->
+    <string name="all_spells">View\nAll Spells</string>
+    <string name="spells_by_type">View\nSpells by Type</string>
+    <string name="spells_by_class">View\nSpells by Class</string>
 
 
 </resources>
