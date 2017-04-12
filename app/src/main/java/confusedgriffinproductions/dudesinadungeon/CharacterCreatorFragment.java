@@ -610,7 +610,7 @@ public class CharacterCreatorFragment extends Fragment {
         int diff;
         for(int i = 0; i < 4 && max> 0; i++){
             if(max > 11){
-                 diff = r.nextInt(max-11);
+                diff = r.nextInt(max-11);
             }
             else{
                 diff = r.nextInt(max);
