@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabWidget;
@@ -42,8 +43,8 @@ public class SpellListFragment extends Fragment {
 
     //create variables to store the ListViews
     ListView allSpellsListView;
-    ListView spellsByTypeListView;
-    ListView spellsByClassListView;
+    ExpandableListView spellsByTypeListView;
+    ExpandableListView spellsByClassListView;
 
     //create arraylists for the items
     ArrayList<Spell> allSpellsList;
@@ -104,12 +105,12 @@ public class SpellListFragment extends Fragment {
 
         //instantiate the listviews
         allSpellsListView = (ListView)view.findViewById(R.id.all_spells_list);
-        spellsByTypeListView = (ListView)view.findViewById(R.id.spells_by_type_list);
-        spellsByClassListView = (ListView)view.findViewById(R.id.spells_by_class_list);
+        spellsByTypeListView = (ExpandableListView)view.findViewById(R.id.spells_by_type_list);
+        spellsByClassListView = (ExpandableListView)view.findViewById(R.id.spells_by_class_list);
 
         allSpellsListView.setAdapter(new SpellListAdapter(getActivity(), allSpellsList));
-        //spellsByTypeListView.setAdapter(new SpellListAdapter(getActivity(), spellsByTypeList));
-        //spellsByClassListView.setAdapter(new SpellListAdapter(getActivity(), spellsByClassList));
+        spellsByTypeListView.setAdapter(new SpellListExpandableListAdapter(getContext(), allSpellsList, "type"));
+        spellsByClassListView.setAdapter(new SpellListExpandableListAdapter(getContext(), allSpellsList, "class"));
 
         // add views to tab host
         TabHost.TabSpec tabSpec1 = tabHost.newTabSpec((String) allSpellsTab.getTag());

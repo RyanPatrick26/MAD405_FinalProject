@@ -895,7 +895,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create an ArrayList of items
         ArrayList<Item> itemList = new ArrayList<Item>();
         // Create a sql query string to get all the items
-        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS;
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS + " ORDER BY " + COLUMN_NAME;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store all the values
@@ -981,7 +981,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create an ArrayList of spells
         ArrayList<Spell> spellList = new ArrayList<Spell>();
         // Create a sql query string to get all the spells
-        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS;
+        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS + " ORDER BY " + COLUMN_NAME;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store all the values
@@ -1005,7 +1005,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Return the list of spells
         return spellList;
     }
-
 
     /**
      * Method to get a PORTRAIT from the database
