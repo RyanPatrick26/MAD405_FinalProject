@@ -258,7 +258,7 @@
     <string name="confuse_effects">Reduce nearby enemies intelligence and agility by 3</string>
     <string name="inflict_pain_effects">Deal 3 damage to target and reduce their strength and agility by 2</string>
     <string name="resurrect_effects">Bring a dead character back to life at half health</string>
-    <string name="call_miracle_effect">Call upon your god to bring about one of the following miracle:\n
+    <string name="call_miracle_effects">Call upon your god to bring about one of the following miracle:\n
                                         1. Heal all nearby allies for 4\n
                                         2. Deal 3 damage to all nearby enemies\n
                                         3. Remove all curses on all nearby allies</string>
@@ -270,14 +270,14 @@
 
     <string name="battle_cry_effects">Increase your fighting skill by 3 and your strength by 3 for a duration.
                                         Reduce the fighting skill of nearby enemies by 2</string>
-    <string name="brutal_swing_effect">Attack with a weapon and deal it\'s damage by 4.  Afterwards, reduce your
+    <string name="brutal_swing_effects">Attack with a weapon and deal it\'s damage by 4.  Afterwards, reduce your
                                         strength by 3 for a duration</string>
     <string name="cleave_effects">Attack with a weapon against 2 nearby enemies, dealing it\'s damage +2</string>
     <string name="cover_ally_effects">Use only when a nearby ally is attacked, you suffer the attack instead</string>
     <string name="taunt_effects">Nearby enemies must either attack you or suffer -2 to their fighting skill for a duration</string>
     <string name="smite_effects">Attack with a weapon and deal it\'s damage +3 to a single enemy.  Deal half that much to all
                                     adjacent enemies</string>
-    <string name="frenzie_charge_effect">Only use if not in melee.  Charge at full force at an enemy and make an attack with a weapon
+    <string name="frenzied_charge_effects">Only use if not in melee.  Charge at full force at an enemy and make an attack with a weapon
                                             increasing your fighting skill by 4 for this attack and deal it\'s
                                             damage +3</string>
 
