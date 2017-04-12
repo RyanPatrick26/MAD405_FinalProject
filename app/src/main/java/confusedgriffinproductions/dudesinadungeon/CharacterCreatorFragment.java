@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +51,10 @@ public class CharacterCreatorFragment extends Fragment {
      */
     Spinner raceSpinner;
     Spinner classSpinner;
+    int currentRacePosition;
+    int previousRacePosition;
+    int currentClassPosition;
+    int previousClassPosition;
 
     /**
      * Create variables to store the TextViews
@@ -130,9 +135,20 @@ public class CharacterCreatorFragment extends Fragment {
          */
         raceSpinner = (Spinner)view.findViewById(R.id.race_spinner);
         classSpinner = (Spinner)view.findViewById(R.id.class_spinner);
+        currentRacePosition = -1;
+        currentClassPosition = -1;
 
-        raceArray = new String[]{"Human", "Elf", "Dwarf"};
-        classArray = new String[]{"Warrior", "Rogue", "Wizard", "Priest"};
+        raceArray = new String[]{
+                getContext().getResources().getString(R.string.human),
+                getContext().getResources().getString(R.string.elf),
+                getContext().getResources().getString(R.string.dwarf)
+        };
+        classArray = new String[]{
+                getContext().getResources().getString(R.string.warrior),
+                getContext().getResources().getString(R.string.rogue),
+                getContext().getResources().getString(R.string.wizard),
+                getContext().getResources().getString(R.string.priest)
+        };
 
         ArrayAdapter raceAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, raceArray);
         raceSpinner.setAdapter(raceAdapter);
@@ -150,6 +166,111 @@ public class CharacterCreatorFragment extends Fragment {
                 (TextView) view.findViewById(R.id.luck_field),
                 (TextView) view.findViewById(R.id.intelligence_field)
         };
+
+//        attributeFields[0].setText("" + 8);
+//        attributeFields[2].setText("" + 8);
+//        attributeFields[4].setText("" + 4);
+
+        //set on click listener for the spinners
+        raceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                previousRacePosition = currentRacePosition;
+                currentRacePosition = raceSpinner.getSelectedItemPosition();
+
+                if(previousRacePosition == 0){
+                    for(int i = 0; i < attributeFields.length; i++){
+                        attributeFields[i].setText((Integer.parseInt(attributeFields[i].getText().toString()) - 1) + "");
+                    }
+                }
+                else if(previousRacePosition == 1){
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) - 2) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) + 2) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) - 2) + "");
+                }
+                else if(previousRacePosition == 2){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) - 2) + "");
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) + 2) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) - 2) + "");
+                }
+
+                if(raceSpinner.getSelectedItemPosition() == 0){
+                    for(int i = 0; i < attributeFields.length; i++){
+                        attributeFields[i].setText((Integer.parseInt(attributeFields[i].getText().toString())+1) + "");
+                    }
+                }
+                else if(raceSpinner.getSelectedItemPosition() == 1){
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) + 2) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) - 2) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) + 2) + "");
+                }
+                else if(raceSpinner.getSelectedItemPosition() == 2){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) + 2) + "");
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) - 2) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) + 2) + "");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                previousClassPosition = currentClassPosition;
+                currentClassPosition = classSpinner.getSelectedItemPosition();
+
+                if(previousClassPosition == 0){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) - 1) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) - 1) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) + 1) + "");
+                }
+                else if(previousClassPosition == 1){
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) - 1) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) + 1) + "");
+                    attributeFields[3].setText((Integer.parseInt(attributeFields[3].getText().toString()) - 1) + "");
+                }
+                else if(previousClassPosition == 2){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) + 1) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) - 1) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) - 1) + "");
+                }
+                else if(previousClassPosition == 3){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) - 1) + "");
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) + 1) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) - 1) + "");
+                }
+
+                if(classSpinner.getSelectedItemPosition() == 0){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) + 1) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) + 1) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) - 1) + "");
+                }
+                else if(classSpinner.getSelectedItemPosition() == 1){
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) + 1) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) - 1) + "");
+                    attributeFields[3].setText((Integer.parseInt(attributeFields[3].getText().toString()) + 1) + "");
+                }
+                else if(classSpinner.getSelectedItemPosition() == 2){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) - 1) + "");
+                    attributeFields[2].setText((Integer.parseInt(attributeFields[2].getText().toString()) + 1) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) + 1) + "");
+                }
+                else if(classSpinner.getSelectedItemPosition() == 3){
+                    attributeFields[0].setText((Integer.parseInt(attributeFields[0].getText().toString()) + 1) + "");
+                    attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) - 1) + "");
+                    attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) + 1) + "");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         skillFields = new TextView[]{
                 (TextView)view.findViewById(R.id.fighting_field),
@@ -305,8 +426,12 @@ public class CharacterCreatorFragment extends Fragment {
                 classSpinner.setSelection(0);
 
                 for(int i = 0; i < 5; i++){
-                    attributeFields[i].setText("5");
+                    attributeFields[i].setText("6");
                 }
+                attributeFields[0].setText("7");
+                attributeFields[2].setText("7");
+                attributeFields[4].setText("5");
+
                 remainingAttsView.setText("10");
 
                 for(int i = 0; i < 10; i++){
@@ -320,39 +445,48 @@ public class CharacterCreatorFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Snackbar snackbar;
+                boolean validCharacter = true;
+                for(int i = 0; i < attributeFields.length; i++){
+                    if(Integer.parseInt(attributeFields[i].getText().toString()) < 1){
+                        validCharacter = false;
+                    }
+                }
 
                 if(remainingAttsView.getText().toString().equals("0") &&
-                        remainingSkillsView.getText().toString().equals("0")){
-                    Character character = new Character();
-                    character.setName(characterNameField.getText().toString());
+                        remainingSkillsView.getText().toString().equals("0")
+                        && validCharacter){
+                        Character character = new Character();
+                        character.setName(characterNameField.getText().toString());
 
-                    character.setRace(raceSpinner.getSelectedItem().toString());
-                    character.setCharClass(classSpinner.getSelectedItem().toString());
+                        character.setRace(raceSpinner.getSelectedItem().toString());
+                        character.setCharClass(classSpinner.getSelectedItem().toString());
 
-                    character.setStrength(Integer.parseInt(attributeFields[0].getText().toString()));
-                    character.setAgility(Integer.parseInt(attributeFields[1].getText().toString()));
-                    character.setResilience(Integer.parseInt(attributeFields[2].getText().toString()));
-                    character.setLuck(Integer.parseInt(attributeFields[3].getText().toString()));
-                    character.setIntelligence(Integer.parseInt(attributeFields[4].getText().toString()));
+                        character.setStrength(Integer.parseInt(attributeFields[0].getText().toString()));
+                        character.setAgility(Integer.parseInt(attributeFields[1].getText().toString()));
+                        character.setResilience(Integer.parseInt(attributeFields[2].getText().toString()));
+                        character.setLuck(Integer.parseInt(attributeFields[3].getText().toString()));
+                        character.setIntelligence(Integer.parseInt(attributeFields[4].getText().toString()));
 
-                    character.setFighting(Integer.parseInt(skillFields[0].getText().toString()));
-                    character.setShooting(Integer.parseInt(skillFields[1].getText().toString()));
-                    character.setCasting(Integer.parseInt(skillFields[2].getText().toString()));
-                    character.setAcrobatics(Integer.parseInt(skillFields[3].getText().toString()));
-                    character.setCrafting(Integer.parseInt(skillFields[4].getText().toString()));
-                    character.setGambling(Integer.parseInt(skillFields[5].getText().toString()));
-                    character.setLying(Integer.parseInt(skillFields[6].getText().toString()));
-                    character.setPersuasion(Integer.parseInt(skillFields[7].getText().toString()));
-                    character.setSneaking(Integer.parseInt(skillFields[8].getText().toString()));
-                    character.setSurvival(Integer.parseInt(skillFields[9].getText().toString()));
+                        character.setFighting(Integer.parseInt(skillFields[0].getText().toString()));
+                        character.setShooting(Integer.parseInt(skillFields[1].getText().toString()));
+                        character.setCasting(Integer.parseInt(skillFields[2].getText().toString()));
+                        character.setAcrobatics(Integer.parseInt(skillFields[3].getText().toString()));
+                        character.setCrafting(Integer.parseInt(skillFields[4].getText().toString()));
+                        character.setGambling(Integer.parseInt(skillFields[5].getText().toString()));
+                        character.setLying(Integer.parseInt(skillFields[6].getText().toString()));
+                        character.setPersuasion(Integer.parseInt(skillFields[7].getText().toString()));
+                        character.setSneaking(Integer.parseInt(skillFields[8].getText().toString()));
+                        character.setSurvival(Integer.parseInt(skillFields[9].getText().toString()));
 
-                    DatabaseHandler db = new DatabaseHandler(getContext());
-                    db.addCharacter(character);
-                    db.closeDB();
+                        DatabaseHandler db = new DatabaseHandler(getContext());
+                        db.addCharacter(character);
+                        db.closeDB();
 
-                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Character successfully created!",
-                            Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                        snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Character successfully created!",
+                                Snackbar.LENGTH_LONG);
+                        snackbar.show();
+
+
                 }
                 else if(!remainingAttsView.getText().toString().equals("0")
                         && remainingSkillsView.getText().toString().equals("0")){
@@ -364,6 +498,13 @@ public class CharacterCreatorFragment extends Fragment {
                 else if(remainingAttsView.getText().toString().equals("0") &&
                         !remainingSkillsView.getText().toString().equals("0")){
                     snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Please finish filling in your skills",
+                            Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
+                else if(!validCharacter){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "Attributes are not allowed to be less than 1",
                             Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
@@ -452,15 +593,20 @@ public class CharacterCreatorFragment extends Fragment {
      * creation(35)
      * @return and array of integers
      */
-    private static int[] randSum(){
+    private int[] randSum(){
         //create a new random object and array of integers
         Random r = new Random();
         int[] nums = new int[5];
-        Arrays.fill(nums, 1);
+        if(raceSpinner.getSelectedItem().toString().equals(getContext().getResources().getString(R.string.human))){
+            Arrays.fill(nums, 4);
+        }
+        else{
+            Arrays.fill(nums, 3);
+        }
 
         //create integer variables to store the maximum total attribute points a character has
         //and to store the next random attribute
-        int max = 30;
+        int max = 20;
         int diff;
         for(int i = 0; i < 4 && max> 0; i++){
             if(max > 11){
@@ -481,6 +627,39 @@ public class CharacterCreatorFragment extends Fragment {
             int temp = nums[diff];
             nums[diff] = nums[0];
             nums[0] = temp;
+        }
+
+        if(raceSpinner.getSelectedItemPosition() == 1){
+            nums[1] += 2;
+            nums[2] -= 2;
+            nums[4] += 2;
+        }
+        else if(raceSpinner.getSelectedItemPosition() == 2){
+            nums[0] += 2;
+            nums[1] -= 2;
+            nums[2] += 2;
+        }
+
+
+        if(classSpinner.getSelectedItemPosition() == 0){
+            nums[0] += 1;
+            nums[2] += 1;
+            nums[4] -= 1;
+        }
+        else if(classSpinner.getSelectedItemPosition() == 1){
+            nums[1] += 1;
+            nums[2] -= 1;
+            nums[3] += 1;
+        }
+        else if(classSpinner.getSelectedItemPosition() == 2){
+            nums[0] -= 1;
+            nums[2] += 1;
+            nums[4] += 1;
+        }
+        else{
+            nums[0] += 1;
+            nums[1] -= 1;
+            nums[4] += 1;
         }
 
         return nums;
