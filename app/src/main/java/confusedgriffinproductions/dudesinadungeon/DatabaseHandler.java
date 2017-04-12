@@ -609,7 +609,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spellList.add(makeFog);
         spellList.add(raiseDead);
         spellList.add(inflictCurse);
-        spellList.add(controlPlants);
         spellList.add(drainLife);
         spellList.add(magicArmor);
         spellList.add(heal);
