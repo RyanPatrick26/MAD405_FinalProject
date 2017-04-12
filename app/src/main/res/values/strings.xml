@@ -130,8 +130,6 @@
     <string name="spear_image">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
     <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
     <string name="crossbow_image">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
-    <string name="leather_image"></string>
-    <string name="chain_mail_image"></string>
     <string name="plate_mail_image">https://pixabay.com/en/armor-battle-knight-1297111/</string>
     <string name="backpack_image">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
     <string name="canteen_image">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
@@ -266,7 +264,7 @@
     <string name="taunt_effects">Nearby enemies must either attack you or suffer -2 to their fighting skill for a duration</string>
     <string name="smite_effects">Attack with a weapon and deal it\'s damage +3 to a single enemy.  Deal half that much to all
                                     adjacent enemies</string>
-    <string name="frenzie_charge_effect">Charge at full force at an enemy and make an attack with a weapon
+    <string name="frenzie_charge_effect">Only use if not in melee.  Charge at full force at an enemy and make an attack with a weapon
                                             increasing your fighting skill by 4 for this attack and deal it\'s
                                             damage +3</string>
 

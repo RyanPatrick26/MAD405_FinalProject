@@ -602,6 +602,56 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         feignDeath.setSpellType(context.getResources().getString(R.string.buff));
         feignDeath.setSpellClass(context.getResources().getString(R.string.rogue));
 
+        ArrayList<Spell> spellList = new ArrayList<>();
+        spellList.add(fireball);
+        spellList.add(iceBlast);
+        spellList.add(chainLightning);
+        spellList.add(magicMissile);
+        spellList.add(chillingWind);
+        spellList.add(moveEarth);
+        spellList.add(teleport);
+        spellList.add(makeFog);
+        spellList.add(raiseDead);
+        spellList.add(inflictCurse);
+        spellList.add(controlPlants);
+        spellList.add(drainLife);
+        spellList.add(magicArmor);
+        spellList.add(heal);
+        spellList.add(convert);
+        spellList.add(confuse);
+        spellList.add(inflictPain);
+        spellList.add(resurrect);
+        spellList.add(callMiracle);
+        spellList.add(removeCurse);
+        spellList.add(bless);
+        spellList.add(battleCry);
+        spellList.add(brutalSwing);
+        spellList.add(cleave);
+        spellList.add(coverAlly);
+        spellList.add(taunt);
+        spellList.add(smite);
+        spellList.add(frenziedCharge);
+        spellList.add(turnInvisible);
+        spellList.add(backStab);
+        spellList.add(steal);
+        spellList.add(shadowStep);
+        spellList.add(imbuePoison);
+        spellList.add(bladeFlurry);
+        spellList.add(feignDeath);
+
+        ContentValues values = new ContentValues();
+
+        for(int i = 0; i < spellList.size(); i++){
+            values.put(COLUMN_NAME, spellList.get(i).getName());
+            values.put(COLUMN_DESCRIPTION, spellList.get(i).getDescription());
+            values.put(COLUMN_SPELLTYPE, spellList.get(i).getSpellType());
+            values.put(COLUMN_CLASS, spellList.get(i).getSpellClass());
+            values.put(COLUMN_COMPONENTS, spellList.get(i).getComponents());
+            values.put(COLUMN_EFFECTS, spellList.get(i).getEffects());
+            values.put(COLUMN_DMG_HEAL, spellList.get(i).getDmg_heal());
+
+            db.insert(TABLE_SPELLS, null, values);
+        }
     }
 
     // CRUD OPERATIONS FOR THE DATABASE AND FOR THE TABLES
@@ -678,6 +728,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_NAME, spell.getName());
         values.put(COLUMN_DESCRIPTION, spell.getDescription());
         values.put(COLUMN_SPELLTYPE, spell.getSpellType());
+        values.put(COLUMN_CLASS, spell.getSpellClass());
         values.put(COLUMN_COMPONENTS, spell.getComponents());
         values.put(COLUMN_EFFECTS, spell.getEffects());
         values.put(COLUMN_DMG_HEAL, spell.getDmg_heal());
