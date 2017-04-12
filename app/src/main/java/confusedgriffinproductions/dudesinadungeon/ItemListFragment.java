@@ -43,8 +43,6 @@ public class ItemListFragment extends Fragment {
     //create variables to store the views
     TabHost tabHost;
     TabWidget tabWidget;
-    TextView[] tabs;
-    FrameLayout tabContent;
 
     //create variables to store the ListViews
     ListView allItemsListView;
@@ -57,6 +55,7 @@ public class ItemListFragment extends Fragment {
     ArrayList<Item> weaponsList;
     ArrayList<Item> armorList;
     ArrayList<Item> equipmentList;
+
     public ItemListFragment() {
         // Required empty public constructor
     }
