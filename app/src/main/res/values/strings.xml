@@ -19,15 +19,6 @@
     <string name="nav_website">Visit Website</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <!-- String resources containing all the class and race names -->
-    <string name="human">Human</string>
-    <string name="dwarf">Dwarf</string>
-    <string name="elf">Elf</string>
-
-    <string name="warrior">Warrior</string>
-    <string name="wizard">Wizard</string>
-    <string name="rogue">Rogue</string>
-    <string name="priest">Priest</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -384,6 +385,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         magicMissile.setSpellClass(context.getResources().getString(R.string.wizard));
         magicMissile.setDmg_heal("2");
 
+        chillingWind.setName(context.getResources().getString(R.string.chilling_wind));
+        chillingWind.setDescription(context.getResources().getString(R.string.chilling_wind_description));
+        chillingWind.setEffects(context.getResources().getString(R.string.chilling_wind_effects));
+        chillingWind.setSpellType(context.getResources().getString(R.string.debuff));
+        chillingWind.setSpellClass(context.getResources().getString(R.string.wizard));
+        chillingWind.setDmg_heal("2");
+
         moveEarth.setName(context.getResources().getString(R.string.move_earth));
         moveEarth.setDescription(context.getResources().getString(R.string.move_earth_description));
         moveEarth.setEffects(context.getResources().getString(R.string.move_earth_effects));
@@ -634,6 +642,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spellList.add(bladeFlurry);
         spellList.add(feignDeath);
 
+        Log.d("number of spells", ""+spellList.size());
+
         ContentValues values = new ContentValues();
 
         for(int i = 0; i < spellList.size(); i++){
@@ -881,7 +891,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create an ArrayList of items
         ArrayList<Item> itemList = new ArrayList<Item>();
         // Create a sql query string to get all the items
-        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS;
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS + " ORDER BY " + COLUMN_NAME;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store all the values
@@ -967,7 +977,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create an ArrayList of spells
         ArrayList<Spell> spellList = new ArrayList<Spell>();
         // Create a sql query string to get all the spells
-        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS;
+        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS + " ORDER BY " + COLUMN_NAME;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store all the values
@@ -991,7 +1001,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Return the list of spells
         return spellList;
     }
-
 
     /**
      * Method to get a PORTRAIT from the database

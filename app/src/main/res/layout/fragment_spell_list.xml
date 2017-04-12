@@ -62,11 +62,11 @@
                     android:id="@+id/all_spells_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-                <ListView
+                <ExpandableListView
                     android:id="@+id/spells_by_type_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-                <ListView
+                <ExpandableListView
                     android:id="@+id/spells_by_class_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

@@ -27,8 +27,8 @@ public class SpellListAdapter extends ArrayAdapter<Spell>{
 
         view = layoutInflater.inflate(R.layout.spell_list_item, null, true);
 
-        TextView itemName = (TextView)view.findViewById(R.id.item_name);
-        TextView itemDescription = (TextView)view.findViewById(R.id.item_description);
+        TextView itemName = (TextView)view.findViewById(R.id.spell_name);
+        TextView itemDescription = (TextView)view.findViewById(R.id.spell_description);
 
         itemName.setText(spellList.get(position).getName());
         itemDescription.setText(spellList.get(position).getDescription());
