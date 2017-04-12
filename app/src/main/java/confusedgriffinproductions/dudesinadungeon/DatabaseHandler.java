@@ -352,7 +352,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Spell makeFog = new Spell();
         Spell raiseDead = new Spell();
         Spell inflictCurse = new Spell();
-        Spell controlPlants = new Spell();
         Spell drainLife = new Spell();
         Spell magicArmor = new Spell();
 
@@ -385,58 +384,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         magicMissile.setSpellClass(context.getResources().getString(R.string.wizard));
         magicMissile.setDmg_heal("2");
 
-        chillingWind.setName(context.getResources().getString(R.string.control_plants));
-        chillingWind.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        chillingWind.setEffects(context.getResources().getString(R.string.magic_missile_effects));
-        chillingWind.setSpellType(context.getResources().getString(R.string.debuff));
-        chillingWind.setSpellClass(context.getResources().getString(R.string.wizard));
-
         moveEarth.setName(context.getResources().getString(R.string.move_earth));
-        moveEarth.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        moveEarth.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        moveEarth.setDescription(context.getResources().getString(R.string.move_earth_description));
+        moveEarth.setEffects(context.getResources().getString(R.string.move_earth_effects));
         moveEarth.setSpellType(context.getResources().getString(R.string.support));
         moveEarth.setSpellClass(context.getResources().getString(R.string.wizard));
 
         teleport.setName(context.getResources().getString(R.string.teleport));
-        teleport.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        teleport.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        teleport.setDescription(context.getResources().getString(R.string.teleport_description));
+        teleport.setEffects(context.getResources().getString(R.string.teleport_effects));
         teleport.setSpellType(context.getResources().getString(R.string.support));
         teleport.setSpellClass(context.getResources().getString(R.string.wizard));
 
         makeFog.setName(context.getResources().getString(R.string.make_fog));
-        makeFog.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        makeFog.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        makeFog.setDescription(context.getResources().getString(R.string.make_fog_description));
+        makeFog.setEffects(context.getResources().getString(R.string.make_fog_effects));
         makeFog.setSpellType(context.getResources().getString(R.string.support));
         makeFog.setSpellClass(context.getResources().getString(R.string.wizard));
 
         raiseDead.setName(context.getResources().getString(R.string.raise_dead));
-        raiseDead.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        raiseDead.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        raiseDead.setDescription(context.getResources().getString(R.string.raise_dead_description));
+        raiseDead.setEffects(context.getResources().getString(R.string.raise_dead_effects));
         raiseDead.setSpellType(context.getResources().getString(R.string.healing));
         raiseDead.setSpellClass(context.getResources().getString(R.string.wizard));
 
         inflictCurse.setName(context.getResources().getString(R.string.inflict_curse));
-        inflictCurse.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        inflictCurse.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        inflictCurse.setDescription(context.getResources().getString(R.string.inflict_curse_description));
+        inflictCurse.setEffects(context.getResources().getString(R.string.inflict_curse_effects));
         inflictCurse.setSpellType(context.getResources().getString(R.string.debuff));
         inflictCurse.setSpellClass(context.getResources().getString(R.string.wizard));
 
-        controlPlants.setName(context.getResources().getString(R.string.control_plants));
-        controlPlants.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        controlPlants.setEffects(context.getResources().getString(R.string.magic_missile_effects));
-        controlPlants.setSpellType(context.getResources().getString(R.string.support));
-        controlPlants.setSpellClass(context.getResources().getString(R.string.wizard));
-
         drainLife.setName(context.getResources().getString(R.string.drain_life));
-        drainLife.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        drainLife.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        drainLife.setDescription(context.getResources().getString(R.string.drain_life_description));
+        drainLife.setEffects(context.getResources().getString(R.string.drain_life_effects));
         drainLife.setSpellType(context.getResources().getString(R.string.offensive));
         drainLife.setSpellClass(context.getResources().getString(R.string.wizard));
         drainLife.setDmg_heal("3");
 
         magicArmor.setName(context.getResources().getString(R.string.magic_armor));
-        magicArmor.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        magicArmor.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        magicArmor.setDescription(context.getResources().getString(R.string.magic_armor_description));
+        magicArmor.setEffects(context.getResources().getString(R.string.magic_armor_effects));
         magicArmor.setSpellType(context.getResources().getString(R.string.buff));
         magicArmor.setSpellClass(context.getResources().getString(R.string.wizard));
 
@@ -452,52 +439,52 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //set values for priest spells
         heal.setName(context.getResources().getString(R.string.heal));
-        heal.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        heal.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        heal.setDescription(context.getResources().getString(R.string.heal_description));
+        heal.setEffects(context.getResources().getString(R.string.heal_effects));
         heal.setSpellType(context.getResources().getString(R.string.healing));
         heal.setSpellClass(context.getResources().getString(R.string.priest));
         heal.setDmg_heal("3");
 
         convert.setName(context.getResources().getString(R.string.convert));
-        convert.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        convert.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        convert.setDescription(context.getResources().getString(R.string.convert_description));
+        convert.setEffects(context.getResources().getString(R.string.convert_effects));
         convert.setSpellType(context.getResources().getString(R.string.support));
         convert.setSpellClass(context.getResources().getString(R.string.priest));
 
         confuse.setName(context.getResources().getString(R.string.confuse));
-        confuse.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        confuse.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        confuse.setDescription(context.getResources().getString(R.string.confuse_description));
+        confuse.setEffects(context.getResources().getString(R.string.confuse_effects));
         confuse.setSpellType(context.getResources().getString(R.string.debuff));
         confuse.setSpellClass(context.getResources().getString(R.string.priest));
 
         inflictPain.setName(context.getResources().getString(R.string.inflict_pain));
-        inflictPain.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        inflictPain.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        inflictPain.setDescription(context.getResources().getString(R.string.inflict_pain_description));
+        inflictPain.setEffects(context.getResources().getString(R.string.inflict_pain_effects));
         inflictPain.setSpellType(context.getResources().getString(R.string.offensive));
         inflictPain.setSpellClass(context.getResources().getString(R.string.priest));
         inflictPain.setDmg_heal("3");
 
         resurrect.setName(context.getResources().getString(R.string.resurrect));
-        resurrect.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        resurrect.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        resurrect.setDescription(context.getResources().getString(R.string.resurrect_description));
+        resurrect.setEffects(context.getResources().getString(R.string.resurrect_effects));
         resurrect.setSpellType(context.getResources().getString(R.string.healing));
         resurrect.setSpellClass(context.getResources().getString(R.string.priest));
 
         callMiracle.setName(context.getResources().getString(R.string.call_miracle));
-        callMiracle.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        callMiracle.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        callMiracle.setDescription(context.getResources().getString(R.string.call_miracle_description));
+        callMiracle.setEffects(context.getResources().getString(R.string.call_miracle_effects));
         callMiracle.setSpellType(context.getResources().getString(R.string.support));
         callMiracle.setSpellClass(context.getResources().getString(R.string.priest));
 
         removeCurse.setName(context.getResources().getString(R.string.remove_curse));
-        removeCurse.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        removeCurse.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        removeCurse.setDescription(context.getResources().getString(R.string.remove_curse_description));
+        removeCurse.setEffects(context.getResources().getString(R.string.remove_curse_effects));
         removeCurse.setSpellType(context.getResources().getString(R.string.healing));
         removeCurse.setSpellClass(context.getResources().getString(R.string.priest));
 
         bless.setName(context.getResources().getString(R.string.bless));
-        bless.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        bless.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        bless.setDescription(context.getResources().getString(R.string.bless_description));
+        bless.setEffects(context.getResources().getString(R.string.bless_effects));
         bless.setSpellType(context.getResources().getString(R.string.buff));
         bless.setSpellClass(context.getResources().getString(R.string.priest));
 
@@ -512,47 +499,47 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //set values for warrior spells
         battleCry.setName(context.getResources().getString(R.string.battle_cry));
-        battleCry.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        battleCry.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        battleCry.setDescription(context.getResources().getString(R.string.battle_cry_description));
+        battleCry.setEffects(context.getResources().getString(R.string.battle_cry_effects));
         battleCry.setSpellType(context.getResources().getString(R.string.buff));
         battleCry.setSpellClass(context.getResources().getString(R.string.warrior));
 
         brutalSwing.setName(context.getResources().getString(R.string.brutal_swing));
-        brutalSwing.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        brutalSwing.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        brutalSwing.setDescription(context.getResources().getString(R.string.brutal_swing_description));
+        brutalSwing.setEffects(context.getResources().getString(R.string.brutal_swing_effects));
         brutalSwing.setSpellType(context.getResources().getString(R.string.offensive));
         brutalSwing.setSpellClass(context.getResources().getString(R.string.warrior));
         brutalSwing.setDmg_heal("+4");
 
         cleave.setName(context.getResources().getString(R.string.cleave));
-        cleave.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        cleave.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        cleave.setDescription(context.getResources().getString(R.string.cleave_description));
+        cleave.setEffects(context.getResources().getString(R.string.cleave_effects));
         cleave.setSpellType(context.getResources().getString(R.string.offensive));
         cleave.setSpellClass(context.getResources().getString(R.string.warrior));
         cleave.setDmg_heal("+2");
 
         coverAlly.setName(context.getResources().getString(R.string.cover_ally));
-        coverAlly.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        coverAlly.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        coverAlly.setDescription(context.getResources().getString(R.string.cover_ally_description));
+        coverAlly.setEffects(context.getResources().getString(R.string.cover_ally_effects));
         coverAlly.setSpellType(context.getResources().getString(R.string.support));
         coverAlly.setSpellClass(context.getResources().getString(R.string.warrior));
 
         taunt.setName(context.getResources().getString(R.string.taunt));
-        taunt.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        taunt.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        taunt.setDescription(context.getResources().getString(R.string.taunt_description));
+        taunt.setEffects(context.getResources().getString(R.string.taunt_effects));
         taunt.setSpellType(context.getResources().getString(R.string.debuff));
         taunt.setSpellClass(context.getResources().getString(R.string.warrior));
 
         smite.setName(context.getResources().getString(R.string.smite));
-        smite.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        smite.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        smite.setDescription(context.getResources().getString(R.string.smite_description));
+        smite.setEffects(context.getResources().getString(R.string.smite_effects));
         smite.setSpellType(context.getResources().getString(R.string.offensive));
         smite.setSpellClass(context.getResources().getString(R.string.warrior));
         smite.setDmg_heal("+3");
 
         frenziedCharge.setName(context.getResources().getString(R.string.frenzied_charge));
-        frenziedCharge.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        frenziedCharge.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        frenziedCharge.setDescription(context.getResources().getString(R.string.frenzied_charge_description));
+        frenziedCharge.setEffects(context.getResources().getString(R.string.frenzied_charge_effects));
         frenziedCharge.setSpellType(context.getResources().getString(R.string.offensive));
         frenziedCharge.setSpellClass(context.getResources().getString(R.string.warrior));
         frenziedCharge.setDmg_heal("+3");
@@ -568,46 +555,46 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //set values for rogue spells
         turnInvisible.setName(context.getResources().getString(R.string.turn_invisible));
-        turnInvisible.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        turnInvisible.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        turnInvisible.setDescription(context.getResources().getString(R.string.turn_invisible_description));
+        turnInvisible.setEffects(context.getResources().getString(R.string.turn_invisible_effects));
         turnInvisible.setSpellType(context.getResources().getString(R.string.support));
         turnInvisible.setSpellClass(context.getResources().getString(R.string.rogue));
 
         backStab.setName(context.getResources().getString(R.string.back_stab));
-        backStab.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        backStab.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        backStab.setDescription(context.getResources().getString(R.string.back_stab_description));
+        backStab.setEffects(context.getResources().getString(R.string.back_stab_effects));
         backStab.setSpellType(context.getResources().getString(R.string.offensive));
         backStab.setSpellClass(context.getResources().getString(R.string.rogue));
         backStab.setDmg_heal("+5");
 
         steal.setName(context.getResources().getString(R.string.steal));
-        steal.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        steal.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        steal.setDescription(context.getResources().getString(R.string.steal_description));
+        steal.setEffects(context.getResources().getString(R.string.steal_effects));
         steal.setSpellType(context.getResources().getString(R.string.support));
         steal.setSpellClass(context.getResources().getString(R.string.rogue));
 
         shadowStep.setName(context.getResources().getString(R.string.shadow_step));
-        shadowStep.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        shadowStep.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        shadowStep.setDescription(context.getResources().getString(R.string.shadow_step_description));
+        shadowStep.setEffects(context.getResources().getString(R.string.shadow_step_effects));
         shadowStep.setSpellType(context.getResources().getString(R.string.support));
         shadowStep.setSpellClass(context.getResources().getString(R.string.rogue));
 
         imbuePoison.setName(context.getResources().getString(R.string.imbue_poison));
-        imbuePoison.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        imbuePoison.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        imbuePoison.setDescription(context.getResources().getString(R.string.imbue_poison_description));
+        imbuePoison.setEffects(context.getResources().getString(R.string.imbue_poison_effects));
         imbuePoison.setSpellType(context.getResources().getString(R.string.buff));
         imbuePoison.setSpellClass(context.getResources().getString(R.string.rogue));
 
         bladeFlurry.setName(context.getResources().getString(R.string.blade_flurry));
-        bladeFlurry.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        bladeFlurry.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        bladeFlurry.setDescription(context.getResources().getString(R.string.blade_flurry_description));
+        bladeFlurry.setEffects(context.getResources().getString(R.string.blade_flurry_effects));
         bladeFlurry.setSpellType(context.getResources().getString(R.string.offensive));
         bladeFlurry.setSpellClass(context.getResources().getString(R.string.rogue));
         bladeFlurry.setDmg_heal("3");
 
         feignDeath.setName(context.getResources().getString(R.string.feign_death));
-        feignDeath.setDescription(context.getResources().getString(R.string.magic_missile_description));
-        feignDeath.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        feignDeath.setDescription(context.getResources().getString(R.string.feign_death_description));
+        feignDeath.setEffects(context.getResources().getString(R.string.feign_death_effects));
         feignDeath.setSpellType(context.getResources().getString(R.string.buff));
         feignDeath.setSpellClass(context.getResources().getString(R.string.rogue));
 
@@ -622,7 +609,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spellList.add(makeFog);
         spellList.add(raiseDead);
         spellList.add(inflictCurse);
-        spellList.add(controlPlants);
         spellList.add(drainLife);
         spellList.add(magicArmor);
         spellList.add(heal);
