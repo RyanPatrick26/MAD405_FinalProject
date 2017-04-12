@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -384,6 +385,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         magicMissile.setSpellClass(context.getResources().getString(R.string.wizard));
         magicMissile.setDmg_heal("2");
 
+        chillingWind.setName(context.getResources().getString(R.string.chilling_wind));
+        chillingWind.setDescription(context.getResources().getString(R.string.chilling_wind_description));
+        chillingWind.setEffects(context.getResources().getString(R.string.chilling_wind_effects));
+        chillingWind.setSpellType(context.getResources().getString(R.string.debuff));
+        chillingWind.setSpellClass(context.getResources().getString(R.string.wizard));
+        chillingWind.setDmg_heal("2");
+
         moveEarth.setName(context.getResources().getString(R.string.move_earth));
         moveEarth.setDescription(context.getResources().getString(R.string.move_earth_description));
         moveEarth.setEffects(context.getResources().getString(R.string.move_earth_effects));
@@ -633,6 +641,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spellList.add(imbuePoison);
         spellList.add(bladeFlurry);
         spellList.add(feignDeath);
+
+        Log.d("number of spells", ""+spellList.size());
 
         ContentValues values = new ContentValues();
 

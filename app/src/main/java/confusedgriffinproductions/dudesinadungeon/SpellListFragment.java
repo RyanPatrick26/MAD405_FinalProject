@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +99,7 @@ public class SpellListFragment extends Fragment {
         DatabaseHandler db = new DatabaseHandler(getContext());
 
         allSpellsList = db.getAllSpells();
+        Log.d("arrayList size", allSpellsList.size()+"");
 
         TextView allSpellsTab = (TextView) view.findViewById(R.id.all_spells_tab);
         TextView spellsByTypeTab = (TextView) view.findViewById(R.id.spells_by_type_tab);
