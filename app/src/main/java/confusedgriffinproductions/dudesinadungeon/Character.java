@@ -32,6 +32,7 @@ public class Character {
     private int sneaking;
     private int crafting;
     private int survival;
+    private int persuasion;
     // Items and Spells
     private ArrayList<Item> items;
     private ArrayList<Spell> spells;
@@ -44,8 +45,7 @@ public class Character {
     public Character(int id, String name, String race, String charClass, int strength,
                      int agility, int resilience, int luck, int intelligence, int fighting,
                      int gambling, int shooting, int lying, int casting, int acrobatics,
-                     int sneaking, int crafting, int survival, ArrayList<Item> items,
-                     ArrayList<Spell> spells) {
+                     int sneaking, int crafting, int survival, int persuasion) {
         this.id = id;
         this.name = name;
         this.race = race;
@@ -64,15 +64,15 @@ public class Character {
         this.sneaking = sneaking;
         this.crafting = crafting;
         this.survival = survival;
-        this.items = items;
-        this.spells = spells;
+        this.persuasion = persuasion;
+
     }
 
     // Constructor w.o/ id
     public Character(String name, String race, String charClass, int strength,
                      int agility, int resilience, int luck, int intelligence, int fighting,
                      int gambling, int shooting, int lying, int casting, int acrobatics, int sneaking,
-                     int crafting, int survival, ArrayList<Item> items, ArrayList<Spell> spells) {
+                     int crafting, int survival) {
         this.name = name;
         this.race = race;
         this.charClass = charClass;
@@ -90,59 +90,6 @@ public class Character {
         this.sneaking = sneaking;
         this.crafting = crafting;
         this.survival = survival;
-        this.items = items;
-        this.spells = spells;
-    }
-
-    // Constructor w.o/ spells
-    public Character(int id, String name, String race, String charClass, int strength,
-                     int agility, int resilience, int luck, int intelligence, int fighting,
-                     int gambling, int shooting, int lying, int casting, int acrobatics,
-                     int sneaking, int crafting, int survival, ArrayList<Item> items) {
-        this.id = id;
-        this.name = name;
-        this.race = race;
-        this.charClass = charClass;
-        this.strength = strength;
-        this.agility = agility;
-        this.resilience = resilience;
-        this.luck = luck;
-        this.intelligence = intelligence;
-        this.fighting = fighting;
-        this.gambling = gambling;
-        this.shooting = shooting;
-        this.lying = lying;
-        this.casting = casting;
-        this.acrobatics = acrobatics;
-        this.sneaking = sneaking;
-        this.crafting = crafting;
-        this.survival = survival;
-        this.items = items;
-    }
-
-    // Constructor w.o/ spells or id
-    public Character(String name, String race, String charClass, int strength,
-                     int agility, int resilience, int luck, int intelligence, int fighting,
-                     int gambling, int shooting, int lying, int casting, int acrobatics,
-                     int sneaking, int crafting, int survival, ArrayList<Item> items) {
-        this.name = name;
-        this.race = race;
-        this.charClass = charClass;
-        this.strength = strength;
-        this.agility = agility;
-        this.resilience = resilience;
-        this.luck = luck;
-        this.intelligence = intelligence;
-        this.fighting = fighting;
-        this.gambling = gambling;
-        this.shooting = shooting;
-        this.lying = lying;
-        this.casting = casting;
-        this.acrobatics = acrobatics;
-        this.sneaking = sneaking;
-        this.crafting = crafting;
-        this.survival = survival;
-        this.items = items;
     }
 
     // Setters & Getters
@@ -288,6 +235,14 @@ public class Character {
 
     public void setSurvival(int survival) {
         this.survival = survival;
+    }
+
+    public int getPersuasion() {
+        return persuasion;
+    }
+
+    public void setPersuasion(int persuasion) {
+        this.persuasion = persuasion;
     }
 
     public ArrayList<Item> getItems() {
