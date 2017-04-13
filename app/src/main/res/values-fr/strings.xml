@@ -4,4 +4,14 @@
     <string name="action_settings">Paramètres</string>
     <string name="navigation_drawer_close">Fermer tiroir de navigation</string>
     <string name="navigation_drawer_open">Ouvrir tiroir de navigation</string>
+    <string name="acrobatics">Acrobaties</string>
+    <string name="agility">Agilité</string>
+    <string name="all_items">Tous les articles</string>
+    <string name="all_spells">Tous les sorts</string>
+    <string name="armor">Tous les armures</string>
+    <string name="attributes">Attributs</string>
+    <string name="axe">Hache</string>
+    <string name="axe_description">Une arme de base, fascile à utilizer, mais un peu lourd.</string>
+    <string name="back_stab">Poignarder le Dos</string>
+    <string name="back_stab_description">Poignarder l\'ennemi dans le dos alors  qu\'il ne peut pas to voir. Plus efficace s\'il ne peut pas te voir.</string>
 </resources>

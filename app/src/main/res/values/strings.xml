@@ -129,7 +129,7 @@
 
     <!--These resources contain the website links for reference -->
     <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
-    <string name="axe_image">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
+    <string name="axe_image" translatable="false">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
     <string name="spear_image">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
     <string name="dagger_image">https://pixabay.com/p-34231/?no_redirect</string>
     <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
