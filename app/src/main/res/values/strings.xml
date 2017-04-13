@@ -301,5 +301,6 @@
     <string name="language_preference_summary">Change the language of the application.\nApplication will restart.</string>
     <string name="colour_theme_preference_title">Colour Theme</string>
     <string name="colour_theme_preference_summary">Change the application\'s colour theme.\nApplication will restart.</string>
+    <string name="credits_settings_title">Credits</string>
 
 </resources>
