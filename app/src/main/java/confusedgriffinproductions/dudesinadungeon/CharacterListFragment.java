@@ -7,6 +7,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +37,15 @@ public class CharacterListFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    //Create arraylist to store the characters
+    ArrayList<Character> characterList;
+
+    //create a variable to store the button
+    Button characterCreatorButton;
+
+    //create a variable to store the list view
+    ListView characterListView;
 
     public CharacterListFragment() {
         // Required empty public constructor
@@ -64,7 +82,18 @@ public class CharacterListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_character_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_character_list, container, false);
+
+        characterListView = (ListView)view.findViewById(R.id.character_list);
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        characterList = db.getAllCharacters();
+
+        db.closeDB();
+
+        characterListView.setAdapter(new CustomAdapter(getContext(), characterList));
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,5 +133,50 @@ public class CharacterListFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public class CustomAdapter extends ArrayAdapter<Character>{
+        //create variables to store the textviews
+        TextView characterNameTextView;
+        TextView strengthTextView;
+        TextView agilityTextView;
+        TextView resilienceTextView;
+        TextView luckTextView;
+        TextView intelligenceTextView;
+
+        //create variable to store the button
+        Button deleteButton;
+
+        //create a variable to store the image view
+        ImageView characterImageView;
+
+        public CustomAdapter(Context context, ArrayList<Character> items) {
+            super(context, 0, items);
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent){
+            if(convertView == null){
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.character_list_item, parent, false);
+            }
+
+            //initialize the TextViews
+            characterNameTextView = (TextView)convertView.findViewById(R.id.character_name);
+            strengthTextView = (TextView)convertView.findViewById(R.id.strength_view);
+            agilityTextView = (TextView)convertView.findViewById(R.id.agility_view);
+            resilienceTextView = (TextView)convertView.findViewById(R.id.resilience_view);
+            luckTextView = (TextView)convertView.findViewById(R.id.luck_view);
+            intelligenceTextView = (TextView)convertView.findViewById(R.id.intelligence_view);
+
+            //initialize the Delete Button
+            deleteButton = (Button)convertView.findViewById(R.id.delete_character_button);
+
+            //initialize the ImageView
+            characterImageView = (ImageView)convertView.findViewById(R.id.character_image);
+
+            return convertView;
+        }
+
+
+
     }
 }
