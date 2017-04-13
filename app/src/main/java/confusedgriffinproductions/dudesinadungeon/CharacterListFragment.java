@@ -1,11 +1,13 @@
 package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +54,8 @@ public class CharacterListFragment extends Fragment {
 
     //Create a fragment manager
     FragmentManager fm;
+
+    CustomAdapter adapter;
 
     public CharacterListFragment() {
         // Required empty public constructor
@@ -113,7 +117,8 @@ public class CharacterListFragment extends Fragment {
 
         db.closeDB();
 
-        characterListView.setAdapter(new CustomAdapter(getContext(), characterList));
+        adapter = new CustomAdapter(getContext(), characterList);
+        characterListView.setAdapter(adapter);
 
         return view;
     }
@@ -176,7 +181,7 @@ public class CharacterListFragment extends Fragment {
             super(context, 0, items);
         }
 
-        public View getView(int position, View convertView, ViewGroup parent){
+        public View getView(final int position, View convertView, ViewGroup parent){
             if(convertView == null){
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.character_list_item, parent, false);
             }
@@ -198,6 +203,25 @@ public class CharacterListFragment extends Fragment {
 
             //initialize the Delete Button
             deleteButton = (Button)convertView.findViewById(R.id.delete_character_button);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(getContext()).
+                            setMessage(getContext().getResources().getString(R.string.delete_confirmation)).
+                            setCancelable(false).
+                            setPositiveButton(getContext().getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    DatabaseHandler db = new DatabaseHandler(getContext());
+                                    db.deleteCharacter(characterList.get(position).getId());
+                                    db.closeDB();
+                                    characterList.remove(position);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            }).
+                            setNegativeButton(getContext().getResources().getString(R.string.no), null).show();
+                }
+            });
 
             //initialize the ImageView
             characterImageView = (ImageView)convertView.findViewById(R.id.character_image);

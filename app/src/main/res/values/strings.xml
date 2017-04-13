@@ -300,5 +300,8 @@
     <string name="create_a_character">Create a\nCharacterr</string>
     <string name="delete_character">Delete\nCharacter</string>
 
+    <string name="delete_confirmation">Are you sure you wish to delete this character?</string>
+    <string name="no">No</string>
+
 
 </resources>
