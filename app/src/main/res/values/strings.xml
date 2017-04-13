@@ -297,5 +297,9 @@
     <string name="spells_by_type">View\nSpells by Type</string>
     <string name="spells_by_class">View\nSpells by Class</string>
 
+    <!-- String resources for the Settings -->
+    <string name="language_preference_summary">Change the language of the application.
+        \nApplication will restart.</string>
+
 
 </resources>
