@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Array displayed to the user to switch languages -->
+    <string-array name="language_preference">
+        <item>English</item>
+        <item>Français</item>
+    </string-array>
+    <!-- Array used for actual data in switching languages -->
+    <string-array name="language_preference_value">
+        <item>en</item>
+        <item>fr</item>
+    </string-array>
+
+</resources>
