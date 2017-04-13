@@ -128,18 +128,18 @@
     <string name="rations_description">Dried foods easy to preserve</string>
 
     <!--These resources contain the website links for reference -->
-    <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
+    <string name="sword_image" translatable="false">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
     <string name="axe_image" translatable="false">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
     <string name="spear_image">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
     <string name="dagger_image">https://pixabay.com/p-34231/?no_redirect</string>
     <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
-    <string name="crossbow_image">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
-    <string name="plate_mail_image">https://pixabay.com/en/armor-battle-knight-1297111/</string>
+    <string name="crossbow_image" translatable="false">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
+    <string name="plate_mail_image" translatable="false">https://pixabay.com/en/armor-battle-knight-1297111/</string>
     <string name="backpack_image">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
     <string name="canteen_image">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
-    <string name="tinder_box_image">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
-    <string name="tent_image">https://pixabay.com/en/camping-camp-tent-mountains-field-2169976/</string>
-    <string name="sleeping_bag_image">https://pixabay.com/p-1294371/?no_redirect</string>
+    <string name="tinder_box_image" translatable="false">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
+    <string name="tent_image" translatable="false">https://pixabay.com/en/camping-camp-tent-mountains-field-2169976/</string>
+    <string name="sleeping_bag_image" translatable="false">https://pixabay.com/p-1294371/?no_redirect</string>
     <string name="rations_image">https://pixabay.com/en/food-junk-food-pack-package-2029493/</string>
     <string name="shield_image">https://pixabay.com/en/shield-escutcheon-heater-shield-31869/</string>
 

@@ -13,5 +13,33 @@
     <string name="axe">Hache</string>
     <string name="axe_description">Une arme de base, fascile à utilizer, mais un peu lourd.</string>
     <string name="back_stab">Poignarder le Dos</string>
-    <string name="back_stab_description">Poignarder l\'ennemi dans le dos alors  qu\'il ne peut pas to voir. Plus efficace s\'il ne peut pas te voir.</string>
+    <string name="back_stab_description">Poignarder l\'ennemi dans le dos alors  qu\'il ne peut pas vous voir. Plus efficace s\'il ne peut pas te voir.</string>
+    <string name="back_stab_effects">Utilizer si l\'ennemi ne peut pas vous voir. Faites une attaque avec une arme et infligez votre dégât +5. Faire cela immédiatement to révèle.</string>
+    <string name="backpack">Sac-à-dos</string>
+    <string name="backpack_description"></string>
+    <string name="wizard">Sorcier</string>
+    <string name="weapons">Tous les armes</string>
+    <string name="warrior">Guerrier</string>
+    <string name="tinder_box">Poudrière</string>
+    <string name="tinder_box_description">Boîte contenant tous les outils nécessaires pour construire un feu.</string>
+    <string name="tent">Tente</string>
+    <string name="tent_description">Nécessaire pour ceux qui voyagent dans la nature sauvage</string>
+    <string name="taunt">Railler</string>
+    <string name="sword">Épée</string>
+    <string name="steal">Voler</string>
+    <string name="strength">Force</string>
+    <string name="support">Support</string>
+    <string name="survival">Survivance</string>
+    <string name="sword_description">Épée de base.  Plupart des guerriers apprennent l\'utilization de ces armes</string>
+    <string name="resurrect_description">Votre ami est mort? Inquiètez-vous pas! Ramenez-lui à la vie!</string>
+    <string name="turn_invisible">Tourner Invisible</string>
+    <string name="turn_invisible_description">Rendez-vous invisible et couple les gorges facilement</string>
+    <string name="turn_invisible_effects">Rendez-vous invisbles. Impossible pour l\'ennemi de vous voir</string>
+    <string name="tinder_box_image" translatable="false"></string>
+    <string name="teleport_effects">Téléporter-vous immédiatement à un endroit voisin.</string>
+    <string name="teleport_description">Se déplacer d\'un endroit à l\'autre n\'a jamais été aussi facile!</string>
+    <string name="teleport">Téléporter</string>
+    <string name="taunt_description">Lâchez quelques mots de poule pour distraire l\'ennemi ou les amener à vous</string>
+    <string name="taunt_effects">Ennemis proches à vous vont vous attaquez ou suffired -2 à leurs compétences de combat.</string>
+    <string name="steal_description">Ils n\'ont pas de besoin des objets qui ne sont pas boulonné au sol. Prennez-le pour votre propre.</string>
 </resources>
