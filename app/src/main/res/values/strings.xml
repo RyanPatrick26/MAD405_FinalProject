@@ -298,8 +298,10 @@
     <string name="spells_by_class">View\nSpells by Class</string>
 
     <!-- String resources for the Settings -->
-    <string name="language_preference_summary">Change the language of the application.
-        \nApplication will restart.</string>
-
+    <string name="language_preference_summary">Change the language of the application.\n
+        Application will restart.</string>
+    <string name="colour_theme_preference_title">Colour Theme</string>
+    <string name="colour_theme_preference_summary">Change the application's colour theme.\n
+        Application will restart.</string>
 
 </resources>

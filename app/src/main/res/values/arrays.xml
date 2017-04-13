@@ -5,13 +5,22 @@
         <item>English</item>
         <item>Français</item>
     </string-array>
-    <!-- Array used for actual data in switching languages -->
+    <!-- Array used for actual values in switching languages -->
     <string-array name="language_preference_value">
         <item>en</item>
         <item>fr</item>
     </string-array>
 
+    <!-- Array displayed for the user to change colour themes -->
+    <string-array name="colour_theme_preference">
+        <item>Light (Default)</item>
+        <item>Dark</item>
+    </string-array>
 
-    
+    <!-- Array used for actual values in changing colour themes -->
+    <string-array name="colour_theme_preference_value">
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
 
 </resources>
