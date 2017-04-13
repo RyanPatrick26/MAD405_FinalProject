@@ -95,6 +95,25 @@ public class ItemListFragment extends Fragment {
 
         //instantiate at start the TabHost
         tabHost = (TabHost) view.findViewById(R.id.items_tab_host);
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                // Colour for the unselected tabs
+                for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+                    tabHost.getTabWidget().getChildAt(i)
+                            .setBackgroundResource(R.color.colorDivider);
+                    TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+                    tv.setTextColor(getResources().getColor(R.color.colorAccent, null));
+                }
+                // Colour for the selected tab
+                tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab())
+                        .setBackgroundResource(R.color.colorAccent);
+                TextView tv = (TextView) tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).findViewById(android.R.id.title);
+                tv.setTextColor(getResources().getColor(R.color.colorPrimary, null));
+            }
+        });
+
         tabHost.setup();
 
         //instantiate the TabWidget
