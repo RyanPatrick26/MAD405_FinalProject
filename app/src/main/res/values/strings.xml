@@ -205,7 +205,7 @@
     <string name="call_miracle_description">For those times when you\'re in real trouble, try calling on an act of god</string>
     <string name="remove_curse_description">For all those times that you or your friends get cursed, just clear them of it</string>
     <string name="bless_description">Give your friends a bit of a blessing for their times in need</string>
-    
+
     <string name="battle_cry_description">Let loose a cry that will both spook the enemy and give yourself the courage to continue</string>
     <string name="brutal_swing_description">Put all your strength into this one swing, be careful though, results may tire</string>
     <string name="cleave_description">Swing with such force that it will hit two enemies at once</string>
@@ -213,7 +213,7 @@
     <string name="taunt_description">Let loose some fowl words to distract the enemy, or bring them to you</string>
     <string name="smite_description">Smash an enemy with such force that enemies nearby will feel it</string>
     <string name="frenzied_charge_description">What\'s more fun than sending yourself at full force into the enemy, the squishy noises are a bonus</string>
-    
+
     <string name="turn_invisible_description">Turn yourself invisible, makes things even easier to sneak around and cut throats</string>
     <string name="back_stab_description">Stab the enemy while they can\'t see you, proven more effective than while they can</string>
     <string name="steal_description">Nobody really needs the stuff that isn\'t bolted down anyways, take it for your own</string>
@@ -298,10 +298,8 @@
     <string name="spells_by_class">View\nSpells by Class</string>
 
     <!-- String resources for the Settings -->
-    <string name="language_preference_summary">Change the language of the application.\n
-        Application will restart.</string>
+    <string name="language_preference_summary">Change the language of the application.\nApplication will restart.</string>
     <string name="colour_theme_preference_title">Colour Theme</string>
-    <string name="colour_theme_preference_summary">Change the application's colour theme.\n
-        Application will restart.</string>
+    <string name="colour_theme_preference_summary">Change the application\'s colour theme.\nApplication will restart.</string>
 
 </resources>
