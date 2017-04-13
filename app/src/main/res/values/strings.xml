@@ -297,5 +297,8 @@
     <string name="spells_by_type">View\nSpells by Type</string>
     <string name="spells_by_class">View\nSpells by Class</string>
 
+    <string name="create_a_character">Create a\nCharacterr</string>
+    <string name="delete_character">Delete\nCharacter</string>
+
 
 </resources>
