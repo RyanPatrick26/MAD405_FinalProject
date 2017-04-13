@@ -4,9 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
+import android.widget.ListView;
+import android.widget.TabHost;
+import android.widget.TabWidget;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -28,6 +37,20 @@ public class SpellListFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    //create variables to store the views
+    TabHost tabHost;
+    TabWidget tabWidget;
+
+    //create variables to store the ListViews
+    ListView allSpellsListView;
+    ExpandableListView spellsByTypeListView;
+    ExpandableListView spellsByClassListView;
+
+    //create arraylists for the items
+    ArrayList<Spell> allSpellsList;
+    ArrayList<Spell> spellsByTypeList;
+    ArrayList<Spell> spellsByClassList;
 
     public SpellListFragment() {
         // Required empty public constructor
@@ -64,7 +87,78 @@ public class SpellListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spell_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_spell_list, container, false);
+
+        //instantiate at start the TabHost
+        tabHost = (TabHost) view.findViewById(R.id.items_tab_host);
+        tabHost.setup();
+
+        //instantiate the TabWidget
+        tabWidget = tabHost.getTabWidget();
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+
+        allSpellsList = db.getAllSpells();
+        Log.d("arrayList size", allSpellsList.size()+"");
+
+        TextView allSpellsTab = (TextView) view.findViewById(R.id.all_spells_tab);
+        TextView spellsByTypeTab = (TextView) view.findViewById(R.id.spells_by_type_tab);
+        TextView spellsByClassTab = (TextView) view.findViewById(R.id.spells_by_class_tab);
+
+        //instantiate the listviews
+        allSpellsListView = (ListView)view.findViewById(R.id.all_spells_list);
+        spellsByTypeListView = (ExpandableListView)view.findViewById(R.id.spells_by_type_list);
+        spellsByClassListView = (ExpandableListView)view.findViewById(R.id.spells_by_class_list);
+
+        allSpellsListView.setAdapter(new SpellListAdapter(getActivity(), allSpellsList));
+        spellsByTypeListView.setAdapter(new SpellListExpandableListAdapter(getContext(), allSpellsList, "type"));
+        spellsByClassListView.setAdapter(new SpellListExpandableListAdapter(getContext(), allSpellsList, "class"));
+
+        // add views to tab host
+        TabHost.TabSpec tabSpec1 = tabHost.newTabSpec((String) allSpellsTab.getTag());
+        tabSpec1.setContent(new TabHost.TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return allSpellsListView;
+            }
+        });
+        tabSpec1.setIndicator(allSpellsTab.getText());
+
+        TabHost.TabSpec tabSpec2 = tabHost.newTabSpec((String) spellsByTypeTab.getTag());
+        tabSpec2.setContent(new TabHost.TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return spellsByTypeListView;
+            }
+        });
+        tabSpec2.setIndicator(spellsByTypeTab.getText());
+
+        TabHost.TabSpec tabSpec3 = tabHost.newTabSpec((String) spellsByClassTab.getTag());
+        tabSpec3.setContent(new TabHost.TabContentFactory() {
+            @Override
+            public View createTabContent(String tag) {
+                return spellsByClassListView;
+            }
+        });
+        tabSpec3.setIndicator(spellsByClassTab.getText());
+
+        tabWidget.removeAllViews();
+
+        tabHost.addTab(tabSpec1);
+        tabHost.addTab(tabSpec2);
+        tabHost.addTab(tabSpec3);
+
+
+        for (int i = 0; i < tabWidget.getTabCount(); i++) {
+            View tabView = tabHost.getTabWidget().getChildTabViewAt(i);
+            tabView.setPadding(0, 0, 0, 0);
+            TextView tv = (TextView) tabView.findViewById(android.R.id.title);
+            tv.setGravity(Gravity.CENTER);
+            tabHost.setCurrentTab(i);
+        }
+        tabHost.setCurrentTab(0);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

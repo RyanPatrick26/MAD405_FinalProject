@@ -2,7 +2,6 @@ package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -71,6 +70,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Spell Table Column Names
      */
     private static final String COLUMN_SPELLTYPE = "spelltype";
+    private static final String COLUMN_CLASS = "class";
     private static final String COLUMN_DMG_HEAL = "dmg_heal";
     private static final String COLUMN_COMPONENTS = "components";
     private static final String COLUMN_EFFECTS = "effects";
@@ -124,6 +124,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_NAME + " TEXT,"
             + COLUMN_DESCRIPTION + " TEXT,"
             + COLUMN_SPELLTYPE + " TEXT,"
+            + COLUMN_CLASS + " TEXT,"
             + COLUMN_COMPONENTS + " TEXT,"
             + COLUMN_EFFECTS + " TEXT,"
             + COLUMN_DMG_HEAL + " TEXT" + ")";
@@ -158,8 +159,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_CHARACTER_PORTRAITS_TABLE);
 
         this.initializeItemsTable(db);
-        //initializeSpellsTable();
+        initializeSpellsTable(db);
     }
+
+    /**
+     * When the database upgrades, delete the old database and replace it with the upgraded one
+     *
+     * @param db - DatabaseHandler
+     * @param oldVersion - Old version of the database
+     * @param newVersion - New version of the database
+     */
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEMS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPELLS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTRAITS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTER_PORTRAIT);
+        onCreate(db);
+    }
+
 
     /**
      * Create a function to initialize the items table
@@ -188,6 +207,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         spear.setDmg_def(3);
         spear.setDescription(context.getResources().getString(R.string.spear_description));
         spear.setImageId(R.drawable.spear);
+
+        Item dagger = new Item();
+        dagger.setName(context.getResources().getString(R.string.dagger));
+        dagger.setPrice(4);
+        dagger.setType("Weapon");
+        dagger.setDmg_def(1);
+        dagger.setDescription(context.getResources().getString(R.string.dagger_description));
+        dagger.setImageId(R.drawable.dagger);
 
         Item bow = new Item();
         bow.setName(context.getResources().getString(R.string.bow));
@@ -285,6 +312,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         items.add(sword);
         items.add(axe);
         items.add(spear);
+        items.add(dagger);
         items.add(bow);
         items.add(crossbow);
         items.add(leatherArmor);
@@ -313,21 +341,322 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    /**
-     * When the database upgrades, delete the old database and replace it with the upgraded one
-     *
-     * @param db - DatabaseHandler
-     * @param oldVersion - Old version of the database
-     * @param newVersion - New version of the database
-     */
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTERS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ITEMS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPELLS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTRAITS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTER_PORTRAIT);
-        onCreate(db);
+    public void initializeSpellsTable(SQLiteDatabase db){
+        //Create spell objects for wizard spells
+        Spell fireball = new Spell();
+        Spell iceBlast = new Spell();
+        Spell chainLightning = new Spell();
+        Spell magicMissile = new Spell();
+        Spell chillingWind = new Spell();
+        Spell moveEarth = new Spell();
+        Spell teleport = new Spell();
+        Spell makeFog = new Spell();
+        Spell raiseDead = new Spell();
+        Spell inflictCurse = new Spell();
+        Spell drainLife = new Spell();
+        Spell magicArmor = new Spell();
+
+        //set values for wizard spells
+        fireball.setName(context.getResources().getString(R.string.fireball));
+        fireball.setDescription(context.getResources().getString(R.string.fireball_description));
+        fireball.setEffects(context.getResources().getString(R.string.fireball_effects));
+        fireball.setSpellType(context.getResources().getString(R.string.offensive));
+        fireball.setSpellClass(context.getResources().getString(R.string.wizard));
+        fireball.setDmg_heal("6");
+
+        iceBlast.setName(context.getResources().getString(R.string.ice_blast));
+        iceBlast.setDescription(context.getResources().getString(R.string.ice_blast_description));
+        iceBlast.setEffects(context.getResources().getString(R.string.ice_blast_effects));
+        iceBlast.setSpellType(context.getResources().getString(R.string.offensive));
+        iceBlast.setSpellClass(context.getResources().getString(R.string.wizard));
+        iceBlast.setDmg_heal("3");
+
+        chainLightning.setName(context.getResources().getString(R.string.chain_lightning));
+        chainLightning.setDescription(context.getResources().getString(R.string.chain_lightning_description));
+        chainLightning.setEffects(context.getResources().getString(R.string.chain_lightning_effects));
+        chainLightning.setSpellType(context.getResources().getString(R.string.offensive));
+        chainLightning.setSpellClass(context.getResources().getString(R.string.wizard));
+        chainLightning.setDmg_heal("5");
+
+        magicMissile.setName(context.getResources().getString(R.string.magic_missile));
+        magicMissile.setDescription(context.getResources().getString(R.string.magic_missile_description));
+        magicMissile.setEffects(context.getResources().getString(R.string.magic_missile_effects));
+        magicMissile.setSpellType(context.getResources().getString(R.string.offensive));
+        magicMissile.setSpellClass(context.getResources().getString(R.string.wizard));
+        magicMissile.setDmg_heal("2");
+
+        chillingWind.setName(context.getResources().getString(R.string.chilling_wind));
+        chillingWind.setDescription(context.getResources().getString(R.string.chilling_wind_description));
+        chillingWind.setEffects(context.getResources().getString(R.string.chilling_wind_effects));
+        chillingWind.setSpellType(context.getResources().getString(R.string.debuff));
+        chillingWind.setSpellClass(context.getResources().getString(R.string.wizard));
+        chillingWind.setDmg_heal("2");
+
+        moveEarth.setName(context.getResources().getString(R.string.move_earth));
+        moveEarth.setDescription(context.getResources().getString(R.string.move_earth_description));
+        moveEarth.setEffects(context.getResources().getString(R.string.move_earth_effects));
+        moveEarth.setSpellType(context.getResources().getString(R.string.support));
+        moveEarth.setSpellClass(context.getResources().getString(R.string.wizard));
+
+        teleport.setName(context.getResources().getString(R.string.teleport));
+        teleport.setDescription(context.getResources().getString(R.string.teleport_description));
+        teleport.setEffects(context.getResources().getString(R.string.teleport_effects));
+        teleport.setSpellType(context.getResources().getString(R.string.support));
+        teleport.setSpellClass(context.getResources().getString(R.string.wizard));
+
+        makeFog.setName(context.getResources().getString(R.string.make_fog));
+        makeFog.setDescription(context.getResources().getString(R.string.make_fog_description));
+        makeFog.setEffects(context.getResources().getString(R.string.make_fog_effects));
+        makeFog.setSpellType(context.getResources().getString(R.string.support));
+        makeFog.setSpellClass(context.getResources().getString(R.string.wizard));
+
+        raiseDead.setName(context.getResources().getString(R.string.raise_dead));
+        raiseDead.setDescription(context.getResources().getString(R.string.raise_dead_description));
+        raiseDead.setEffects(context.getResources().getString(R.string.raise_dead_effects));
+        raiseDead.setSpellType(context.getResources().getString(R.string.healing));
+        raiseDead.setSpellClass(context.getResources().getString(R.string.wizard));
+
+        inflictCurse.setName(context.getResources().getString(R.string.inflict_curse));
+        inflictCurse.setDescription(context.getResources().getString(R.string.inflict_curse_description));
+        inflictCurse.setEffects(context.getResources().getString(R.string.inflict_curse_effects));
+        inflictCurse.setSpellType(context.getResources().getString(R.string.debuff));
+        inflictCurse.setSpellClass(context.getResources().getString(R.string.wizard));
+
+        drainLife.setName(context.getResources().getString(R.string.drain_life));
+        drainLife.setDescription(context.getResources().getString(R.string.drain_life_description));
+        drainLife.setEffects(context.getResources().getString(R.string.drain_life_effects));
+        drainLife.setSpellType(context.getResources().getString(R.string.offensive));
+        drainLife.setSpellClass(context.getResources().getString(R.string.wizard));
+        drainLife.setDmg_heal("3");
+
+        magicArmor.setName(context.getResources().getString(R.string.magic_armor));
+        magicArmor.setDescription(context.getResources().getString(R.string.magic_armor_description));
+        magicArmor.setEffects(context.getResources().getString(R.string.magic_armor_effects));
+        magicArmor.setSpellType(context.getResources().getString(R.string.buff));
+        magicArmor.setSpellClass(context.getResources().getString(R.string.wizard));
+
+        //Create spell objects for priest spells
+        Spell heal = new Spell();
+        Spell convert = new Spell();
+        Spell confuse = new Spell();
+        Spell inflictPain = new Spell();
+        Spell resurrect = new Spell();
+        Spell callMiracle = new Spell();
+        Spell removeCurse = new Spell();
+        Spell bless = new Spell();
+
+        //set values for priest spells
+        heal.setName(context.getResources().getString(R.string.heal));
+        heal.setDescription(context.getResources().getString(R.string.heal_description));
+        heal.setEffects(context.getResources().getString(R.string.heal_effects));
+        heal.setSpellType(context.getResources().getString(R.string.healing));
+        heal.setSpellClass(context.getResources().getString(R.string.priest));
+        heal.setDmg_heal("3");
+
+        convert.setName(context.getResources().getString(R.string.convert));
+        convert.setDescription(context.getResources().getString(R.string.convert_description));
+        convert.setEffects(context.getResources().getString(R.string.convert_effects));
+        convert.setSpellType(context.getResources().getString(R.string.support));
+        convert.setSpellClass(context.getResources().getString(R.string.priest));
+
+        confuse.setName(context.getResources().getString(R.string.confuse));
+        confuse.setDescription(context.getResources().getString(R.string.confuse_description));
+        confuse.setEffects(context.getResources().getString(R.string.confuse_effects));
+        confuse.setSpellType(context.getResources().getString(R.string.debuff));
+        confuse.setSpellClass(context.getResources().getString(R.string.priest));
+
+        inflictPain.setName(context.getResources().getString(R.string.inflict_pain));
+        inflictPain.setDescription(context.getResources().getString(R.string.inflict_pain_description));
+        inflictPain.setEffects(context.getResources().getString(R.string.inflict_pain_effects));
+        inflictPain.setSpellType(context.getResources().getString(R.string.offensive));
+        inflictPain.setSpellClass(context.getResources().getString(R.string.priest));
+        inflictPain.setDmg_heal("3");
+
+        resurrect.setName(context.getResources().getString(R.string.resurrect));
+        resurrect.setDescription(context.getResources().getString(R.string.resurrect_description));
+        resurrect.setEffects(context.getResources().getString(R.string.resurrect_effects));
+        resurrect.setSpellType(context.getResources().getString(R.string.healing));
+        resurrect.setSpellClass(context.getResources().getString(R.string.priest));
+
+        callMiracle.setName(context.getResources().getString(R.string.call_miracle));
+        callMiracle.setDescription(context.getResources().getString(R.string.call_miracle_description));
+        callMiracle.setEffects(context.getResources().getString(R.string.call_miracle_effects));
+        callMiracle.setSpellType(context.getResources().getString(R.string.support));
+        callMiracle.setSpellClass(context.getResources().getString(R.string.priest));
+
+        removeCurse.setName(context.getResources().getString(R.string.remove_curse));
+        removeCurse.setDescription(context.getResources().getString(R.string.remove_curse_description));
+        removeCurse.setEffects(context.getResources().getString(R.string.remove_curse_effects));
+        removeCurse.setSpellType(context.getResources().getString(R.string.healing));
+        removeCurse.setSpellClass(context.getResources().getString(R.string.priest));
+
+        bless.setName(context.getResources().getString(R.string.bless));
+        bless.setDescription(context.getResources().getString(R.string.bless_description));
+        bless.setEffects(context.getResources().getString(R.string.bless_effects));
+        bless.setSpellType(context.getResources().getString(R.string.buff));
+        bless.setSpellClass(context.getResources().getString(R.string.priest));
+
+        //Create spell objects for warriors
+        Spell battleCry = new Spell();
+        Spell brutalSwing = new Spell();
+        Spell cleave = new Spell();
+        Spell coverAlly = new Spell();
+        Spell taunt = new Spell();
+        Spell smite = new Spell();
+        Spell frenziedCharge = new Spell();
+
+        //set values for warrior spells
+        battleCry.setName(context.getResources().getString(R.string.battle_cry));
+        battleCry.setDescription(context.getResources().getString(R.string.battle_cry_description));
+        battleCry.setEffects(context.getResources().getString(R.string.battle_cry_effects));
+        battleCry.setSpellType(context.getResources().getString(R.string.buff));
+        battleCry.setSpellClass(context.getResources().getString(R.string.warrior));
+
+        brutalSwing.setName(context.getResources().getString(R.string.brutal_swing));
+        brutalSwing.setDescription(context.getResources().getString(R.string.brutal_swing_description));
+        brutalSwing.setEffects(context.getResources().getString(R.string.brutal_swing_effects));
+        brutalSwing.setSpellType(context.getResources().getString(R.string.offensive));
+        brutalSwing.setSpellClass(context.getResources().getString(R.string.warrior));
+        brutalSwing.setDmg_heal("+4");
+
+        cleave.setName(context.getResources().getString(R.string.cleave));
+        cleave.setDescription(context.getResources().getString(R.string.cleave_description));
+        cleave.setEffects(context.getResources().getString(R.string.cleave_effects));
+        cleave.setSpellType(context.getResources().getString(R.string.offensive));
+        cleave.setSpellClass(context.getResources().getString(R.string.warrior));
+        cleave.setDmg_heal("+2");
+
+        coverAlly.setName(context.getResources().getString(R.string.cover_ally));
+        coverAlly.setDescription(context.getResources().getString(R.string.cover_ally_description));
+        coverAlly.setEffects(context.getResources().getString(R.string.cover_ally_effects));
+        coverAlly.setSpellType(context.getResources().getString(R.string.support));
+        coverAlly.setSpellClass(context.getResources().getString(R.string.warrior));
+
+        taunt.setName(context.getResources().getString(R.string.taunt));
+        taunt.setDescription(context.getResources().getString(R.string.taunt_description));
+        taunt.setEffects(context.getResources().getString(R.string.taunt_effects));
+        taunt.setSpellType(context.getResources().getString(R.string.debuff));
+        taunt.setSpellClass(context.getResources().getString(R.string.warrior));
+
+        smite.setName(context.getResources().getString(R.string.smite));
+        smite.setDescription(context.getResources().getString(R.string.smite_description));
+        smite.setEffects(context.getResources().getString(R.string.smite_effects));
+        smite.setSpellType(context.getResources().getString(R.string.offensive));
+        smite.setSpellClass(context.getResources().getString(R.string.warrior));
+        smite.setDmg_heal("+3");
+
+        frenziedCharge.setName(context.getResources().getString(R.string.frenzied_charge));
+        frenziedCharge.setDescription(context.getResources().getString(R.string.frenzied_charge_description));
+        frenziedCharge.setEffects(context.getResources().getString(R.string.frenzied_charge_effects));
+        frenziedCharge.setSpellType(context.getResources().getString(R.string.offensive));
+        frenziedCharge.setSpellClass(context.getResources().getString(R.string.warrior));
+        frenziedCharge.setDmg_heal("+3");
+
+        //Create spell objects for rogue
+        Spell turnInvisible = new Spell();
+        Spell backStab = new Spell();
+        Spell steal = new Spell();
+        Spell shadowStep = new Spell();
+        Spell imbuePoison = new Spell();
+        Spell bladeFlurry = new Spell();
+        Spell feignDeath = new Spell();
+
+        //set values for rogue spells
+        turnInvisible.setName(context.getResources().getString(R.string.turn_invisible));
+        turnInvisible.setDescription(context.getResources().getString(R.string.turn_invisible_description));
+        turnInvisible.setEffects(context.getResources().getString(R.string.turn_invisible_effects));
+        turnInvisible.setSpellType(context.getResources().getString(R.string.support));
+        turnInvisible.setSpellClass(context.getResources().getString(R.string.rogue));
+
+        backStab.setName(context.getResources().getString(R.string.back_stab));
+        backStab.setDescription(context.getResources().getString(R.string.back_stab_description));
+        backStab.setEffects(context.getResources().getString(R.string.back_stab_effects));
+        backStab.setSpellType(context.getResources().getString(R.string.offensive));
+        backStab.setSpellClass(context.getResources().getString(R.string.rogue));
+        backStab.setDmg_heal("+5");
+
+        steal.setName(context.getResources().getString(R.string.steal));
+        steal.setDescription(context.getResources().getString(R.string.steal_description));
+        steal.setEffects(context.getResources().getString(R.string.steal_effects));
+        steal.setSpellType(context.getResources().getString(R.string.support));
+        steal.setSpellClass(context.getResources().getString(R.string.rogue));
+
+        shadowStep.setName(context.getResources().getString(R.string.shadow_step));
+        shadowStep.setDescription(context.getResources().getString(R.string.shadow_step_description));
+        shadowStep.setEffects(context.getResources().getString(R.string.shadow_step_effects));
+        shadowStep.setSpellType(context.getResources().getString(R.string.support));
+        shadowStep.setSpellClass(context.getResources().getString(R.string.rogue));
+
+        imbuePoison.setName(context.getResources().getString(R.string.imbue_poison));
+        imbuePoison.setDescription(context.getResources().getString(R.string.imbue_poison_description));
+        imbuePoison.setEffects(context.getResources().getString(R.string.imbue_poison_effects));
+        imbuePoison.setSpellType(context.getResources().getString(R.string.buff));
+        imbuePoison.setSpellClass(context.getResources().getString(R.string.rogue));
+
+        bladeFlurry.setName(context.getResources().getString(R.string.blade_flurry));
+        bladeFlurry.setDescription(context.getResources().getString(R.string.blade_flurry_description));
+        bladeFlurry.setEffects(context.getResources().getString(R.string.blade_flurry_effects));
+        bladeFlurry.setSpellType(context.getResources().getString(R.string.offensive));
+        bladeFlurry.setSpellClass(context.getResources().getString(R.string.rogue));
+        bladeFlurry.setDmg_heal("3");
+
+        feignDeath.setName(context.getResources().getString(R.string.feign_death));
+        feignDeath.setDescription(context.getResources().getString(R.string.feign_death_description));
+        feignDeath.setEffects(context.getResources().getString(R.string.feign_death_effects));
+        feignDeath.setSpellType(context.getResources().getString(R.string.buff));
+        feignDeath.setSpellClass(context.getResources().getString(R.string.rogue));
+
+        ArrayList<Spell> spellList = new ArrayList<>();
+        spellList.add(fireball);
+        spellList.add(iceBlast);
+        spellList.add(chainLightning);
+        spellList.add(magicMissile);
+        spellList.add(chillingWind);
+        spellList.add(moveEarth);
+        spellList.add(teleport);
+        spellList.add(makeFog);
+        spellList.add(raiseDead);
+        spellList.add(inflictCurse);
+        spellList.add(drainLife);
+        spellList.add(magicArmor);
+        spellList.add(heal);
+        spellList.add(convert);
+        spellList.add(confuse);
+        spellList.add(inflictPain);
+        spellList.add(resurrect);
+        spellList.add(callMiracle);
+        spellList.add(removeCurse);
+        spellList.add(bless);
+        spellList.add(battleCry);
+        spellList.add(brutalSwing);
+        spellList.add(cleave);
+        spellList.add(coverAlly);
+        spellList.add(taunt);
+        spellList.add(smite);
+        spellList.add(frenziedCharge);
+        spellList.add(turnInvisible);
+        spellList.add(backStab);
+        spellList.add(steal);
+        spellList.add(shadowStep);
+        spellList.add(imbuePoison);
+        spellList.add(bladeFlurry);
+        spellList.add(feignDeath);
+
+        Log.d("number of spells", ""+spellList.size());
+
+        ContentValues values = new ContentValues();
+
+        for(int i = 0; i < spellList.size(); i++){
+            values.put(COLUMN_NAME, spellList.get(i).getName());
+            values.put(COLUMN_DESCRIPTION, spellList.get(i).getDescription());
+            values.put(COLUMN_SPELLTYPE, spellList.get(i).getSpellType());
+            values.put(COLUMN_CLASS, spellList.get(i).getSpellClass());
+            values.put(COLUMN_COMPONENTS, spellList.get(i).getComponents());
+            values.put(COLUMN_EFFECTS, spellList.get(i).getEffects());
+            values.put(COLUMN_DMG_HEAL, spellList.get(i).getDmg_heal());
+
+            db.insert(TABLE_SPELLS, null, values);
+        }
     }
 
     // CRUD OPERATIONS FOR THE DATABASE AND FOR THE TABLES
@@ -404,6 +733,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_NAME, spell.getName());
         values.put(COLUMN_DESCRIPTION, spell.getDescription());
         values.put(COLUMN_SPELLTYPE, spell.getSpellType());
+        values.put(COLUMN_CLASS, spell.getSpellClass());
         values.put(COLUMN_COMPONENTS, spell.getComponents());
         values.put(COLUMN_EFFECTS, spell.getEffects());
         values.put(COLUMN_DMG_HEAL, spell.getDmg_heal());
@@ -561,7 +891,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create an ArrayList of items
         ArrayList<Item> itemList = new ArrayList<Item>();
         // Create a sql query string to get all the items
-        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS;
+        String selectQuery = "SELECT  * FROM " + TABLE_ITEMS + " ORDER BY " + COLUMN_NAME;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store all the values
@@ -635,7 +965,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
         // Create a new spell
         Spell spell = new Spell(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3),
-                cursor.getString(4), cursor.getString(5), Integer.parseInt(cursor.getString(6)));
+                                cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7));
         // Return the new spell
         return spell;
     }
@@ -647,7 +977,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create an ArrayList of spells
         ArrayList<Spell> spellList = new ArrayList<Spell>();
         // Create a sql query string to get all the spells
-        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS;
+        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS + " ORDER BY " + COLUMN_NAME;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store all the values
@@ -660,15 +990,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 spell.setName(cursor.getString(1));
                 spell.setDescription(cursor.getString(2));
                 spell.setSpellType(cursor.getString(3));
-                spell.setComponents(cursor.getString(4));
-                spell.setEffects(cursor.getString(5));
-                spell.setDmg_heal(Integer.parseInt(cursor.getString(6)));
+                spell.setSpellClass(cursor.getString(4));
+                spell.setComponents(cursor.getString(5));
+                spell.setEffects(cursor.getString(6));
+                spell.setDmg_heal(cursor.getString(7));
+
+                spellList.add(spell);
             } while (cursor.moveToNext());
         }
         // Return the list of spells
         return spellList;
     }
-
 
     /**
      * Method to get a PORTRAIT from the database

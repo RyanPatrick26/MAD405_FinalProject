@@ -55,6 +55,7 @@ public class ItemListFragment extends Fragment {
     ArrayList<Item> weaponsList;
     ArrayList<Item> armorList;
     ArrayList<Item> equipmentList;
+
     public ItemListFragment() {
         // Required empty public constructor
     }
