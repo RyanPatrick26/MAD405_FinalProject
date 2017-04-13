@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dudes Dans Un Cachot</string>
+    <string name="app_name">Dudes Dans Un Donjon</string>
     <string name="action_settings">Paramètres</string>
     <string name="navigation_drawer_close">Fermer tiroir de navigation</string>
     <string name="navigation_drawer_open">Ouvrir tiroir de navigation</string>
@@ -30,16 +30,37 @@
     <string name="strength">Force</string>
     <string name="support">Support</string>
     <string name="survival">Survivance</string>
-    <string name="sword_description">Épée de base.  Plupart des guerriers apprennent l\'utilization de ces armes</string>
+    <string name="sword_description">Épée de base.  Plupart des guerriers apprennent l\\\'utilization de ces armes</string>
     <string name="resurrect_description">Votre ami est mort? Inquiètez-vous pas! Ramenez-lui à la vie!</string>
     <string name="turn_invisible">Tourner Invisible</string>
     <string name="turn_invisible_description">Rendez-vous invisible et couple les gorges facilement</string>
     <string name="turn_invisible_effects">Rendez-vous invisbles. Impossible pour l\'ennemi de vous voir</string>
     <string name="tinder_box_image" translatable="false"></string>
     <string name="teleport_effects">Téléporter-vous immédiatement à un endroit voisin.</string>
-    <string name="teleport_description">Se déplacer d\'un endroit à l\'autre n\'a jamais été aussi facile!</string>
+    <string name="teleport_description">Se déplacer d\'un endroit à l\\\'autre n\'a jamais été aussi facile!</string>
     <string name="teleport">Téléporter</string>
-    <string name="taunt_description">Lâchez quelques mots de poule pour distraire l\'ennemi ou les amener à vous</string>
+    <string name="taunt_description">Lâchez quelques mots de poule pour distraire l\\\'ennemi ou les amener à vous</string>
     <string name="taunt_effects">Ennemis proches à vous vont vous attaquez ou suffired -2 à leurs compétences de combat.</string>
-    <string name="steal_description">Ils n\'ont pas de besoin des objets qui ne sont pas boulonné au sol. Prennez-le pour votre propre.</string>
+    <string name="steal_description">Ils n\\\'ont pas de besoin des objets qui ne sont pas boulonné au sol. Prennez-le pour votre propre.</string>
+    <string name="steal_effects">Immédiatement faire le vol d\'un object do votre choix seulement si l\'objet n\'est pas en utilization</string>
+    <string name="spells_by_class">Sorts par Classe</string>
+    <string name="spells_by_type">Sorts par Type</string>
+    <string name="spear">Lance</string>
+    <string name="spear_description">Une arme très ancienne. Facile à utilizer et quand même toujours efficace.</string>
+    <string name="sneaking">Faufilation</string>
+    <string name="snackbar_no_software">Aucun logiciel installé pour compléter la tâche. Pardon!</string>
+    <string name="sms_message">Obtenez des dudes et mettez-vous dans un donjon! Découvrez cette application incroyable qui m\'aide à garder une trace de mes personnages, objets et sorts:</string>
+    <string name="smite">Frapper</string>
+    <string name="smite_description">Fracasser un ennemi avec une telle foce que les autres ennemis proches le ressentiront</string>
+    <string name="smite_effects">Attaquer avec une arme et infliger des domages +3 à un seul ennemi</string>
+    <string name="sleeping_bag">Sac de couchage</string>
+    <string name="skill">Compétences</string>
+    <string name="shooting">Tournage</string>
+    <string name="sleeping_bag_description">Sac aussi grand qu\\\'un personne pour vous s\\\'endormir. Protection contre les insectes.</string>
+    <string name="shield">Bouclier</string>
+    <string name="shield_description">Facile à tenir dans un main. Donne un peu de protection que chaque aventurier en a de besoin</string>
+    <string name="rogue">Coquin</string>
+    <string name="shadow_step">Étape d\\\'Ombre</string>
+    <string name="shadow_step_description">Glisser dans l\'ombre n\\\'a jamais été aussi simple que de se téléporter entre eux</string>
+    <string name="resurrect_effects">Rendre un personnage mort à la vie à la moitié de la santé</string>
 </resources>
