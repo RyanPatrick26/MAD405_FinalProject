@@ -4,6 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +50,9 @@ public class CharacterListFragment extends Fragment {
     //create a variable to store the list view
     ListView characterListView;
 
+    //Create a fragment manager
+    FragmentManager fm;
+
     public CharacterListFragment() {
         // Required empty public constructor
     }
@@ -84,10 +90,26 @@ public class CharacterListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_character_list, container, false);
 
+        fm = getActivity().getSupportFragmentManager();
+
+        //initialize the ListView
         characterListView = (ListView)view.findViewById(R.id.character_list);
+
+        //initialize the Character Creator Button
+        characterCreatorButton = (Button)view.findViewById(R.id.create_a_character);
+        characterCreatorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.addToBackStack(null);
+                trans.replace(R.id.content_main, new CharacterCreatorFragment());
+                trans.commit();
+            }
+        });
 
         DatabaseHandler db = new DatabaseHandler(getContext());
         characterList = db.getAllCharacters();
+        Log.d("array size", "" + characterList.size());
 
         db.closeDB();
 
@@ -166,6 +188,13 @@ public class CharacterListFragment extends Fragment {
             resilienceTextView = (TextView)convertView.findViewById(R.id.resilience_view);
             luckTextView = (TextView)convertView.findViewById(R.id.luck_view);
             intelligenceTextView = (TextView)convertView.findViewById(R.id.intelligence_view);
+
+            characterNameTextView.setText(characterList.get(position).getName());
+            strengthTextView.setText(characterList.get(position).getStrength() + "");
+            agilityTextView.setText(characterList.get(position).getAgility() + "");
+            resilienceTextView.setText(characterList.get(position).getResilience() + "");
+            luckTextView.setText(characterList.get(position).getLuck() + "");
+            intelligenceTextView.setText(characterList.get(position).getLuck() + "");
 
             //initialize the Delete Button
             deleteButton = (Button)convertView.findViewById(R.id.delete_character_button);

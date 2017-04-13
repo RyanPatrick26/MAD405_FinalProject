@@ -856,6 +856,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 character.setSneaking(Integer.parseInt(cursor.getString(15)));
                 character.setCrafting(Integer.parseInt(cursor.getString(16)));
                 character.setSurvival(Integer.parseInt(cursor.getString(17)));
+
+                characterList.add(character);
             } while (cursor.moveToNext());
         }
         // Return the list of characters
