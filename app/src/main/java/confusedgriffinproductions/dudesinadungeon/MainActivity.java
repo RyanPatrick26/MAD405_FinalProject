@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
         });
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
-        trans.replace(R.id.content_main, new SpellListFragment());
+        trans.replace(R.id.content_main, new CharacterListFragment());
         trans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
