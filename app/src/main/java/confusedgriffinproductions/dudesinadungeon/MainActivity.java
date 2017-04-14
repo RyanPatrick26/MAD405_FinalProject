@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity
     // SMS Message String
     String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
 
+    // String for device language
+    private String deviceLanguage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +96,8 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        } else if (id == R.id.credits_settings) {
+            // Go to the credits page
         }
 
         return super.onOptionsItemSelected(item);
