@@ -7,6 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -21,13 +25,24 @@ public class ItemViewerFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    int id;
 
     private OnFragmentInteractionListener mListener;
+
+    //Create variables to hold all the views
+    TextView itemName;
+    TextView itemType;
+    TextView itemDmg_Def;
+    TextView itemPrice;
+    TextView itemDescription;
+
+    ImageView itemImage;
+
+    //Create an item object to store the current item
+    Item item;
+
 
     public ItemViewerFragment() {
         // Required empty public constructor
@@ -42,11 +57,10 @@ public class ItemViewerFragment extends Fragment {
      * @return A new instance of fragment ItemViewerFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ItemViewerFragment newInstance(String param1, String param2) {
+    public static ItemViewerFragment newInstance(int id) {
         ItemViewerFragment fragment = new ItemViewerFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,8 +69,7 @@ public class ItemViewerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            id = getArguments().getInt(ARG_PARAM1);
         }
     }
 
@@ -64,7 +77,30 @@ public class ItemViewerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_viewer, container, false);
+        View view = inflater.inflate(R.layout.fragment_item_viewer, container, false);
+
+        //initialize the views
+        itemName = (TextView)view.findViewById(R.id.item_name);
+        itemType = (TextView)view.findViewById(R.id.item_type);
+        itemDmg_Def = (TextView)view.findViewById(R.id.item_dmg_def);
+        itemPrice = (TextView)view.findViewById(R.id.item_price);
+        itemDescription = (TextView)view.findViewById(R.id.item_description);
+
+        itemImage = (ImageView)view.findViewById(R.id.item_image);
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        item = db.getItem(id);
+        db.closeDB();
+
+        itemName.setText(item.getName());
+        itemType.setText(item.getType());
+        itemDmg_Def.setText(item.getDmg_def() + "");
+        itemPrice.setText(item.getPrice() + "");
+        itemDescription.setText(item.getDescription());
+
+        Picasso.with(getContext()).load(item.getImageId()).resize(100, 100).into(itemImage);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
