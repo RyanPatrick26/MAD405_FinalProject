@@ -30,10 +30,14 @@ public class SettingsActivity extends PreferenceActivity {
 
             final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
+//            settings.getString("language_pref", "en")
+
             settings.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
                 /**
-                 * When the user selects a different language, the application will change the device's
+                 * When the user selects a different language or colour, the application will change the device's
                  * location settings to display the app in either French of English
+                 * OR
+                 * Change the application's colour theme to Light or Dark
                  *
                  * @author Nicholas Allaire
                  * @param sharedPreferences
@@ -41,19 +45,22 @@ public class SettingsActivity extends PreferenceActivity {
                  */
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                    String selection = sharedPreferences.getString(key, "");
+                    String selection = sharedPreferences.getString(key, "en");
+                    System.out.println(key+": "+selection);
+                    String keyString = key.toString();
+                    System.out.println(keyString);
                     // check to see if the language option was selected
-                    if (selection == "en" || selection == "fr") {
+                    if (keyString == "language_preference") {
                         Locale locale = new Locale(selection);
                         Locale.setDefault(locale);
                         Configuration config = new Configuration();
                         config.locale = locale;
                         getActivity().getBaseContext().getResources().updateConfiguration(config,
                                 getActivity().getBaseContext().getResources().getDisplayMetrics());
-                        Toast.makeText(getActivity().getBaseContext(), getString(R.string.changed_lang),
+                        Toast.makeText(getActivity().getBaseContext(), "PLACEHOLDER: CHANGED LANG",
                                 Toast.LENGTH_SHORT).show();
                         restartApplication();
-                    } else {
+                    } else if (keyString == "colour_preference") {
                         // if language option wasn't selected, change the application colour theme
                     }
 
