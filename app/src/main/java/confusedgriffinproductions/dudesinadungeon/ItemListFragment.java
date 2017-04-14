@@ -4,11 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -160,6 +163,17 @@ public class ItemListFragment extends Fragment {
         weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList));
         armorListView.setAdapter(new ItemListAdapter(getActivity(), armorList));
         equipmentListView.setAdapter(new ItemListAdapter(getActivity(), equipmentList));
+
+        allItemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, ItemViewerFragment.newInstance(allItemsList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
 
         // add views to tab host
         TabSpec tabSpec1 = tabHost.newTabSpec((String) allItemsTab.getTag());
