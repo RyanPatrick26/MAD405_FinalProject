@@ -856,6 +856,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 character.setSneaking(Integer.parseInt(cursor.getString(15)));
                 character.setCrafting(Integer.parseInt(cursor.getString(16)));
                 character.setSurvival(Integer.parseInt(cursor.getString(17)));
+
+                characterList.add(character);
             } while (cursor.moveToNext());
         }
         // Return the list of characters
@@ -958,7 +960,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create a cursor to store all the values
         Cursor cursor = db.query(TABLE_SPELLS,
                 new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_DESCRIPTION, COLUMN_SPELLTYPE,
-                        COLUMN_COMPONENTS, COLUMN_EFFECTS, COLUMN_DMG_HEAL},
+                        COLUMN_CLASS, COLUMN_COMPONENTS, COLUMN_EFFECTS, COLUMN_DMG_HEAL},
                 COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)

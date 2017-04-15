@@ -4,11 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -125,23 +128,6 @@ public class ItemListFragment extends Fragment {
         weaponsList = db.getAllItems("Weapon");
         armorList = db.getAllItems("Armor");
         equipmentList = db.getAllItems("Equipment");
-        int[] portraitsList = new int[]{
-                R.drawable.sword,
-                R.drawable.axe,
-                R.drawable.spear,
-                R.drawable.bow,
-                R.drawable.crossbow,
-                R.drawable.leather_armor,
-                R.drawable.chain_mail,
-                R.drawable.plate_mail,
-                R.drawable.shield,
-                R.drawable.backpack,
-                R.drawable.canteen,
-                R.drawable.tinder_box,
-                R.drawable.tent,
-                R.drawable.sleeping_bag,
-                R.drawable.rations
-        };
 
         Log.d("allItemsSize", "" + allItemsList.size());
 
@@ -160,6 +146,17 @@ public class ItemListFragment extends Fragment {
         weaponsListView.setAdapter(new ItemListAdapter(getActivity(), weaponsList));
         armorListView.setAdapter(new ItemListAdapter(getActivity(), armorList));
         equipmentListView.setAdapter(new ItemListAdapter(getActivity(), equipmentList));
+
+        allItemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, ItemViewerFragment.newInstance(allItemsList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
 
         // add views to tab host
         TabSpec tabSpec1 = tabHost.newTabSpec((String) allItemsTab.getTag());
@@ -214,6 +211,47 @@ public class ItemListFragment extends Fragment {
             tabHost.setCurrentTab(i);
         }
         tabHost.setCurrentTab(0);
+
+        allItemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, ItemViewerFragment.newInstance(allItemsList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
+        weaponsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, ItemViewerFragment.newInstance(weaponsList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
+        armorListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, ItemViewerFragment.newInstance(armorList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
+        equipmentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, ItemViewerFragment.newInstance(equipmentList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
 
         return view;
     }

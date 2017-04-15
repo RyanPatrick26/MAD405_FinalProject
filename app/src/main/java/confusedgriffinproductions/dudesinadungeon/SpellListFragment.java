@@ -4,11 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -157,6 +160,37 @@ public class SpellListFragment extends Fragment {
             tabHost.setCurrentTab(i);
         }
         tabHost.setCurrentTab(0);
+
+        allSpellsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, SpellViewerFragment.newInstance(allSpellsList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
+        spellsByTypeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, SpellViewerFragment.newInstance(spellsByTypeList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
+        spellsByClassListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, SpellViewerFragment.newInstance(spellsByClassList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
 
         return view;
     }
