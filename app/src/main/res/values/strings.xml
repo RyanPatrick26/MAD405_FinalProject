@@ -20,7 +20,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- Snackbar Strings -->
     <string name="snackbar_no_software">No installed software to complete the task. Sorry!</string>
@@ -80,7 +80,7 @@
     <string name="casting">Casting</string>
     <string name="crafting">Crafting</string>
     <string name="gambling">Gambling</string>
-    <string name="lying">Lying</string>
+    <string name="lying">Opposite of heal, causes a fair bit of damage to an enemy</string>
     <string name="persuasion">Persuasion</string>
     <string name="sneaking">Sneaking</string>
     <string name="survival">Survival</string>
