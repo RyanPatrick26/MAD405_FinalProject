@@ -21,7 +21,15 @@
         <item name="android:textSize">@dimen/abc_text_size_headline_material</item>
     </style>
 
-
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimaryOther</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkOther</item>
+        <item name="colorAccent">@color/colorAccentOther</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
+        <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
+        <item name="android:textColorPrimaryInverse">@color/textColorPrimary</item>
+        <item name="android:textColorSecondaryInverse">@color/textColorSecondary</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
