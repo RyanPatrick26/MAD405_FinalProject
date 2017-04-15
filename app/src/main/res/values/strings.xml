@@ -306,6 +306,8 @@
     <string name="item_dmg_def">Damage/Def:</string>
     <string name="item_range">Item Range:</string>
     <string name="item_price">Item Price</string>
+    <string name="spell_damage">Spell Damage:</string>
+    <string name="spell_effect">Spell Effect:</string>
 
 
 </resources>

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +29,13 @@ public class SpellViewerFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    //create variable to store the views
+    TextView spellName;
+    TextView spellDamageLabel;
+    TextView spellDamageView;
+    TextView spellEffectsView;
+    TextView spellDescriptionView;
 
     public SpellViewerFragment() {
         // Required empty public constructor
@@ -64,7 +72,16 @@ public class SpellViewerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spell_viewer, container, false);
+        View view = inflater.inflate(R.layout.fragment_spell_viewer, container, false);
+
+        //initialize the views
+        spellName = (TextView)view.findViewById(R.id.spell_name);
+        spellDamageLabel = (TextView)view.findViewById(R.id.spell_damage_label);
+        spellDamageView = (TextView)view.findViewById(R.id.spell_damage);
+        spellEffectsView = (TextView)view.findViewById(R.id.spell_effects);
+        spellDescriptionView = (TextView)view.findViewById(R.id.spell_description);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
