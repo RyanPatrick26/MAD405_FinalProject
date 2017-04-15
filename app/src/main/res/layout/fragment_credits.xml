@@ -5,70 +5,105 @@
     android:orientation="vertical"
     tools:context="confusedgriffinproductions.dudesinadungeon.CreditsFragment">
 
-
-    <TextView
-        android:id="@+id/title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10sp"
-        android:layout_weight="3"
-        android:fontFamily="sans-serif-smallcaps"
-        android:gravity="center_vertical"
-        android:text="@string/credits_title"
-        android:textSize="26sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/developpers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="@string/deveoppers_credits"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/company_staff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10sp"
-            android:text="Ryan Patrick & Nicholas Allaire" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/copyright_notice"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/copyright_credits"
-            android:textSize="12sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/company_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="bottom|center_horizontal"
-            android:text="&#169; Confused Griffin Productions 2017 -  All Rights Reserved"
-            android:textAlignment="center"
-            android:textSize="12sp" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical"
+                android:text="@string/credits_title"
+                android:textSize="26sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/developpers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="@string/deveoppers_credits"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/company_staff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Ryan Patrick and Nicholas Allaire" />
+
+            <TextView
+                android:id="@+id/images_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Images"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/applogo_createdBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/appLogo_createdBy" />
+
+            <TextView
+                android:id="@+id/original_griffin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:text="@string/originalLogoCredits" />
+
+            <TextView
+                android:id="@+id/armour_createdBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:text="@string/armourCreatedBy" />
+
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30sp"
+                android:layout_weight="1"
+                android:gravity="bottom|center_horizontal"
+                android:text="&#169; Confused Griffin Productions 2017 -  All Rights Reserved"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>
