@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Light Colour Theme resources -->
+    <!-- Blue Colour Theme resources -->
     <!-- brand color: purple -->
     <color name="colorPrimary">#673ab7</color>
     <color name="colorPrimaryDark">#24134b</color>
@@ -13,5 +13,11 @@
     <!-- inverse text color: white -->
     <color name="textColorPrimaryInverse">#FFFFFF</color>
     <color name="textColorSecondaryInverse">#BDBDBD</color>
+
+    <!-- Green Colour Theme resources -->
+    <color name="colorPrimaryOther">#98C548</color>
+    <color name="colorPrimaryDarkOther">#1D270C</color>
+    <color name="colorPrimaryLightOther">#DBECB4</color>
+    <color name="colorPrimaryAccentOther">#9F8274</color>
 
 </resources>
