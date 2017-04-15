@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity
         CharacterCreatorFragment.OnFragmentInteractionListener,
         ItemListFragment.OnFragmentInteractionListener,
         SpellListFragment.OnFragmentInteractionListener,
-        ItemViewerFragment.OnFragmentInteractionListener{
+        ItemViewerFragment.OnFragmentInteractionListener,
+        SpellViewerFragment.OnFragmentInteractionListener{
 
     // Fragment manager to allow us to display, remove, and create fragments
     FragmentManager fm = getSupportFragmentManager();
