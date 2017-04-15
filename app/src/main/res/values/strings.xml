@@ -308,6 +308,9 @@
     <string name="item_price">Item Price</string>
     <string name="spell_damage">Spell Damage:</string>
     <string name="spell_effect">Spell Effect:</string>
+    <string name="credits_title">Credits</string>
+    <string name="deveoppers_credits">Developpers</string>
+    <string name="copyright_credits">Dudes In A Dungeon is a game licensed and created by Warlocks By the Sea. Confused Griffin Productions is in no way affiliated with them aside from the creation of this companion application.</string>
 
 
 </resources>
