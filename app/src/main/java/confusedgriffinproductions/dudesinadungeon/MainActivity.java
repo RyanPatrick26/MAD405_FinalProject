@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity
         CharacterCreatorFragment.OnFragmentInteractionListener,
         ItemListFragment.OnFragmentInteractionListener,
         SpellListFragment.OnFragmentInteractionListener,
-        ItemViewerFragment.OnFragmentInteractionListener{
+        ItemViewerFragment.OnFragmentInteractionListener,
+        SpellViewerFragment.OnFragmentInteractionListener{
 
     // Fragment manager to allow us to display, remove, and create fragments
     FragmentManager fm = getSupportFragmentManager();
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         });
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
-        trans.replace(R.id.content_main, new ItemListFragment());
+        trans.replace(R.id.content_main, new SpellListFragment());
         trans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
