@@ -18,8 +18,10 @@
             <LinearLayout
                 android:id="@+id/titleLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:elevation="1dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -47,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_weight="5"
+                android:layout_weight="1"
                 android:padding="10dp"
                 android:text="@string/introductionTextView"
                 android:textAlignment="textStart"
@@ -57,14 +59,15 @@
             <LinearLayout
                 android:id="@+id/buttonLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:orientation="horizontal">
 
                     <Button
@@ -90,7 +93,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:orientation="horizontal">
 
                     <Button
