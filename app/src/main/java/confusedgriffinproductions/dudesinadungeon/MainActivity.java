@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity
         CharacterListFragment.OnFragmentInteractionListener,
         CharacterCreatorFragment.OnFragmentInteractionListener,
         ItemListFragment.OnFragmentInteractionListener,
-        SpellListFragment.OnFragmentInteractionListener{
+        SpellListFragment.OnFragmentInteractionListener,
+        CreditsFragment.OnFragmentInteractionListener{
 
     // Fragment manager to allow us to display, remove, and create fragments
     FragmentManager fm = getSupportFragmentManager();
@@ -107,7 +108,10 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             return true;
         } else if (id == R.id.credits_settings) {
-            // Go to the credits page
+            // Navigate to the Credits Fragment
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new CreditsFragment());
+            tran.commit();
         }
 
         return super.onOptionsItemSelected(item);
