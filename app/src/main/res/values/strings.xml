@@ -132,11 +132,11 @@
     <string name="axe_image" translatable="false">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
     <string name="spear_image" translatable="false">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
     <string name="dagger_image" translatable="false">https://pixabay.com/p-34231/?no_redirect</string>
-    <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
+    <string name="bow_image" translatable="false">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
     <string name="crossbow_image" translatable="false">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
     <string name="plate_mail_image" translatable="false">https://pixabay.com/en/armor-battle-knight-1297111/</string>
     <string name="backpack_image" translatable="false">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
-    <string name="canteen_image">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
+    <string name="canteen_image" translatable="false">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
     <string name="tinder_box_image" translatable="false">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
     <string name="tent_image" translatable="false">https://pixabay.com/en/camping-camp-tent-mountains-field-2169976/</string>
     <string name="sleeping_bag_image" translatable="false">https://pixabay.com/p-1294371/?no_redirect</string>
@@ -202,7 +202,7 @@
     <string name="confuse_description">Make things easier for you and your friends but sowing a bit of confusion</string>
     <string name="inflict_pain_description">Opposite of heal, causes a fair bit of damage to an enemy</string>
     <string name="resurrect_description">If a friend has died, don\'t worry, just bring them back</string>
-    <string name="call_miracle_description">For those times when you\'re in real trouble, try calling on an act of god</string>
+    <string name="call_miracle_description">For those times when you\'re in real trouble, try calling on an act of God</string>
     <string name="remove_curse_description">For all those times that you or your friends get cursed, just clear them of it</string>
     <string name="bless_description">Give your friends a bit of a blessing for their times in need</string>
     
