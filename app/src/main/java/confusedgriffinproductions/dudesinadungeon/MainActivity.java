@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -53,10 +54,11 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction trans = fm.beginTransaction();
-        trans.replace(R.id.content_main, new MainFragment());
-        trans.commit();
+        FragmentTransaction tran = fm.beginTransaction();
+        tran.replace(R.id.content_main, new MainFragment());
+        tran.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -71,8 +73,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        FragmentManager fm = getSupportFragmentManager();
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (fm.getBackStackEntryCount() > 0) {
+            fm.popBackStack();
         } else {
             super.onBackPressed();
         }
@@ -109,26 +116,31 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_about) {
             // Navigate to the Main Fragment
             FragmentTransaction tran = fm.beginTransaction();
+            tran.addToBackStack(null);
             tran.replace(R.id.content_main, new MainFragment());
             tran.commit();
         } else if (id == R.id.nav_create_char) {
             // Navigate to the Create Character Fragment
             FragmentTransaction tran = fm.beginTransaction();
+            tran.addToBackStack(null);
             tran.replace(R.id.content_main, new CharacterCreatorFragment());
             tran.commit();
         } else if (id == R.id.nav_view_char) {
             // Navigate to the View Character List Fragment
             FragmentTransaction tran = fm.beginTransaction();
+            tran.addToBackStack(null);
             tran.replace(R.id.content_main, new CharacterListFragment());
             tran.commit();
         } else if (id == R.id.nav_items) {
             // Navigate to the Item List Fragment
             FragmentTransaction tran = fm.beginTransaction();
+            tran.addToBackStack(null);
             tran.replace(R.id.content_main, new ItemListFragment());
             tran.commit();
         } else if (id == R.id.nav_spells) {
             // Navigate to the Spells List Fragment
             FragmentTransaction tran = fm.beginTransaction();
+            tran.addToBackStack(null);
             tran.replace(R.id.content_main, new SpellListFragment());
             tran.commit();
         } else if (id == R.id.nav_email) {
