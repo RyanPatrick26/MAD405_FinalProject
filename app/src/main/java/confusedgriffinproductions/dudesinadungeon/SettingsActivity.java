@@ -67,7 +67,7 @@ public class SettingsActivity extends PreferenceActivity {
                             getActivity().getBaseContext().getResources().updateConfiguration(config,
                                     getActivity().getBaseContext().getResources().getDisplayMetrics());
                             // Display a toast to inform the user of what happened
-                            Toast.makeText(getActivity().getBaseContext(), "PLACEHOLDER: SETTINGS CHANGED",
+                            Toast.makeText(getActivity().getBaseContext(), R.string.changed_lang_toast,
                                     Toast.LENGTH_SHORT).show();
                             // Restart the application to ensure a proper language transition.
                             restartApplication();
@@ -76,13 +76,32 @@ public class SettingsActivity extends PreferenceActivity {
                         // Change the application's colour based on the user's selection
                         case "colour_preference":
                             // Change the application's colour based on the user's selection
-                            selection = sharedPreferences.getString(key, "light");
+                            selection = sharedPreferences.getString(key, "purple");
 
-                            Toast.makeText(getActivity().getBaseContext(), "PLACEHOLDER: SETTINGS CHANGED",
-                                    Toast.LENGTH_SHORT).show();
+                            switch (selection) {
+                                case "purple":
+                                    // Change the colour theme to purple
 
-                            // Restart the application to ensure a proper colour theme transition.
-                            restartApplication();
+                                    Toast.makeText(getActivity().getBaseContext(), R.string.changed_colour_toast,
+                                            Toast.LENGTH_SHORT).show();
+
+                                    // Restart the application to ensure a proper colour theme transition.
+                                    restartApplication();
+                                    break;
+                                case "green":
+                                    // Change the colour theme to green
+
+                                    Toast.makeText(getActivity().getBaseContext(), R.string.changed_colour_toast,
+                                            Toast.LENGTH_SHORT).show();
+
+                                    // Restart the application to ensure a proper colour theme transition.
+                                    restartApplication();
+                                    break;
+                                default:
+                                    // Log an error
+                                    Toast.makeText(getActivity().getBaseContext(), R.string.toast_error_unexpected,
+                                            Toast.LENGTH_SHORT).show();
+                            }
                             break;
                     }
 

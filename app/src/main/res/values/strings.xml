@@ -303,7 +303,10 @@
     <string name="colour_theme_preference_summary">Change the application\'s colour theme.\nApplication will restart.</string>
     <string name="credits_settings_title">Credits</string>
     <string name="default_language_preference">en</string>
-    <string name="default_colour_preference">light</string>
+    <string name="default_colour_preference">purple</string>
     <string name="lang_test">ENGLISH</string>
+    <string name="changed_lang_toast">Language changed. Restarting application.</string>
+    <string name="changed_colour_toast">Colour theme changed. Restarting application.</string>
+    <string name="toast_error_unexpected">An unexpected error occured</string>
 
 </resources>
