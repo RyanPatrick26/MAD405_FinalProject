@@ -302,6 +302,10 @@
 
     <string name="delete_confirmation">Are you sure you wish to delete this character?</string>
     <string name="no">No</string>
+    <string name="item_type">Item Type:</string>
+    <string name="item_dmg_def">Damage/Def:</string>
+    <string name="item_range">Item Range:</string>
+    <string name="item_price">Item Price</string>
 
 
 </resources>

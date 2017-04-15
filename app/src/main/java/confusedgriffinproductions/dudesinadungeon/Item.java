@@ -33,6 +33,7 @@ public class Item {
         this.type = type;
         this.description = description;
         this.dmg_def = dmg_def;
+        this.range = range;
         this.imageId = imageId;
     }
 

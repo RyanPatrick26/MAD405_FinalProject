@@ -43,6 +43,8 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         itemDescription.setText(itemsList.get(position).getDescription());
         Picasso.with(context).load(itemsList.get(position).getImageId()).resize(100,100).into(itemImage);
 
+
+
         return view;
     }
 }

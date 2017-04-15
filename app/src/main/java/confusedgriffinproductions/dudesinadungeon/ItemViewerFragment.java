@@ -3,6 +3,7 @@ package confusedgriffinproductions.dudesinadungeon;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.transition.Visibility;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,9 @@ public class ItemViewerFragment extends Fragment {
     TextView itemName;
     TextView itemType;
     TextView itemDmg_Def;
+    TextView itemDmg_defLabel;
+    TextView itemRangeLabel;
+    TextView itemRange;
     TextView itemPrice;
     TextView itemDescription;
 
@@ -82,7 +86,10 @@ public class ItemViewerFragment extends Fragment {
         //initialize the views
         itemName = (TextView)view.findViewById(R.id.item_name);
         itemType = (TextView)view.findViewById(R.id.item_type);
+        itemDmg_defLabel = (TextView)view.findViewById(R.id.dmg_def_label);
         itemDmg_Def = (TextView)view.findViewById(R.id.item_dmg_def);
+        itemRangeLabel = (TextView)view.findViewById(R.id.range_label);
+        itemRange = (TextView)view.findViewById(R.id.item_range);
         itemPrice = (TextView)view.findViewById(R.id.item_price);
         itemDescription = (TextView)view.findViewById(R.id.item_description);
 
@@ -94,11 +101,24 @@ public class ItemViewerFragment extends Fragment {
 
         itemName.setText(item.getName());
         itemType.setText(item.getType());
-        itemDmg_Def.setText(item.getDmg_def() + "");
+        if(item.getDmg_def() == 0){
+            itemDmg_defLabel.setVisibility(View.GONE);
+            itemDmg_Def.setVisibility(View.GONE);
+        }
+        else{
+            itemDmg_Def.setText(item.getDmg_def() + "");
+        }
         itemPrice.setText(item.getPrice() + "");
+        if(item.getRange() == 0){
+            itemRangeLabel.setVisibility(View.GONE);
+            itemRange.setVisibility(View.GONE);
+        }
+        else{
+            itemRange.setText(item.getRange() + "");
+        }
         itemDescription.setText(item.getDescription());
 
-        Picasso.with(getContext()).load(item.getImageId()).resize(100, 100).into(itemImage);
+        Picasso.with(getContext()).load(item.getImageId()).resize(120, 120).into(itemImage);
 
         return view;
     }
