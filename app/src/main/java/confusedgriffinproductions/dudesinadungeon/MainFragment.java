@@ -94,6 +94,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 // Navigate to the Character Creator Fragment
                 FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
                 tran.addToBackStack(null);
                 tran.replace(R.id.content_main, new CharacterCreatorFragment());
                 tran.commit();
@@ -105,6 +106,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 // Navigate to the Character List Fragment
                 FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
                 tran.addToBackStack(null);
                 tran.replace(R.id.content_main, new CharacterListFragment());
                 tran.commit();
@@ -116,6 +118,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 // Navigate to the Item List Fragment
                 FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
                 tran.addToBackStack(null);
                 tran.replace(R.id.content_main, new ItemListFragment());
                 tran.commit();
@@ -127,6 +130,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 // Navigate to the Spell List Fragment
                 FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
                 tran.addToBackStack(null);
                 tran.replace(R.id.content_main, new SpellListFragment());
                 tran.commit();
