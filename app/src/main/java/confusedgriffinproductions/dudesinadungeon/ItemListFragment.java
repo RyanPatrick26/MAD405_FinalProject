@@ -105,7 +105,7 @@ public class ItemListFragment extends Fragment {
                 // Colour for the unselected tabs
                 for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
                     tabHost.getTabWidget().getChildAt(i)
-                            .setBackgroundResource(R.color.colorDivider);
+                            .setBackgroundResource(R.color.colorPrimary);
                     TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
                     tv.setTextColor(getResources().getColor(R.color.colorAccent, null));
                 }
