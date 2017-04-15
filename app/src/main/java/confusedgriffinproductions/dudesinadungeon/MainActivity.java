@@ -43,14 +43,11 @@ public class MainActivity extends AppCompatActivity
     // SMS Message String
     String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
 
-    // String for device language
-    private String deviceLanguage;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Check to make sure the correct language is set
+        // Check to make sure the correct language is set OR set the proper one
         checkLanguage();
 
         setContentView(R.layout.activity_main);
@@ -251,9 +248,11 @@ public class MainActivity extends AppCompatActivity
      * @author Nicholas Allaire
      */
     public static Locale getLocale(Context context){
+        // Get the shared preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-
+        // Get the language from the shared preferences
         String lang = sharedPreferences.getString("language_preference", "en");
+        // Switch statement to determine which language code to return
         switch (lang) {
             case "en":
                 lang = "en";
@@ -262,6 +261,7 @@ public class MainActivity extends AppCompatActivity
                 lang = "fr";
                 break;
         }
+        // return the proper language
         return new Locale(lang);
     }
 
@@ -272,12 +272,17 @@ public class MainActivity extends AppCompatActivity
      * @author Nicholas Allaire
      */
     public void checkLanguage() {
+        // Get the application resources
         Resources resources = getResources();
-        Configuration configuration = resources.getConfiguration();
+        // Get the application's configuration
+        Configuration config = resources.getConfiguration();
+        // Get the current Locale
         Locale locale = getLocale(this);
-        if (!configuration.locale.equals(locale)) {
-            configuration.setLocale(locale);
-            resources.updateConfiguration(configuration, null);
+        // If the Locale doesn't equal the current locale, set it as such
+        if (!config.locale.equals(locale)) {
+            config.setLocale(locale);
+            // update the configuration
+            resources.updateConfiguration(config, null);
         }
     }
 

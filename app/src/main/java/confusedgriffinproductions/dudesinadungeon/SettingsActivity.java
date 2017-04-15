@@ -9,13 +9,15 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity {
 
+    // Locale property
     private static Locale locale;
+    // App configuration property
     private static Configuration config;
+    // Preference selection
     private static String selection;
 
     @Override
@@ -30,10 +32,11 @@ public class SettingsActivity extends PreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            // Add the preferences from the preferences XML
             addPreferencesFromResource(R.xml.preferences);
-
+            // Get the sharedPreferences in order to interact with the application settings
             final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-
+            // Register the onSharedPreferenceChangeListener to the settings SHaredPreferences
             settings.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
                 /**
                  * When the user selects a different language or colour, the application will change the device's
@@ -48,30 +51,38 @@ public class SettingsActivity extends PreferenceActivity {
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                     switch (key) {
+                        // Change the application's app language based on the user's selection
                         case "language_preference":
-                            System.out.println(key);
-                            // Change the application's colour based on the user's selection
+                            // Get the user's selection from the shared preferences
                             selection = sharedPreferences.getString(key, "en");
-                            System.out.println(selection);
+                            // Set the locale to a new locale with a the user's selection
                             locale = new Locale(selection.toString());
+                            // Set the default locale to Locale
                             Locale.setDefault(locale);
+                            // Declare the configuration
                             config = new Configuration();
+                            // Set the Locale to the new configuration
                             config.setLocale(locale);
+                            // Update the configuration of the application to Config
                             getActivity().getBaseContext().getResources().updateConfiguration(config,
                                     getActivity().getBaseContext().getResources().getDisplayMetrics());
-
-
+                            // Display a toast to inform the user of what happened
                             Toast.makeText(getActivity().getBaseContext(), "PLACEHOLDER: SETTINGS CHANGED",
                                     Toast.LENGTH_SHORT).show();
-
                             // Restart the application to ensure a proper language transition.
                             restartApplication();
                             break;
 
+                        // Change the application's colour based on the user's selection
                         case "colour_preference":
                             // Change the application's colour based on the user's selection
                             selection = sharedPreferences.getString(key, "light");
 
+                            Toast.makeText(getActivity().getBaseContext(), "PLACEHOLDER: SETTINGS CHANGED",
+                                    Toast.LENGTH_SHORT).show();
+
+                            // Restart the application to ensure a proper colour theme transition.
+                            restartApplication();
                             break;
                     }
 
@@ -87,6 +98,7 @@ public class SettingsActivity extends PreferenceActivity {
          * @author Nicholas Allaire
          */
         private void restartApplication() {
+            // Create and launch a new intent to launch the MainActivity.
             Intent intent = new Intent(getActivity(), MainActivity.class);
             getActivity().finish();
             startActivity(intent);
