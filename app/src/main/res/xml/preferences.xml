@@ -3,14 +3,14 @@
 
 
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="@string/default_language_preference"
         android:title="Language"
         android:entries="@array/language_preference"
         android:entryValues="@array/language_preference_value"
         android:key="language_preference"
         android:summary="@string/language_preference_summary" />
     <ListPreference
-        android:defaultValue="1"
+        android:defaultValue="@string/default_colour_preference"
         android:title="@string/colour_theme_preference_title"
         android:entries="@array/colour_theme_preference"
         android:entryValues="@array/colour_theme_preference_value"

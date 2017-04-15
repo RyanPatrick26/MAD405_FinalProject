@@ -304,5 +304,6 @@
     <string name="credits_settings_title">Credits</string>
     <string name="default_language_preference">en</string>
     <string name="default_colour_preference">light</string>
+    <string name="lang_test">ENGLISH</string>
 
 </resources>

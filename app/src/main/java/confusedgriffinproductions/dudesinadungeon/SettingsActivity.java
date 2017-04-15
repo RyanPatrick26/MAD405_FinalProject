@@ -14,6 +14,10 @@ import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity {
 
+    private static Locale locale;
+    private static Configuration config;
+    private static String selection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +34,6 @@ public class SettingsActivity extends PreferenceActivity {
 
             final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
-//            settings.getString("language_pref", "en")
-
             settings.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
                 /**
                  * When the user selects a different language or colour, the application will change the device's
@@ -45,23 +47,32 @@ public class SettingsActivity extends PreferenceActivity {
                  */
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                    String selection = sharedPreferences.getString(key, "en");
-                    System.out.println(key+": "+selection);
-                    String keyString = key.toString();
-                    System.out.println(keyString);
-                    // check to see if the language option was selected
-                    if (keyString == "language_preference") {
-                        Locale locale = new Locale(selection);
-                        Locale.setDefault(locale);
-                        Configuration config = new Configuration();
-                        config.locale = locale;
-                        getActivity().getBaseContext().getResources().updateConfiguration(config,
-                                getActivity().getBaseContext().getResources().getDisplayMetrics());
-                        Toast.makeText(getActivity().getBaseContext(), "PLACEHOLDER: CHANGED LANG",
-                                Toast.LENGTH_SHORT).show();
-                        restartApplication();
-                    } else if (keyString == "colour_preference") {
-                        // if language option wasn't selected, change the application colour theme
+                    switch (key) {
+                        case "language_preference":
+                            System.out.println(key);
+                            // Change the application's colour based on the user's selection
+                            selection = sharedPreferences.getString(key, "en");
+                            System.out.println(selection);
+                            locale = new Locale(selection.toString());
+                            Locale.setDefault(locale);
+                            config = new Configuration();
+                            config.setLocale(locale);
+                            getActivity().getBaseContext().getResources().updateConfiguration(config,
+                                    getActivity().getBaseContext().getResources().getDisplayMetrics());
+
+
+                            Toast.makeText(getActivity().getBaseContext(), "PLACEHOLDER: SETTINGS CHANGED",
+                                    Toast.LENGTH_SHORT).show();
+
+                            // Restart the application to ensure a proper language transition.
+                            restartApplication();
+                            break;
+
+                        case "colour_preference":
+                            // Change the application's colour based on the user's selection
+                            selection = sharedPreferences.getString(key, "light");
+
+                            break;
                     }
 
                 }

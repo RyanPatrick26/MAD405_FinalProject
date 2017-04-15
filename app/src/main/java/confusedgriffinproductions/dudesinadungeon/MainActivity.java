@@ -1,7 +1,12 @@
 package confusedgriffinproductions.dudesinadungeon;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +22,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.Locale;
+
 import static java.net.Proxy.Type.HTTP;
 
 public class MainActivity extends AppCompatActivity
@@ -42,6 +49,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Check to make sure the correct language is set
+        checkLanguage();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         });
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
-        trans.replace(R.id.content_main, new SpellListFragment());
+        trans.replace(R.id.content_main, new MainFragment());
         trans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -229,6 +240,44 @@ public class MainActivity extends AppCompatActivity
             Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                     getString(R.string.snackbar_no_software), Snackbar.LENGTH_SHORT);
             snackbar.show();
+        }
+    }
+
+    /**
+     * Gets the current Locale of the application in order to properly set the application language.
+     *
+     * @param context
+     * @return new Locale containing the correct language
+     * @author Nicholas Allaire
+     */
+    public static Locale getLocale(Context context){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        String lang = sharedPreferences.getString("language_preference", "en");
+        switch (lang) {
+            case "en":
+                lang = "en";
+                break;
+            case "fr":
+                lang = "fr";
+                break;
+        }
+        return new Locale(lang);
+    }
+
+    /**
+     * Uses the getLocale method to properly set the Locale for the entire application
+     * in order to display the application in the correct language.
+     *
+     * @author Nicholas Allaire
+     */
+    public void checkLanguage() {
+        Resources resources = getResources();
+        Configuration configuration = resources.getConfiguration();
+        Locale locale = getLocale(this);
+        if (!configuration.locale.equals(locale)) {
+            configuration.setLocale(locale);
+            resources.updateConfiguration(configuration, null);
         }
     }
 
