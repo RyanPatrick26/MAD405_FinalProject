@@ -9,9 +9,9 @@
     <string name="action_settings">Settings</string>
 
     <!-- Homepage string values -->
-    <string name="homepageTitle">Dudes In A Dungeon</string>
-    <string name="introductionTextView">Man-of-war hempen halter Sea Legs coxswain spanker booty jolly boat fire in the hole ballast to go on account. Bilged on her anchor interloper bowsprit hail-shot come about Jolly Roger chase guns splice the main brace crack Jennys tea cup wherry. Jolly boat Davy Jones\' Locker belaying pin pink hail-shot Chain Shot matey strike colors bilge rat case shot.</string>
-    <string name="createCharacterButtonText">Create A Character</string>
+    <string name="homepageTitle">Dudes In A Dungeon\nCompanion App</string>
+    <string name="introductionTextView">Greetings, Adventurer!\n\nWelcome to the world of Dudes In A Dungeon: a tabletop RPG where you and your fellow dudes will set out on an adventure for epic loot. Dudes In A Dungeon is an RPG created by Warlocks By the Sea: an amazing company responsible for making some of the greatest card and board games.\n\nWe\'ve been given the pleasure of creating this companion application to help players keep track of their characters, items, and spells.\n\nFeel free to make some characters, get some items, learn some spells, and get in that dungeon.\n\nHappy looting!</string>
+    <string name="createCharacterButtonText">Create Character</string>
     <string name="viewCharactersButtonText">View Characters</string>
     <string name="viewItemsButtonText">Items</string>
     <string name="viewSpellsButtonText">Spells</string>

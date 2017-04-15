@@ -6,73 +6,118 @@
     tools:context="confusedgriffinproductions.dudesinadungeon.MainFragment"
     android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/homeTitleTextView"
-        android:text="@string/homepageTitle"
-        android:gravity="center_horizontal" />
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_menu_slideshow"
-        android:id="@+id/imageView2"
-        android:layout_weight="1"
-        android:adjustViewBounds="false" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/introductionTextView"
-        tools:text="@string/introductionTextView" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:text="@string/createCharacterButtonText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:elevation="0dp"
-            android:layout_weight="1"
-            style="@style/Base.Widget.AppCompat.Button" />
+            android:orientation="vertical">
 
-        <Button
-            android:text="@string/viewCharactersButtonText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            android:layout_weight="1"
-            style="@style/Base.Widget.AppCompat.Button" />
+            <LinearLayout
+                android:id="@+id/titleLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="false"
+                    app:srcCompat="@mipmap/ic_launcher" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:text="@string/viewItemsButtonText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button3"
-            android:layout_weight="1"
-            style="@style/Base.Widget.AppCompat.Button" />
+                <TextView
+                    android:id="@+id/homeTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/homepageTitle"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-        <Button
-            android:text="@string/viewSpellsButtonText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button4"
-            android:layout_weight="1"
-            style="@style/Base.Widget.AppCompat.Button" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/introductionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="5"
+                android:padding="10dp"
+                android:text="@string/introductionTextView"
+                android:textAlignment="textStart"
+                android:textSize="20sp"
+                tools:text="@string/introductionTextView" />
+
+            <LinearLayout
+                android:id="@+id/buttonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/viewItemsButton"
+                        style="@style/Base.Widget.AppCompat.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:text="@string/viewItemsButtonText"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/viewSpellsButton"
+                        style="@style/Base.Widget.AppCompat.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:text="@string/viewSpellsButtonText"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/createCharacterButton"
+                        style="@style/Base.Widget.AppCompat.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:elevation="0dp"
+                        android:text="@string/createCharacterButtonText"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/viewCharactersButton"
+                        style="@style/Base.Widget.AppCompat.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:text="@string/viewCharactersButtonText"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
