@@ -1,10 +1,12 @@
 package confusedgriffinproductions.dudesinadungeon;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -73,6 +76,8 @@ public class CharacterCreatorFragment extends Fragment {
     Button resetSkillsButton;
     Button resetCharacterButton;
     Button confirmButton;
+    Button addItemsButton;
+    Button addSpellsButton;
 
     /**
      * Create variables to store the ListViews
@@ -87,6 +92,9 @@ public class CharacterCreatorFragment extends Fragment {
     String[] classArray;
 
     int index;
+
+    ArrayList<Item> itemsList;
+    ArrayList<Spell> spellList;
 
     public CharacterCreatorFragment() {
         // Required empty public constructor
@@ -166,10 +174,6 @@ public class CharacterCreatorFragment extends Fragment {
                 (TextView) view.findViewById(R.id.luck_field),
                 (TextView) view.findViewById(R.id.intelligence_field)
         };
-
-//        attributeFields[0].setText("" + 8);
-//        attributeFields[2].setText("" + 8);
-//        attributeFields[4].setText("" + 4);
 
         //set on click listener for the spinners
         raceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -330,6 +334,8 @@ public class CharacterCreatorFragment extends Fragment {
         resetSkillsButton = (Button)view.findViewById(R.id.reset_button);
         resetCharacterButton = (Button)view.findViewById(R.id.reset_character);
         confirmButton = (Button)view.findViewById(R.id.confirm_button);
+        addItemsButton = (Button)view.findViewById(R.id.add_item_button);
+        addSpellsButton = (Button)view.findViewById(R.id.add_spell_button);
 
         /**
          * Instantiate the ListViews
@@ -519,6 +525,24 @@ public class CharacterCreatorFragment extends Fragment {
             }
         });
 
+        addItemsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.item_list);
+
+                ListView listView = (ListView)dialog.findViewById(R.id.item_list);
+                dialog.setCancelable(true);
+                dialog.setTitle(getContext().getResources().getString(R.string.add_items));
+                dialog.show();
+            }
+        });
+
+        addSpellsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
         return view;
     }
 
