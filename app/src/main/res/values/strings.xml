@@ -318,7 +318,8 @@
     <string name="spell_effect">Spell Effect:</string>
     <string name="add_items">Add Items</string>
     <string name="add_spells">Add Spells</string>
-    >>>>>>> staging
+
+    <string name="remove_item">Remove\nItem</string>
 
 
 </resources>

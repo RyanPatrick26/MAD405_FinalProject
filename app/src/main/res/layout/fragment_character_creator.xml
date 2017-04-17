@@ -990,11 +990,13 @@
                     tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
-            <ListView
+            <LinearLayout
+                android:id="@+id/item_list_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/item_list"
-                tools:ignore="NestedScrolling" />
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/add_item_button"
@@ -1006,11 +1008,11 @@
                 android:text="@string/add_items"
                 tools:ignore="RtlHardcoded" />
 
-            <ListView
+            <LinearLayout
+                android:id="@+id/spell_list_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/spell_list"
-                tools:ignore="NestedScrolling" />
+                android:orientation="vertical"></LinearLayout>
 
             <Button
                 android:id="@+id/add_spell_button"

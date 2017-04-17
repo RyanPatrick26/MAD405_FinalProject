@@ -1,26 +1,36 @@
 package confusedgriffinproductions.dudesinadungeon;
 
-import android.app.Dialog;
+import android.app.ActionBar;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -80,10 +90,10 @@ public class CharacterCreatorFragment extends Fragment {
     Button addSpellsButton;
 
     /**
-     * Create variables to store the ListViews
+     * Create variables to store the LinearLayouts
      */
-    ListView itemListView;
-    ListView spellListView;
+    LinearLayout itemListView;
+    LinearLayout spellListView;
 
     /**
      * Create arrays to store the available races and classes
@@ -132,6 +142,9 @@ public class CharacterCreatorFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_character_creator, container, false);
+
+        itemsList = new ArrayList<>();
+        spellList = new ArrayList<>();
 
         /**
          * Instantiate the EditTexts
@@ -340,8 +353,11 @@ public class CharacterCreatorFragment extends Fragment {
         /**
          * Instantiate the ListViews
          */
-        itemListView = (ListView)view.findViewById(R.id.item_list);
-        spellListView = (ListView)view.findViewById(R.id.spell_list);
+        itemListView = (LinearLayout)view.findViewById(R.id.item_list_layout);
+        spellListView = (LinearLayout)view.findViewById(R.id.spell_list_layout);
+
+        itemListView.setPadding(15,15,15,15);
+
 
         /**
          * Add functionality to the buttons
@@ -528,13 +544,61 @@ public class CharacterCreatorFragment extends Fragment {
         addItemsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.item_list);
+                AlertDialog.Builder addItemsDialog = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                View convertView = inflater.inflate(R.layout.item_list, null);
+                addItemsDialog.setView(convertView);
+                addItemsDialog.setTitle(getContext().getResources().getString(R.string.add_items));
 
-                ListView listView = (ListView)dialog.findViewById(R.id.item_list);
-                dialog.setCancelable(true);
-                dialog.setTitle(getContext().getResources().getString(R.string.add_items));
-                dialog.show();
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                ArrayList<Item> tempItemsList = db.getAllItems();
+                db.closeDB();
+
+                Log.d("array size", tempItemsList.size() + "");
+                ListView listView = (ListView)convertView.findViewById(R.id.item_list);
+                listView.setAdapter(new addItemsArrayAdapter(getContext(), tempItemsList));
+
+                addItemsDialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        itemListView.removeAllViews();
+                        for(index = 0; index < itemsList.size(); index++){
+                            final Item item = itemsList.get(index);
+                            final CardView cardView = new CardView(getContext());
+                            LinearLayout layout = new LinearLayout(getContext());
+                            TextView itemNameTextView = new TextView(getContext());
+                            ImageView itemImageView = new ImageView(getContext());
+
+                            cardView.setUseCompatPadding(true);
+                            cardView.setId(index);
+
+                            layout.setOnLongClickListener(new View.OnLongClickListener() {
+                                @Override
+                                public boolean onLongClick(View v) {
+                                    itemsList.remove(item);
+                                    itemListView.removeView(cardView);
+                                    return false;
+                                }
+                            });
+
+                            itemNameTextView.setText(itemsList.get(index).getName());
+                            itemNameTextView.setTextSize(20);
+                            itemNameTextView.setGravity(Gravity.CENTER_VERTICAL);
+
+                            Picasso.with(getContext()).load(itemsList.get(index).getImageId()).resize(80,80).into(itemImageView);
+
+                            layout.addView(itemImageView);
+                            layout.addView(itemNameTextView);
+                            layout.setPadding(20,20,20,20);
+
+                            cardView.addView(layout);
+
+                            itemListView.addView(cardView);
+                        }
+                    }
+                });
+
+                addItemsDialog.show();
             }
         });
 
@@ -592,21 +656,6 @@ public class CharacterCreatorFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 
     /**
@@ -687,5 +736,94 @@ public class CharacterCreatorFragment extends Fragment {
         }
 
         return nums;
+    }
+
+    private class addItemsArrayAdapter extends ArrayAdapter {
+        ArrayList<Item> tempItemsList;
+        public addItemsArrayAdapter(Context context, ArrayList<Item> tempItemsList) {
+            super(context, 0, tempItemsList);
+            this.tempItemsList = tempItemsList;
+        }
+        public View getView(final int position, View convertView, ViewGroup parent){
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_check_box, parent, false);
+
+            CheckBox checkBox = (CheckBox)convertView.findViewById(R.id.check_box);
+            checkBox.setText(tempItemsList.get(position).getName());
+
+            for(int i = 0; i < itemsList.size(); i++){
+                if(itemsList.get(i).getId() == tempItemsList.get(position).getId()){
+                    checkBox.setChecked(true);
+                }
+            }
+
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        if(!itemsList.contains(tempItemsList.get(position))){
+                            itemsList.add(tempItemsList.get(position));
+                        }
+                    }
+                    else{
+                        itemsList.remove(tempItemsList.get(position));
+                    }
+                    Collections.sort(itemsList);
+                }
+            });
+
+            return convertView;
+        }
+    }
+
+    private class addSpellsArrayAdapter extends ArrayAdapter {
+        ArrayList<Spell> tempSpellList;
+        public addSpellsArrayAdapter(Context context, ArrayList<Spell> tempSpellList) {
+            super(context, 0, tempSpellList);
+            this.tempSpellList = tempSpellList;
+        }
+        public View getView(final int position, View convertView, ViewGroup parent){
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_check_box, parent, false);
+
+            CheckBox checkBox = (CheckBox)convertView.findViewById(R.id.check_box);
+            checkBox.setText(tempSpellList.get(position).getName());
+
+            for(int i = 0; i < itemsList.size(); i++){
+                if(itemsList.get(i).getId() == tempSpellList.get(position).getId()){
+                    checkBox.setChecked(true);
+                }
+            }
+
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        if(!itemsList.contains(tempSpellList.get(position))){
+                            itemsList.add(tempSpellList.get(position));
+                        }
+                    }
+                    else{
+                        itemsList.remove(tempSpellList.get(position));
+                    }
+                    Collections.sort(spellList);
+                }
+            });
+
+            return convertView;
+        }
+    }
+
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
     }
 }
