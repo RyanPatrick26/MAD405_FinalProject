@@ -445,8 +445,6 @@
                         tools:ignore="ButtonStyle,HardcodedText" />
                 </LinearLayout>
 
-                /
-
                 <TextView
                     android:id="@+id/gambling_label"
                     android:layout_width="wrap_content"
@@ -567,7 +565,6 @@
                     android:text="@string/lying"
                     android:textColor="@android:color/background_dark"
                     tools:ignore="HardcodedText" />
-                /
 
                 <TextView
                     android:id="@+id/lying_field"
@@ -677,7 +674,6 @@
                     android:text="@string/persuasion"
                     android:textColor="@android:color/background_dark"
                     tools:ignore="HardcodedText" />
-                /
 
                 <TextView
                     android:id="@+id/persuasion_field"
@@ -787,7 +783,6 @@
                     android:text="@string/sneaking"
                     android:textColor="@android:color/background_dark"
                     tools:ignore="HardcodedText" />
-                /
 
                 <TextView
                     android:id="@+id/sneaking_field"
@@ -897,7 +892,6 @@
                     android:text="@string/survival"
                     android:textColor="@android:color/background_dark"
                     tools:ignore="HardcodedText" />
-                /
 
                 <TextView
                     android:id="@+id/survival_field"

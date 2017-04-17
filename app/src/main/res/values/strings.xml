@@ -320,6 +320,7 @@
     <string name="add_spells">Add Spells</string>
 
     <string name="remove_item">Remove\nItem</string>
+    <string name="confirm_changes">Confirm\nChanges</string>
 
 
 </resources>
