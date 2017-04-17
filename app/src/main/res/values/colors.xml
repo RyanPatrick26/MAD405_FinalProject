@@ -15,9 +15,10 @@
     <color name="textColorSecondaryInverse">#BDBDBD</color>
 
     <!-- Green Colour Theme resources -->
-    <color name="colorPrimaryOther">#98C548</color>
-    <color name="colorPrimaryDarkOther">#1D270C</color>
+    <color name="colorPrimaryOther">#98c548</color>
+    <color name="colorPrimaryDarkOther">#264d00</color>
     <color name="colorPrimaryLightOther">#404040</color>
     <color name="colorAccentOther">#9F8274</color>
+    <color name="windowBackgroundDark">#1d270c</color>
 
 </resources>

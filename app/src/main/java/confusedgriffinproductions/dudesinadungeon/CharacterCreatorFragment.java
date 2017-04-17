@@ -125,6 +125,7 @@ public class CharacterCreatorFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_character_creator, container, false);
 
+
         /**
          * Instantiate the EditTexts
          */

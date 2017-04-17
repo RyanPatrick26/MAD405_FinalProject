@@ -22,13 +22,14 @@
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/colorPrimaryOther</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDarkOther</item>
+        <item name="colorPrimary">@color/colorPrimaryDarkOther</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryOther</item>
         <item name="colorAccent">@color/colorAccentOther</item>
         <item name="android:textColorPrimary">@color/textColorPrimaryInverse</item>
         <item name="android:textColorSecondary">@color/textColorSecondaryInverse</item>
         <item name="android:textColorPrimaryInverse">@color/textColorPrimary</item>
         <item name="android:textColorSecondaryInverse">@color/textColorSecondary</item>
+        <item name="android:background">@color/windowBackgroundDark</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
