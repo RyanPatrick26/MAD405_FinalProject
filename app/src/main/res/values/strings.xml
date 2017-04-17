@@ -8,6 +8,14 @@
 
     <string name="action_settings">Settings</string>
 
+    <!-- Homepage string values -->
+    <string name="homepageTitle">Dudes In A Dungeon\nCompanion App</string>
+    <string name="introductionTextView">Greetings, Adventurer!\n\nWelcome to the world of Dudes In A Dungeon: a tabletop RPG where you and your fellow dudes will set out on an adventure for epic loot. Dudes In A Dungeon is an RPG created by Warlocks By the Sea: an amazing company responsible for making some of the greatest card and board games.\n\nWe\'ve been given the pleasure of creating this companion application to help players keep track of their characters, items, and spells.\n\nFeel free to make some characters, get some items, learn some spells, and get in that dungeon.\n\nHappy looting!</string>
+    <string name="createCharacterButtonText">New Character</string>
+    <string name="viewCharactersButtonText">View Characters</string>
+    <string name="viewItemsButtonText">Items</string>
+    <string name="viewSpellsButtonText">Spells</string>
+
     <!-- Navigation Drawer strings -->
     <string name="nav_about_text">About</string>
     <string name="nav_create_char">Create Character</string>
@@ -205,7 +213,7 @@
     <string name="call_miracle_description">For those times when you\'re in real trouble, try calling on an act of god</string>
     <string name="remove_curse_description">For all those times that you or your friends get cursed, just clear them of it</string>
     <string name="bless_description">Give your friends a bit of a blessing for their times in need</string>
-    
+
     <string name="battle_cry_description">Let loose a cry that will both spook the enemy and give yourself the courage to continue</string>
     <string name="brutal_swing_description">Put all your strength into this one swing, be careful though, results may tire</string>
     <string name="cleave_description">Swing with such force that it will hit two enemies at once</string>
@@ -213,7 +221,7 @@
     <string name="taunt_description">Let loose some fowl words to distract the enemy, or bring them to you</string>
     <string name="smite_description">Smash an enemy with such force that enemies nearby will feel it</string>
     <string name="frenzied_charge_description">What\'s more fun than sending yourself at full force into the enemy, the squishy noises are a bonus</string>
-    
+
     <string name="turn_invisible_description">Turn yourself invisible, makes things even easier to sneak around and cut throats</string>
     <string name="back_stab_description">Stab the enemy while they can\'t see you, proven more effective than while they can</string>
     <string name="steal_description">Nobody really needs the stuff that isn\'t bolted down anyways, take it for your own</string>
@@ -296,6 +304,22 @@
     <string name="all_spells">View\nAll Spells</string>
     <string name="spells_by_type">View\nSpells by Type</string>
     <string name="spells_by_class">View\nSpells by Class</string>
+
+    <string name="create_a_character">Create a\nCharacterr</string>
+    <string name="delete_character">Delete\nCharacter</string>
+
+    <string name="delete_confirmation">Are you sure you wish to delete this character?</string>
+    <string name="no">No</string>
+    <string name="item_type">Item Type:</string>
+    <string name="item_dmg_def">Damage/Def:</string>
+    <string name="item_range">Item Range:</string>
+    <string name="item_price">Item Price</string>
+    <string name="spell_damage">Spell Damage:</string>
+    <string name="spell_effect">Spell Effect:</string>
+    <string name="add_items">Add Items</string>
+    <string name="add_spells">Add Spells</string>
+
+    <string name="remove_item">Remove\nItem</string>
 
 
 </resources>

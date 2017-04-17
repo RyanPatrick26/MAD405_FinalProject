@@ -3,10 +3,14 @@ package confusedgriffinproductions.dudesinadungeon;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -28,6 +32,15 @@ public class MainFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    // Fragment Manager to handle navigation to different fragments
+    private FragmentManager fm;
+
+    // Button properties
+    Button createCharacterButton;
+    Button viewSpellsButton;
+    Button viewItemsButton;
+    Button viewCharactersButton;
 
     public MainFragment() {
         // Required empty public constructor
@@ -64,7 +77,67 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        // Programmatically link the button properties to the buttons in the xml
+        createCharacterButton = (Button) view.findViewById(R.id.createCharacterButton);
+        viewCharactersButton = (Button) view.findViewById(R.id.viewCharactersButton);
+        viewItemsButton = (Button) view.findViewById(R.id.viewItemsButton);
+        viewSpellsButton = (Button) view.findViewById(R.id.viewSpellsButton);
+
+        // Get the support fragment manager
+        fm = getActivity().getSupportFragmentManager();
+
+        // Create the event handlers for the buttons
+        createCharacterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the Character Creator Fragment
+                FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
+                tran.addToBackStack(null);
+                tran.replace(R.id.content_main, new CharacterCreatorFragment());
+                tran.commit();
+            }
+        });
+
+        viewCharactersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the Character List Fragment
+                FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
+                tran.addToBackStack(null);
+                tran.replace(R.id.content_main, new CharacterListFragment());
+                tran.commit();
+            }
+        });
+
+        viewItemsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the Item List Fragment
+                FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
+                tran.addToBackStack(null);
+                tran.replace(R.id.content_main, new ItemListFragment());
+                tran.commit();
+            }
+        });
+
+        viewSpellsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to the Spell List Fragment
+                FragmentTransaction tran = fm.beginTransaction();
+                tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
+                tran.addToBackStack(null);
+                tran.replace(R.id.content_main, new SpellListFragment());
+                tran.commit();
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

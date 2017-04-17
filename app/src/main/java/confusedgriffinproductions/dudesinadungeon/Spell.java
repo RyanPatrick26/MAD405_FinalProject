@@ -1,5 +1,7 @@
 package confusedgriffinproductions.dudesinadungeon;
 
+import android.support.annotation.NonNull;
+
 /**
  * Spell Class
  * Spells for player Characters to cast against enemies or to help allies, etc.
@@ -7,7 +9,7 @@ package confusedgriffinproductions.dudesinadungeon;
  * @author Nicholas Allaire
  * @version 1.0
  */
-public class Spell {
+public class Spell implements Comparable<Spell>{
 
     // Declare Spell properties
     private int id;
@@ -116,5 +118,10 @@ public class Spell {
 
     public String toString() {
         return getName();
+    }
+
+    @Override
+    public int compareTo(@NonNull Spell o) {
+        return o.getName().compareTo(this.getName());
     }
 }
