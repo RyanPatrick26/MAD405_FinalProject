@@ -1004,6 +1004,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return spellList;
     }
 
+    public ArrayList<Spell> getAllSpellsByClass(String spellClass){
+        // Create an ArrayList of spells
+        ArrayList<Spell> spellList = new ArrayList<Spell>();
+        // Create a sql query string to get all the spells
+        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS + " WHERE " + COLUMN_CLASS + "='" + spellClass + "' ORDER BY " + COLUMN_NAME;
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Create each spell and set all their properties
+                Spell spell = new Spell();
+                spell.setId(Integer.parseInt(cursor.getString(0)));
+                spell.setName(cursor.getString(1));
+                spell.setDescription(cursor.getString(2));
+                spell.setSpellType(cursor.getString(3));
+                spell.setSpellClass(cursor.getString(4));
+                spell.setComponents(cursor.getString(5));
+                spell.setEffects(cursor.getString(6));
+                spell.setDmg_heal(cursor.getString(7));
+
+                spellList.add(spell);
+            } while (cursor.moveToNext());
+        }
+        // Return the list of spells
+        return spellList;
+    }
+
     /**
      * Method to get a PORTRAIT from the database
      */

@@ -281,6 +281,8 @@ public class CharacterCreatorFragment extends Fragment {
                     attributeFields[1].setText((Integer.parseInt(attributeFields[1].getText().toString()) - 1) + "");
                     attributeFields[4].setText((Integer.parseInt(attributeFields[4].getText().toString()) + 1) + "");
                 }
+                spellList.clear();
+                spellListView.removeAllViews();
             }
 
             @Override
@@ -605,6 +607,55 @@ public class CharacterCreatorFragment extends Fragment {
         addSpellsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder addSpellDialog = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                View convertView = inflater.inflate(R.layout.item_list, null);
+                addSpellDialog.setView(convertView);
+                addSpellDialog.setTitle(getContext().getResources().getString(R.string.add_spells));
+
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                ArrayList<Spell> tempSpellList = db.getAllSpellsByClass(classArray[classSpinner.getSelectedItemPosition()]);
+                db.closeDB();
+
+                Log.d("array size", tempSpellList.size() + "");
+                ListView listView = (ListView)convertView.findViewById(R.id.item_list);
+                listView.setAdapter(new addSpellsArrayAdapter(getContext(), tempSpellList));
+
+                addSpellDialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        itemListView.removeAllViews();
+                        for(index = 0; index < spellList.size(); index++){
+                            final Spell spell = spellList.get(index);
+                            final CardView cardView = new CardView(getContext());
+                            LinearLayout layout = new LinearLayout(getContext());
+                            TextView itemNameTextView = new TextView(getContext());
+
+                            cardView.setUseCompatPadding(true);
+
+                            layout.setOnLongClickListener(new View.OnLongClickListener() {
+                                @Override
+                                public boolean onLongClick(View v) {
+                                    itemsList.remove(spell);
+                                    spellListView.removeView(cardView);
+                                    return false;
+                                }
+                            });
+
+                            itemNameTextView.setText(spellList.get(index).getName());
+                            itemNameTextView.setTextSize(20);
+                            itemNameTextView.setGravity(Gravity.CENTER_VERTICAL);
+                            layout.addView(itemNameTextView);
+                            layout.setPadding(20,20,20,20);
+
+                            cardView.addView(layout);
+
+                            spellListView.addView(cardView);
+                        }
+                    }
+                });
+
+                addSpellDialog.show();
             }
         });
         return view;
@@ -787,7 +838,7 @@ public class CharacterCreatorFragment extends Fragment {
             CheckBox checkBox = (CheckBox)convertView.findViewById(R.id.check_box);
             checkBox.setText(tempSpellList.get(position).getName());
 
-            for(int i = 0; i < itemsList.size(); i++){
+            for(int i = 0; i < spellList.size(); i++){
                 if(itemsList.get(i).getId() == tempSpellList.get(position).getId()){
                     checkBox.setChecked(true);
                 }
@@ -797,8 +848,8 @@ public class CharacterCreatorFragment extends Fragment {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if(isChecked){
-                        if(!itemsList.contains(tempSpellList.get(position))){
-                            itemsList.add(tempSpellList.get(position));
+                        if(!spellList.contains(tempSpellList.get(position))){
+                            spellList.add(tempSpellList.get(position));
                         }
                     }
                     else{
