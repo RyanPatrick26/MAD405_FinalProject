@@ -316,7 +316,10 @@
     <string name="item_price">Item Price</string>
     <string name="spell_damage">Spell Damage:</string>
     <string name="spell_effect">Spell Effect:</string>
->>>>>>> staging
+    <string name="add_items">Add Items</string>
+    <string name="add_spells">Add Spells</string>
+
+    <string name="remove_item">Remove\nItem</string>
 
 
 </resources>

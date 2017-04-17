@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /**
  * DatabaseHandler to create the database and handle database interactions
@@ -56,6 +58,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_SNEAKING = "sneaking";
     private static final String COLUMN_CRAFTING = "crafting";
     private static final String COLUMN_SURVIVAL = "survival";
+    private static final String COLUMN_ITEM_IDS = "item_ids";
+    private static final String COLUMN_SPELL_IDS = "spell_ids";
 
     /**
      * Item Table Column Names
@@ -107,7 +111,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_ACROBATICS + " TEXT,"
             + COLUMN_SNEAKING + " TEXT,"
             + COLUMN_CRAFTING + " TEXT,"
-            + COLUMN_SURVIVAL + " TEXT" + ")";
+            + COLUMN_SURVIVAL + " TEXT,"
+            + COLUMN_ITEM_IDS + " TEXT,"
+            + COLUMN_SPELL_IDS + " TEXT)";
 
     private static final String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
@@ -670,6 +676,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void addCharacter(Character character) {
         // Get a writable Database
         SQLiteDatabase db = this.getWritableDatabase();
+
+        StringBuilder itemIds = new StringBuilder();
+        StringBuilder spellIds = new StringBuilder();
+
+        for(int i = 0; i < character.getItems().size(); i++){
+            if(i == character.getItems().size() - 1){
+                itemIds.append(character.getItems().get(i).getId());
+            }
+            else{
+                itemIds.append(character.getItems().get(i).getId()+",");
+            }
+        }
+
+        for(int i = 0; i < character.getSpells().size(); i++){
+            spellIds.append(character.getSpells().get(i)+",");
+        }
+
+        String itemIdsResult = itemIds.toString();
+        String spellIdsResult = spellIds.toString();
+
+        Log.d("item ids", itemIdsResult);
+
         // Create a ContentValues to store values
         ContentValues values = new ContentValues();
         // Put the values for the insert command
@@ -690,6 +718,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_SNEAKING, character.getSneaking());
         values.put(COLUMN_CRAFTING, character.getCrafting());
         values.put(COLUMN_SURVIVAL, character.getSurvival());
+        values.put(COLUMN_ITEM_IDS, itemIdsResult);
+        values.put(COLUMN_SPELL_IDS, spellIdsResult);
 
         // Execute the insert statement
         db.insert(TABLE_CHARACTERS, null, values);
@@ -805,7 +835,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_RACE, COLUMN_CHAR_CLASS, COLUMN_STRENGTH,
                         COLUMN_AGILITY, COLUMN_RESILIENCE, COLUMN_LUCK, COLUMN_INTELLIGENCE, COLUMN_FIGHTING,
                         COLUMN_GAMBLING, COLUMN_SHOOTING, COLUMN_LYING, COLUMN_CASTING, COLUMN_ACROBATICS,
-                        COLUMN_SNEAKING, COLUMN_CRAFTING, COLUMN_SURVIVAL},
+                        COLUMN_SNEAKING, COLUMN_CRAFTING, COLUMN_SURVIVAL, COLUMN_ITEM_IDS, COLUMN_SPELL_IDS},
                         COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
@@ -818,6 +848,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 Integer.parseInt(cursor.getString(12)), Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
                 Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)), Integer.parseInt(cursor.getString(17)),
                 Integer.parseInt(cursor.getString(18)));
+        String itemIds = cursor.getString(19);
+        String[] itemIdStrings = itemIds.split("|");
+
+        ArrayList<Item> itemsList = new ArrayList<>();
+
+        for(int i = 0; i < itemIdStrings.length; i++){
+            itemsList.add(getItem(Integer.parseInt(itemIdStrings[i])));
+        }
+        character.setItems(itemsList);
         // Return the new character
         return character;
     }
@@ -856,6 +895,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 character.setSneaking(Integer.parseInt(cursor.getString(15)));
                 character.setCrafting(Integer.parseInt(cursor.getString(16)));
                 character.setSurvival(Integer.parseInt(cursor.getString(17)));
+
+                String itemIds = cursor.getString(18);
+                ArrayList<String> itemIdList = new ArrayList<>(Arrays.asList(itemIds.split(",")));
+                ArrayList<Item> itemList = new ArrayList<>();
+
+                for(int i = 0; i < itemIdList.size(); i++){
+                    itemList.add(getItem(Integer.parseInt(itemIdList.get(i))));
+                }
+
+                String spellIds = cursor.getString(19);
+                ArrayList<String> spellIdList = new ArrayList<>(Arrays.asList(itemIds.split(",")));
+                ArrayList<Spell> spellList = new ArrayList<>();
+
+                for(int i = 0; i < itemIdList.size(); i++){
+                    spellList.add(getSpell(Integer.parseInt(spellIdList.get(i))));
+                }
+
+                character.setItems(itemList);
+                character.setSpells(spellList);
 
                 characterList.add(character);
             } while (cursor.moveToNext());
@@ -980,6 +1038,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ArrayList<Spell> spellList = new ArrayList<Spell>();
         // Create a sql query string to get all the spells
         String selectQuery = "SELECT  * FROM " + TABLE_SPELLS + " ORDER BY " + COLUMN_NAME;
+        // Get a writable database
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Create a cursor to store all the values
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                // Create each spell and set all their properties
+                Spell spell = new Spell();
+                spell.setId(Integer.parseInt(cursor.getString(0)));
+                spell.setName(cursor.getString(1));
+                spell.setDescription(cursor.getString(2));
+                spell.setSpellType(cursor.getString(3));
+                spell.setSpellClass(cursor.getString(4));
+                spell.setComponents(cursor.getString(5));
+                spell.setEffects(cursor.getString(6));
+                spell.setDmg_heal(cursor.getString(7));
+
+                spellList.add(spell);
+            } while (cursor.moveToNext());
+        }
+        // Return the list of spells
+        return spellList;
+    }
+
+    public ArrayList<Spell> getAllSpellsByClass(String spellClass){
+        // Create an ArrayList of spells
+        ArrayList<Spell> spellList = new ArrayList<Spell>();
+        // Create a sql query string to get all the spells
+        String selectQuery = "SELECT  * FROM " + TABLE_SPELLS + " WHERE " + COLUMN_CLASS + "='" + spellClass + "' ORDER BY " + COLUMN_NAME;
         // Get a writable database
         SQLiteDatabase db = this.getWritableDatabase();
         // Create a cursor to store all the values
