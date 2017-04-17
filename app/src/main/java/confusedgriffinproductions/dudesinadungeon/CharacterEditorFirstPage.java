@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 /**
@@ -26,6 +29,27 @@ public class CharacterEditorFirstPage extends Fragment {
     private Character character;
 
     private OnFragmentInteractionListener mListener;
+    
+    /**
+     * Create variables to store the TextViews
+     */
+    TextView characterNameTextView;
+    TextView characterRaceTextView;
+    TextView characterClassTextView;
+    TextView[] attributeTextViews;
+    TextView[] skillTextViews;
+    
+    /**
+     * Create variables to store the buttons
+     */
+    Button[] attributeButtons;
+    Button[] skillButtons;
+    Button confirmButton;
+
+    /**
+     * Create variable to store the ImageButton
+     */
+    ImageButton characterImageButton;
 
     public CharacterEditorFirstPage() {
         // Required empty public constructor
@@ -59,7 +83,58 @@ public class CharacterEditorFirstPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
+
+        /**
+         * Initialize the TextViews
+         */
+        characterNameTextView = (TextView)view.findViewById(R.id.character_name);
+        characterRaceTextView = (TextView)view.findViewById(R.id.character_race_value);
+        characterClassTextView = (TextView)view.findViewById(R.id.character_class_value);
+        attributeTextViews = new TextView[]{
+                (TextView) view.findViewById(R.id.strength_value),
+                (TextView) view.findViewById(R.id.agility_value),
+                (TextView) view.findViewById(R.id.resilience_value),
+                (TextView) view.findViewById(R.id.luck_value),
+                (TextView) view.findViewById(R.id.intelligence_value)
+        };
+        
+        skillTextViews = new TextView[]{
+                (TextView)view.findViewById(R.id.fighting_value),
+                (TextView)view.findViewById(R.id.shooting_value),
+                (TextView)view.findViewById(R.id.casting_value),
+                (TextView)view.findViewById(R.id.acrobatics_value),
+                (TextView)view.findViewById(R.id.crafting_value),
+                (TextView)view.findViewById(R.id.gambling_value),
+                (TextView)view.findViewById(R.id.lying_value),
+                (TextView)view.findViewById(R.id.persuasion_value),
+                (TextView)view.findViewById(R.id.sneaking_value),
+                (TextView)view.findViewById(R.id.survival_value)
+        };
+
+        characterNameTextView.setText(character.getName());
+        characterRaceTextView.setText(character.getRace());
+        characterClassTextView.setText(character.getCharClass());
+
+        attributeTextViews[0].setText(character.getStrength() + "");
+        attributeTextViews[1].setText(character.getAgility() + "");
+        attributeTextViews[2].setText(character.getResilience() + "");
+        attributeTextViews[3].setText(character.getLuck() + "");
+        attributeTextViews[4].setText(character.getIntelligence() + "");
+
+        skillTextViews[0].setText(character.getFighting() + "");
+        skillTextViews[1].setText(character.getShooting() + "");
+        skillTextViews[2].setText(character.getCasting() + "");
+        skillTextViews[3].setText(character.getAcrobatics() + "");
+        skillTextViews[4].setText(character.getCrafting() + "");
+        skillTextViews[5].setText(character.getGambling() + "");
+        skillTextViews[6].setText(character.getLying() + "");
+        skillTextViews[7].setText(character.getPersuasion() + "");
+        skillTextViews[8].setText(character.getSneaking() + "");
+        skillTextViews[9].setText(character.getSurvival() + "");
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

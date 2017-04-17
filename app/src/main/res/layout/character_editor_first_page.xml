@@ -13,7 +13,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="40dp"
             android:orientation="vertical">
 
             <TextView
@@ -32,7 +31,7 @@
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/ic_menu_camera" />
 
@@ -685,12 +684,5 @@
                 android:text="@string/confirm_changes" />
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/next_page_button"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right|center_vertical"
-            android:layout_margin="5dp"
-            app:srcCompat="@drawable/ic_last_page_black_24dp" />
     </FrameLayout>
 </ScrollView>
