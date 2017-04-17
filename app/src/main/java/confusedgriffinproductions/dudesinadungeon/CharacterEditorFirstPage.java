@@ -4,9 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,33 +12,22 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CharacterEditorFragment.OnFragmentInteractionListener} interface
+ * {@link CharacterEditorFirstPage.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link CharacterEditorFragment#newInstance} factory method to
+ * Use the {@link CharacterEditorFirstPage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CharacterEditorFragment extends Fragment {
+public class CharacterEditorFirstPage extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
     // TODO: Rename and change types of parameters
-    private int id;
+    private Character character;
 
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Create variable to store the ViewPager and it's adapter
-     */
-    ViewPager viewPager;
-    SectionsPagerAdapter sectionsPagerAdapter;
-
-    /**
-     * Create a character object for use across the character Editor
-     */
-    Character character;
-
-    public CharacterEditorFragment() {
+    public CharacterEditorFirstPage() {
         // Required empty public constructor
     }
 
@@ -49,14 +35,14 @@ public class CharacterEditorFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param id the id of the character
-     * @return A new instance of fragment CharacterEditorFragment.
+     * @param character character being edited
+     * @return A new instance of fragment CharacterEditorFirstPage.
      */
     // TODO: Rename and change types and number of parameters
-    public static CharacterEditorFragment newInstance(int id) {
-        CharacterEditorFragment fragment = new CharacterEditorFragment();
+    public static CharacterEditorFirstPage newInstance(Character character) {
+        CharacterEditorFirstPage fragment = new CharacterEditorFirstPage();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, id);
+        args.putSerializable(ARG_PARAM1, character);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,7 +51,7 @@ public class CharacterEditorFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            id = getArguments().getInt(ARG_PARAM1);
+            character = (Character)getArguments().getSerializable(ARG_PARAM1);
         }
     }
 
@@ -73,17 +59,7 @@ public class CharacterEditorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_character_editor, container, false);
-
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        character = db.getCharater(id);
-
-        //initialize the ViewPager
-        viewPager = (ViewPager)view.findViewById(R.id.editor_view_pager);
-        sectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
-        viewPager.setAdapter(sectionsPagerAdapter);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -123,28 +99,5 @@ public class CharacterEditorFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    private class SectionsPagerAdapter extends FragmentPagerAdapter{
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch(position){
-                case 0:
-                    return CharacterEditorFirstPage.newInstance(character);
-                case 1:
-                    return CharacterEditorSecondPage.newInstance(character);
-                default:
-                    return CharacterEditorFirstPage.newInstance(character);
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 2;
-        }
     }
 }

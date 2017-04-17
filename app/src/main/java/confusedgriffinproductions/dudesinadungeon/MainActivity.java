@@ -30,7 +30,10 @@ public class MainActivity extends AppCompatActivity
         ItemListFragment.OnFragmentInteractionListener,
         SpellListFragment.OnFragmentInteractionListener,
         ItemViewerFragment.OnFragmentInteractionListener,
-        SpellViewerFragment.OnFragmentInteractionListener{
+        SpellViewerFragment.OnFragmentInteractionListener,
+        CharacterEditorFragment.OnFragmentInteractionListener,
+        CharacterEditorFirstPage.OnFragmentInteractionListener,
+        CharacterEditorSecondPage.OnFragmentInteractionListener{
 
     // Fragment manager to allow us to display, remove, and create fragments
     FragmentManager fm = getSupportFragmentManager();
@@ -47,15 +50,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction tran = fm.beginTransaction();
