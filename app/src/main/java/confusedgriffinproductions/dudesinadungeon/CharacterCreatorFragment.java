@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -511,11 +513,17 @@ public class CharacterCreatorFragment extends Fragment {
                         db.addCharacter(character);
                         db.closeDB();
 
-                        snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Character successfully created!",
-                                Snackbar.LENGTH_LONG);
-                        snackbar.show();
-
-
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    FragmentTransaction trans = fm.beginTransaction();
+                    trans.replace(R.id.content_main, new CharacterListFragment());
+                    trans.addToBackStack(null);
+                    trans.commit();
+                }
+                else if(!remainingAttsView.getText().equals("0")
+                        && !remainingSkillsView.getText().equals("0")){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "You have unspent attribute and skill points", Snackbar.LENGTH_LONG);
+                    snackbar.show();
                 }
                 else if(!remainingAttsView.getText().equals("0")){
                     snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
@@ -527,10 +535,9 @@ public class CharacterCreatorFragment extends Fragment {
                             "You have unspent skill points", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
-                else if(!remainingAttsView.getText().equals("0")
-                        && !remainingSkillsView.getText().equals("0")){
+                else if(itemsList.isEmpty() && spellList.isEmpty()){
                     snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
-                            "You have unspent attribute and skill points", Snackbar.LENGTH_LONG);
+                            "At least 1 item and 1 spell is required", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
                 else if(itemsList.isEmpty()){
@@ -541,11 +548,6 @@ public class CharacterCreatorFragment extends Fragment {
                 else if(spellList.isEmpty()){
                     snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
                             "At least 1 spell is required", Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
-                else if(itemsList.isEmpty() && spellList.isEmpty()){
-                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
-                            "At least 1 item and 1 spell is required", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
                 else if(!validCharacter){
