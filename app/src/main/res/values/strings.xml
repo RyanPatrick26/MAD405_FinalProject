@@ -321,6 +321,8 @@
 
     <string name="remove_item">Remove\nItem</string>
     <string name="confirm_changes">Confirm\nChanges</string>
+    <string name="items">Items</string>
+    <string name="spells">Spells</string>
 
 
 </resources>
