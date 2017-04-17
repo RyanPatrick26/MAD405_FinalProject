@@ -477,8 +477,10 @@ public class CharacterCreatorFragment extends Fragment {
                 }
 
                 if(remainingAttsView.getText().toString().equals("0") &&
-                        remainingSkillsView.getText().toString().equals("0")
-                        && validCharacter){
+                    remainingSkillsView.getText().toString().equals("0")
+                    && !characterNameField.getText().toString().equals("")
+                    && !itemsList.isEmpty() && !spellList.isEmpty() &&
+                    validCharacter){
                         Character character = new Character();
                         character.setName(characterNameField.getText().toString());
 
@@ -502,6 +504,9 @@ public class CharacterCreatorFragment extends Fragment {
                         character.setSneaking(Integer.parseInt(skillFields[8].getText().toString()));
                         character.setSurvival(Integer.parseInt(skillFields[9].getText().toString()));
 
+                        character.setItems(itemsList);
+                        character.setSpells(spellList);
+
                         DatabaseHandler db = new DatabaseHandler(getContext());
                         db.addCharacter(character);
                         db.closeDB();
@@ -512,33 +517,53 @@ public class CharacterCreatorFragment extends Fragment {
 
 
                 }
-                else if(!remainingAttsView.getText().toString().equals("0")
-                        && remainingSkillsView.getText().toString().equals("0")){
-                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Please finish filling in your attributes",
-                            Snackbar.LENGTH_LONG);
+                else if(!remainingAttsView.getText().equals("0")){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "You have unspent attribute points", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
-
-                else if(remainingAttsView.getText().toString().equals("0") &&
-                        !remainingSkillsView.getText().toString().equals("0")){
-                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content), "Please finish filling in your skills",
-                            Snackbar.LENGTH_LONG);
+                else if(!remainingSkillsView.getText().equals("0")){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "You have unspent skill points", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
-
+                else if(!remainingAttsView.getText().equals("0")
+                        && !remainingSkillsView.getText().equals("0")){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "You have unspent attribute and skill points", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else if(itemsList.isEmpty()){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "At least 1 item is required", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else if(spellList.isEmpty()){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "At least 1 spell is required", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else if(itemsList.isEmpty() && spellList.isEmpty()){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "At least 1 item and 1 spell is required", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
                 else if(!validCharacter){
                     snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
-                            "Attributes are not allowed to be less than 1",
-                            Snackbar.LENGTH_LONG);
+                            "Attributes are not allowed to be below 1", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else if(!characterNameField.getText().equals("")){
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "Your character requires a name", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+                else{
+                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            "Please fill in all required fields", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
 
-                else{
-                    snackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
-                            "Please finish filling in your attributes and skills",
-                            Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
 
             }
         });
