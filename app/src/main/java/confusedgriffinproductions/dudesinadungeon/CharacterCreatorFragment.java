@@ -464,6 +464,11 @@ public class CharacterCreatorFragment extends Fragment {
                     skillFields[i].setText("0");
                 }
                 remainingSkillsView.setText("15");
+                itemListView.removeAllViews();
+                spellListView.removeAllViews();
+
+                itemsList.clear();
+                spellList.clear();
             }
         });
 
@@ -651,7 +656,7 @@ public class CharacterCreatorFragment extends Fragment {
                 addSpellDialog.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        itemListView.removeAllViews();
+                        spellListView.removeAllViews();
                         for(index = 0; index < spellList.size(); index++){
                             final Spell spell = spellList.get(index);
                             final CardView cardView = new CardView(getContext());
