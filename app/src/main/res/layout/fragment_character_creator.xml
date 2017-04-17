@@ -801,7 +801,7 @@
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="12sp"
-                    tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
+                    tools:ignore="DuplicateIds,HardcodedText,LabelFor,TooManyViews" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -974,7 +974,8 @@
                     android:id="@+id/remaining_skill_field"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@android:color/background_dark"
+                    tools:ignore="HardcodedText" />
 
                 <Button
                     android:text="@string/reset_skills"
@@ -984,20 +985,43 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="80dp"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
-            <ListView
+            <LinearLayout
+                android:id="@+id/item_list_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/item_list"
-                tools:ignore="NestedScrolling" />
+                android:orientation="vertical">
 
-            <ListView
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_item_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:padding="5dp"
+                android:text="@string/add_items"
+                tools:ignore="RtlHardcoded" />
+
+            <LinearLayout
+                android:id="@+id/spell_list_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/spell_list"
-                tools:ignore="NestedScrolling" />
+                android:orientation="vertical"></LinearLayout>
+
+            <Button
+                android:id="@+id/add_spell_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:padding="5dp"
+                android:text="@string/add_spells"
+                tools:ignore="RtlHardcoded" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1010,7 +1034,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="100dp"
                     android:layout_weight="1"
-                    android:text="@string/reset_character" />
+                    android:text="@string/reset_character"
+                    tools:ignore="ButtonStyle,RtlHardcoded" />
 
                 <Button
                     android:id="@+id/confirm_button"
@@ -1020,7 +1045,7 @@
                     android:layout_margin="15dp"
                     android:layout_weight="1"
                     android:text="@string/confirm"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="ButtonStyle,HardcodedText,RtlHardcoded" />
             </LinearLayout>
 
         </LinearLayout>
