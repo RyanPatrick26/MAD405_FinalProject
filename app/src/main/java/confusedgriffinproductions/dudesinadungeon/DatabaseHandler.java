@@ -905,7 +905,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 }
 
                 String spellIds = cursor.getString(19);
-                ArrayList<String> spellIdList = new ArrayList<>(Arrays.asList(itemIds.split(",")));
+                ArrayList<String> spellIdList = new ArrayList<>(Arrays.asList(spellIds.split(",")));
                 ArrayList<Spell> spellList = new ArrayList<>();
 
                 for(int i = 0; i < itemIdList.size(); i++){
