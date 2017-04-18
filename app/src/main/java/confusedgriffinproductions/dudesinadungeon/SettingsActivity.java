@@ -36,6 +36,8 @@ public class SettingsActivity extends PreferenceActivity {
             addPreferencesFromResource(R.xml.preferences);
             // Get the sharedPreferences in order to interact with the application settings
             final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+            // Store the colour setting
+            boolean greenTheme = settings.getBoolean("colour_preference", false);
             // Register the onSharedPreferenceChangeListener to the settings SHaredPreferences
             settings.registerOnSharedPreferenceChangeListener(new SharedPreferences.OnSharedPreferenceChangeListener() {
                 /**
@@ -75,33 +77,8 @@ public class SettingsActivity extends PreferenceActivity {
 
                         // Change the application's colour based on the user's selection
                         case "colour_preference":
-                            // Change the application's colour based on the user's selection
-                            selection = sharedPreferences.getString(key, "purple");
-
-                            switch (selection) {
-                                case "purple":
-                                    // Change the colour theme to purple
-
-                                    Toast.makeText(getActivity().getBaseContext(), R.string.changed_colour_toast,
-                                            Toast.LENGTH_SHORT).show();
-
-                                    // Restart the application to ensure a proper colour theme transition.
-                                    restartApplication();
-                                    break;
-                                case "green":
-                                    // Change the colour theme to green
-
-                                    Toast.makeText(getActivity().getBaseContext(), R.string.changed_colour_toast,
-                                            Toast.LENGTH_SHORT).show();
-
-                                    // Restart the application to ensure a proper colour theme transition.
-                                    restartApplication();
-                                    break;
-                                default:
-                                    // Log an error
-                                    Toast.makeText(getActivity().getBaseContext(), R.string.toast_error_unexpected,
-                                            Toast.LENGTH_SHORT).show();
-                            }
+                            boolean changeTheme = settings.getBoolean("colour_preference", false);
+                            switchColourTheme(changeTheme);
                             break;
                     }
 
@@ -118,6 +95,16 @@ public class SettingsActivity extends PreferenceActivity {
          */
         private void restartApplication() {
             // Create and launch a new intent to launch the MainActivity.
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            getActivity().finish();
+            startActivity(intent);
+        }
+
+        private void switchColourTheme(boolean greenTheme) {
+            SharedPreferences.Editor editor = getActivity().getSharedPreferences("colour_preference", MODE_PRIVATE).edit();
+            editor.putBoolean("colour_preference", greenTheme);
+            editor.apply();
+
             Intent intent = new Intent(getActivity(), MainActivity.class);
             getActivity().finish();
             startActivity(intent);

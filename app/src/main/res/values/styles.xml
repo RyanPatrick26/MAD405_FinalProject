@@ -10,6 +10,8 @@
         <item name="android:textColorPrimaryInverse">@color/textColorPrimaryInverse</item>
         <item name="android:textColorSecondaryInverse">@color/textColorSecondaryInverse</item>
         <item name="buttonStyle">@style/buttonStyleLight</item>
+        <!--<item name="windowNoTitle">true</item>-->
+        <!--<item name="windowActionBar">false</item>-->
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -22,7 +24,7 @@
         <item name="android:textSize">@dimen/abc_text_size_headline_material</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimaryDarkOther</item>
         <item name="colorPrimaryDark">@color/colorPrimaryOther</item>
         <item name="colorAccent">@color/colorAccentOther</item>
@@ -33,6 +35,8 @@
         <item name="android:background">@color/windowBackgroundDark</item>
         <item name="android:colorBackground">@color/cardview_shadow_start_color</item>
         <item name="buttonStyle">@style/buttonStyleDark</item>
+        <!--<item name="windowNoTitle">true</item>-->
+        <!--<item name="windowActionBar">false</item>-->
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

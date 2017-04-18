@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Defualt Strings -->
+    <!-- Default Strings -->
     <string name="app_name">Dudes In A Dungeon</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -318,6 +318,10 @@
     <string name="toast_error_unexpected">An unexpected error occured</string>
     <string name="create_a_character">Create a\nCharacterr</string>
     <string name="delete_character">Delete\nCharacter</string>
+    <string name="colour_preference_purple">Purple</string>
+    <string name="colour_preference_green">Green</string>
+    <string name="colour_preference_offDesc">Change the application to the Green theme\nApplication will restart.</string>
+    <string name="colour_preference_onDesc">Change the application to the Purple theme\nApplication will restart.</string>
 
     <string name="delete_confirmation">Are you sure you wish to delete this character?</string>
     <string name="no">No</string>
@@ -331,5 +335,6 @@
     <string name="add_spells">Add Spells</string>
 
     <string name="remove_item">Remove\nItem</string>
+    <string name="language_preference_title">Language</string>
 
 </resources>

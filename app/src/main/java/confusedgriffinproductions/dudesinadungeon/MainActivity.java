@@ -55,12 +55,23 @@ public class MainActivity extends AppCompatActivity
     // SMS Message String
     String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         // Check to make sure the correct language is set OR set the proper one
         checkLanguage();
+
+        // This will prepare the app to load the dark theme if the value stored in SharedPreferences is set to TRUE
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean useGreenTheme = settings.getBoolean("colour_preference", false);
+
+        if (useGreenTheme) {
+            setTheme(R.style.AppTheme_Dark);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+
+        super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

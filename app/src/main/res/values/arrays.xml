@@ -13,8 +13,8 @@
 
     <!-- Array displayed for the user to change colour themes -->
     <string-array name="colour_theme_preference">
-        <item>Purple (Default)</item>
-        <item>Green</item>
+        <item>@string/colour_preference_purple</item>
+        <item>@string/colour_preference_green</item>
     </string-array>
 
     <!-- Array used for actual values in changing colour themes -->
