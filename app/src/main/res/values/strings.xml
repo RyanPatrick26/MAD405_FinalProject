@@ -71,7 +71,7 @@
     <string name="remaing_skill">Skill Points\nRemaining:</string>
     <string name="reset_skills">Reset\nSkills</string>
     <string name="confirm">Confirm</string>
-    <string name="reset_character">Reset your\nCharacter</string>
+    <string name="reset_character">Reset Character</string>
 
     <!-- String resources for the attributes -->
     <string name="strength">Strength</string>
