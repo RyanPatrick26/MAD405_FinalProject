@@ -452,8 +452,8 @@
 
                     <Button
                         android:id="@+id/subtract_fighting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -462,8 +462,8 @@
 
                     <Button
                         android:id="@+id/add_fighting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -511,8 +511,8 @@
 
                     <Button
                         android:id="@+id/subtract_gambling"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -521,8 +521,8 @@
 
                     <Button
                         android:id="@+id/add_gambling"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -567,8 +567,8 @@
 
                     <Button
                         android:id="@+id/subtract_shooting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -577,8 +577,8 @@
 
                     <Button
                         android:id="@+id/add_shooting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -625,8 +625,8 @@
 
                     <Button
                         android:id="@+id/subtract_lying"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -635,8 +635,8 @@
 
                     <Button
                         android:id="@+id/add_lying"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -681,8 +681,8 @@
 
                     <Button
                         android:id="@+id/subtract_casting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -691,8 +691,8 @@
 
                     <Button
                         android:id="@+id/add_casting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -739,8 +739,8 @@
 
                     <Button
                         android:id="@+id/subtract_persuasion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -749,8 +749,8 @@
 
                     <Button
                         android:id="@+id/add_persuasion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -795,8 +795,8 @@
 
                     <Button
                         android:id="@+id/subtract_acrobatics"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -805,8 +805,8 @@
 
                     <Button
                         android:id="@+id/add_acrobatics"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -853,8 +853,8 @@
 
                     <Button
                         android:id="@+id/subtract_sneaking"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -863,8 +863,8 @@
 
                     <Button
                         android:id="@+id/add_sneaking"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -909,8 +909,8 @@
 
                     <Button
                         android:id="@+id/subtract_crafting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -919,8 +919,8 @@
 
                     <Button
                         android:id="@+id/add_crafting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -967,8 +967,8 @@
 
                     <Button
                         android:id="@+id/subtract_survival"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -977,8 +977,8 @@
 
                     <Button
                         android:id="@+id/add_survival"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_margin="5dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"

@@ -27,6 +27,6 @@
     <color name="windowBackgroundDark">#1d270c</color>
     <!-- Button colors for the dark theme -->
     <color name="buttonBackgroundColorDark">#8c8c8c</color>
-    <color name="buttonTextColorDark">#673ab7</color>
+    <color name="buttonTextColorDark">#e2d8f3</color>
 
 </resources>
