@@ -30,18 +30,14 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
     public View getView(int position, View view, ViewGroup parent){
         LayoutInflater layoutInflater = context.getLayoutInflater();
 
-        Log.d("position", "" + position);
-
         view = layoutInflater.inflate(R.layout.item_list_item, null, true);
         TextView itemName = (TextView)view.findViewById(R.id.item_name);
         TextView itemDescription = (TextView)view.findViewById(R.id.item_description);
         ImageView itemImage = (ImageView)view.findViewById(R.id.item_image);
 
-        //Log.d("item", itemsList.get(position).getName() + " is item number " + position);
-
         itemName.setText(itemsList.get(position).getName());
         itemDescription.setText(itemsList.get(position).getDescription());
-        Picasso.with(context).load(itemsList.get(position).getImageId()).resize(100,100).into(itemImage);
+        Picasso.with(context).load(itemsList.get(position).getImageId()).resize(75,75).into(itemImage);
 
         return view;
     }
