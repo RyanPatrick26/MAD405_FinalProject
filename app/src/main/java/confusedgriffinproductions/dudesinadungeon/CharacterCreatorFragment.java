@@ -108,10 +108,6 @@ public class CharacterCreatorFragment extends Fragment {
     ArrayList<Item> itemsList;
     ArrayList<Spell> spellList;
 
-    View view;
-
-    private FragmentManager fm;
-
     public CharacterCreatorFragment() {
         // Required empty public constructor
     }
@@ -146,15 +142,8 @@ public class CharacterCreatorFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Check to see if the view has already been created
-        if(view!=null){
-            if((ViewGroup)view.getParent()!=null)
-                ((ViewGroup)view.getParent()).removeView(view);
-            return view;
-        }
-
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_character_creator, container, false);
+        View view = inflater.inflate(R.layout.fragment_character_creator, container, false);
 
         itemsList = new ArrayList<>();
         spellList = new ArrayList<>();

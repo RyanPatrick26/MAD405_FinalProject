@@ -81,13 +81,6 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Check to see if the view has already been created
-        if(view!=null){
-            if((ViewGroup)view.getParent()!=null)
-                ((ViewGroup)view.getParent()).removeView(view);
-            return view;
-        }
-
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
