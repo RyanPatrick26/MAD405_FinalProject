@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
-        android:title="@string/action_settings">
+    <PreferenceCategory android:title="@string/action_settings">
         <ListPreference
             android:defaultValue="@string/default_language_preference"
             android:entries="@array/language_preference"

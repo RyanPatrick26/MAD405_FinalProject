@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="confusedgriffinproductions.dudesinadungeon.CharacterCreatorFragment"
-    android:orientation="vertical"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="confusedgriffinproductions.dudesinadungeon.CharacterCreatorFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -28,52 +28,53 @@
                 android:padding="10dp"
                 android:text="@string/charcacter_creator"
                 android:textAlignment="center"
+                android:textColor="@color/textColorPrimaryInverse"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/name_layout">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="@string/character_name"
+                    android:id="@+id/name_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/name_text_view"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/background_dark"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:layout_gravity="center_vertical" />
+                    android:text="@string/character_name"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="14sp" />
 
                 <EditText
+                    android:id="@+id/name_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/name_field"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    tools:ignore="LabelFor"
-                    android:textSize="14sp" />
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textSize="14sp"
+                    tools:ignore="LabelFor" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/race_and_class"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/race_and_class">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="@string/race"
+                    android:id="@+id/race_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/race_text_view"
                     android:layout_weight="1"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/background_dark" />
+                    android:text="@string/race"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/race_spinner"
@@ -87,42 +88,42 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/character_class"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp" />
 
                 <Spinner
+                    android:id="@+id/class_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/class_spinner"
                     android:layout_weight="1" />
             </LinearLayout>
 
             <TextView
-                android:text="@string/attributes"
+                android:id="@+id/attributes_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/attributes_view"
+                android:padding="5dp"
+                android:text="@string/attributes"
                 android:textAlignment="center"
+                android:textColor="@color/textColorPrimaryInverse"
                 android:textSize="20sp"
-                android:textColor="@android:color/background_dark"
-                tools:ignore="HardcodedText"
-                android:padding="5dp" />
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/attribute_one"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/attribute_one">
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="@string/strength"
+                    android:id="@+id/strength_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/strength_label"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1.25"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_gravity="center_vertical" />
+                    android:text="@string/strength"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/strength_field"
@@ -132,7 +133,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:text="5"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
@@ -159,19 +160,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/attribute_two"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/attribute_two">
+                android:orientation="horizontal">
+
                 <TextView
-                    android:text="@string/agility"
+                    android:id="@+id/agility_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/agility_label"
-                    android:layout_weight="1.25"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/background_dark"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1.25"
+                    android:text="@string/agility"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds" />
 
                 <TextView
@@ -182,7 +184,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:text="5"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -208,19 +210,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/attribute_three"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/attribute_three">
+                android:orientation="horizontal">
+
                 <TextView
-                    android:text="@string/resilience"
+                    android:id="@+id/resilience_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/resilience_label"
-                    android:layout_weight="1.25"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/background_dark"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1.25"
+                    android:text="@string/resilience"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds" />
 
                 <TextView
@@ -231,7 +234,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:text="5"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -257,19 +260,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/attribute_four"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/attribute_four">
+                android:orientation="horizontal">
+
                 <TextView
-                    android:text="@string/luck"
+                    android:id="@+id/luck_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/luck_label"
-                    android:layout_weight="1.25"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/background_dark"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1.25"
+                    android:text="@string/luck"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds" />
 
                 <TextView
@@ -280,7 +284,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:text="5"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -306,19 +310,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:id="@+id/attribute_five"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/attribute_five">
+                android:orientation="horizontal">
+
                 <TextView
-                    android:text="@string/intelligence"
+                    android:id="@+id/intelligence_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/intelligence_label"
-                    android:layout_weight="1.25"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/background_dark"
                     android:layout_gravity="center_vertical"
+                    android:layout_weight="1.25"
+                    android:text="@string/intelligence"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds" />
 
                 <TextView
@@ -329,7 +334,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:text="5"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -355,30 +360,30 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="@string/remaining_att"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/remaining_att_label"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/background_dark"
-                    android:layout_weight="1.2" />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/remaining_att_field"
-                    android:layout_weight="1.8"
                     android:layout_gravity="center_vertical"
-                    android:textSize="14sp"
+                    android:layout_weight="1.2"
+                    android:text="@string/remaining_att"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/remaining_att_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.8"
                     android:text="10"
-                    android:textColor="@android:color/background_dark"
                     android:textAlignment="center"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="14sp"
                     tools:ignore="HardcodedText" />
 
                 <Button
@@ -403,7 +408,7 @@
                 android:padding="5dp"
                 android:text="@string/skill"
                 android:textAlignment="center"
-                android:textColor="@android:color/background_dark"
+                android:textColor="@color/textColorPrimaryInverse"
                 android:textSize="20sp" />
 
             <GridLayout
@@ -423,7 +428,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="0"
                     android:text="@string/fighting"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/fighting_field"
@@ -435,7 +440,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
@@ -462,11 +467,11 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_margin="5dp"
+                        android:elevation="0dp"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="+"
-                        tools:ignore="ButtonStyle,HardcodedText"
-                        android:elevation="0dp" />
+                        tools:ignore="ButtonStyle,HardcodedText" />
                 </LinearLayout>
 
                 /
@@ -479,7 +484,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="0"
                     android:text="@string/gambling"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/textColorPrimaryInverse"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -492,7 +497,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -533,7 +538,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="1"
                     android:text="@string/shooting"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/shooting_field"
@@ -545,7 +550,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
@@ -586,7 +591,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="1"
                     android:text="@string/lying"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/textColorPrimaryInverse"
                     tools:ignore="HardcodedText" />
 
 
@@ -600,7 +605,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -641,7 +646,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="2"
                     android:text="@string/casting"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/casting_field"
@@ -653,7 +658,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
@@ -694,7 +699,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="2"
                     android:text="@string/persuasion"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/textColorPrimaryInverse"
                     tools:ignore="HardcodedText" />
 
 
@@ -708,7 +713,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -749,7 +754,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="3"
                     android:text="@string/acrobatics"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/acrobatics_field"
@@ -761,7 +766,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
@@ -802,7 +807,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="3"
                     android:text="@string/sneaking"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/textColorPrimaryInverse"
                     tools:ignore="HardcodedText" />
 
 
@@ -816,7 +821,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor,TooManyViews" />
 
@@ -857,7 +862,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="4"
                     android:text="@string/crafting"
-                    android:textColor="@android:color/background_dark" />
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/crafting_field"
@@ -869,7 +874,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
@@ -910,7 +915,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_row="4"
                     android:text="@string/survival"
-                    android:textColor="@android:color/background_dark"
+                    android:textColor="@color/textColorPrimaryInverse"
                     tools:ignore="HardcodedText" />
 
 
@@ -924,7 +929,7 @@
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="12sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
@@ -960,27 +965,27 @@
             </GridLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="@string/remaing_skill"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/remaining_skill_label"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@android:color/background_dark" />
-
-                <TextView
-                    android:text="15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/remaining_skill_field"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@android:color/background_dark"
+                    android:layout_weight="1"
+                    android:text="@string/remaing_skill"
+                    android:textColor="@color/textColorPrimaryInverse" />
+
+                <TextView
+                    android:id="@+id/remaining_skill_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="15"
+                    android:textColor="@color/textColorPrimaryInverse"
                     tools:ignore="HardcodedText" />
 
                 <Button
