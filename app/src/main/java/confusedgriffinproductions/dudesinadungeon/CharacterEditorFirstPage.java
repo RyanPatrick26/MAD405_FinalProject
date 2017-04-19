@@ -51,6 +51,8 @@ public class CharacterEditorFirstPage extends Fragment {
      */
     ImageButton characterImageButton;
 
+    int index;
+
     public CharacterEditorFirstPage() {
         // Required empty public constructor
     }
@@ -116,22 +118,69 @@ public class CharacterEditorFirstPage extends Fragment {
         characterRaceTextView.setText(character.getRace());
         characterClassTextView.setText(character.getCharClass());
 
-        attributeTextViews[0].setText(character.getStrength() + "");
-        attributeTextViews[1].setText(character.getAgility() + "");
-        attributeTextViews[2].setText(character.getResilience() + "");
-        attributeTextViews[3].setText(character.getLuck() + "");
-        attributeTextViews[4].setText(character.getIntelligence() + "");
+        attributeTextViews[0].setText(character.getStrength() + "  ");
+        attributeTextViews[1].setText(character.getAgility() + "  ");
+        attributeTextViews[2].setText(character.getResilience() + "  ");
+        attributeTextViews[3].setText(character.getLuck() + "  ");
+        attributeTextViews[4].setText(character.getIntelligence() + "  ");
 
-        skillTextViews[0].setText(character.getFighting() + "");
-        skillTextViews[1].setText(character.getShooting() + "");
-        skillTextViews[2].setText(character.getCasting() + "");
-        skillTextViews[3].setText(character.getAcrobatics() + "");
-        skillTextViews[4].setText(character.getCrafting() + "");
-        skillTextViews[5].setText(character.getGambling() + "");
-        skillTextViews[6].setText(character.getLying() + "");
-        skillTextViews[7].setText(character.getPersuasion() + "");
-        skillTextViews[8].setText(character.getSneaking() + "");
-        skillTextViews[9].setText(character.getSurvival() + "");
+        skillTextViews[0].setText(character.getFighting() + "  ");
+        skillTextViews[1].setText(character.getShooting() + "  ");
+        skillTextViews[2].setText(character.getCasting() + "  ");
+        skillTextViews[3].setText(character.getAcrobatics() + "  ");
+        skillTextViews[4].setText(character.getCrafting() + "  ");
+        skillTextViews[5].setText(character.getGambling() + "  ");
+        skillTextViews[6].setText(character.getLying() + "  ");
+        skillTextViews[7].setText(character.getPersuasion() + "  ");
+        skillTextViews[8].setText(character.getSneaking() + "  ");
+        skillTextViews[9].setText(character.getSurvival() + "  ");
+
+        /**
+         * Initialize the buttons
+         */
+        attributeButtons = new Button[]{
+                (Button)view.findViewById(R.id.add_strength_button),
+                (Button)view.findViewById(R.id.subtract_strength_button),
+                (Button)view.findViewById(R.id.add_agility_button),
+                (Button)view.findViewById(R.id.subtract_agility_button),
+                (Button)view.findViewById(R.id.add_resilience_button),
+                (Button)view.findViewById(R.id.subtract_resilience_button),
+                (Button)view.findViewById(R.id.add_luck_button),
+                (Button)view.findViewById(R.id.subtract_luck_button),
+                (Button)view.findViewById(R.id.add_int_button),
+                (Button)view.findViewById(R.id.subtract_int_button)
+        };
+
+        for(index = 0; index < attributeButtons.length; index++){
+            final Button button = attributeButtons[index];
+            button.setTag(index);
+            if(index%2 == 0){
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!attributeTextViews[attributeIndex].getText().toString().equals("25")){
+                            addValue(attributeTextViews[attributeIndex]);
+                        }
+                    }
+                });
+            }
+            else{
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!attributeTextViews[attributeIndex].getText().toString().equals("1")){
+                            subtractValue(attributeTextViews[attributeIndex]);
+                        }
+                    }
+                });
+            }
+        }
+
+        skillButtons = new Button[]{
+                
+        };
 
 
         return view;
@@ -159,6 +208,20 @@ public class CharacterEditorFirstPage extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void addValue(TextView startTextView){
+        String stringValue = startTextView.getText().toString();
+        int value = Integer.parseInt(stringValue);
+        value++;
+        startTextView.setText(value + "  ");
+    }
+
+    public void subtractValue(TextView startTextView){
+        String stringValue = startTextView.getText().toString();
+        int value = Integer.parseInt(stringValue);
+        value--;
+        startTextView.setText(value + "  ");
     }
 
     /**
