@@ -29,6 +29,9 @@ public class CharacterEditorFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    final Character character;
+    static Character tempCharacter;
+
     public CharacterEditorFragment() {
         // Required empty public constructor
     }

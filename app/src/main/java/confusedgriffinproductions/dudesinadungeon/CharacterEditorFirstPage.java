@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +31,28 @@ public class CharacterEditorFirstPage extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    /**
+     * Create variables to store the TextViews
+     */
+    TextView characterNameTextView;
+    TextView characterRaceTextView;
+    TextView characterClassTextView;
+    TextView[] attributeTextViews;
+    TextView[] skillTextViews;
+
+    /**
+     * Create variables to store the Buttons
+     */
+    Button[] attributeButtons;
+    Button[] skillButtons;
+    Button resetButton;
+    Button confirmButton;
+
+    /**
+     * Create variable to store the ImageView
+     */
+    ImageView characterImage;
 
     public CharacterEditorFirstPage() {
         // Required empty public constructor
@@ -63,8 +88,104 @@ public class CharacterEditorFirstPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
+        View view = inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
+
+        /**
+         * Initialize the TextViews and set their text
+         */
+        characterNameTextView = (TextView)view.findViewById(R.id.character_name);
+        characterClassTextView = (TextView)view.findViewById(R.id.character_class_value);
+        characterRaceTextView = (TextView)view.findViewById(R.id.character_race_value);
+
+        characterNameTextView.setText(CharacterEditorFragment.tempCharacter.getName());
+        characterClassTextView.setText(CharacterEditorFragment.tempCharacter.getCharClass());
+        characterRaceTextView.setText(CharacterEditorFragment.tempCharacter.getRace());
+
+        attributeTextViews = new TextView[]{
+                (TextView)view.findViewById(R.id.strength_value),
+                (TextView)view.findViewById(R.id.agility_value),
+                (TextView)view.findViewById(R.id.resilience_value),
+                (TextView)view.findViewById(R.id.luck_value),
+                (TextView)view.findViewById(R.id.intelligence_value)
+        };
+
+        attributeTextViews[0].setText(CharacterEditorFragment.tempCharacter.getStrength() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getStrength() < 10){
+            attributeTextViews[0].append(" ");
+        }
+        attributeTextViews[1].setText(CharacterEditorFragment.tempCharacter.getAgility() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getAgility() < 10){
+            attributeTextViews[1].append(" ");
+        }
+        attributeTextViews[2].setText(CharacterEditorFragment.tempCharacter.getResilience() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getResilience() < 10){
+            attributeTextViews[2].append(" ");
+        }
+        attributeTextViews[3].setText(CharacterEditorFragment.tempCharacter.getLuck() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getLuck() < 10){
+            attributeTextViews[3].append(" ");
+        }
+        attributeTextViews[4].setText(CharacterEditorFragment.tempCharacter.getIntelligence() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getIntelligence() < 10){
+            attributeTextViews[4].append(" ");
+        }
+
+        skillTextViews = new TextView[]{
+                (TextView)view.findViewById(R.id.fighting_value),
+                (TextView)view.findViewById(R.id.shooting_value),
+                (TextView)view.findViewById(R.id.casting_value),
+                (TextView)view.findViewById(R.id.acrobatics_value),
+                (TextView)view.findViewById(R.id.crafting_value),
+                (TextView)view.findViewById(R.id.gambling_value),
+                (TextView)view.findViewById(R.id.lying_value),
+                (TextView)view.findViewById(R.id.persuasion_value),
+                (TextView)view.findViewById(R.id.sneaking_value),
+                (TextView)view.findViewById(R.id.survival_value)
+        };
+
+        skillTextViews[0].setText(CharacterEditorFragment.tempCharacter.getFighting() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getFighting() < 10){
+            skillTextViews[0].append(" ");
+        }
+        skillTextViews[1].setText(CharacterEditorFragment.tempCharacter.getShooting() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getShooting() < 10){
+            skillTextViews[1].append(" ");
+        }
+        skillTextViews[2].setText(CharacterEditorFragment.tempCharacter.getCasting() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getCasting() < 10){
+            skillTextViews[2].append(" ");
+        }
+        skillTextViews[3].setText(CharacterEditorFragment.tempCharacter.getAcrobatics() + "  ");
+        .if(CharacterEditorFragment.tempCharacter.getAcrobatics() < 10){
+            skillTextViews[3].append(" ");
+        }
+        skillTextViews[4].setText(CharacterEditorFragment.tempCharacter.getCrafting() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getCrafting() < 10){
+            skillTextViews[4].append(" ");
+        }
+        skillTextViews[5].setText(CharacterEditorFragment.tempCharacter.getGambling() +"  ");
+        if(CharacterEditorFragment.tempCharacter.getGambling() < 10){
+            skillTextViews[5].append(" ");
+        }
+        skillTextViews[6].setText(CharacterEditorFragment.tempCharacter.getLying() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getLying() < 10){
+            skillTextViews[6].append(" ");
+        }
+        skillTextViews[7].setText(CharacterEditorFragment.tempCharacter.getPersuasion() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getPersuasion() < 10){
+            skillTextViews[7].append(" ");
+        }
+        skillTextViews[8].setText(CharacterEditorFragment.tempCharacter.getSneaking() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getSneaking() < 10){
+            skillTextViews[8].append(" ");
+        }
+        skillTextViews[9].setText(CharacterEditorFragment.tempCharacter.getSurvival() + "  ");
+        if(CharacterEditorFragment.tempCharacter.getSurvival() < 10){
+            skillTextViews[9].append(" ");
+        }
+
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
