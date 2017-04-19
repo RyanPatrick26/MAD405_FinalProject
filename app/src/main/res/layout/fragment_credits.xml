@@ -78,6 +78,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:text="@string/originalLogoCredits" />
 
@@ -92,10 +93,176 @@
                 android:text="@string/armourCreatedBy" />
 
             <TextView
+                android:id="@+id/all_other_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:text="@string/all_other_images" />
+
+            <TextView
+                android:id="@+id/links1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/axe_image" />
+
+            <TextView
+                android:id="@+id/links2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/backpack_image" />
+
+            <TextView
+                android:id="@+id/links3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/bow_image" />
+
+            <TextView
+                android:id="@+id/links4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/canteen_image" />
+
+            <TextView
+                android:id="@+id/links5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/crossbow_image" />
+
+            <TextView
+                android:id="@+id/links6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/dagger_image" />
+
+            <TextView
+                android:id="@+id/links7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/tinder_box_image" />
+
+            <TextView
+                android:id="@+id/links8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/rations_image" />
+
+            <TextView
+                android:id="@+id/links9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/shield_image" />
+
+            <TextView
+                android:id="@+id/links10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/spear_image" />
+
+            <TextView
+                android:id="@+id/links11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/sword_image" />
+
+            <TextView
+                android:id="@+id/links12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/tent_image" />
+
+            <TextView
+                android:id="@+id/links13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/plate_mail_image"
+                />
+
+            <TextView
+                android:id="@+id/links14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/sleeping_bag_image" />
+
+            <TextView
                 android:id="@+id/company_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="5sp"
                 android:layout_weight="1"
                 android:gravity="bottom|center_horizontal"
                 android:text="@string/all_rights_reserved"

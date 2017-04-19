@@ -150,6 +150,7 @@
     <string name="sleeping_bag_image">https://pixabay.com/p-1294371/?no_redirect</string>
     <string name="rations_image">https://pixabay.com/en/food-junk-food-pack-package-2029493/</string>
     <string name="shield_image">https://pixabay.com/en/shield-escutcheon-heater-shield-31869/</string>
+    <string name="all_other_images">All other images taken from Pixabay\nCC0 Public Domain\nFree for commercial use\nNo attribution required</string>
 
     <!-- Names for all spells -->
     <string name="fireball">Fireball</string>
