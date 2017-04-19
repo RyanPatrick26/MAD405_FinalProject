@@ -63,7 +63,7 @@
     <string name="shadow_step_description">Glisser dans l\'ombre n\\\'a jamais été aussi simple que de se téléporter entre eux</string>
     <string name="resurrect_effects">Rendre un personnage mort à la vie à la moitié de la santé</string>
     <string name="rations">Rations</string>
-    <string name="rations_description">"Aliments secs faciles à préserver "</string>
+    <string name="rations_description">Aliments secs faciles à préserver</string>
     <string name="remaing_skill">Points de compétences</string>
     <string name="remaining_att">Points d\'attributs restants</string>
     <string name="remove_curse">Supprimer une Malédiction</string>
@@ -200,4 +200,20 @@
     <string name="imbue_poison_effects">Mettez une arme en poison, en choisissant l\\\'un des effets suivants, dure jusqu\\\'à votre prochaine attaque: \\n1. Poison de Bloodblossom: votre prochaine attaque inflige +2 points de dégâts et réduit les cibles de force et d\'agilité de 2 pour la durée \\n2. Poison de Kingsrose: La prochaine attaque inflige +1 dégâts et fait en sorte que l\'ennemi subit 1 dégâts au début de son tour pendant la durée \\n3. Poison de Thistleweed: votre prochaine attaque inflige +3 dégâts et empêche la cible de lancer des sorts pendant toute la durée</string>
     <string name="inflict_curse">Infliger une Malédiction</string>
     <string name="inflict_curse_description">Il y a toutes les manières de malédictions dans le monde, faire attention, les mots peuvent être un peu méchants</string>
+    <string name="viewCharactersButtonText">Regardez les Personnages</string>
+    <string name="viewItemsButtonText">Articles</string>
+    <string name="viewSpellsButtonText">Charmes</string>
+    <string name="add_items">Ajouter des Sorts</string>
+    <string name="add_spells">Ajouter des Charmes</string>
+    <string name="createCharacterButtonText">Nouveau Personnage</string>
+    <string name="create_a_character">Créer un Personnage</string>
+    <string name="delete_character">"Effacer "</string>
+    <string name="spell_damage">Dommage du Charme:</string>
+    <string name="spell_effect">Effet du Charme:</string>
+    <string name="no">Non</string>
+    <string name="item_type">Type d\'Article</string>
+    <string name="item_range">Gamme d\'Article</string>
+    <string name="item_price">Prix d\'Article</string>
+    <string name="item_dmg_def">Dommage/Défense</string>
+    <string name="introductionTextView">Bonjour, Aventurier. Bienvenu au monde de Dudes Dans un Donjon: un jeu de rôle à table où vous et vos dudes seront exposez a un aventure pour du pieux épique. Dudes Dans un Donjon a été créer par Warlocks By the Sea.\\n\\nNous sommes excités do vous présentez notre application qui vous permet de garder compte de vos charmes, articles, et personnages.\\n\\nSentez-vous libre de créer un personnage, de stocker des objets et d\'entrer dans un donjon avec tes Dudes.\\n\\nJoyeux pillage!</string>
 </resources>
