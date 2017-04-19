@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dudes In A Dungeon</string>
+    <string name="colour_theme_preference_summary">Changer le couleur de l\'application</string>
+    <string name="lang_test">FRENCH</string>
+    <string name="homepageTitle">Dudes Dans un Donjon\nApplication de Compagnon</string>
+</resources>

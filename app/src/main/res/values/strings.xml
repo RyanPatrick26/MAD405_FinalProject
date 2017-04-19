@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Defualt Strings -->
+    <!-- Default Strings -->
     <string name="app_name">Dudes In A Dungeon</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -71,7 +71,7 @@
     <string name="remaing_skill">Skill Points\nRemaining:</string>
     <string name="reset_skills">Reset\nSkills</string>
     <string name="confirm">Confirm</string>
-    <string name="reset_character">Reset your\nCharacter</string>
+    <string name="reset_character">Reset Character</string>
 
     <!-- String resources for the attributes -->
     <string name="strength">Strength</string>
@@ -305,8 +305,23 @@
     <string name="spells_by_type">View\nSpells by Type</string>
     <string name="spells_by_class">View\nSpells by Class</string>
 
+    <!-- String resources for the Settings -->
+    <string name="language_preference_summary">Change the language of the application.\nApplication will restart.</string>
+    <string name="colour_theme_preference_title">Colour Theme</string>
+    <string name="colour_theme_preference_summary">Change the application\'s colour theme.\nApplication will restart.</string>
+    <string name="credits_settings_title">Credits</string>
+    <string name="default_language_preference">en</string>
+    <string name="default_colour_preference">purple</string>
+    <string name="lang_test">ENGLISH</string>
+    <string name="changed_lang_toast">Language changed. Restarting application.</string>
+    <string name="changed_colour_toast">Colour theme changed. Restarting application.</string>
+    <string name="toast_error_unexpected">An unexpected error occured</string>
     <string name="create_a_character">Create a\nCharacterr</string>
     <string name="delete_character">Delete\nCharacter</string>
+    <string name="colour_preference_purple">Purple</string>
+    <string name="colour_preference_green">Green</string>
+    <string name="colour_preference_offDesc">Change the application to the Green theme\nApplication will restart.</string>
+    <string name="colour_preference_onDesc">Change the application to the Purple theme\nApplication will restart.</string>
 
     <string name="delete_confirmation">Are you sure you wish to delete this character?</string>
     <string name="no">No</string>
@@ -320,6 +335,6 @@
     <string name="add_spells">Add Spells</string>
 
     <string name="remove_item">Remove\nItem</string>
-
+    <string name="language_preference_title">Language</string>
 
 </resources>
