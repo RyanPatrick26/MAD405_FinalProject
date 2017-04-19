@@ -1,12 +1,20 @@
 <resources>
 
-    <!-- Defualt Strings -->
+    <!-- Default Strings -->
     <string name="app_name">Dudes In A Dungeon</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- Homepage string values -->
+    <string name="homepageTitle">Dudes In A Dungeon\nCompanion App</string>
+    <string name="introductionTextView">Greetings, Adventurer!\n\nWelcome to the world of Dudes In A Dungeon: a tabletop RPG where you and your fellow dudes will set out on an adventure for epic loot. Dudes In A Dungeon is an RPG created by Warlocks By the Sea: an amazing company responsible for making some of the greatest card and board games.\n\nWe\'ve been given the pleasure of creating this companion application to help players keep track of their characters, items, and spells.\n\nFeel free to make some characters, get some items, learn some spells, and get in that dungeon.\n\nHappy looting!</string>
+    <string name="createCharacterButtonText">New Character</string>
+    <string name="viewCharactersButtonText">View Characters</string>
+    <string name="viewItemsButtonText">Items</string>
+    <string name="viewSpellsButtonText">Spells</string>
 
     <!-- Navigation Drawer strings -->
     <string name="nav_about_text">About</string>
@@ -63,7 +71,7 @@
     <string name="remaing_skill">Skill Points\nRemaining:</string>
     <string name="reset_skills">Reset\nSkills</string>
     <string name="confirm">Confirm</string>
-    <string name="reset_character">Reset your\nCharacter</string>
+    <string name="reset_character">Reset Character</string>
 
     <!-- String resources for the attributes -->
     <string name="strength">Strength</string>
@@ -297,8 +305,23 @@
     <string name="spells_by_type">View\nSpells by Type</string>
     <string name="spells_by_class">View\nSpells by Class</string>
 
-    <string name="create_a_character">Create a\nCharacterr</string>
+    <!-- String resources for the Settings -->
+    <string name="language_preference_summary">Change the language of the application.\nApplication will restart.</string>
+    <string name="colour_theme_preference_title">Colour Theme</string>
+    <string name="colour_theme_preference_summary">Change the application\'s colour theme.\nApplication will restart.</string>
+    <string name="credits_settings_title">Credits</string>
+    <string name="default_language_preference">en</string>
+    <string name="default_colour_preference">purple</string>
+    <string name="lang_test">ENGLISH</string>
+    <string name="changed_lang_toast">Language changed. Restarting application.</string>
+    <string name="changed_colour_toast">Colour theme changed. Restarting application.</string>
+    <string name="toast_error_unexpected">An unexpected error occured</string>
+    <string name="create_a_character">Create a\nCharacter</string>
     <string name="delete_character">Delete\nCharacter</string>
+    <string name="colour_preference_purple">Purple</string>
+    <string name="colour_preference_green">Green</string>
+    <string name="colour_preference_offDesc">Change the application to the Green theme\nApplication will restart.</string>
+    <string name="colour_preference_onDesc">Change the application to the Purple theme\nApplication will restart.</string>
 
     <string name="delete_confirmation">Are you sure you wish to delete this character?</string>
     <string name="no">No</string>
@@ -309,12 +332,15 @@
     <string name="spell_damage">Spell Damage:</string>
     <string name="spell_effect">Spell Effect:</string>
     <string name="credits_title">Credits</string>
-    <string name="deveoppers_credits">Developpers</string>
+    <string name="developers_credits_title">Developers</string>
     <string name="copyright_credits">Dudes In A Dungeon is a game licensed and created by Warlocks By the Sea. Confused Griffin Productions is in no way affiliated with them aside from the creation of this companion application.</string>
-    <string name="appLogo_createdBy">Application logo created bv Nicholas Allaire</string>
-    <string name="armourCreatedBy">Chainmail and Leather Armour images created by Nicholas Allaire</string>
-    <string name="originalLogoCredits">Original Griffin from Wikipedia Commons:\n</string>
-    <string name="originalLogoCredits_link">https://commons.wikimedia.org/wiki/File:Sk%C3%A5ne_l%C3%A4nsvapen_-_Riksarkivet_Sverige.png</string>
-
+    <string name="appLogo_createdBy">Application logo created bv\nNicholas Allaire</string>
+    <string name="armourCreatedBy">Chainmail and Leather Armour images created by\nNicholas Allaire</string>
+    <string name="originalLogoCredits">Original Griffin from Wikipedia Commons:\nhttps://commons.wikimedia.org/wiki/File:Sk%%C3%A5ne_l%%C3%%A4nsvapen_-_Riksarkivet_Sverige.png</string>
+    <string name="add_items">Add Items</string>
+    <string name="add_spells">Add Spells</string>
+    <string name="remove_item">Remove\nItem</string>
+    <string name="language_preference_title">Language</string>
+    <string name="all_rights_reserved">&#169; Confused Griffin Productions 2017 - All Rights Reserved</string>
 
 </resources>

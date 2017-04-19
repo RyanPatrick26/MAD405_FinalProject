@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/item_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
             app:srcCompat="@mipmap/ic_launcher" />
@@ -30,7 +30,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/black"
                 android:textSize="24sp" />
 
             <TextView
@@ -38,7 +37,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/black"
                 android:textSize="16sp" />
         </LinearLayout>
 
