@@ -7,7 +7,7 @@
     <color name="colorPrimaryLight">#e2d8f3</color>
     <!-- accent color: blue -->
     <color name="primaryBackground">#e3daf1</color>
-    <color name="secondaryBackground">#d5c8ea</color>
+    <color name="secondaryBackground">#f1edf8</color>
     <color name="colorAccent">#607d8b</color>
     <!-- text color: black -->
     <color name="textColorPrimary">#000000</color>
@@ -15,6 +15,9 @@
     <!-- inverse text color: white -->
     <color name="textColorPrimaryInverse">#FFFFFF</color>
     <color name="textColorSecondaryInverse">#BDBDBD</color>
+    <!-- Button colors for light theme -->
+    <color name="buttonBackgroundColor">#4d4d4d</color>
+    <color name="buttonTextColor">#e2d8f3</color>
 
     <!-- Green Colour Theme resources -->
     <color name="colorPrimaryOther">#98c548</color>
@@ -22,5 +25,8 @@
     <color name="colorPrimaryLightOther">#404040</color>
     <color name="colorAccentOther">#9F8274</color>
     <color name="windowBackgroundDark">#1d270c</color>
+    <!-- Button colors for the dark theme -->
+    <color name="buttonBackgroundColorDark">#8c8c8c</color>
+    <color name="buttonTextColorDark">#e2d8f3</color>
 
 </resources>
