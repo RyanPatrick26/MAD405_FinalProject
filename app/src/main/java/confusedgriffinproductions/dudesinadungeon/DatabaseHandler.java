@@ -1198,6 +1198,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create a contentValues to store all the values
         ContentValues values = new ContentValues();
         // Put all properties into values
+        StringBuilder itemIds = new StringBuilder();
+        StringBuilder spellIds = new StringBuilder();
+
+        for(int i = 0; i < character.getItems().size(); i++){
+            if(i == character.getItems().size() - 1){
+                itemIds.append(character.getItems().get(i).getId());
+            }
+            else{
+                itemIds.append(character.getItems().get(i).getId()+",");
+            }
+        }
+
+        for(int i = 0; i < character.getSpells().size(); i++){
+            spellIds.append(character.getSpells().get(i).getId()+",");
+        }
+
+        String itemIdsResult = itemIds.toString();
+        String spellIdsResult = spellIds.toString();
+
         values.put(COLUMN_NAME, character.getName());
         values.put(COLUMN_RACE, character.getRace());
         values.put(COLUMN_CHAR_CLASS, character.getCharClass());
@@ -1215,6 +1234,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_SNEAKING, character.getSneaking());
         values.put(COLUMN_CRAFTING, character.getCrafting());
         values.put(COLUMN_SURVIVAL, character.getSurvival());
+        values.put(COLUMN_PERSUASION, character.getPersuasion());
+        values.put(COLUMN_ITEM_IDS, itemIdsResult);
+        values.put(COLUMN_SPELL_IDS, spellIdsResult);
         // Update the database
         return db.update(TABLE_CHARACTERS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(character.getId()) });
     }

@@ -31,8 +31,7 @@ public class CharacterEditorFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private Character character;
-    static Character tempCharacter;
+    static Character character;
     SectionsPagerAdapter adapter;
 
     public CharacterEditorFragment() {
@@ -72,7 +71,6 @@ public class CharacterEditorFragment extends Fragment {
         DatabaseHandler db = new DatabaseHandler(getContext());
         character = db.getCharater(id);
         db.closeDB();
-        tempCharacter = character;
 
         adapter = new SectionsPagerAdapter(getChildFragmentManager());
         ViewPager viewPager = (ViewPager)view.findViewById(R.id.editor_pager);

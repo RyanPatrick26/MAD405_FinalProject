@@ -210,7 +210,7 @@ public class CharacterListFragment extends Fragment {
             agilityTextView.setText(characterList.get(position).getAgility() + "");
             resilienceTextView.setText(characterList.get(position).getResilience() + "");
             luckTextView.setText(characterList.get(position).getLuck() + "");
-            intelligenceTextView.setText(characterList.get(position).getLuck() + "");
+            intelligenceTextView.setText(characterList.get(position).getIntelligence() + "");
 
             //initialize the Delete Button
             deleteButton = (Button)convertView.findViewById(R.id.delete_character_button);

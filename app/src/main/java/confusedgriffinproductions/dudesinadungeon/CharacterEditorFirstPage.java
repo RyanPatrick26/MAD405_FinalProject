@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +56,9 @@ public class CharacterEditorFirstPage extends Fragment {
      */
     ImageView characterImage;
 
+    int index;
+    Character tempCharacter;
+
     public CharacterEditorFirstPage() {
         // Required empty public constructor
     }
@@ -89,6 +94,7 @@ public class CharacterEditorFirstPage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
+        tempCharacter = CharacterEditorFragment.character;
 
         /**
          * Initialize the TextViews and set their text
@@ -97,9 +103,9 @@ public class CharacterEditorFirstPage extends Fragment {
         characterClassTextView = (TextView)view.findViewById(R.id.character_class_value);
         characterRaceTextView = (TextView)view.findViewById(R.id.character_race_value);
 
-        characterNameTextView.setText(CharacterEditorFragment.tempCharacter.getName());
-        characterClassTextView.setText(CharacterEditorFragment.tempCharacter.getCharClass());
-        characterRaceTextView.setText(CharacterEditorFragment.tempCharacter.getRace());
+        characterNameTextView.setText(tempCharacter.getName());
+        characterClassTextView.setText(tempCharacter.getCharClass());
+        characterRaceTextView.setText(tempCharacter.getRace());
 
         attributeTextViews = new TextView[]{
                 (TextView)view.findViewById(R.id.strength_value),
@@ -108,27 +114,6 @@ public class CharacterEditorFirstPage extends Fragment {
                 (TextView)view.findViewById(R.id.luck_value),
                 (TextView)view.findViewById(R.id.intelligence_value)
         };
-
-        attributeTextViews[0].setText(CharacterEditorFragment.tempCharacter.getStrength() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getStrength() < 10){
-            attributeTextViews[0].append(" ");
-        }
-        attributeTextViews[1].setText(CharacterEditorFragment.tempCharacter.getAgility() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getAgility() < 10){
-            attributeTextViews[1].append(" ");
-        }
-        attributeTextViews[2].setText(CharacterEditorFragment.tempCharacter.getResilience() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getResilience() < 10){
-            attributeTextViews[2].append(" ");
-        }
-        attributeTextViews[3].setText(CharacterEditorFragment.tempCharacter.getLuck() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getLuck() < 10){
-            attributeTextViews[3].append(" ");
-        }
-        attributeTextViews[4].setText(CharacterEditorFragment.tempCharacter.getIntelligence() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getIntelligence() < 10){
-            attributeTextViews[4].append(" ");
-        }
 
         skillTextViews = new TextView[]{
                 (TextView)view.findViewById(R.id.fighting_value),
@@ -143,49 +128,207 @@ public class CharacterEditorFirstPage extends Fragment {
                 (TextView)view.findViewById(R.id.survival_value)
         };
 
-        skillTextViews[0].setText(CharacterEditorFragment.tempCharacter.getFighting() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getFighting() < 10){
-            skillTextViews[0].append(" ");
+        setTextViewsText();
+
+
+        /**
+         * Initialize the Buttons and set their functionality
+         */
+        attributeButtons = new Button[]{
+                (Button)view.findViewById(R.id.add_strength_button),
+                (Button)view.findViewById(R.id.subtract_strength_button),
+                (Button)view.findViewById(R.id.add_agility_button),
+                (Button)view.findViewById(R.id.subtract_agility_button),
+                (Button)view.findViewById(R.id.add_resilience_button),
+                (Button)view.findViewById(R.id.subtract_resilience_button),
+                (Button)view.findViewById(R.id.add_luck_button),
+                (Button)view.findViewById(R.id.subtract_luck_button),
+                (Button)view.findViewById(R.id.add_intelligence_button),
+                (Button)view.findViewById(R.id.subtract_intelligence_button)
+        };
+
+        for(index = 0; index < attributeButtons.length; index++){
+            final Button button = attributeButtons[index];
+            button.setTag(index);
+            if(index%2 == 0){
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!attributeTextViews[attributeIndex].getText().toString().trim().equals("25")){
+                            addValue(attributeTextViews[attributeIndex]);
+                        }
+                    }
+                });
+            }
+            else{
+                attributeButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!attributeTextViews[attributeIndex].getText().toString().trim().equals("1")){
+                            subtractValue(attributeTextViews[attributeIndex]);
+                        }
+                    }
+                });
+            }
         }
-        skillTextViews[1].setText(CharacterEditorFragment.tempCharacter.getShooting() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getShooting() < 10){
-            skillTextViews[1].append(" ");
+
+        skillButtons = new Button[]{
+                (Button)view.findViewById(R.id.add_fighting_button),
+                (Button)view.findViewById(R.id.subtract_fighting_button),
+                (Button)view.findViewById(R.id.add_shooting_button),
+                (Button)view.findViewById(R.id.subtract_shooting_button),
+                (Button)view.findViewById(R.id.add_casting_button),
+                (Button)view.findViewById(R.id.subtract_casting_button),
+                (Button)view.findViewById(R.id.add_acrobatics_button),
+                (Button)view.findViewById(R.id.subtract_acrobatics_button),
+                (Button)view.findViewById(R.id.add_crafting_button),
+                (Button)view.findViewById(R.id.subtract_crafting_button),
+                (Button)view.findViewById(R.id.add_gambling_button),
+                (Button)view.findViewById(R.id.subtract_gambling_button),
+                (Button)view.findViewById(R.id.add_lying_button),
+                (Button)view.findViewById(R.id.subtract_lying_button),
+                (Button)view.findViewById(R.id.add_persuasion_button),
+                (Button)view.findViewById(R.id.subtract_persuasion_button),
+                (Button)view.findViewById(R.id.add_sneaking_button),
+                (Button)view.findViewById(R.id.subtract_sneaking_button),
+                (Button)view.findViewById(R.id.add_survival_button),
+                (Button)view.findViewById(R.id.subtract_survival_button)
+        };
+
+        for(index = 0; index < skillButtons.length; index++){
+            final Button button = skillButtons[index];
+            button.setTag(index);
+            if(index%2 == 0){
+                skillButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!skillTextViews[attributeIndex].getText().toString().trim().equals("20")){
+                            addValue(skillTextViews[attributeIndex]);
+                        }
+                    }
+                });
+            }
+            else{
+                skillButtons[index].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int attributeIndex = ((Integer)button.getTag()/2);
+                        if(!skillTextViews[attributeIndex].getText().toString().trim().equals("0")){
+                            subtractValue(skillTextViews[attributeIndex]);
+                        }
+                    }
+                });
+            }
         }
-        skillTextViews[2].setText(CharacterEditorFragment.tempCharacter.getCasting() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getCasting() < 10){
-            skillTextViews[2].append(" ");
-        }
-        skillTextViews[3].setText(CharacterEditorFragment.tempCharacter.getAcrobatics() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getAcrobatics() < 10){
-            skillTextViews[3].append(" ");
-        }
-        skillTextViews[4].setText(CharacterEditorFragment.tempCharacter.getCrafting() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getCrafting() < 10){
-            skillTextViews[4].append(" ");
-        }
-        skillTextViews[5].setText(CharacterEditorFragment.tempCharacter.getGambling() +"  ");
-        if(CharacterEditorFragment.tempCharacter.getGambling() < 10){
-            skillTextViews[5].append(" ");
-        }
-        skillTextViews[6].setText(CharacterEditorFragment.tempCharacter.getLying() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getLying() < 10){
-            skillTextViews[6].append(" ");
-        }
-        skillTextViews[7].setText(CharacterEditorFragment.tempCharacter.getPersuasion() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getPersuasion() < 10){
-            skillTextViews[7].append(" ");
-        }
-        skillTextViews[8].setText(CharacterEditorFragment.tempCharacter.getSneaking() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getSneaking() < 10){
-            skillTextViews[8].append(" ");
-        }
-        skillTextViews[9].setText(CharacterEditorFragment.tempCharacter.getSurvival() + "  ");
-        if(CharacterEditorFragment.tempCharacter.getSurvival() < 10){
-            skillTextViews[9].append(" ");
-        }
+
+        resetButton = (Button)view.findViewById(R.id.reset_button);
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tempCharacter = CharacterEditorFragment.character;
+                setTextViewsText();
+            }
+        });
+
+        confirmButton = (Button)view.findViewById(R.id.confirm_button);
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tempCharacter.setStrength(Integer.parseInt(attributeTextViews[0].getText().toString().trim()));
+                tempCharacter.setAgility(Integer.parseInt(attributeTextViews[1].getText().toString().trim()));
+                tempCharacter.setResilience(Integer.parseInt(attributeTextViews[2].getText().toString().trim()));
+                tempCharacter.setLuck(Integer.parseInt(attributeTextViews[3].getText().toString().trim()));
+                tempCharacter.setIntelligence(Integer.parseInt(attributeTextViews[4].getText().toString().trim()));
+
+                tempCharacter.setFighting(Integer.parseInt(skillTextViews[0].getText().toString().trim()));
+                tempCharacter.setShooting(Integer.parseInt(skillTextViews[1].getText().toString().trim()));
+                tempCharacter.setCasting(Integer.parseInt(skillTextViews[2].getText().toString().trim()));
+                tempCharacter.setAcrobatics(Integer.parseInt(skillTextViews[3].getText().toString().trim()));
+                tempCharacter.setCrafting(Integer.parseInt(skillTextViews[4].getText().toString().trim()));
+                tempCharacter.setGambling(Integer.parseInt(skillTextViews[5].getText().toString().trim()));
+                tempCharacter.setLying(Integer.parseInt(skillTextViews[6].getText().toString().trim()));
+                tempCharacter.setPersuasion(Integer.parseInt(skillTextViews[7].getText().toString().trim()));
+                tempCharacter.setSneaking(Integer.parseInt(skillTextViews[8].getText().toString().trim()));
+                tempCharacter.setSurvival(Integer.parseInt(skillTextViews[9].getText().toString().trim()));
+
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                db.updateCharacter(tempCharacter);
+                db.closeDB();
+
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack();
+            }
+        });
 
 
         return view;
+    }
+
+    public void setTextViewsText(){
+        attributeTextViews[0].setText(tempCharacter.getStrength() + "  ");
+        if(tempCharacter.getStrength() < 10){
+            attributeTextViews[0].append(" ");
+        }
+        attributeTextViews[1].setText(tempCharacter.getAgility() + "  ");
+        if(tempCharacter.getAgility() < 10){
+            attributeTextViews[1].append(" ");
+        }
+        attributeTextViews[2].setText(tempCharacter.getResilience() + "  ");
+        if(tempCharacter.getResilience() < 10){
+            attributeTextViews[2].append(" ");
+        }
+        attributeTextViews[3].setText(tempCharacter.getLuck() + "  ");
+        if(tempCharacter.getLuck() < 10){
+            attributeTextViews[3].append(" ");
+        }
+        attributeTextViews[4].setText(tempCharacter.getIntelligence() + "  ");
+        if(tempCharacter.getIntelligence() < 10){
+            attributeTextViews[4].append(" ");
+        }
+
+        skillTextViews[0].setText(tempCharacter.getFighting() + "  ");
+        if(tempCharacter.getFighting() < 10){
+            skillTextViews[0].append(" ");
+        }
+        skillTextViews[1].setText(tempCharacter.getShooting() + "  ");
+        if(tempCharacter.getShooting() < 10){
+            skillTextViews[1].append(" ");
+        }
+        skillTextViews[2].setText(tempCharacter.getCasting() + "  ");
+        if(tempCharacter.getCasting() < 10){
+            skillTextViews[2].append(" ");
+        }
+        skillTextViews[3].setText(tempCharacter.getAcrobatics() + "  ");
+        if(tempCharacter.getAcrobatics() < 10){
+            skillTextViews[3].append(" ");
+        }
+        skillTextViews[4].setText(tempCharacter.getCrafting() + "  ");
+        if(tempCharacter.getCrafting() < 10){
+            skillTextViews[4].append(" ");
+        }
+        skillTextViews[5].setText(tempCharacter.getGambling() +"  ");
+        if(tempCharacter.getGambling() < 10){
+            skillTextViews[5].append(" ");
+        }
+        skillTextViews[6].setText(tempCharacter.getLying() + "  ");
+        if(tempCharacter.getLying() < 10){
+            skillTextViews[6].append(" ");
+        }
+        skillTextViews[7].setText(tempCharacter.getPersuasion() + "  ");
+        if(tempCharacter.getPersuasion() < 10){
+            skillTextViews[7].append(" ");
+        }
+        skillTextViews[8].setText(tempCharacter.getSneaking() + "  ");
+        if(tempCharacter.getSneaking() < 10){
+            skillTextViews[8].append(" ");
+        }
+        skillTextViews[9].setText(tempCharacter.getSurvival() + "  ");
+        if(tempCharacter.getSurvival() < 10){
+            skillTextViews[9].append(" ");
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -210,6 +353,27 @@ public class CharacterEditorFirstPage extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void addValue(TextView startTextView){
+        String stringValue = startTextView.getText().toString().trim();
+        int value = Integer.parseInt(stringValue);
+        value++;
+        startTextView.setText(value + "  ");
+        if(value < 10){
+            startTextView.append(" ");
+        }
+    }
+
+    public void subtractValue(TextView startTextView){
+        String stringValue = startTextView.getText().toString().trim();
+        int value = Integer.parseInt(stringValue);
+        value--;
+
+        startTextView.setText(value + "  ");
+        if(value < 10){
+            startTextView.append(" ");
+        }
     }
 
     /**
