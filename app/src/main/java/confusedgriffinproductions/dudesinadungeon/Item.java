@@ -1,5 +1,9 @@
 package confusedgriffinproductions.dudesinadungeon;
 
+import android.support.annotation.NonNull;
+
+import java.util.Comparator;
+
 /**
  * Item Class
  * Items for player Characters to acquire and use.
@@ -7,7 +11,7 @@ package confusedgriffinproductions.dudesinadungeon;
  * @author Nicholas Allaire
  * @version 1.0
  */
-public class Item {
+public class Item implements Comparable<Item>{
 
     // Declare Item properties
     private int id;
@@ -33,6 +37,7 @@ public class Item {
         this.type = type;
         this.description = description;
         this.dmg_def = dmg_def;
+        this.range = range;
         this.imageId = imageId;
     }
 
@@ -111,5 +116,10 @@ public class Item {
     }
     public String toString() {
         return getName();
+    }
+
+    @Override
+    public int compareTo(Item o) {
+        return o.getType().compareTo(this.getType());
     }
 }
