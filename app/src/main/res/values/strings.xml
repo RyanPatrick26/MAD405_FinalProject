@@ -313,7 +313,8 @@
     <string name="copyright_credits">Dudes In A Dungeon is a game licensed and created by Warlocks By the Sea. Confused Griffin Productions is in no way affiliated with them aside from the creation of this companion application.</string>
     <string name="appLogo_createdBy">Application logo created bv Nicholas Allaire</string>
     <string name="armourCreatedBy">Chainmail and Leather Armour images created by Nicholas Allaire</string>
-    <string name="originalLogoCredits">Original Griffin from Wikipedia Commons:\nhttps://commons.wikimedia.org/wiki/File:Sk%C3%A5ne_l%C3%A4nsvapen_-_Riksarkivet_Sverige.png</string>
+    <string name="originalLogoCredits">Original Griffin from Wikipedia Commons:\n</string>
+    <string name="originalLogoCredits_link">https://commons.wikimedia.org/wiki/File:Sk%C3%A5ne_l%C3%A4nsvapen_-_Riksarkivet_Sverige.png</string>
 
 
 </resources>
