@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -50,9 +51,39 @@ public class MainActivity extends AppCompatActivity
     FragmentManager fm = getSupportFragmentManager();
 
     // Email address of the application creators
-    String creatorEmail = "diad.app@cfproductions@gmail.com";
+    String creatorEmail = "diad.app@cgproductions@gmail.com";
     // SMS Message String
     String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
+
+    /**
+     * Database refreshing properties
+     */
+    // Name of all the tables
+    private static final String TABLE_ITEMS = "items";
+    private static final String TABLE_SPELLS = "spells";
+
+    // Common Table Column names
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_DESCRIPTION = "description";
+
+    /**
+     * Item Table Column Names
+     */
+    private static final String COLUMN_PRICE = "price";
+    private static final String COLUMN_TYPE = "type";
+    private static final String COLUMN_DMG_DEF = "dmg_def";
+    private static final String COLUMN_RANGE = "range";
+    private static final String COLUMN_PORTRAIT_ID = "portrait_id";
+
+    /**
+     * Spell Table Column Names
+     */
+    private static final String COLUMN_SPELLTYPE = "spelltype";
+    private static final String COLUMN_CLASS = "class";
+    private static final String COLUMN_DMG_HEAL = "dmg_heal";
+    private static final String COLUMN_COMPONENTS = "components";
+    private static final String COLUMN_EFFECTS = "effects";
 
 
     @Override
@@ -65,6 +96,8 @@ public class MainActivity extends AppCompatActivity
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
+
+        refreshDatabaseForLanguageChange(new DatabaseHandler(this));
 
         super.onCreate(savedInstanceState);
 
@@ -306,6 +339,45 @@ public class MainActivity extends AppCompatActivity
         }
         // return the proper language
         return new Locale(lang);
+    }
+
+    public static void createSpellsTable(SQLiteDatabase db) {
+        String CREATE_SPELLS_TABLE = "CREATE TABLE " + TABLE_SPELLS + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                + COLUMN_NAME + " TEXT,"
+                + COLUMN_DESCRIPTION + " TEXT,"
+                + COLUMN_SPELLTYPE + " TEXT,"
+                + COLUMN_CLASS + " TEXT,"
+                + COLUMN_COMPONENTS + " TEXT,"
+                + COLUMN_EFFECTS + " TEXT,"
+                + COLUMN_DMG_HEAL + " TEXT" + ")";
+        db.execSQL(CREATE_SPELLS_TABLE);
+    }
+
+    public static void createItemsTable(SQLiteDatabase db) {
+        String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                + COLUMN_NAME + " TEXT,"
+                + COLUMN_PRICE + " TEXT,"
+                + COLUMN_TYPE + " TEXT,"
+                + COLUMN_DESCRIPTION + " TEXT,"
+                + COLUMN_DMG_DEF + " TEXT,"
+                + COLUMN_RANGE + " TEXT,"
+                + COLUMN_PORTRAIT_ID + " INTEGER)";
+        db.execSQL(CREATE_ITEMS_TABLE);
+    }
+
+    public static void refreshDatabaseForLanguageChange(DatabaseHandler dbh) {
+        SQLiteDatabase db = dbh.getWritableDatabase();
+
+        dbh.deleteItemsAndSpells(db);
+
+        createItemsTable(db);
+        createSpellsTable(db);
+
+        dbh.initializeItemsTable(db);
+        dbh.initializeSpellsTable(db);
+        db.close();
     }
 
 }
