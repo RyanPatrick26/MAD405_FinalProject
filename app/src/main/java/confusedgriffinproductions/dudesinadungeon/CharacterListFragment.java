@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -120,6 +121,16 @@ public class CharacterListFragment extends Fragment {
         adapter = new CustomAdapter(getContext(), characterList);
         characterListView.setAdapter(adapter);
 
+        characterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.addToBackStack(null);
+                trans.replace(R.id.content_main, CharacterEditorFragment.newInstance(characterList.get(position).getId()));
+                trans.commit();
+            }
+        });
         return view;
     }
 

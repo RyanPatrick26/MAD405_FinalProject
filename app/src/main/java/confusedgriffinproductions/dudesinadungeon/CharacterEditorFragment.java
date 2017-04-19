@@ -4,6 +4,9 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,13 +27,13 @@ public class CharacterEditorFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int id;
 
     private OnFragmentInteractionListener mListener;
 
-    final Character character;
+    private Character character;
     static Character tempCharacter;
+    SectionsPagerAdapter adapter;
 
     public CharacterEditorFragment() {
         // Required empty public constructor
@@ -40,16 +43,14 @@ public class CharacterEditorFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+     * @param id id of the character being edited
      * @return A new instance of fragment CharacterEditorFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CharacterEditorFragment newInstance(String param1, String param2) {
+    public static CharacterEditorFragment newInstance(int id) {
         CharacterEditorFragment fragment = new CharacterEditorFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,8 +59,7 @@ public class CharacterEditorFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            id = getArguments().getInt(ARG_PARAM1);
         }
     }
 
@@ -67,7 +67,18 @@ public class CharacterEditorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_character_editor, container, false);
+        View view = inflater.inflate(R.layout.fragment_character_editor, container, false);
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        character = db.getCharater(id);
+        db.closeDB();
+        tempCharacter = character;
+
+        adapter = new SectionsPagerAdapter(getChildFragmentManager());
+        ViewPager viewPager = (ViewPager)view.findViewById(R.id.editor_pager);
+        viewPager.setAdapter(adapter);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -92,6 +103,27 @@ public class CharacterEditorFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch(position){
+                case 0:
+                    return CharacterEditorFirstPage.newInstance("", "");
+                default:
+                    return CharacterEditorFirstPage.newInstance("", "");
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 1;
+        }
     }
 
     /**

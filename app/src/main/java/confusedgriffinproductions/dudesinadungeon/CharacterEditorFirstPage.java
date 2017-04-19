@@ -156,7 +156,7 @@ public class CharacterEditorFirstPage extends Fragment {
             skillTextViews[2].append(" ");
         }
         skillTextViews[3].setText(CharacterEditorFragment.tempCharacter.getAcrobatics() + "  ");
-        .if(CharacterEditorFragment.tempCharacter.getAcrobatics() < 10){
+        if(CharacterEditorFragment.tempCharacter.getAcrobatics() < 10){
             skillTextViews[3].append(" ");
         }
         skillTextViews[4].setText(CharacterEditorFragment.tempCharacter.getCrafting() + "  ");
