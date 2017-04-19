@@ -7,7 +7,7 @@
     <color name="colorPrimaryLight">#e2d8f3</color>
     <!-- accent color: blue -->
     <color name="primaryBackground">#e3daf1</color>
-    <color name="secondaryBackground">#d5c8ea</color>
+    <color name="secondaryBackground">#f1edf8</color>
     <color name="colorAccent">#607d8b</color>
     <!-- text color: black -->
     <color name="textColorPrimary">#000000</color>

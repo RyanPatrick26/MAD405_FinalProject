@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity
     FragmentManager fm = getSupportFragmentManager();
 
     // Email address of the application creators
-    // TODO: REMOVE MY EMAIL ADDRESS
-    String creatorEmail = "nicholas.allaire@stclairconnect.ca";
+    String creatorEmail = "diad.app@cfproductions@gmail.com";
     // SMS Message String
     String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
 
@@ -59,17 +58,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Check to make sure the correct language is set OR set the proper one
-        checkLanguage();
 
-        // This will prepare the app to load the dark theme if the value stored in SharedPreferences is set to TRUE
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean useGreenTheme = settings.getBoolean("colour_preference", false);
-
-        if (useGreenTheme) {
-            setTheme(R.style.AppTheme_Dark);
-        } else {
-            setTheme(R.style.AppTheme);
-        }
+        Locale locale = getLocale(MainActivity.this);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
 
         super.onCreate(savedInstanceState);
 
@@ -311,34 +306,6 @@ public class MainActivity extends AppCompatActivity
         }
         // return the proper language
         return new Locale(lang);
-    }
-
-    /**
-     * Uses the getLocale method to properly set the Locale for the entire application
-     * in order to display the application in the correct language.
-     *
-     * @author Nicholas Allaire
-     */
-    public void checkLanguage() {
-        // Get the application resources
-        Resources resources = getResources();
-        // Get the application's configuration
-        Configuration config = resources.getConfiguration();
-        // Get the current Locale
-        Locale locale = getLocale(this);
-        // If the Locale doesn't equal the current locale, set it as such
-        if (!config.locale.equals(locale)) {
-            config.setLocale(locale);
-            // update the configuration
-            resources.updateConfiguration(config, null);
-        }
-    }
-
-
-    public void themeChange(Toolbar toolbar) {
-        // Check the theme
-
-        // Change the theme based on the returned theme
     }
 
 }

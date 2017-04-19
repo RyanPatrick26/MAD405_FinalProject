@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory
+        android:title="@string/action_settings">
+        <ListPreference
+            android:defaultValue="@string/default_language_preference"
+            android:entries="@array/language_preference"
+            android:entryValues="@array/language_preference_value"
+            android:key="language_preference"
+            android:summary="@string/language_preference_summary"
+            android:title="@string/language_preference_title" />
+    </PreferenceCategory>
 
-    <ListPreference
-        android:defaultValue="@string/default_language_preference"
-        android:entries="@array/language_preference"
-        android:entryValues="@array/language_preference_value"
-        android:key="language_preference"
-        android:summary="@string/language_preference_summary"
-        android:title="@string/language_preference_title" />
-
-    <SwitchPreference
-        android:title="@string/colour_theme_preference_title"
-        android:summaryOff="@string/colour_preference_offDesc"
-        android:summaryOn="@string/colour_preference_onDesc"
-        android:switchTextOff="@string/colour_preference_purple"
-        android:switchTextOn="@string/colour_preference_green"
-        android:key="colour_preference" />
 
 </PreferenceScreen>
