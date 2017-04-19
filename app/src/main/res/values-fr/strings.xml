@@ -162,8 +162,8 @@
     <string name="control_plants_effects">Prenez le contrôle d\'un groupe de plantes situé à proximité. Les plantes contrôlées de cette façon peuvent être utilisées pour attaquer ou entamer l\\\'ennemi</string>
     <string name="convert">Convertir</string>
     <string name="convert_description">Pourquoi se battre contre eux quand vous pouvez les transformer à votre côté?</string>
-    <string name="convert_effects">" Prendre temporairement le contrôle de l'ennemi"</string>
-    <string name="cover_ally">" Couvrir Votre Allié"</string>
+    <string name="convert_effects">Prendre temporairement le contrôle de l\'ennemi</string>
+    <string name="cover_ally">Couvrir Votre Allié</string>
     <string name="cover_ally_description">S\'arrêter à une attaque pour un de vos amis proches, ils l\'apprécieront</string>
     <string name="cover_ally_effects">Utiliser uniquement lorsqu\'un allié voisin est attaqué, vous souffrez plutôt de l\'attaque</string>
     <string name="crafting">Fabrication</string>
@@ -205,7 +205,7 @@
     <string name="viewSpellsButtonText">Charmes</string>
     <string name="add_items">Ajouter des Articles</string>
     <string name="add_spells">Ajouter des Charmes</string>
-    <string name="createCharacterButtonText">Nouveau Personnage</string>
+    <string name="createCharacterButtonText">Personnage +</string>
     <string name="create_a_character">Créer un Personnage</string>
     <string name="delete_character">Supprimer</string>
     <string name="spell_damage">Dommage du Charme:</string>
@@ -218,7 +218,7 @@
     <string name="introductionTextView">Bonjour, Aventurier.\n\nBienvenu au monde de Dudes Dans un Donjon: un jeu de rôle à table où vous et vos dudes seront exposez a un aventure pour du pieux épique. Dudes Dans un Donjon a été créer par Warlocks By the Sea.\n\nNous sommes excités do vous présentez notre application qui vous permet de garder compte de vos charmes, articles, et personnages.\n\nSentez-vous libre de créer un personnage, de stocker des objets et d\'entrer dans un donjon avec tes Dudes.\n\nJoyeux pillage!</string>
     <string name="colour_theme_preference_summary">Changer le couleur de l\'application</string>
     <string name="lang_test">FRENCH</string>
-    <string name="homepageTitle">Dudes Dans un Donjon\nApplication de Compagnon</string>
+    <string name="homepageTitle">Dudes Dans un Donjon\nCompagnon</string>
     <string name="default_colour_preference"></string>
     <string name="delete_confirmation">Êtes-vous sûr de vouloir supprimer votre personnage</string>
     <string name="language_preference_summary">Changer la langue de l\\\'application</string>
@@ -233,4 +233,12 @@
     <string name="colour_preference_purple">Violet</string>
     <string name="colour_theme_preference_title">Thème de Couleur</string>
     <string name="credits_settings_title">Crédits</string>
+    <string name="all_other_images">Toutes les autres images prises de Pixabay\nCCO Domaine Public et gratuit pour un usage commercial\nPas d\'affectation obligatoire</string>
+    <string name="all_rights_reserved">&#169; Confused Griffin Productions 2017 - Tous Droits Réservés</string>
+    <string name="appLogo_createdBy">Logo de l\'application créé par\nNicholas Allaire</string>
+    <string name="armourCreatedBy">Images pour l\'armure en cuir et en platte créé par\nNicholas Allaire</string>
+    <string name="copyright_credits">Dudes Dans Un Donjon est un jeu créé et licensé par Warlocks By the Sea. Confused Griffin Productions n\'est pas affilié avec eux mais qu\'avec cette application de compagnon.</string>
+    <string name="credits_title">Crédits</string>
+    <string name="developers_credits_title">Développeurs</string>
+    <string name="originalLogoCredits">Griffon original de Wikipedia Commons: https://commons.wikimedia.org/wiki/File:Sk%%C3%A5ne_l%%C3%%A4nsvapen_-_Riksarkivet_Sverige.png</string>
 </resources>

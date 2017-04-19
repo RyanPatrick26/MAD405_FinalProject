@@ -1,13 +1,298 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="confusedgriffinproductions.dudesinadungeon.CreditsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="CREDITS" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/credits_title"
+                android:textColor="@color/textColorPrimaryInverse"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/developpers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="@string/developers_credits_title"
+                android:textColor="@color/textColorPrimaryInverse"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/company_staff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Ryan Patrick and Nicholas Allaire"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/images_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="Images"
+                android:textColor="@color/textColorPrimaryInverse"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/applogo_createdBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/appLogo_createdBy"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/original_griffin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:text="@string/originalLogoCredits"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/armour_createdBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:text="@string/armourCreatedBy"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/all_other_images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1"
+                android:text="@string/all_other_images"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/axe_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/backpack_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/bow_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/canteen_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/crossbow_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/dagger_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/tinder_box_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/rations_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/shield_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/spear_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/sword_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/tent_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/plate_mail_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/links14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:text="@string/sleeping_bag_image"
+                android:textColor="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="20sp"
+                android:layout_weight="1"
+                android:gravity="bottom|center_horizontal"
+                android:text="@string/all_rights_reserved"
+                android:textAlignment="center"
+                android:textColor="@color/textColorSecondaryInverse"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity
         CharacterCreatorFragment.OnFragmentInteractionListener,
         ItemListFragment.OnFragmentInteractionListener,
         SpellListFragment.OnFragmentInteractionListener,
-        CreditsFragment.OnFragmentInteractionListener,
         ItemViewerFragment.OnFragmentInteractionListener,
-        SpellViewerFragment.OnFragmentInteractionListener{
+        SpellViewerFragment.OnFragmentInteractionListener,
+        CreditsFragment.OnFragmentInteractionListener{
 
     // Fragment manager to allow us to display, remove, and create fragments
     FragmentManager fm = getSupportFragmentManager();
@@ -117,10 +117,9 @@ public class MainActivity extends AppCompatActivity
         });
 
         FragmentManager fm = getSupportFragmentManager();
-
-        FragmentTransaction tran = fm.beginTransaction();
-        tran.replace(R.id.content_main, new MainFragment());
-        tran.commit();
+        FragmentTransaction trans = fm.beginTransaction();
+        trans.replace(R.id.content_main, new MainFragment());
+        trans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -197,7 +196,7 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
             tran.addToBackStack(null);
-            tran.replace(R.id.content_main, new CharacterCreatorFragment());
+            tran.replace(R.id.content_main, new CharacterCreatorFragment(), "CharacterCreatorFragment");
             tran.commit();
         } else if (id == R.id.nav_view_char) {
             // Navigate to the View Character List Fragment
