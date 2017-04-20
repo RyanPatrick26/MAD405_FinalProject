@@ -16,11 +16,11 @@
 
         <ImageView
             android:id="@+id/character_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/cfp_logo" />
+            app:srcCompat="@drawable/cfp_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,8 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/strength"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/agility_label"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="Agi"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/resilience_label"
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/res_character_label"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/luck_label"
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/luck"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/intelligence_label"
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/int_character_label"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/strength_view"
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/agility_view"
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/resilience_view"
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/luck_view"
@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/intelligence_view"
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
             </GridLayout>
 
         </LinearLayout>
