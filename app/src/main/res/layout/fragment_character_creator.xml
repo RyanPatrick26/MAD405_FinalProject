@@ -834,19 +834,6 @@
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
                 <Button
-                    android:id="@+id/add_persuasion"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:minHeight="0dp"
-                    android:minWidth="0dp"
-                    android:text="+"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:ignore="ButtonStyle,HardcodedText" />
-
-                <Button
                     android:id="@+id/subtract_persuasion"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -855,6 +842,19 @@
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="ButtonStyle,HardcodedText" />
+
+                <Button
+                    android:id="@+id/add_persuasion"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="+"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
@@ -1139,7 +1139,7 @@
                     android:layout_marginLeft="80dp"
                     android:layout_weight="1"
                     android:text="@string/reset_skills"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
