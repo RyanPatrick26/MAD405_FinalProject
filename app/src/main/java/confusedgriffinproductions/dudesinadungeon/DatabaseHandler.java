@@ -58,6 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_SNEAKING = "sneaking";
     private static final String COLUMN_CRAFTING = "crafting";
     private static final String COLUMN_SURVIVAL = "survival";
+    private static final String COLUMN_PERSUASION = "persuasion";
     private static final String COLUMN_ITEM_IDS = "item_ids";
     private static final String COLUMN_SPELL_IDS = "spell_ids";
 
@@ -112,6 +113,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             + COLUMN_SNEAKING + " TEXT,"
             + COLUMN_CRAFTING + " TEXT,"
             + COLUMN_SURVIVAL + " TEXT,"
+            + COLUMN_PERSUASION + " TEXT,"
             + COLUMN_ITEM_IDS + " TEXT,"
             + COLUMN_SPELL_IDS + " TEXT)";
 
@@ -183,6 +185,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTRAITS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CHARACTER_PORTRAIT);
         onCreate(db);
+    }
+
+    public void deleteItemsAndSpells(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + "items");
+        db.execSQL("DROP TABLE IF EXISTS " + "spells");
     }
 
 
@@ -690,7 +697,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         for(int i = 0; i < character.getSpells().size(); i++){
-            spellIds.append(character.getSpells().get(i)+",");
+            spellIds.append(character.getSpells().get(i).getId()+",");
+            if(i == character.getSpells().size() - 1){
+                spellIds.append(character.getSpells().get(i).getId());
+            }
+            else{
+                spellIds.append(character.getSpells().get(i).getId()+",");
+            }
         }
 
         String itemIdsResult = itemIds.toString();
@@ -718,6 +731,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_SNEAKING, character.getSneaking());
         values.put(COLUMN_CRAFTING, character.getCrafting());
         values.put(COLUMN_SURVIVAL, character.getSurvival());
+        values.put(COLUMN_PERSUASION, character.getPersuasion());
         values.put(COLUMN_ITEM_IDS, itemIdsResult);
         values.put(COLUMN_SPELL_IDS, spellIdsResult);
 
@@ -832,10 +846,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         // Create a cursor to store all the values
         Cursor cursor = db.query(TABLE_CHARACTERS,
-                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_RACE, COLUMN_CHAR_CLASS, COLUMN_STRENGTH,
-                        COLUMN_AGILITY, COLUMN_RESILIENCE, COLUMN_LUCK, COLUMN_INTELLIGENCE, COLUMN_FIGHTING,
-                        COLUMN_GAMBLING, COLUMN_SHOOTING, COLUMN_LYING, COLUMN_CASTING, COLUMN_ACROBATICS,
-                        COLUMN_SNEAKING, COLUMN_CRAFTING, COLUMN_SURVIVAL, COLUMN_ITEM_IDS, COLUMN_SPELL_IDS},
+
+                new String[] {COLUMN_ID, COLUMN_NAME, COLUMN_RACE, COLUMN_CHAR_CLASS, COLUMN_STRENGTH,
+                                COLUMN_AGILITY, COLUMN_RESILIENCE, COLUMN_LUCK, COLUMN_INTELLIGENCE,
+                                COLUMN_FIGHTING, COLUMN_GAMBLING, COLUMN_SHOOTING, COLUMN_LYING, COLUMN_CASTING,
+                                COLUMN_ACROBATICS, COLUMN_SNEAKING, COLUMN_CRAFTING, COLUMN_SURVIVAL, COLUMN_PERSUASION,
+                                COLUMN_ITEM_IDS, COLUMN_SPELL_IDS},
                         COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
@@ -848,8 +864,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 Integer.parseInt(cursor.getString(12)), Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
                 Integer.parseInt(cursor.getString(15)), Integer.parseInt(cursor.getString(16)), Integer.parseInt(cursor.getString(17)),
                 Integer.parseInt(cursor.getString(18)));
+
         String itemIds = cursor.getString(19);
-        String[] itemIdStrings = itemIds.split("|");
+        String[] itemIdStrings = itemIds.split(",");
+        String spellIds = cursor.getString(20);
+        String[] spellIdString = spellIds.split(",");
 
         ArrayList<Item> itemsList = new ArrayList<>();
 
@@ -857,6 +876,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             itemsList.add(getItem(Integer.parseInt(itemIdStrings[i])));
         }
         character.setItems(itemsList);
+
+        ArrayList<Spell> spellsList = new ArrayList<>();
+        for(int i = 0; i < spellIdString.length; i++){
+            spellsList.add(getSpell(Integer.parseInt(spellIdString[i])));
+        }
+        character.setSpells(spellsList);
         // Return the new character
         return character;
     }
@@ -895,8 +920,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 character.setSneaking(Integer.parseInt(cursor.getString(15)));
                 character.setCrafting(Integer.parseInt(cursor.getString(16)));
                 character.setSurvival(Integer.parseInt(cursor.getString(17)));
+                character.setPersuasion((Integer.parseInt(cursor.getString(18))));
 
-                String itemIds = cursor.getString(18);
+                String itemIds = cursor.getString(19);
                 ArrayList<String> itemIdList = new ArrayList<>(Arrays.asList(itemIds.split(",")));
                 ArrayList<Item> itemList = new ArrayList<>();
 
@@ -904,11 +930,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     itemList.add(getItem(Integer.parseInt(itemIdList.get(i))));
                 }
 
-                String spellIds = cursor.getString(19);
+                String spellIds = cursor.getString(20);
                 ArrayList<String> spellIdList = new ArrayList<>(Arrays.asList(spellIds.split(",")));
                 ArrayList<Spell> spellList = new ArrayList<>();
 
-                for(int i = 0; i < itemIdList.size(); i++){
+                for(int i = 0; i < spellIdList.size(); i++){
                     spellList.add(getSpell(Integer.parseInt(spellIdList.get(i))));
                 }
 
@@ -1183,6 +1209,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create a contentValues to store all the values
         ContentValues values = new ContentValues();
         // Put all properties into values
+        StringBuilder itemIds = new StringBuilder();
+        StringBuilder spellIds = new StringBuilder();
+
+        for(int i = 0; i < character.getItems().size(); i++){
+            if(i == character.getItems().size() - 1){
+                itemIds.append(character.getItems().get(i).getId());
+            }
+            else{
+                itemIds.append(character.getItems().get(i).getId()+",");
+            }
+        }
+
+        for(int i = 0; i < character.getSpells().size(); i++){
+            spellIds.append(character.getSpells().get(i).getId()+",");
+        }
+
+        String itemIdsResult = itemIds.toString();
+        String spellIdsResult = spellIds.toString();
+
         values.put(COLUMN_NAME, character.getName());
         values.put(COLUMN_RACE, character.getRace());
         values.put(COLUMN_CHAR_CLASS, character.getCharClass());
@@ -1200,6 +1245,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_SNEAKING, character.getSneaking());
         values.put(COLUMN_CRAFTING, character.getCrafting());
         values.put(COLUMN_SURVIVAL, character.getSurvival());
+        values.put(COLUMN_PERSUASION, character.getPersuasion());
+        values.put(COLUMN_ITEM_IDS, itemIdsResult);
+        values.put(COLUMN_SPELL_IDS, spellIdsResult);
         // Update the database
         return db.update(TABLE_CHARACTERS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(character.getId()) });
     }

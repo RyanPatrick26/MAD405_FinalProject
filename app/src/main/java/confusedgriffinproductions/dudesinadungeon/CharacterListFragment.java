@@ -12,14 +12,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -119,7 +123,27 @@ public class CharacterListFragment extends Fragment {
 
         adapter = new CustomAdapter(getContext(), characterList);
         characterListView.setAdapter(adapter);
+        characterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.replace(R.id.content_main, CharacterEditorFragment.newInstance(characterList.get(position).getId()));
+                trans.addToBackStack(null);
+                trans.commit();
+            }
+        });
 
+        characterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                FragmentTransaction trans = fm.beginTransaction();
+                trans.addToBackStack(null);
+                trans.replace(R.id.content_main, CharacterEditorFragment.newInstance(characterList.get(position).getId()));
+                trans.commit();
+            }
+        });
         return view;
     }
 
@@ -199,10 +223,11 @@ public class CharacterListFragment extends Fragment {
             agilityTextView.setText(characterList.get(position).getAgility() + "");
             resilienceTextView.setText(characterList.get(position).getResilience() + "");
             luckTextView.setText(characterList.get(position).getLuck() + "");
-            intelligenceTextView.setText(characterList.get(position).getLuck() + "");
+            intelligenceTextView.setText(characterList.get(position).getIntelligence() + "");
 
             //initialize the Delete Button
             deleteButton = (Button)convertView.findViewById(R.id.delete_character_button);
+            deleteButton.setBackgroundDrawable(getActivity().getResources().getDrawable(R.drawable.ic_delete_black_24dp));
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -225,6 +250,14 @@ public class CharacterListFragment extends Fragment {
 
             //initialize the ImageView
             characterImageView = (ImageView)convertView.findViewById(R.id.character_image);
+            DatabaseHandler db = new DatabaseHandler(getContext());
+            ArrayList<Portrait> characterPortraitList = db.getAllCharacterPortraits(characterList.get(position).getId());
+            if(characterPortraitList.size() > 0){
+                Portrait characterPortrait = characterPortraitList.get(0);
+                Picasso.with(getContext()).load(new File(characterPortrait.getResource()))
+                        .resize(100,100).centerCrop().into(characterImageView);
+            }
+            db.closeDB();
 
             return convertView;
         }

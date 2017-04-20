@@ -99,23 +99,24 @@ public class ItemListFragment extends Fragment {
         //instantiate at start the TabHost
         tabHost = (TabHost) view.findViewById(R.id.items_tab_host);
 
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                // Colour for the unselected tabs
-                for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
-                    tabHost.getTabWidget().getChildAt(i)
-                            .setBackgroundResource(R.color.colorDivider);
-                    TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-                    tv.setTextColor(getResources().getColor(R.color.colorAccent, null));
-                }
-                // Colour for the selected tab
-                tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab())
-                        .setBackgroundResource(R.color.colorAccent);
-                TextView tv = (TextView) tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).findViewById(android.R.id.title);
-                tv.setTextColor(getResources().getColor(R.color.colorPrimary, null));
-            }
-        });
+        // TODO: Implement correct coloring for the tabviews
+//        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+//            @Override
+//            public void onTabChanged(String tabId) {
+//                // Colour for the unselected tabs
+//                for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+//                    tabHost.getTabWidget().getChildAt(i)
+//                            .setBackgroundResource(R.color.colorPrimary);
+//                    TextView tv = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+//                    tv.setTextColor(getResources().getColor(R.color.colorAccent, null));
+//                }
+//                // Colour for the selected tab
+//                tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab())
+//                        .setBackgroundResource(R.color.colorAccent);
+//                TextView tv = (TextView) tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).findViewById(android.R.id.title);
+//                tv.setTextColor(getResources().getColor(R.color.colorPrimary, null));
+//            }
+//        });
 
         tabHost.setup();
 
@@ -217,6 +218,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(allItemsList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -227,6 +229,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(weaponsList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -237,6 +240,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(armorList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -247,6 +251,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(equipmentList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();

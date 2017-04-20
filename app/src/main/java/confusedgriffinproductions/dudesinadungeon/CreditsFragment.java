@@ -3,52 +3,33 @@ package confusedgriffinproductions.dudesinadungeon;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.transition.Visibility;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ItemViewerFragment.OnFragmentInteractionListener} interface
+ * {@link CreditsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ItemViewerFragment#newInstance} factory method to
+ * Use the {@link CreditsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ItemViewerFragment extends Fragment {
+public class CreditsFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    int id;
+    private String mParam1;
+    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-    //Create variables to hold all the views
-    TextView itemName;
-    TextView itemType;
-    TextView itemDmg_Def;
-    TextView itemDmg_defLabel;
-    TextView itemRangeLabel;
-    TextView itemRange;
-    TextView itemPrice;
-    TextView itemDescription;
-
-    ImageView itemImage;
-
-    //Create an item object to store the current item
-    Item item;
-
-
-    public ItemViewerFragment() {
+    public CreditsFragment() {
         // Required empty public constructor
     }
 
@@ -58,13 +39,14 @@ public class ItemViewerFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ItemViewerFragment.
+     * @return A new instance of fragment CreditsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ItemViewerFragment newInstance(int id) {
-        ItemViewerFragment fragment = new ItemViewerFragment();
+    public static CreditsFragment newInstance(String param1, String param2) {
+        CreditsFragment fragment = new CreditsFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, id);
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -73,7 +55,8 @@ public class ItemViewerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            id = getArguments().getInt(ARG_PARAM1);
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -81,47 +64,7 @@ public class ItemViewerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_item_viewer, container, false);
-
-        //initialize the views
-        itemName = (TextView)view.findViewById(R.id.item_name);
-        itemName.setTextColor(getActivity().getResources().getColor(R.color.textColorPrimaryInverse));
-        itemType = (TextView)view.findViewById(R.id.item_type);
-        itemDmg_defLabel = (TextView)view.findViewById(R.id.dmg_def_label);
-        itemDmg_Def = (TextView)view.findViewById(R.id.item_dmg_def);
-        itemRangeLabel = (TextView)view.findViewById(R.id.range_label);
-        itemRange = (TextView)view.findViewById(R.id.item_range);
-        itemPrice = (TextView)view.findViewById(R.id.item_price);
-        itemDescription = (TextView)view.findViewById(R.id.item_description);
-
-        itemImage = (ImageView)view.findViewById(R.id.item_image);
-
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        item = db.getItem(id);
-        db.closeDB();
-
-        itemName.setText(item.getName());
-        itemType.setText(item.getType());
-        if(item.getDmg_def() == 0){
-            itemDmg_defLabel.setVisibility(View.GONE);
-            itemDmg_Def.setVisibility(View.GONE);
-        }
-        else{
-            itemDmg_Def.setText(item.getDmg_def() + "");
-        }
-        itemPrice.setText(item.getPrice() + "");
-        if(item.getRange() == 0){
-            itemRangeLabel.setVisibility(View.GONE);
-            itemRange.setVisibility(View.GONE);
-        }
-        else{
-            itemRange.setText(item.getRange() + "");
-        }
-        itemDescription.setText(item.getDescription());
-
-        Picasso.with(getContext()).load(item.getImageId()).resize(120, 120).into(itemImage);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_credits, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

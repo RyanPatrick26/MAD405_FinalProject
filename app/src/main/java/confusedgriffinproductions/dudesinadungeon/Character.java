@@ -1,5 +1,6 @@
 package confusedgriffinproductions.dudesinadungeon;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  * @author Nicholas Allaire
  * @version 1.0
  */
-public class Character {
+public class Character implements Serializable {
 
     // Declare properties for Characters
     private int id;

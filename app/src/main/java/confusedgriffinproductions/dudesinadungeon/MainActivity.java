@@ -1,13 +1,25 @@
 package confusedgriffinproductions.dudesinadungeon;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.app.ActivityManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.ViewUtils;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -18,8 +30,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
+import java.util.Locale;
+
 import static java.net.Proxy.Type.HTTP;
 
 public class MainActivity extends AppCompatActivity
@@ -30,37 +45,76 @@ public class MainActivity extends AppCompatActivity
         ItemListFragment.OnFragmentInteractionListener,
         SpellListFragment.OnFragmentInteractionListener,
         ItemViewerFragment.OnFragmentInteractionListener,
-        SpellViewerFragment.OnFragmentInteractionListener{
+        SpellViewerFragment.OnFragmentInteractionListener,
+        CharacterEditorFragment.OnFragmentInteractionListener,
+        CharacterEditorFirstPage.OnFragmentInteractionListener,
+        CharacterEditorSecondPage.OnFragmentInteractionListener,
+        CreditsFragment.OnFragmentInteractionListener{
 
     // Fragment manager to allow us to display, remove, and create fragments
     FragmentManager fm = getSupportFragmentManager();
 
     // Email address of the application creators
-    // TODO: REMOVE MY EMAIL ADDRESS
-    String creatorEmail = "nicholas.allaire@stclairconnect.ca";
-    // SMS Message String
-    String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
+    String creatorEmail = "diad.app@cgproductions@gmail.com";
+
+    /**
+     * Database refreshing properties
+     */
+    // Name of all the tables
+    private static final String TABLE_ITEMS = "items";
+    private static final String TABLE_SPELLS = "spells";
+
+    // Common Table Column names
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_DESCRIPTION = "description";
+
+    /**
+     * Item Table Column Names
+     */
+    private static final String COLUMN_PRICE = "price";
+    private static final String COLUMN_TYPE = "type";
+    private static final String COLUMN_DMG_DEF = "dmg_def";
+    private static final String COLUMN_RANGE = "range";
+    private static final String COLUMN_PORTRAIT_ID = "portrait_id";
+
+    /**
+     * Spell Table Column Names
+     */
+    private static final String COLUMN_SPELLTYPE = "spelltype";
+    private static final String COLUMN_CLASS = "class";
+    private static final String COLUMN_DMG_HEAL = "dmg_heal";
+    private static final String COLUMN_COMPONENTS = "components";
+    private static final String COLUMN_EFFECTS = "effects";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Check to make sure the correct language is set OR set the proper one
+
+        Locale locale = getLocale(MainActivity.this);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+        refreshDatabaseForLanguageChange(new DatabaseHandler(this));
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_settings_black_24dp);
+        toolbar.setOverflowIcon(drawable);
+        toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction tran = fm.beginTransaction();
-        tran.replace(R.id.content_main, new MainFragment());
-        tran.commit();
+        FragmentTransaction trans = fm.beginTransaction();
+        trans.addToBackStack(null);
+        trans.replace(R.id.content_main, new MainFragment());
+        trans.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -104,9 +158,17 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            // Go to the settings menu
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
+        } else if (id == R.id.credits_settings) {
+            // Navigate to the Credits Fragment
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.addToBackStack(null);
+            tran.replace(R.id.content_main, new CreditsFragment());
+            tran.commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -130,7 +192,7 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction tran = fm.beginTransaction();
             tran.setCustomAnimations(R.anim.slide_down_in, R.anim.slide_down_out);
             tran.addToBackStack(null);
-            tran.replace(R.id.content_main, new CharacterCreatorFragment());
+            tran.replace(R.id.content_main, new CharacterCreatorFragment(), "CharacterCreatorFragment");
             tran.commit();
         } else if (id == R.id.nav_view_char) {
             // Navigate to the View Character List Fragment
@@ -210,8 +272,26 @@ public class MainActivity extends AppCompatActivity
      * @author Nicholas Allaire
      */
     public void shareViaSMS() {
+        // Get the sms String
+        String smsMessage = "";
+        // Get the shared preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        // Get the language from the shared preferences
+        String lang = sharedPreferences.getString("language_preference", "en");
+        // Switch statement to determine which language code to return
+        switch (lang) {
+            case "en":
+                smsMessage = "Get some dudes and get in a dungeon! Check out this amazing app that helps me keep track of my characters, items, and spells:";
+                break;
+            case "fr":
+                smsMessage = "Obtenez des dudes et mettez-vous dans un donjon! Découvrez cette application incroyable qui m\\'aide à garder une trace de mes personnages, objets et charmes:";
+                break;
+        }
+        // SMS Message String
+        smsMessage += " https://www.diad.app.com/";
         // Create the SMS intent
         Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setType("vnd.android-dir/mms-sms");
         // Set the type to SMS
         intent.setData(Uri.parse("sms:"));
         // Set the body of the SMS
@@ -249,4 +329,67 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Gets the current Locale of the application in order to properly set the application language.
+     *
+     * @param context
+     * @return new Locale containing the correct language
+     * @author Nicholas Allaire
+     */
+    public static Locale getLocale(Context context){
+        // Get the shared preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        // Get the language from the shared preferences
+        String lang = sharedPreferences.getString("language_preference", "en");
+        // Switch statement to determine which language code to return
+        switch (lang) {
+            case "en":
+                lang = "en";
+                break;
+            case "fr":
+                lang = "fr";
+                break;
+        }
+        // return the proper language
+        return new Locale(lang);
+    }
+
+    public static void createSpellsTable(SQLiteDatabase db) {
+        String CREATE_SPELLS_TABLE = "CREATE TABLE " + TABLE_SPELLS + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                + COLUMN_NAME + " TEXT,"
+                + COLUMN_DESCRIPTION + " TEXT,"
+                + COLUMN_SPELLTYPE + " TEXT,"
+                + COLUMN_CLASS + " TEXT,"
+                + COLUMN_COMPONENTS + " TEXT,"
+                + COLUMN_EFFECTS + " TEXT,"
+                + COLUMN_DMG_HEAL + " TEXT" + ")";
+        db.execSQL(CREATE_SPELLS_TABLE);
+    }
+
+    public static void createItemsTable(SQLiteDatabase db) {
+        String CREATE_ITEMS_TABLE = "CREATE TABLE " + TABLE_ITEMS + "("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
+                + COLUMN_NAME + " TEXT,"
+                + COLUMN_PRICE + " TEXT,"
+                + COLUMN_TYPE + " TEXT,"
+                + COLUMN_DESCRIPTION + " TEXT,"
+                + COLUMN_DMG_DEF + " TEXT,"
+                + COLUMN_RANGE + " TEXT,"
+                + COLUMN_PORTRAIT_ID + " INTEGER)";
+        db.execSQL(CREATE_ITEMS_TABLE);
+    }
+
+    public static void refreshDatabaseForLanguageChange(DatabaseHandler dbh) {
+        SQLiteDatabase db = dbh.getWritableDatabase();
+
+        dbh.deleteItemsAndSpells(db);
+
+        createItemsTable(db);
+        createSpellsTable(db);
+
+        dbh.initializeItemsTable(db);
+        dbh.initializeSpellsTable(db);
+        db.close();
+    }
 }

@@ -76,6 +76,7 @@ public class SpellViewerFragment extends Fragment {
 
         //initialize the views
         spellName = (TextView)view.findViewById(R.id.spell_name);
+        spellName.setTextColor(getActivity().getResources().getColor(R.color.textColorPrimaryInverse));
         spellDamageLabel = (TextView)view.findViewById(R.id.spell_damage_label);
         spellDamageView = (TextView)view.findViewById(R.id.spell_damage);
         spellEffectsView = (TextView)view.findViewById(R.id.spell_effects);
