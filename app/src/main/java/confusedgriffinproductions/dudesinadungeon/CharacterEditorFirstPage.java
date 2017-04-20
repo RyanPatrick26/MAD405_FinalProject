@@ -74,6 +74,8 @@ public class CharacterEditorFirstPage extends Fragment {
     Character tempCharacter;
     private static final int CAMERA_INTENT = 1;
     private String imageLocation;
+    Portrait characterPortrait;
+    Portrait tempPortrait;
 
     public CharacterEditorFirstPage() {
         // Required empty public constructor
@@ -112,8 +114,6 @@ public class CharacterEditorFirstPage extends Fragment {
         View view = inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
         tempCharacter = CharacterEditorFragment.character;
 
-        Picasso.with(getContext()).setLoggingEnabled(true);
-
         /**
          * Initialize the TextViews and set their text
          */
@@ -148,6 +148,38 @@ public class CharacterEditorFirstPage extends Fragment {
 
         setTextViewsText();
 
+        /**
+         * Initialize the ImageView and add camera functionality
+         */
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        final ArrayList<Portrait> characterPortraitList = db.getAllCharacterPortraits(tempCharacter.getId());
+        characterImage = (ImageView)view.findViewById(R.id.character_image);
+        if(characterPortraitList.size() > 0){
+            String characterPortrait;
+            characterPortrait = characterPortraitList.get(0).getResource();
+            tempPortrait = characterPortraitList.get(0);
+            Picasso.with(getContext()).load(new File(characterPortrait)).resize(150, 300).centerCrop().into(characterImage);
+        }
+
+        characterImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File picture = null;
+                try{
+                    picture = createImage();
+                }
+                catch(IOException e){
+                    e.printStackTrace();
+                }
+                Intent i = new Intent();
+                i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(picture));
+
+                if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                    startActivityForResult(i, CAMERA_INTENT);
+                }
+            }
+        });
 
         /**
          * Initialize the Buttons and set their functionality
@@ -248,6 +280,10 @@ public class CharacterEditorFirstPage extends Fragment {
             public void onClick(View v) {
                 tempCharacter = CharacterEditorFragment.character;
                 setTextViewsText();
+                if(tempPortrait != null){
+                    characterImage.setImageResource(R.drawable.ic_menu_camera);
+                    tempPortrait = null;
+                }
             }
         });
 
@@ -273,7 +309,10 @@ public class CharacterEditorFirstPage extends Fragment {
                 tempCharacter.setSurvival(Integer.parseInt(skillTextViews[9].getText().toString().trim()));
 
                 DatabaseHandler db = new DatabaseHandler(getContext());
+                characterPortrait = tempPortrait;
+                int imgId = db.addPortrait(characterPortrait);
                 db.updateCharacter(tempCharacter);
+                db.addCharacterPortrait(imgId, tempCharacter.getId());
                 db.closeDB();
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -281,59 +320,14 @@ public class CharacterEditorFirstPage extends Fragment {
             }
         });
 
-        /**
-         * Initialize the ImageView and add camera functionality
-         */
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        ArrayList<Portrait> characterPortraitList = db.getAllCharacterPortraits(tempCharacter.getId());
-        String characterPortrait;
-        characterImage = (ImageView)view.findViewById(R.id.character_image);
-        if(characterPortraitList.size() > 0){
-            characterPortrait = characterPortraitList.get(0).getResource();
-            Picasso.with(getContext()).load(new File(characterPortrait)).resize(150, 300).centerCrop().into(characterImage);
-        }
-
-        if(characterPortraitList.size() == 0){
-            characterImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    File picture = null;
-                    try{
-                        picture = createImage();
-                    }
-                    catch(IOException e){
-                        e.printStackTrace();
-                    }
-                    Intent i = new Intent();
-                    i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                    i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(picture));
-
-                    if(i.resolveActivity(getActivity().getPackageManager()) != null){
-                        startActivityForResult(i, CAMERA_INTENT);
-                    }
-                }
-            });
-        }
-
-
         return view;
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == CAMERA_INTENT && resultCode == RESULT_OK){
-            Portrait characterPortrait = new Portrait(imageLocation);
-            Picasso.with(getContext()).load(new File(characterPortrait.getResource())).resize(150, 300).centerCrop().into(characterImage);
-            DatabaseHandler db = new DatabaseHandler(getContext());
-            int imgId = db.addPortrait(characterPortrait);
-
-            if(imgId != -1){
-                db.addCharacterPortrait(imgId, tempCharacter.getId());
-                Toast.makeText(getActivity(), "Photo Added", Toast.LENGTH_LONG).show();
-            }
-            else{
-                Toast.makeText(getContext(), "Photo not Added", Toast.LENGTH_LONG).show();
-            }
+            tempPortrait = new Portrait(imageLocation);
+            Picasso.with(getContext()).load(new File(tempPortrait.getResource())).resize(150, 300).centerCrop().into(characterImage);
         }
     }
 

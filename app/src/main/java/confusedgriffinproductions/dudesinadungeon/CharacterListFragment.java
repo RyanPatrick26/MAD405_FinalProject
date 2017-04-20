@@ -19,8 +19,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -236,6 +239,12 @@ public class CharacterListFragment extends Fragment {
 
             //initialize the ImageView
             characterImageView = (ImageView)convertView.findViewById(R.id.character_image);
+            DatabaseHandler db = new DatabaseHandler(getContext());
+            ArrayList<Portrait> characterPortraitList = db.getAllCharacterPortraits(characterList.get(position).getId());
+            Portrait characterPortrait = characterPortraitList.get(0);
+            Picasso.with(getContext()).load(new File(characterPortrait.getResource()))
+                    .resize(100,100).centerCrop().into(characterImageView);
+            db.closeDB();
 
             return convertView;
         }
