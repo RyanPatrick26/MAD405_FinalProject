@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity
         SpellListFragment.OnFragmentInteractionListener,
         ItemViewerFragment.OnFragmentInteractionListener,
         SpellViewerFragment.OnFragmentInteractionListener,
+        CharacterEditorSecondPage.OnFragmentInteractionListener,
         CreditsFragment.OnFragmentInteractionListener{
 
     // Fragment manager to allow us to display, remove, and create fragments
@@ -106,15 +108,6 @@ public class MainActivity extends AppCompatActivity
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_settings_black_24dp);
         toolbar.setOverflowIcon(drawable);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
@@ -378,5 +371,4 @@ public class MainActivity extends AppCompatActivity
         dbh.initializeSpellsTable(db);
         db.close();
     }
-
 }

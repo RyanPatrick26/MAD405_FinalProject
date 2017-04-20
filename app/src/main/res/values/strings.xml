@@ -341,6 +341,10 @@
     <string name="add_items">Add Items</string>
     <string name="add_spells">Add Spells</string>
     <string name="remove_item">Remove\nItem</string>
+    <string name="reset_changes">Reset\nChanges</string>
+    <string name="confirm_changes">Confirm\nChanges</string>
+    <string name="items">Items</string>
+    <string name="spells">Spells</string>
     <string name="language_preference_title">Language</string>
     <string name="all_rights_reserved">&#169; Confused Griffin Productions 2017 - All Rights Reserved</string>
 
