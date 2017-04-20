@@ -21,6 +21,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 
 /**
@@ -40,8 +46,6 @@ public class CharacterEditorSecondPage extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     /**
      * Create a variable to store the TextView
@@ -76,6 +80,10 @@ public class CharacterEditorSecondPage extends Fragment {
     static SpellListAdapter spellListAdapter;
     addItemsArrayAdapter addItemsAdapter;
     addSpellsArrayAdapter addSpellsAdapter;
+
+    private Character character;
+
+    private OnFragmentInteractionListener mListener;
 
     public CharacterEditorSecondPage() {
         // Required empty public constructor
@@ -397,7 +405,6 @@ public class CharacterEditorSecondPage extends Fragment {
             return convertView;
         }
     }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

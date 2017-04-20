@@ -6,4 +6,10 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/credits_settings"
+        android:orderInCategory="1001"
+        android:title="@string/credits_settings_title"
+        app:showAsAction="never"
+        />
 </menu>

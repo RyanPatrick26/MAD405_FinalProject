@@ -1,9 +1,15 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="confusedgriffinproductions.dudesinadungeon.CharacterEditorFirstPage">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -13,21 +19,21 @@
                 android:id="@+id/character_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:padding="5dp"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/character_image"
-                    android:layout_width="150dp"
-                    android:layout_height="300dp"
-                    android:orientation="horizontal"/>
+                    android:id="@+id/imageView2"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_menu_camera" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -47,7 +53,6 @@
                             android:id="@+id/character_race_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/race" />
                             android:text="@string/race"
                             android:textSize="16sp" />
 
@@ -71,20 +76,15 @@
                     <GridLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:columnCount="3"
-                        android:rowCount="6"
-                        android:useDefaultMargins="true">
-
-                        <TextView
-                            android:id="@+id/textView8"
-                            android:layout_weight="1"
-                            android:columnCount="3"
-                            android:rowCount="6"/>
+                        android:rowCount="6">
 
                         <TextView
                             android:id="@+id/attributes_label"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_columnSpan="3"
                             android:text="@string/attributes"
                             android:textAlignment="center"
                             android:textSize="18sp" />
@@ -100,7 +100,7 @@
                             android:id="@+id/strength_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical" 
+                            android:layout_gravity="center_vertical"
                             android:layout_marginLeft="20dp" />
 
                         <LinearLayout
@@ -261,7 +261,7 @@
                             android:orientation="horizontal">
 
                             <Button
-                                android:id="@+id/subtract_intelligence_button"
+                                android:id="@+id/subtract_int_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -270,7 +270,7 @@
                                 android:text="-" />
 
                             <Button
-                                android:id="@+id/add_intelligence_button"
+                                android:id="@+id/add_int_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -279,31 +279,27 @@
                                 android:text="+" />
                         </LinearLayout>
                     </GridLayout>
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:rowCount="11"
+                android:layout_height="match_parent"
+                android:columnCount="6"
+                android:rowCount="7"
                 android:useDefaultMargins="true">
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="6"
-                    android:rowCount="7"
-                    android:useDefaultMargins="true"/>
 
                 <TextView
                     android:id="@+id/skill_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/skill"
+                    android:layout_columnSpan="6"
+                    android:text="TextView"
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:text="@string/skill" />
 
                 <TextView
                     android:id="@+id/fighting_label"
@@ -320,7 +316,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
@@ -334,154 +330,6 @@
 
                     <Button
                         android:id="@+id/add_fighting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/shooting_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/shooting" />
-
-                <TextView
-                    android:id="@+id/shooting_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_shooting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_shooting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/casting_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/casting"
-                    android:layout_gravity="center_vertical" />
-
-                <TextView
-                    android:id="@+id/casting_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_casting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_casting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/acrobatics_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/acrobatics" />
-
-                <TextView
-                    android:id="@+id/acrobatics_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_acrobatics_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_acrobatics_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/crafting_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/crafting" />
-
-                <TextView
-                    android:id="@+id/crafting_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_crafting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_crafting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -505,7 +353,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
@@ -519,6 +367,43 @@
 
                     <Button
                         android:id="@+id/add_gambling_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/shooting_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/shooting" />
+
+                <TextView
+                    android:id="@+id/shooting_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/subtract_shooting_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_shooting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -542,7 +427,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
@@ -556,6 +441,43 @@
 
                     <Button
                         android:id="@+id/add_lying_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/casting_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/casting" />
+
+                <TextView
+                    android:id="@+id/casting_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/subtract_casting_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_casting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -579,7 +501,7 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
@@ -602,6 +524,43 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/acrobatics_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/acrobatics" />
+
+                <TextView
+                    android:id="@+id/acrobatics_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/subtract_acrobatics_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_acrobtacis_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <TextView
                     android:id="@+id/sneaking_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -612,24 +571,63 @@
                     android:id="@+id/sneaking_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/subtract_sneaking_button"
+                        android:id="@+id/button27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="-" />
+                        android:text="Button"
+                        tools:text="-" />
 
                     <Button
-                        android:id="@+id/add_sneaking_button"
+                        android:id="@+id/button26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/crafting_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/crafting" />
+
+                <TextView
+                    android:id="@+id/crafting_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="Button"
+                        tools:text="-" />
+
+                    <Button
+                        android:id="@+id/button28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -653,53 +651,38 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/subtract_survival_button"
+                        android:id="@+id/button31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="-" />
+                        android:text="Button"
+                        tools:text="-" />
 
                     <Button
-                        android:id="@+id/add_survival_button"
+                        android:id="@+id/button30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="+" />
-                </LinearLayout>
 
+                </LinearLayout>
             </GridLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/reset_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="100dp"
-                    android:layout_weight="1"
-                    android:text="@string/reset_changes" />
-
-                <Button
-                    android:id="@+id/confirm_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="15dp"
-                    android:layout_weight="1"
-                    android:text="@string/confirm" />
-            </LinearLayout>
-
+            <Button
+                android:id="@+id/confirm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/confirm_changes" />
         </LinearLayout>
+
+    </FrameLayout>
 </ScrollView>
