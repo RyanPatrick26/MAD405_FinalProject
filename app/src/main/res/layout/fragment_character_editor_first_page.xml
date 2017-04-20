@@ -16,6 +16,7 @@
                 android:layout_margin="10dp"
                 android:padding="5dp"
                 android:textAlignment="center"
+                android:textColor="@color/textColorPrimaryInverse"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -47,25 +48,29 @@
                             android:id="@+id/character_race_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/race" />
+                            android:text="@string/race"
+                            android:textColor="@color/textColorPrimaryInverse" />
                             android:text="@string/race"
                             android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/character_race_value"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/character_class_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/character_class" />
+                            android:text="@string/character_class"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/character_class_value"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimaryInverse" />
                     </GridLayout>
 
                     <GridLayout
@@ -79,7 +84,8 @@
                             android:id="@+id/textView8"
                             android:layout_weight="1"
                             android:columnCount="3"
-                            android:rowCount="6"/>
+                            android:rowCount="6"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/attributes_label"
@@ -87,6 +93,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/attributes"
                             android:textAlignment="center"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:textSize="18sp" />
 
                         <TextView
@@ -94,14 +101,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="@string/strength" />
+                            android:text="@string/strength"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/strength_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical" 
-                            android:layout_marginLeft="20dp" />
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -132,14 +141,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="@string/agility" />
+                            android:text="@string/agility"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/agility_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="20dp" />
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -170,14 +181,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="@string/resilience" />
+                            android:text="@string/resilience"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/resilience_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="20dp" />
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -208,14 +221,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="@string/luck" />
+                            android:text="@string/luck"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/luck_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="20dp" />
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -246,14 +261,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="@string/intelligence" />
+                            android:text="@string/intelligence"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/intelligence_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="20dp" />
+                            android:layout_marginLeft="20dp"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -295,7 +312,8 @@
                     android:layout_height="wrap_content"
                     android:columnCount="6"
                     android:rowCount="7"
-                    android:useDefaultMargins="true"/>
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:useDefaultMargins="true" />
 
                 <TextView
                     android:id="@+id/skill_label"
@@ -303,6 +321,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/skill"
                     android:textAlignment="center"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp" />
 
                 <TextView
@@ -310,13 +329,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/fighting" />
+                    android:text="@string/fighting"
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/fighting_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -347,13 +368,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/shooting" />
+                    android:text="@string/shooting"
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/shooting_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
