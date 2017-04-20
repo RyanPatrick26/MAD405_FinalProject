@@ -507,9 +507,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="0"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/fighting"
-                    android:textColor="@color/textColorPrimaryInverse" />
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/fighting_field"
@@ -518,12 +519,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="0"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
                 <Button
@@ -531,10 +531,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -542,11 +544,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:elevation="0dp"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
             </LinearLayout>
 
@@ -559,51 +563,55 @@
 
                 <TextView
                     android:id="@+id/gambling_label"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="0"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/gambling"
                     android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/gambling_field"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="0"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
                 <Button
                     android:id="@+id/subtract_gambling"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
                     android:id="@+id/add_gambling"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
             </LinearLayout>
@@ -622,9 +630,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="1"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/shooting"
-                    android:textColor="@color/textColorPrimaryInverse" />
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/shooting_field"
@@ -633,12 +642,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="1"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
                 <Button
@@ -646,10 +654,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -657,10 +667,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
             </LinearLayout>
@@ -679,9 +691,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="1"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/lying"
                     android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -691,12 +704,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="1"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
                 <Button
@@ -704,10 +716,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -715,10 +729,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
             </LinearLayout>
@@ -737,9 +753,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="2"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/casting"
-                    android:textColor="@color/textColorPrimaryInverse" />
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/casting_field"
@@ -748,12 +765,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="2"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
                 <Button
@@ -761,10 +777,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -772,10 +790,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
             </LinearLayout>
 
@@ -793,9 +813,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="2"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/persuasion"
                     android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -805,12 +826,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="2"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
                 <Button
@@ -818,10 +838,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -829,10 +851,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
             </LinearLayout>
 
@@ -850,9 +874,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="3"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/acrobatics"
-                    android:textColor="@color/textColorPrimaryInverse" />
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/acrobatics_field"
@@ -861,12 +886,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="3"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
                 <Button
@@ -874,10 +898,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -885,10 +911,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText,TooManyViews" />
 
             </LinearLayout>
@@ -907,9 +935,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="3"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/sneaking"
                     android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -919,12 +948,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="3"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor,TooManyViews" />
 
                 <Button
@@ -932,10 +960,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -943,10 +973,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
             </LinearLayout>
 
@@ -964,9 +996,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="4"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/crafting"
-                    android:textColor="@color/textColorPrimaryInverse" />
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/crafting_field"
@@ -975,12 +1008,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="4"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText,LabelFor" />
 
                 <Button
@@ -988,10 +1020,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -999,10 +1033,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
             </LinearLayout>
 
@@ -1020,9 +1056,10 @@
                     android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
                     android:layout_row="4"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:text="@string/survival"
                     android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -1032,12 +1069,11 @@
                     android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
                     android:layout_row="4"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:ems="1"
                     android:text="0"
-                    android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
 
                 <Button
@@ -1045,10 +1081,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="-"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
                 <Button
@@ -1056,10 +1094,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
                     android:text="+"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
                     tools:ignore="ButtonStyle,HardcodedText" />
 
             </LinearLayout>
@@ -1076,7 +1116,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:text="@string/remaing_skill"
-                    android:textColor="@color/textColorPrimaryInverse" />
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/remaining_skill_field"
@@ -1086,6 +1127,7 @@
                     android:layout_weight="1"
                     android:text="15"
                     android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="16sp"
                     tools:ignore="HardcodedText" />
 
                 <Button
@@ -1100,6 +1142,15 @@
                     android:textSize="12sp"
                     tools:ignore="RtlHardcoded" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/textColorPrimaryInverse" />
 
             <LinearLayout
                 android:id="@+id/item_list_layout"
@@ -1140,7 +1191,6 @@
                 tools:ignore="RtlHardcoded" />
 
             <View
-                android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginBottom="10dp"
