@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity
         SpellListFragment.OnFragmentInteractionListener,
         ItemViewerFragment.OnFragmentInteractionListener,
         SpellViewerFragment.OnFragmentInteractionListener,
+        CharacterEditorFragment.OnFragmentInteractionListener,
+        CharacterEditorFirstPage.OnFragmentInteractionListener,
         CharacterEditorSecondPage.OnFragmentInteractionListener,
         CreditsFragment.OnFragmentInteractionListener{
 

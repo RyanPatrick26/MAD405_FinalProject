@@ -488,7 +488,7 @@ public class CharacterEditorFirstPage extends Fragment {
     }
 
     public void subtractValue(TextView startTextView){
-        String stringValue = startTextView.getText().toString();
+        String stringValue = startTextView.getText().toString().trim();
         int value = Integer.parseInt(stringValue);
         value--;
         startTextView.setText(value + "  ");

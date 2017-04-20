@@ -173,10 +173,10 @@ public class CharacterCreatorFragment extends Fragment {
                 getContext().getResources().getString(R.string.priest)
         };
 
-        ArrayAdapter raceAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, raceArray);
+        ArrayAdapter raceAdapter = new ArrayAdapter(getContext(), R.layout.spinner_item, raceArray);
         raceSpinner.setAdapter(raceAdapter);
 
-        ArrayAdapter classAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, classArray);
+        ArrayAdapter classAdapter = new ArrayAdapter(getContext(), R.layout.spinner_item, classArray);
         classSpinner.setAdapter(classAdapter);
 
         /**
