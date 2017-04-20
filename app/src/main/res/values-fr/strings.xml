@@ -187,7 +187,7 @@
     <string name="fireball_effects">Faire face à tous les personnages amicaux et ennemis dans une zone. Ceux qui sont au centre prennent 6, ceux qui sont pris dans le plat prennent 4</string>
     <string name="frenzied_charge_description">Quoi de plus amusant que de vous envoyer en pleine force à l\'ennemi, les bruits squishy sont un bonus</string>
     <string name="frenzied_charge_effects">Utilisez uniquement si ce n\'est pas en mêlée. Chargez en pleine force à un ennemi et faites une attaque avec une arme augmentant vos compétences de combat de 4 pour cette attaque et faites face à son dégât +3</string>
-    <string name="gambling">Jouer au Bourse</string>
+    <string name="gambling">Jouer</string>
     <string name="heal_description">Vos amis ont été battu, ils seront heureux que vous soyez là après que vous avez lancé cette charme</string>
     <string name="heal_effects">Restaurer 3 santé à un allié</string>
     <string name="healing">Guérir</string>
