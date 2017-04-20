@@ -1,8 +1,11 @@
 package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +15,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import static android.app.Activity.RESULT_OK;
 
 
 /**
@@ -58,6 +72,8 @@ public class CharacterEditorFirstPage extends Fragment {
 
     int index;
     Character tempCharacter;
+    private static final int CAMERA_INTENT = 1;
+    private String imageLocation;
 
     public CharacterEditorFirstPage() {
         // Required empty public constructor
@@ -95,6 +111,8 @@ public class CharacterEditorFirstPage extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
         tempCharacter = CharacterEditorFragment.character;
+
+        Picasso.with(getContext()).setLoggingEnabled(true);
 
         /**
          * Initialize the TextViews and set their text
@@ -263,8 +281,73 @@ public class CharacterEditorFirstPage extends Fragment {
             }
         });
 
+        /**
+         * Initialize the ImageView and add camera functionality
+         */
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        ArrayList<Portrait> characterPortraitList = db.getAllCharacterPortraits(tempCharacter.getId());
+        String characterPortrait;
+        characterImage = (ImageView)view.findViewById(R.id.character_image);
+        if(characterPortraitList.size() > 0){
+            characterPortrait = characterPortraitList.get(0).getResource();
+            Picasso.with(getContext()).load(new File(characterPortrait)).resize(150, 300).centerCrop().into(characterImage);
+        }
+
+        if(characterPortraitList.size() == 0){
+            characterImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    File picture = null;
+                    try{
+                        picture = createImage();
+                    }
+                    catch(IOException e){
+                        e.printStackTrace();
+                    }
+                    Intent i = new Intent();
+                    i.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                    i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(picture));
+
+                    if(i.resolveActivity(getActivity().getPackageManager()) != null){
+                        startActivityForResult(i, CAMERA_INTENT);
+                    }
+                }
+            });
+        }
+
 
         return view;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CAMERA_INTENT && resultCode == RESULT_OK){
+            Portrait characterPortrait = new Portrait(imageLocation);
+            Picasso.with(getContext()).load(new File(characterPortrait.getResource())).resize(150, 300).centerCrop().into(characterImage);
+            DatabaseHandler db = new DatabaseHandler(getContext());
+            int imgId = db.addPortrait(characterPortrait);
+
+            if(imgId != -1){
+                db.addCharacterPortrait(imgId, tempCharacter.getId());
+                Toast.makeText(getActivity(), "Photo Added", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(getContext(), "Photo not Added", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    /**
+     * Create a temp image file for the camera to save a photo to
+     * @return the image being to be added
+     */
+    private File createImage() throws IOException{
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHss").format(new Date());
+        String fileName = "character_" + timeStamp;
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File picture = File.createTempFile(fileName, ".jpg", directory);
+        imageLocation = picture.getAbsolutePath();
+        return picture;
     }
 
     public void setTextViewsText(){
