@@ -21,6 +21,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textAlignment="center"
+                android:textColor="@color/textColorPrimaryInverse"
                 android:textSize="24sp" />
 
             <LinearLayout
@@ -54,23 +55,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/race"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/character_race_value"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimaryInverse"/>
 
                         <TextView
                             android:id="@+id/character_class_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/character_class" />
+                            android:text="@string/character_class"
+                            android:textColor="@color/textColorPrimaryInverse" />
 
                         <TextView
                             android:id="@+id/character_class_value"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimaryInverse" />
                     </GridLayout>
 
                     <GridLayout
@@ -87,6 +92,7 @@
                             android:layout_columnSpan="3"
                             android:text="@string/attributes"
                             android:textAlignment="center"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:textSize="18sp" />
 
                         <TextView
@@ -94,6 +100,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:text="@string/strength" />
 
                         <TextView
@@ -101,6 +108,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:layout_marginLeft="20dp" />
 
                         <LinearLayout
@@ -112,18 +120,19 @@
                                 android:id="@+id/subtract_strength_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:layout_margin="5dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="-" />
 
                             <Button
                                 android:id="@+id/add_strength_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="+" />
                         </LinearLayout>
 
@@ -132,6 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:text="@string/agility" />
 
                         <TextView
@@ -139,6 +149,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:layout_marginLeft="20dp" />
 
                         <LinearLayout
@@ -150,18 +161,20 @@
                                 android:id="@+id/subtract_agility_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="-" />
 
                             <Button
                                 android:id="@+id/add_agility_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="+" />
                         </LinearLayout>
 
@@ -170,6 +183,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:text="@string/resilience" />
 
                         <TextView
@@ -177,6 +191,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:layout_marginLeft="20dp" />
 
                         <LinearLayout
@@ -188,18 +203,20 @@
                                 android:id="@+id/subtract_resilience_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="-" />
 
                             <Button
                                 android:id="@+id/add_resilience_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="+" />
                         </LinearLayout>
 
@@ -208,12 +225,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:text="@string/luck" />
 
                         <TextView
                             android:id="@+id/luck_value"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="20dp" />
 
@@ -226,18 +245,19 @@
                                 android:id="@+id/subtract_luck_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:layout_margin="5dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="-" />
 
                             <Button
                                 android:id="@+id/add_luck_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="+" />
                         </LinearLayout>
 
@@ -246,6 +266,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:text="@string/intelligence" />
 
                         <TextView
@@ -253,6 +274,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
+                            android:textColor="@color/textColorPrimaryInverse"
                             android:layout_marginLeft="20dp" />
 
                         <LinearLayout
@@ -264,18 +286,20 @@
                                 android:id="@+id/subtract_int_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="-" />
 
                             <Button
                                 android:id="@+id/add_int_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
-                                android:minHeight="0dp"
-                                android:minWidth="0dp"
+                                android:minHeight="20dp"
+                                android:minWidth="20dp"
                                 android:text="+" />
                         </LinearLayout>
                     </GridLayout>
@@ -287,7 +311,7 @@
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:columnCount="6"
+                android:columnCount="3"
                 android:rowCount="7"
                 android:useDefaultMargins="true">
 
@@ -295,9 +319,10 @@
                     android:id="@+id/skill_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="6"
+                    android:layout_columnSpan="3"
                     android:text="TextView"
                     android:textAlignment="center"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="18sp"
                     tools:text="@string/skill" />
 
@@ -306,12 +331,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/fighting" />
+                    android:text="@string/fighting"
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
                     android:id="@+id/fighting_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -323,18 +350,20 @@
                         android:id="@+id/subtract_fighting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_fighting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -343,12 +372,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:text="@string/gambling" />
 
                 <TextView
                     android:id="@+id/gambling_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -360,18 +391,20 @@
                         android:id="@+id/subtract_gambling_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_gambling_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -380,12 +413,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:text="@string/shooting" />
 
                 <TextView
                     android:id="@+id/shooting_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -397,18 +432,20 @@
                         android:id="@+id/subtract_shooting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_shooting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -417,12 +454,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:text="@string/lying" />
 
                 <TextView
                     android:id="@+id/lying_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -434,18 +473,20 @@
                         android:id="@+id/subtract_lying_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_lying_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -454,12 +495,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:text="@string/casting" />
 
                 <TextView
                     android:id="@+id/casting_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -471,18 +514,20 @@
                         android:id="@+id/subtract_casting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_casting_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -490,12 +535,14 @@
                     android:id="@+id/persuasion_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical"
                     android:text="@string/persuasion" />
 
                 <TextView
                     android:id="@+id/persuasion_value"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical" />
 
@@ -508,18 +555,20 @@
                         android:id="@+id/subtract_persuasion_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_persuasion_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -527,12 +576,14 @@
                     android:id="@+id/acrobatics_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical"
                     android:text="@string/acrobatics" />
 
                 <TextView
                     android:id="@+id/acrobatics_value"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical" />
 
@@ -545,18 +596,20 @@
                         android:id="@+id/subtract_acrobatics_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_acrobtacis_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -564,6 +617,7 @@
                     android:id="@+id/sneaking_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical"
                     android:text="@string/sneaking" />
 
@@ -571,6 +625,7 @@
                     android:id="@+id/sneaking_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -582,9 +637,10 @@
                         android:id="@+id/button27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="Button"
                         tools:text="-" />
 
@@ -592,9 +648,10 @@
                         android:id="@+id/button26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -603,12 +660,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:text="@string/crafting" />
 
                 <TextView
                     android:id="@+id/crafting_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -620,9 +679,10 @@
                         android:id="@+id/button29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="Button"
                         tools:text="-" />
 
@@ -630,9 +690,10 @@
                         android:id="@+id/button28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
                 </LinearLayout>
 
@@ -641,12 +702,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:text="@string/survival" />
 
                 <TextView
                     android:id="@+id/survival_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:layout_gravity="center_vertical" />
 
                 <LinearLayout
@@ -658,9 +721,10 @@
                         android:id="@+id/button31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="Button"
                         tools:text="-" />
 
@@ -668,9 +732,10 @@
                         android:id="@+id/button30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
+                        android:minHeight="20dp"
+                        android:minWidth="20dp"
                         android:text="+" />
 
                 </LinearLayout>
@@ -681,6 +746,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
+                android:layout_margin="15dp"
                 android:text="@string/confirm_changes" />
         </LinearLayout>
 

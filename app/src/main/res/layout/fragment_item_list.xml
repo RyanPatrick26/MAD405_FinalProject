@@ -26,7 +26,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:tag="0"
                     android:text="@string/all_items"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="10sp" />
 
                 <TextView
@@ -37,7 +37,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:tag="1"
                     android:text="@string/weapons"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="10sp" />
 
                 <TextView
@@ -48,7 +48,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:tag="2"
                     android:text="@string/armor"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="10sp" />
 
                 <TextView
@@ -59,7 +59,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:tag="3"
                     android:text="@string/other_items"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/textColorPrimaryInverse"
                     android:textSize="10sp" />
             </TabWidget>
 

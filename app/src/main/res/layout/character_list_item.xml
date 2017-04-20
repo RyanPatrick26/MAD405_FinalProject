@@ -72,7 +72,7 @@
                     android:id="@+id/agility_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/agility_character_label"
+                    android:text="Agi"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
 
