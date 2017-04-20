@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_settings_black_24dp);
         toolbar.setOverflowIcon(drawable);
+        toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
 
         FragmentManager fm = getSupportFragmentManager();

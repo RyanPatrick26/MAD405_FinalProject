@@ -166,6 +166,7 @@ public class SpellListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, SpellViewerFragment.newInstance(allSpellsList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -176,6 +177,7 @@ public class SpellListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, SpellViewerFragment.newInstance(spellsByTypeList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -186,6 +188,7 @@ public class SpellListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, SpellViewerFragment.newInstance(spellsByClassList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();

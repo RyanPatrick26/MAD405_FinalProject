@@ -314,7 +314,7 @@
     <string name="default_language_preference" translatable="false">en</string>
     <string name="default_colour_preference" translatable="false">purple</string>
     <string name="lang_test">ENGLISH</string>
-    <string name="changed_lang_toast">Language changed. Restarting application.</string>
+    <string name="changed_lang_toast">Language changed to English</string>
     <string name="changed_colour_toast">Colour theme changed. Restarting application.</string>
     <string name="toast_error_unexpected">An unexpected error occured</string>
     <string name="create_a_character">Create a Character</string>
@@ -347,5 +347,8 @@
     <string name="spells">Spells</string>
     <string name="language_preference_title">Language</string>
     <string name="all_rights_reserved">&#169; Confused Griffin Productions 2017 - All Rights Reserved</string>
+    <string name="agility_character_label" translatable="false">Agi</string>
+    <string name="res_character_label">Res</string>
+    <string name="int_character_label" translatable="false">Int</string>
 
 </resources>

@@ -221,12 +221,12 @@
     <string name="homepageTitle">Dudes Dans un Donjon\nCompagnon</string>
     <string name="default_colour_preference"></string>
     <string name="delete_confirmation">Êtes-vous sûr de vouloir supprimer votre personnage</string>
-    <string name="language_preference_summary">Changer la langue de l\\\'application</string>
+    <string name="language_preference_summary">Changer la langue de l\'application\nL\'application recommencera</string>
     <string name="language_preference_title">Langue</string>
-    <string name="remove_item">Supprimer l\\\'article</string>
-    <string name="toast_error_unexpected">Une erreur inattendue s\\\'est produite</string>
-    <string name="changed_colour_toast">Thème de couleur changée.  Redémarrage de l\\\'application</string>
-    <string name="changed_lang_toast">Langue changée.  Redémarrage de l\\\'application</string>
+    <string name="remove_item">Supprimer l\'article</string>
+    <string name="toast_error_unexpected">Une erreur inattendue s\'est produite</string>
+    <string name="changed_colour_toast">Thème de couleur changée.  L\'application va se redémarrer</string>
+    <string name="changed_lang_toast">Langue changée à Français.</string>
     <string name="colour_preference_green">Vert</string>
     <string name="colour_preference_offDesc">Change l\'application au thème vert</string>
     <string name="colour_preference_onDesc">Change l\'application au thème violet</string>
@@ -241,4 +241,9 @@
     <string name="credits_title">Crédits</string>
     <string name="developers_credits_title">Développeurs</string>
     <string name="originalLogoCredits">Griffon original de Wikipedia Commons: https://commons.wikimedia.org/wiki/File:Sk%%C3%A5ne_l%%C3%%A4nsvapen_-_Riksarkivet_Sverige.png</string>
+    <string name="agility_character_label"></string>
+    <string name="confirm_changes">Confirmer</string>
+    <string name="items">Articles</string>
+    <string name="res_character_label">Rés</string>
+    <string name="reset_changes">Réinitialiser changements</string>
 </resources>

@@ -218,6 +218,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(allItemsList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -228,6 +229,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(weaponsList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -238,6 +240,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(armorList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
@@ -248,6 +251,7 @@ public class ItemListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentTransaction trans = fm.beginTransaction();
+                trans.setCustomAnimations(R.anim.slide_in, R.anim.slide_out);
                 trans.replace(R.id.content_main, ItemViewerFragment.newInstance(equipmentList.get(position).getId()));
                 trans.addToBackStack(null);
                 trans.commit();
