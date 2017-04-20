@@ -1,5 +1,6 @@
 package confusedgriffinproductions.dudesinadungeon;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -170,7 +172,7 @@ public class CharacterEditorFirstPage extends Fragment {
             String characterPortrait;
             characterPortrait = characterPortraitList.get(0).getResource();
             tempPortrait = characterPortraitList.get(0);
-            Picasso.with(getContext()).load(Uri.fromFile(new File(characterPortrait))).resize(dpToPx(150), dpToPx(300)).centerCrop().into(characterImage);
+            Picasso.with(getContext()).load(Uri.fromFile(new File(characterPortrait))).resize(dpToPx(450), dpToPx(300)).centerCrop().into(characterImage);
         }
 
         characterImage.setOnClickListener(new View.OnClickListener() {
@@ -368,7 +370,7 @@ public class CharacterEditorFirstPage extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == CAMERA_INTENT && resultCode == RESULT_OK){
             tempPortrait = new Portrait(imageLocation);
-            Picasso.with(getContext()).load(Uri.fromFile(new File(tempPortrait.getResource()))).resize(dpToPx(150), dpToPx(300)).into(characterImage);
+            Picasso.with(getContext()).load(Uri.fromFile(new File(tempPortrait.getResource()))).resize(dpToPx(450), dpToPx(300)).centerCrop().into(characterImage);
         }
     }
 

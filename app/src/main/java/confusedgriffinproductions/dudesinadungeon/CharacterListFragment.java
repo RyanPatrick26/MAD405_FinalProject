@@ -255,7 +255,7 @@ public class CharacterListFragment extends Fragment {
             if(characterPortraitList.size() > 0){
                 Portrait characterPortrait = characterPortraitList.get(0);
                 Picasso.with(getContext()).load(new File(characterPortrait.getResource()))
-                        .resize(100,100).centerCrop().into(characterImageView);
+                        .resize(150,150).centerCrop().into(characterImageView);
             }
             db.closeDB();
 
