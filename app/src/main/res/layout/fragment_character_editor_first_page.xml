@@ -134,8 +134,7 @@
                         android:layout_weight="1.25"
                         android:text="@string/strength"
                         android:textColor="@color/textColorPrimaryInverse"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/strength_value"
@@ -420,29 +419,30 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/persua"
+                android:id="@+id/fighting"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/persuasion_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.25"
-                    android:text="@string/persuasion"
-                    android:textColor="@color/textColorPrimaryInverse" />
-
-                <TextView
-                    android:id="@+id/persuasion_value"
+                    android:id="@+id/fighting_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2" />
+                    android:layout_weight="1.25"
+                    android:text="@string/fighting"
+                    android:textColor="@color/textColorPrimaryInverse" />
+
+                <TextView
+                    android:id="@+id/fighting_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="@color/textColorPrimaryInverse" />
 
                 <Button
-                    android:id="@+id/subtract_persuasion_button"
+                    android:id="@+id/subtract_fighting_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
@@ -454,7 +454,104 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/add_persuasion_button"
+                    android:id="@+id/add_fighting_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shooting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/shooting_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.25"
+                    android:text="@string/shooting"
+                    android:textColor="@color/textColorPrimaryInverse" />
+
+                <TextView
+                    android:id="@+id/shooting_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="@color/textColorPrimaryInverse" />
+
+                <Button
+                    android:id="@+id/subtract_shooting_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/add_shooting_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/casting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/casting_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.25"
+                    android:text="@string/casting"
+                    android:textColor="@color/textColorPrimaryInverse" />
+
+                <TextView
+                    android:id="@+id/casting_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/subtract_casting_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="2"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/add_casting_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
@@ -561,29 +658,29 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/survive"
+                android:id="@+id/gambling"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/survival_label"
+                    android:id="@+id/gambling_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.25"
-                    android:text="@string/survival"
+                    android:text="@string/gambling"
                     android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
-                    android:id="@+id/survival_value"
+                    android:id="@+id/gambling_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2" />
 
                 <Button
-                    android:id="@+id/subtract_survival_button"
+                    android:id="@+id/subtract_gambling_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
@@ -595,56 +692,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/add_survival_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:minHeight="0dp"
-                    android:minWidth="0dp"
-                    android:text="+"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/casting"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/casting_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.25"
-                    android:text="@string/crafting"
-                    android:textColor="@color/textColorPrimaryInverse" />
-
-                <TextView
-                    android:id="@+id/casting_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/subtract_casting_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:minHeight="0dp"
-                    android:minWidth="0dp"
-                    android:text="-"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/add_casting_button"
+                    android:id="@+id/add_gambling_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
@@ -704,29 +752,29 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/gambling"
+                android:id="@+id/persua"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/gambling_label"
+                    android:id="@+id/persuasion_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.25"
-                    android:text="@string/gambling"
+                    android:text="@string/persuasion"
                     android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
-                    android:id="@+id/gambling_value"
+                    android:id="@+id/persuasion_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="2" />
 
                 <Button
-                    android:id="@+id/subtract_gambling_button"
+                    android:id="@+id/subtract_persuasion_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
@@ -738,7 +786,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/add_gambling_button"
+                    android:id="@+id/add_persuasion_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
@@ -798,30 +846,29 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/fighting"
+                android:id="@+id/survive"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/fighting_label"
+                    android:id="@+id/survival_label"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1.25"
-                    android:text="@string/fighting"
+                    android:text="@string/survival"
                     android:textColor="@color/textColorPrimaryInverse" />
 
                 <TextView
-                    android:id="@+id/fighting_value"
+                    android:id="@+id/survival_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
-                    android:textColor="@color/textColorPrimaryInverse" />
+                    android:layout_weight="2" />
 
                 <Button
-                    android:id="@+id/subtract_fighting_button"
+                    android:id="@+id/subtract_survival_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
@@ -833,55 +880,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/add_fighting_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:minHeight="0dp"
-                    android:minWidth="0dp"
-                    android:text="+"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/shooting"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/shooting_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1.25"
-                    android:text="@string/shooting"
-                    android:textColor="@color/textColorPrimaryInverse" />
-
-                <TextView
-                    android:id="@+id/shooting_value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
-                    android:textColor="@color/textColorPrimaryInverse" />
-
-                <Button
-                    android:id="@+id/subtract_shooting_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:minHeight="0dp"
-                    android:minWidth="0dp"
-                    android:text="-"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/add_shooting_button"
+                    android:id="@+id/add_survival_button"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
