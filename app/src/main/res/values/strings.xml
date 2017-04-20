@@ -64,14 +64,14 @@
     <string name="charcacter_creator">Character Creator</string>
     <string name="race">Race</string>
     <string name="character_class">Class</string>
-    <string name="random_atts">Randomize\nAttributes</string>
-    <string name="character_name">Character Name</string>
+    <string name="random_atts">Randomize Attributes</string>
+    <string name="character_name">Name</string>
     <string name="skill">Skills</string>
     <string name="remaining_att">Attribute Points Remaining:</string>
     <string name="remaing_skill">Skill Points\nRemaining:</string>
     <string name="reset_skills">Reset\nSkills</string>
     <string name="confirm">Confirm</string>
-    <string name="reset_character">Reset Character</string>
+    <string name="reset_character">Reset</string>
 
     <!-- String resources for the attributes -->
     <string name="strength">Strength</string>
