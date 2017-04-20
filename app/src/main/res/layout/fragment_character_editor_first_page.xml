@@ -370,94 +370,434 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <GridLayout
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/textColorPrimaryInverse" />
+
+            <TextView
+                android:id="@+id/skills_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="3"
-                android:rowCount="11"
-                android:useDefaultMargins="true">
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="@string/skill"
+                android:textAlignment="center"
+                android:textColor="@color/textColorPrimaryInverse"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="6"
-                    android:rowCount="7"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    android:useDefaultMargins="true" />
-
-                <TextView
-                    android:id="@+id/skill_label"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/skill"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/fighting_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/fighting"
-                    android:textColor="@color/textColorPrimaryInverse" />
-
-                <TextView
-                    android:id="@+id/fighting_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@color/textColorPrimaryInverse" />
+            <LinearLayout
+                android:id="@+id/skills"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30sp"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/persua"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
+                    <TextView
+                        android:id="@+id/persuasion_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/persuasion_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_persuasion_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_persuasion_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/acro"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/acrobatics_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/acrobatics_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_acrobatics_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_acrobatics_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/crafting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/crafting_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/crafting_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_crafting_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_crafting_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/survive"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/survival_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/survival_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_survival_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_survival_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/casting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/casting_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/casting_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_casting_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_casting_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lying"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/lying_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/lying_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_lying_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_lying_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/gambling"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/gambling_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/gambling_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_gambling_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_gambling_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sneak"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/sneaking_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25" />
+
+                    <TextView
+                        android:id="@+id/sneaking_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2" />
+
+                    <Button
+                        android:id="@+id/subtract_sneaking_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/add_sneaking_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fighting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fighting_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25"
+                        android:text="@string/fighting"
+                        android:textColor="@color/textColorPrimaryInverse" />
+
+                    <TextView
+                        android:id="@+id/fighting_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="2"
+                        android:textColor="@color/textColorPrimaryInverse" />
+
                     <Button
                         android:id="@+id/subtract_fighting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="-" />
 
                     <Button
                         android:id="@+id/add_fighting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="+" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/shooting_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/shooting"
-                    android:textColor="@color/textColorPrimaryInverse" />
-
-                <TextView
-                    android:id="@+id/shooting_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@color/textColorPrimaryInverse" />
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/shooting"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/subtract_shooting_button"
+                    <TextView
+                        android:id="@+id/shooting_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.25"
+                        android:text="@string/shooting"
+                        android:textColor="@color/textColorPrimaryInverse" />
+
+                    <TextView
+                        android:id="@+id/shooting_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:textColor="@color/textColorPrimaryInverse" />
+
+                    <Button
+                        android:id="@+id/subtract_shooting_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
@@ -465,338 +805,42 @@
 
                     <Button
                         android:id="@+id/add_shooting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:text="+" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/casting_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/casting"
-                    android:layout_gravity="center_vertical" />
-
-                <TextView
-                    android:id="@+id/casting_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_casting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_casting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/acrobatics_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/acrobatics" />
-
-                <TextView
-                    android:id="@+id/acrobatics_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_acrobatics_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_acrobatics_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/crafting_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/crafting" />
-
-                <TextView
-                    android:id="@+id/crafting_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_crafting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_crafting_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/gambling_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/gambling" />
-
-                <TextView
-                    android:id="@+id/gambling_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_gambling_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_gambling_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/lying_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/lying" />
-
-                <TextView
-                    android:id="@+id/lying_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_lying_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_lying_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/persuasion_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/persuasion" />
-
-                <TextView
-                    android:id="@+id/persuasion_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/sneaking_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/sneaking_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="@string/sneaking" />
-
-                    <Button
-                        android:id="@+id/subtract_persuasion_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_persuasion_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_sneaking_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_sneaking_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/survival_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/survival" />
-
-                <TextView
-                    android:id="@+id/survival_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_survival_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-" />
-
-                    <Button
-                        android:id="@+id/add_survival_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+" />
-                </LinearLayout>
-
-            </GridLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/submissions"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginRight="30dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/reset_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="100dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="@string/reset_changes" />
+                    android:text="@string/reset_changes"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/confirm_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="@string/confirm" />
+                    android:text="@string/confirm"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>
