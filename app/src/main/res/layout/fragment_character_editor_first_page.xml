@@ -670,6 +670,7 @@
                     android:id="@+id/reset_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginRight="100dp"
                     android:layout_weight="1"
                     android:text="@string/reset_changes" />
@@ -678,7 +679,7 @@
                     android:id="@+id/confirm_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_gravity="center_vertical"
                     android:layout_margin="15dp"
                     android:layout_weight="1"
                     android:text="@string/confirm" />

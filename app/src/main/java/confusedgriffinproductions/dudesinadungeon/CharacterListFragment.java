@@ -241,9 +241,11 @@ public class CharacterListFragment extends Fragment {
             characterImageView = (ImageView)convertView.findViewById(R.id.character_image);
             DatabaseHandler db = new DatabaseHandler(getContext());
             ArrayList<Portrait> characterPortraitList = db.getAllCharacterPortraits(characterList.get(position).getId());
-            Portrait characterPortrait = characterPortraitList.get(0);
-            Picasso.with(getContext()).load(new File(characterPortrait.getResource()))
-                    .resize(100,100).centerCrop().into(characterImageView);
+            if(characterPortraitList.size() > 0){
+                Portrait characterPortrait = characterPortraitList.get(0);
+                Picasso.with(getContext()).load(new File(characterPortrait.getResource()))
+                        .resize(100,100).centerCrop().into(characterImageView);
+            }
             db.closeDB();
 
             return convertView;

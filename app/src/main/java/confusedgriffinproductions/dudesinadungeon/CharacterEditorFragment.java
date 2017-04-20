@@ -113,6 +113,8 @@ public class CharacterEditorFragment extends Fragment {
             switch(position){
                 case 0:
                     return CharacterEditorFirstPage.newInstance("", "");
+                case 1:
+                    return CharacterEditorSecondPage.newInstance("", "");
                 default:
                     return CharacterEditorFirstPage.newInstance("", "");
             }
@@ -120,7 +122,7 @@ public class CharacterEditorFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
     }
 

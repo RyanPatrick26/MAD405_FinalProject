@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
@@ -54,8 +55,8 @@ public class CharacterEditorFirstPage extends Fragment {
     TextView characterNameTextView;
     TextView characterRaceTextView;
     TextView characterClassTextView;
-    TextView[] attributeTextViews;
-    TextView[] skillTextViews;
+    static TextView[] attributeTextViews;
+    static TextView[] skillTextViews;
 
     /**
      * Create variables to store the Buttons
@@ -68,14 +69,14 @@ public class CharacterEditorFirstPage extends Fragment {
     /**
      * Create variable to store the ImageView
      */
-    ImageView characterImage;
+    static ImageView characterImage;
 
     int index;
-    Character tempCharacter;
+    static Character tempCharacter;
     private static final int CAMERA_INTENT = 1;
     private String imageLocation;
-    Portrait characterPortrait;
-    Portrait tempPortrait;
+    static Portrait characterPortrait;
+    static Portrait tempPortrait;
 
     public CharacterEditorFirstPage() {
         // Required empty public constructor
@@ -280,10 +281,37 @@ public class CharacterEditorFirstPage extends Fragment {
             public void onClick(View v) {
                 tempCharacter = CharacterEditorFragment.character;
                 setTextViewsText();
-                if(tempPortrait != null){
-                    characterImage.setImageResource(R.drawable.ic_menu_camera);
-                    tempPortrait = null;
+
+                if(CharacterEditorSecondPage.removedItemList.size() > 0){
+                    for(int i = 0; i < CharacterEditorSecondPage.removedItemList.size(); i++){
+                        CharacterEditorSecondPage.itemsList.add(CharacterEditorSecondPage.removedItemList.get(i));
+                    }
                 }
+                for(int i = 0; i < CharacterEditorSecondPage.addedItemList.size(); i++){
+                    CharacterEditorSecondPage.itemsList.remove(CharacterEditorSecondPage.addedItemList.get(i));
+                }
+                CharacterEditorSecondPage.addedItemList.clear();
+                for(int i = 0; i < CharacterEditorSecondPage.removedItemList.size(); i++){
+                    CharacterEditorSecondPage.removedItemList.remove(i);
+                }
+                Collections.sort(CharacterEditorSecondPage.itemsList);
+                CharacterEditorSecondPage.itemListAdapter.notifyDataSetChanged();
+
+                if(CharacterEditorSecondPage.removedSpellList.size() > 0){
+                    for(int i = 0; i < CharacterEditorSecondPage.removedSpellList.size(); i++){
+                        CharacterEditorSecondPage.spellsList.add(CharacterEditorSecondPage.removedSpellList.get(i));
+                    }
+                }
+                for(int i = 0; i < CharacterEditorSecondPage.addedSpellList.size(); i++){
+                    CharacterEditorSecondPage.spellsList.remove(CharacterEditorSecondPage.addedSpellList.get(i));
+                }
+
+                CharacterEditorSecondPage.addedSpellList.clear();
+                for(int i = 0; i < CharacterEditorSecondPage.removedSpellList.size(); i++){
+                    CharacterEditorSecondPage.removedSpellList.remove(i);
+                }
+                Collections.sort(CharacterEditorSecondPage.spellsList);
+                CharacterEditorSecondPage.spellListAdapter.notifyDataSetChanged();
             }
         });
 
@@ -291,6 +319,9 @@ public class CharacterEditorFirstPage extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tempCharacter.setItems(CharacterEditorSecondPage.itemsList);
+                tempCharacter.setSpells(CharacterEditorSecondPage.spellsList);
+
                 tempCharacter.setStrength(Integer.parseInt(attributeTextViews[0].getText().toString().trim()));
                 tempCharacter.setAgility(Integer.parseInt(attributeTextViews[1].getText().toString().trim()));
                 tempCharacter.setResilience(Integer.parseInt(attributeTextViews[2].getText().toString().trim()));
@@ -309,10 +340,12 @@ public class CharacterEditorFirstPage extends Fragment {
                 tempCharacter.setSurvival(Integer.parseInt(skillTextViews[9].getText().toString().trim()));
 
                 DatabaseHandler db = new DatabaseHandler(getContext());
-                characterPortrait = tempPortrait;
-                int imgId = db.addPortrait(characterPortrait);
+                if(tempPortrait != null){
+                    characterPortrait = tempPortrait;
+                    int imgId = db.addPortrait(characterPortrait);
+                    db.addCharacterPortrait(imgId, tempCharacter.getId());
+                }
                 db.updateCharacter(tempCharacter);
-                db.addCharacterPortrait(imgId, tempCharacter.getId());
                 db.closeDB();
 
                 FragmentManager fm = getActivity().getSupportFragmentManager();
@@ -344,7 +377,7 @@ public class CharacterEditorFirstPage extends Fragment {
         return picture;
     }
 
-    public void setTextViewsText(){
+    public static void setTextViewsText(){
         attributeTextViews[0].setText(tempCharacter.getStrength() + "  ");
         if(tempCharacter.getStrength() < 10){
             attributeTextViews[0].append(" ");

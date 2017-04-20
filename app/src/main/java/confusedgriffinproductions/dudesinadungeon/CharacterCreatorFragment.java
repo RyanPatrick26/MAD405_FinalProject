@@ -871,7 +871,7 @@ public class CharacterCreatorFragment extends Fragment {
             checkBox.setText(tempSpellList.get(position).getName());
 
             for(int i = 0; i < spellList.size(); i++){
-                if(itemsList.get(i).getId() == tempSpellList.get(position).getId()){
+                if(spellList.get(i).getId() == tempSpellList.get(position).getId()){
                     checkBox.setChecked(true);
                 }
             }
