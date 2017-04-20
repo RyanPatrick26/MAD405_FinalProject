@@ -85,6 +85,7 @@ public class ItemViewerFragment extends Fragment {
 
         //initialize the views
         itemName = (TextView)view.findViewById(R.id.item_name);
+        itemName.setTextColor(getActivity().getResources().getColor(R.color.textColorPrimaryInverse));
         itemType = (TextView)view.findViewById(R.id.item_type);
         itemDmg_defLabel = (TextView)view.findViewById(R.id.dmg_def_label);
         itemDmg_Def = (TextView)view.findViewById(R.id.item_dmg_def);
