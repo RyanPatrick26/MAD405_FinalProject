@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
+        trans.addToBackStack(null);
         trans.replace(R.id.content_main, new MainFragment());
         trans.commit();
 
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.credits_settings) {
             // Navigate to the Credits Fragment
             FragmentTransaction tran = fm.beginTransaction();
+            tran.addToBackStack(null);
             tran.replace(R.id.content_main, new CreditsFragment());
             tran.commit();
         }
