@@ -417,7 +417,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:columnCount="5"
+                android:columnCount="3"
                 android:rowCount="10"
                 android:useDefaultMargins="true"
                 tools:ignore="ExtraText">
@@ -426,9 +426,7 @@
                     android:id="@+id/fighting_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="0"
                     android:text="@string/fighting"
                     android:textColor="@color/textColorPrimaryInverse" />
 
@@ -436,9 +434,7 @@
                     android:id="@+id/fighting_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="0"
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
@@ -449,9 +445,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="0"
                     android:orientation="horizontal">
 
                     <Button
@@ -477,66 +471,10 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/gambling_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="0"
-                    android:text="@string/gambling"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/gambling_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="0"
-                    android:ems="1"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
-                    tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="0"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_gambling"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-
-                    <Button
-                        android:id="@+id/add_gambling"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-                </LinearLayout>
-
-                <TextView
                     android:id="@+id/shooting_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="1"
                     android:text="@string/shooting"
                     android:textColor="@color/textColorPrimaryInverse" />
 
@@ -544,9 +482,7 @@
                     android:id="@+id/shooting_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="1"
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
@@ -557,9 +493,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="1"
                     android:orientation="horizontal">
 
                     <Button
@@ -584,65 +518,10 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/lying_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="1"
-                    android:text="@string/lying"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    tools:ignore="HardcodedText" />
-                <TextView
-                    android:id="@+id/lying_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="1"
-                    android:ems="1"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
-                    tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="1"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_lying"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-
-                    <Button
-                        android:id="@+id/add_lying"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-                </LinearLayout>
-
-                <TextView
                     android:id="@+id/casting_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="2"
                     android:text="@string/casting"
                     android:textColor="@color/textColorPrimaryInverse" />
 
@@ -650,9 +529,7 @@
                     android:id="@+id/casting_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="2"
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
@@ -663,9 +540,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="2"
                     android:orientation="horizontal">
 
                     <Button
@@ -690,66 +565,10 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/persuasion_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="2"
-                    android:text="@string/persuasion"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/persuasion_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="2"
-                    android:ems="1"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
-                    tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="2"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_persuasion"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-
-                    <Button
-                        android:id="@+id/add_persuasion"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-                </LinearLayout>
-
-                <TextView
                     android:id="@+id/acrobatics_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="3"
                     android:text="@string/acrobatics"
                     android:textColor="@color/textColorPrimaryInverse" />
 
@@ -757,10 +576,7 @@
                     android:id="@+id/acrobatics_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="3"
-                    android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
                     android:textColor="@color/textColorPrimaryInverse"
@@ -770,9 +586,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="3"
                     android:orientation="horizontal">
 
                     <Button
@@ -797,66 +611,10 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/sneaking_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="3"
-                    android:text="@string/sneaking"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:id="@+id/sneaking_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="3"
-                    android:ems="1"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textColor="@color/textColorPrimaryInverse"
-                    android:textSize="12sp"
-                    tools:ignore="DuplicateIds,HardcodedText,LabelFor,TooManyViews" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_row="3"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/subtract_sneaking"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="-"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-
-                    <Button
-                        android:id="@+id/add_sneaking"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="5dp"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:text="+"
-                        tools:ignore="ButtonStyle,HardcodedText" />
-                </LinearLayout>
-
-                <TextView
                     android:id="@+id/crafting_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="4"
                     android:text="@string/crafting"
                     android:textColor="@color/textColorPrimaryInverse" />
 
@@ -864,9 +622,7 @@
                     android:id="@+id/crafting_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="4"
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
@@ -877,9 +633,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="4"
                     android:orientation="horizontal">
 
                     <Button
@@ -904,23 +658,19 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/survival_label"
+                    android:id="@+id/gambling_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="4"
-                    android:text="@string/survival"
+                    android:text="@string/gambling"
                     android:textColor="@color/textColorPrimaryInverse"
                     tools:ignore="HardcodedText" />
 
                 <TextView
-                    android:id="@+id/survival_field"
+                    android:id="@+id/gambling_field"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnSpan="1"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="4"
                     android:ems="1"
                     android:text="0"
                     android:textAlignment="center"
@@ -931,9 +681,199 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_columnSpan="2"
                     android:layout_gravity="center_vertical"
-                    android:layout_row="4"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/subtract_gambling"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+
+                    <Button
+                        android:id="@+id/add_gambling"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/lying_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/lying"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/lying_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ems="1"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="12sp"
+                    tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/subtract_lying"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+
+                    <Button
+                        android:id="@+id/add_lying"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/persuasion_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/persuasion"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/persuasion_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ems="1"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="12sp"
+                    tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/subtract_persuasion"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+
+                    <Button
+                        android:id="@+id/add_persuasion"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/sneaking_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/sneaking"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/sneaking_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ems="1"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="12sp"
+                    tools:ignore="DuplicateIds,HardcodedText,LabelFor,TooManyViews" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/subtract_sneaking"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="-"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+
+                    <Button
+                        android:id="@+id/add_sneaking"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="5dp"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:text="+"
+                        tools:ignore="ButtonStyle,HardcodedText" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/survival_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/survival"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/survival_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ems="1"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorPrimaryInverse"
+                    android:textSize="12sp"
+                    tools:ignore="DuplicateIds,HardcodedText,LabelFor" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <Button
