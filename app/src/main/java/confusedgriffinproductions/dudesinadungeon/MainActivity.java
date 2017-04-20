@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity
 
     // Email address of the application creators
     String creatorEmail = "diad.app@cgproductions@gmail.com";
-    // SMS Message String
-    String smsMessage = R.string.sms_message + " https://www.diad.app.com/";
 
     /**
      * Database refreshing properties
@@ -274,8 +272,26 @@ public class MainActivity extends AppCompatActivity
      * @author Nicholas Allaire
      */
     public void shareViaSMS() {
+        // Get the sms String
+        String smsMessage = "";
+        // Get the shared preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        // Get the language from the shared preferences
+        String lang = sharedPreferences.getString("language_preference", "en");
+        // Switch statement to determine which language code to return
+        switch (lang) {
+            case "en":
+                smsMessage = "Get some dudes and get in a dungeon! Check out this amazing app that helps me keep track of my characters, items, and spells:";
+                break;
+            case "fr":
+                smsMessage = "Obtenez des dudes et mettez-vous dans un donjon! Découvrez cette application incroyable qui m\\'aide à garder une trace de mes personnages, objets et charmes:";
+                break;
+        }
+        // SMS Message String
+        smsMessage += " https://www.diad.app.com/";
         // Create the SMS intent
         Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setType("vnd.android-dir/mms-sms");
         // Set the type to SMS
         intent.setData(Uri.parse("sms:"));
         // Set the body of the SMS
