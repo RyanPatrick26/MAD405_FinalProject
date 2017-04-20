@@ -151,7 +151,7 @@ public class CharacterCreatorFragment extends Fragment {
         /**
          * Instantiate the EditTexts
          */
-        characterNameField = (EditText)view.findViewById(R.id.name_field);
+        characterNameField = (EditText)view.findViewById(R.id.name_value);
 
         /**
          * Instantiate the Spinners
@@ -173,21 +173,21 @@ public class CharacterCreatorFragment extends Fragment {
                 getContext().getResources().getString(R.string.priest)
         };
 
-        ArrayAdapter raceAdapter = new ArrayAdapter(getContext(), R.layout.spinner_item, raceArray);
+        ArrayAdapter raceAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, raceArray);
         raceSpinner.setAdapter(raceAdapter);
 
-        ArrayAdapter classAdapter = new ArrayAdapter(getContext(), R.layout.spinner_item, classArray);
+        ArrayAdapter classAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, classArray);
         classSpinner.setAdapter(classAdapter);
 
         /**
          * Instantiate the TextViews
          */
         attributeFields = new TextView[]{
-                (TextView) view.findViewById(R.id.strength_field),
-                (TextView) view.findViewById(R.id.agility_field),
-                (TextView) view.findViewById(R.id.resilience_field),
-                (TextView) view.findViewById(R.id.luck_field),
-                (TextView) view.findViewById(R.id.intelligence_field)
+                (TextView) view.findViewById(R.id.strength_value),
+                (TextView) view.findViewById(R.id.agility_value),
+                (TextView) view.findViewById(R.id.resilience_value),
+                (TextView) view.findViewById(R.id.luck_value),
+                (TextView) view.findViewById(R.id.intelligence_value)
         };
 
         //set on click listener for the spinners
@@ -294,20 +294,20 @@ public class CharacterCreatorFragment extends Fragment {
         });
 
         skillFields = new TextView[]{
-                (TextView)view.findViewById(R.id.fighting_field),
-                (TextView)view.findViewById(R.id.shooting_field),
-                (TextView)view.findViewById(R.id.casting_field),
-                (TextView)view.findViewById(R.id.acrobatics_field),
-                (TextView)view.findViewById(R.id.crafting_field),
-                (TextView)view.findViewById(R.id.gambling_field),
-                (TextView)view.findViewById(R.id.lying_field),
-                (TextView)view.findViewById(R.id.persuasion_field),
-                (TextView)view.findViewById(R.id.sneaking_field),
-                (TextView)view.findViewById(R.id.survival_field)
+                (TextView)view.findViewById(R.id.fighting_value),
+                (TextView)view.findViewById(R.id.shooting_value),
+                (TextView)view.findViewById(R.id.casting_value),
+                (TextView)view.findViewById(R.id.acrobatics_value),
+                (TextView)view.findViewById(R.id.crafting_value),
+                (TextView)view.findViewById(R.id.gambling_value),
+                (TextView)view.findViewById(R.id.lying_value),
+                (TextView)view.findViewById(R.id.persuasion_value),
+                (TextView)view.findViewById(R.id.sneaking_value),
+                (TextView)view.findViewById(R.id.survival_value)
         };
 
-        remainingAttsView = (TextView)view.findViewById(R.id.remaining_att_field);
-        remainingSkillsView = (TextView)view.findViewById(R.id.remaining_skill_field);
+        remainingAttsView = (TextView)view.findViewById(R.id.remaining_att_value);
+        remainingSkillsView = (TextView)view.findViewById(R.id.remaining_skill_value);
 
         /**
          * Instantiate the Buttons
@@ -484,39 +484,39 @@ public class CharacterCreatorFragment extends Fragment {
                 }
 
                 if(remainingAttsView.getText().toString().equals("0") &&
-                    remainingSkillsView.getText().toString().equals("0")
-                    && !characterNameField.getText().toString().equals("")
-                    && !itemsList.isEmpty() && !spellList.isEmpty() &&
-                    validCharacter){
-                        Character character = new Character();
-                        character.setName(characterNameField.getText().toString());
+                        remainingSkillsView.getText().toString().equals("0")
+                        && !characterNameField.getText().toString().equals("")
+                        && !itemsList.isEmpty() && !spellList.isEmpty() &&
+                        validCharacter){
+                    Character character = new Character();
+                    character.setName(characterNameField.getText().toString());
 
-                        character.setRace(raceSpinner.getSelectedItem().toString());
-                        character.setCharClass(classSpinner.getSelectedItem().toString());
+                    character.setRace(raceSpinner.getSelectedItem().toString());
+                    character.setCharClass(classSpinner.getSelectedItem().toString());
 
-                        character.setStrength(Integer.parseInt(attributeFields[0].getText().toString()));
-                        character.setAgility(Integer.parseInt(attributeFields[1].getText().toString()));
-                        character.setResilience(Integer.parseInt(attributeFields[2].getText().toString()));
-                        character.setLuck(Integer.parseInt(attributeFields[3].getText().toString()));
-                        character.setIntelligence(Integer.parseInt(attributeFields[4].getText().toString()));
+                    character.setStrength(Integer.parseInt(attributeFields[0].getText().toString()));
+                    character.setAgility(Integer.parseInt(attributeFields[1].getText().toString()));
+                    character.setResilience(Integer.parseInt(attributeFields[2].getText().toString()));
+                    character.setLuck(Integer.parseInt(attributeFields[3].getText().toString()));
+                    character.setIntelligence(Integer.parseInt(attributeFields[4].getText().toString()));
 
-                        character.setFighting(Integer.parseInt(skillFields[0].getText().toString()));
-                        character.setShooting(Integer.parseInt(skillFields[1].getText().toString()));
-                        character.setCasting(Integer.parseInt(skillFields[2].getText().toString()));
-                        character.setAcrobatics(Integer.parseInt(skillFields[3].getText().toString()));
-                        character.setCrafting(Integer.parseInt(skillFields[4].getText().toString()));
-                        character.setGambling(Integer.parseInt(skillFields[5].getText().toString()));
-                        character.setLying(Integer.parseInt(skillFields[6].getText().toString()));
-                        character.setPersuasion(Integer.parseInt(skillFields[7].getText().toString()));
-                        character.setSneaking(Integer.parseInt(skillFields[8].getText().toString()));
-                        character.setSurvival(Integer.parseInt(skillFields[9].getText().toString()));
+                    character.setFighting(Integer.parseInt(skillFields[0].getText().toString()));
+                    character.setShooting(Integer.parseInt(skillFields[1].getText().toString()));
+                    character.setCasting(Integer.parseInt(skillFields[2].getText().toString()));
+                    character.setAcrobatics(Integer.parseInt(skillFields[3].getText().toString()));
+                    character.setCrafting(Integer.parseInt(skillFields[4].getText().toString()));
+                    character.setGambling(Integer.parseInt(skillFields[5].getText().toString()));
+                    character.setLying(Integer.parseInt(skillFields[6].getText().toString()));
+                    character.setPersuasion(Integer.parseInt(skillFields[7].getText().toString()));
+                    character.setSneaking(Integer.parseInt(skillFields[8].getText().toString()));
+                    character.setSurvival(Integer.parseInt(skillFields[9].getText().toString()));
 
-                        character.setItems(itemsList);
-                        character.setSpells(spellList);
+                    character.setItems(itemsList);
+                    character.setSpells(spellList);
 
-                        DatabaseHandler db = new DatabaseHandler(getContext());
-                        db.addCharacter(character);
-                        db.closeDB();
+                    DatabaseHandler db = new DatabaseHandler(getContext());
+                    db.addCharacter(character);
+                    db.closeDB();
 
                     FragmentManager fm = getActivity().getSupportFragmentManager();
                     FragmentTransaction trans = fm.beginTransaction();
