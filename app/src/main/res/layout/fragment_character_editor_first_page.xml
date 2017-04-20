@@ -134,7 +134,8 @@
                         android:layout_weight="1.25"
                         android:text="@string/strength"
                         android:textColor="@color/textColorPrimaryInverse"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/strength_value"
@@ -154,7 +155,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="-" />
+                        android:text="-"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/add_strength_button"
@@ -164,7 +167,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="+" />
+                        android:text="+"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -204,7 +209,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="-" />
+                        android:text="-"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/add_agility_button"
@@ -214,7 +221,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="+" />
+                        android:text="+"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -254,7 +263,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="-" />
+                        android:text="-"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/add_resilience_button"
@@ -264,7 +275,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="+" />
+                        android:text="+"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -303,7 +316,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="-" />
+                        android:text="-"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/add_luck_button"
@@ -313,7 +328,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="+" />
+                        android:text="+"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -354,7 +371,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="-" />
+                        android:text="-"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/add_intelligence_button"
@@ -364,7 +383,9 @@
                         android:layout_weight="2"
                         android:minHeight="0dp"
                         android:minWidth="0dp"
-                        android:text="+" />
+                        android:text="+"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -428,7 +449,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_persuasion_button"
@@ -438,7 +461,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -471,7 +496,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_acrobatics_button"
@@ -481,7 +508,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -514,7 +543,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_crafting_button"
@@ -524,7 +555,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -557,7 +590,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_survival_button"
@@ -567,7 +602,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -590,7 +627,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2" />
+                    android:layout_weight="2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/subtract_casting_button"
@@ -600,7 +639,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_casting_button"
@@ -610,7 +651,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -643,7 +686,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_lying_button"
@@ -653,7 +698,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -686,7 +733,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_gambling_button"
@@ -696,7 +745,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -729,7 +780,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_sneaking_button"
@@ -739,7 +792,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -773,7 +828,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_fighting_button"
@@ -783,7 +840,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -817,7 +876,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="-" />
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/add_shooting_button"
@@ -827,7 +888,9 @@
                     android:layout_weight="2"
                     android:minHeight="0dp"
                     android:minWidth="0dp"
-                    android:text="+" />
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
