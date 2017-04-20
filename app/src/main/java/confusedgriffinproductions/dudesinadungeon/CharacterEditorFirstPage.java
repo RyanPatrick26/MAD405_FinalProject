@@ -114,6 +114,7 @@ public class CharacterEditorFirstPage extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
         tempCharacter = CharacterEditorFragment.character;
+        Picasso.with(getContext()).setLoggingEnabled(true);
 
         /**
          * Initialize the TextViews and set their text
@@ -159,7 +160,7 @@ public class CharacterEditorFirstPage extends Fragment {
             String characterPortrait;
             characterPortrait = characterPortraitList.get(0).getResource();
             tempPortrait = characterPortraitList.get(0);
-            Picasso.with(getContext()).load(new File(characterPortrait)).resize(150, 300).centerCrop().into(characterImage);
+            Picasso.with(getContext()).load(Uri.fromFile(new File(characterPortrait))).resize(dpToPx(150), dpToPx(300)).centerCrop().into(characterImage);
         }
 
         characterImage.setOnClickListener(new View.OnClickListener() {
@@ -360,10 +361,15 @@ public class CharacterEditorFirstPage extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == CAMERA_INTENT && resultCode == RESULT_OK){
             tempPortrait = new Portrait(imageLocation);
-            Picasso.with(getContext()).load(new File(tempPortrait.getResource())).resize(150, 300).centerCrop().into(characterImage);
+            Picasso.with(getContext()).load(Uri.fromFile(new File(tempPortrait.getResource()))).resize(dpToPx(150), dpToPx(300)).into(characterImage);
         }
     }
 
+    //convert a db value into pixels
+    private int dpToPx(int dp) {
+        float density = getContext().getResources().getDisplayMetrics().density;
+        return Math.round((float)dp * density);
+    }
     /**
      * Create a temp image file for the camera to save a photo to
      * @return the image being to be added
