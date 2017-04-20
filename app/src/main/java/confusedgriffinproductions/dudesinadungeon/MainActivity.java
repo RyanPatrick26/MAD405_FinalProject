@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -45,8 +46,6 @@ public class MainActivity extends AppCompatActivity
         SpellListFragment.OnFragmentInteractionListener,
         ItemViewerFragment.OnFragmentInteractionListener,
         SpellViewerFragment.OnFragmentInteractionListener,
-        CharacterEditorFragment.OnFragmentInteractionListener,
-        CharacterEditorFirstPage.OnFragmentInteractionListener,
         CharacterEditorSecondPage.OnFragmentInteractionListener,
         CreditsFragment.OnFragmentInteractionListener{
 
@@ -372,5 +371,4 @@ public class MainActivity extends AppCompatActivity
         dbh.initializeSpellsTable(db);
         db.close();
     }
-
 }

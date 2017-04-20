@@ -73,7 +73,7 @@ public class CharacterEditorFragment extends Fragment {
         db.closeDB();
 
         adapter = new SectionsPagerAdapter(getChildFragmentManager());
-        ViewPager viewPager = (ViewPager)view.findViewById(R.id.editor_pager);
+        ViewPager viewPager = (ViewPager)view.findViewById(R.id.editor_view_pager);
         viewPager.setAdapter(adapter);
 
         return view;
@@ -102,8 +102,22 @@ public class CharacterEditorFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
+    public interface OnFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onFragmentInteraction(Uri uri);
+    }
 
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    private class SectionsPagerAdapter extends FragmentPagerAdapter{
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -136,8 +150,4 @@ public class CharacterEditorFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

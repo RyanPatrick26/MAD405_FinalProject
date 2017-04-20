@@ -9,6 +9,9 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +30,8 @@ import java.util.Collections;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 
 /**
@@ -48,6 +53,10 @@ public class CharacterEditorFirstPage extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
+    // TODO: Rename and change types of parameters
+    private Character character;
 
     /**
      * Create variables to store the TextViews
@@ -112,6 +121,7 @@ public class CharacterEditorFirstPage extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_character_editor_first_page, container, false);
         tempCharacter = CharacterEditorFragment.character;
 
@@ -182,9 +192,6 @@ public class CharacterEditorFirstPage extends Fragment {
             }
         });
 
-        /**
-         * Initialize the Buttons and set their functionality
-         */
         attributeButtons = new Button[]{
                 (Button)view.findViewById(R.id.add_strength_button),
                 (Button)view.findViewById(R.id.subtract_strength_button),
@@ -440,7 +447,6 @@ public class CharacterEditorFirstPage extends Fragment {
             skillTextViews[9].append(" ");
         }
     }
-
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -476,14 +482,10 @@ public class CharacterEditorFirstPage extends Fragment {
     }
 
     public void subtractValue(TextView startTextView){
-        String stringValue = startTextView.getText().toString().trim();
+        String stringValue = startTextView.getText().toString();
         int value = Integer.parseInt(stringValue);
         value--;
-
         startTextView.setText(value + "  ");
-        if(value < 10){
-            startTextView.append(" ");
-        }
     }
 
     /**
