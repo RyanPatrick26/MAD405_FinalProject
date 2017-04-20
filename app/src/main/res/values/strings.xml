@@ -317,7 +317,7 @@
     <string name="changed_lang_toast">Language changed. Restarting application.</string>
     <string name="changed_colour_toast">Colour theme changed. Restarting application.</string>
     <string name="toast_error_unexpected">An unexpected error occured</string>
-    <string name="create_a_character">Create a\nCharacter</string>
+    <string name="create_a_character">Create a Character</string>
     <string name="delete_character">Delete\nCharacter</string>
     <string name="colour_preference_purple">Purple</string>
     <string name="colour_preference_green">Green</string>

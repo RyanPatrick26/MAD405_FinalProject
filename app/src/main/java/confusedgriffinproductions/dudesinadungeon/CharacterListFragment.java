@@ -227,6 +227,7 @@ public class CharacterListFragment extends Fragment {
 
             //initialize the Delete Button
             deleteButton = (Button)convertView.findViewById(R.id.delete_character_button);
+            deleteButton.setBackgroundDrawable(getActivity().getResources().getDrawable(R.drawable.ic_delete_black_24dp));
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
