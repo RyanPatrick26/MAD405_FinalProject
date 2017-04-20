@@ -187,6 +187,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void deleteItemsAndSpells(SQLiteDatabase db) {
+        db.execSQL("DROP TABLE IF EXISTS " + "items");
+        db.execSQL("DROP TABLE IF EXISTS " + "spells");
+    }
+
 
     /**
      * Create a function to initialize the items table

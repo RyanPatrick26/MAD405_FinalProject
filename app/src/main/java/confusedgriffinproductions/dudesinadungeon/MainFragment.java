@@ -1,6 +1,7 @@
 package confusedgriffinproductions.dudesinadungeon;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -42,6 +43,9 @@ public class MainFragment extends Fragment {
     Button viewItemsButton;
     Button viewCharactersButton;
 
+    // Create a view
+    View view;
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -76,8 +80,9 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        view = inflater.inflate(R.layout.fragment_main, container, false);
 
         // Programmatically link the button properties to the buttons in the xml
         createCharacterButton = (Button) view.findViewById(R.id.createCharacterButton);

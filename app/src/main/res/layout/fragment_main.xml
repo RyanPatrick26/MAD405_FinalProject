@@ -8,7 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,21 +26,23 @@
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="220dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="2"
                     android:adjustViewBounds="false"
-                    app:srcCompat="@mipmap/ic_launcher" />
+                    app:srcCompat="@drawable/cfp_logo" />
 
                 <TextView
                     android:id="@+id/homeTitleTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:fontFamily="sans-serif-smallcaps"
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/homepageTitle"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="@color/textColorPrimaryInverse" />
 
             </LinearLayout>
 
@@ -54,7 +56,8 @@
                 android:text="@string/introductionTextView"
                 android:textAlignment="textStart"
                 android:textSize="20sp"
-                tools:text="@string/introductionTextView" />
+                tools:text="@string/introductionTextView"
+                android:textColor="@color/textColorPrimaryInverse" />
 
             <LinearLayout
                 android:id="@+id/buttonLayout"
@@ -72,21 +75,25 @@
 
                     <Button
                         android:id="@+id/viewItemsButton"
-                        style="@style/Base.Widget.AppCompat.Button"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
+                        android:elevation="@dimen/cardview_default_elevation"
                         android:text="@string/viewItemsButtonText"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/viewSpellsButton"
-                        style="@style/Base.Widget.AppCompat.Button"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
+                        android:elevation="@dimen/cardview_default_elevation"
                         android:text="@string/viewSpellsButtonText"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -98,24 +105,39 @@
 
                     <Button
                         android:id="@+id/createCharacterButton"
-                        style="@style/Base.Widget.AppCompat.Button"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:elevation="0dp"
+                        android:elevation="@dimen/cardview_default_elevation"
                         android:text="@string/createCharacterButtonText"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/viewCharactersButton"
-                        style="@style/Base.Widget.AppCompat.Button"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
+                        android:elevation="@dimen/cardview_default_elevation"
                         android:text="@string/viewCharactersButtonText"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5sp"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="@string/all_rights_reserved"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/textColorSecondaryInverse" />
 
 
             </LinearLayout>

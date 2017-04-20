@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- Defualt Strings -->
+    <!-- Default Strings -->
     <string name="app_name">Dudes In A Dungeon</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -28,7 +28,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- Snackbar Strings -->
     <string name="snackbar_no_software">No installed software to complete the task. Sorry!</string>
@@ -71,7 +71,7 @@
     <string name="remaing_skill">Skill Points\nRemaining:</string>
     <string name="reset_skills">Reset\nSkills</string>
     <string name="confirm">Confirm</string>
-    <string name="reset_character">Reset your\nCharacter</string>
+    <string name="reset_character">Reset Character</string>
 
     <!-- String resources for the attributes -->
     <string name="strength">Strength</string>
@@ -136,20 +136,21 @@
     <string name="rations_description">Dried foods easy to preserve</string>
 
     <!--These resources contain the website links for reference -->
-    <string name="sword_image">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
-    <string name="axe_image">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
-    <string name="spear_image">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
-    <string name="dagger_image">https://pixabay.com/p-34231/?no_redirect</string>
-    <string name="bow_image">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
-    <string name="crossbow_image">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
-    <string name="plate_mail_image">https://pixabay.com/en/armor-battle-knight-1297111/</string>
-    <string name="backpack_image">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
-    <string name="canteen_image">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
-    <string name="tinder_box_image">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
-    <string name="tent_image">https://pixabay.com/en/camping-camp-tent-mountains-field-2169976/</string>
-    <string name="sleeping_bag_image">https://pixabay.com/p-1294371/?no_redirect</string>
-    <string name="rations_image">https://pixabay.com/en/food-junk-food-pack-package-2029493/</string>
-    <string name="shield_image">https://pixabay.com/en/shield-escutcheon-heater-shield-31869/</string>
+    <string name="sword_image" translatable="false">https://pixabay.com/en/sword-isolated-weapon-steel-blade-309580/</string>
+    <string name="axe_image" translatable="false">https://pixabay.com/en/axe-tool-sharp-implement-chopping-47042/</string>
+    <string name="spear_image" translatable="false">https://pixabay.com/en/spear-lance-weapons-medieval-296530/</string>
+    <string name="dagger_image" translatable="false">https://pixabay.com/p-34231/?no_redirect</string>
+    <string name="bow_image" translatable="false">https://pixabay.com/en/arrow-bow-weapon-medieval-weapon-161517/</string>
+    <string name="crossbow_image" translatable="false">https://www.goodfreephotos.com/vector-images/crossbow-vector-clipart.png.php</string>
+    <string name="plate_mail_image" translatable="false">https://pixabay.com/en/armor-battle-knight-1297111/</string>
+    <string name="backpack_image" translatable="false">https://pixabay.com/en/backpack-hiking-bag-travel-24493/</string>
+    <string name="canteen_image" translatable="false">https://pixabay.com/en/container-jar-jug-pot-pottery-2028475/</string>
+    <string name="tinder_box_image" translatable="false">https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Camp_Log_Cabin_Fire.svg/1121px-Camp_Log_Cabin_Fire.svg.png</string>
+    <string name="tent_image" translatable="false">https://pixabay.com/en/camping-camp-tent-mountains-field-2169976/</string>
+    <string name="sleeping_bag_image" translatable="false">https://pixabay.com/p-1294371/?no_redirect</string>
+    <string name="rations_image" translatable="false">https://pixabay.com/en/food-junk-food-pack-package-2029493/</string>
+    <string name="shield_image" translatable="false">https://pixabay.com/en/shield-escutcheon-heater-shield-31869/</string>
+    <string name="all_other_images">All other images taken from Pixabay\nCC0 Public Domain\nFree for commercial use\nNo attribution required</string>
 
     <!-- Names for all spells -->
     <string name="fireball">Fireball</string>
@@ -210,7 +211,7 @@
     <string name="confuse_description">Make things easier for you and your friends but sowing a bit of confusion</string>
     <string name="inflict_pain_description">Opposite of heal, causes a fair bit of damage to an enemy</string>
     <string name="resurrect_description">If a friend has died, don\'t worry, just bring them back</string>
-    <string name="call_miracle_description">For those times when you\'re in real trouble, try calling on an act of god</string>
+    <string name="call_miracle_description">For those times when you\'re in real trouble, try calling on an act of God</string>
     <string name="remove_curse_description">For all those times that you or your friends get cursed, just clear them of it</string>
     <string name="bless_description">Give your friends a bit of a blessing for their times in need</string>
 
@@ -305,8 +306,23 @@
     <string name="spells_by_type">View\nSpells by Type</string>
     <string name="spells_by_class">View\nSpells by Class</string>
 
-    <string name="create_a_character">Create a\nCharacterr</string>
+    <!-- String resources for the Settings -->
+    <string name="language_preference_summary">Change the language of the application.\nApplication will restart.</string>
+    <string name="colour_theme_preference_title">Colour Theme</string>
+    <string name="colour_theme_preference_summary">Change the application\'s colour theme.\nApplication will restart.</string>
+    <string name="credits_settings_title">Credits</string>
+    <string name="default_language_preference" translatable="false">en</string>
+    <string name="default_colour_preference" translatable="false">purple</string>
+    <string name="lang_test">ENGLISH</string>
+    <string name="changed_lang_toast">Language changed. Restarting application.</string>
+    <string name="changed_colour_toast">Colour theme changed. Restarting application.</string>
+    <string name="toast_error_unexpected">An unexpected error occured</string>
+    <string name="create_a_character">Create a\nCharacter</string>
     <string name="delete_character">Delete\nCharacter</string>
+    <string name="colour_preference_purple">Purple</string>
+    <string name="colour_preference_green">Green</string>
+    <string name="colour_preference_offDesc">Change the application to the Green theme\nApplication will restart.</string>
+    <string name="colour_preference_onDesc">Change the application to the Purple theme\nApplication will restart.</string>
 
     <string name="delete_confirmation">Are you sure you wish to delete this character?</string>
     <string name="no">No</string>
@@ -316,11 +332,18 @@
     <string name="item_price">Item Price</string>
     <string name="spell_damage">Spell Damage:</string>
     <string name="spell_effect">Spell Effect:</string>
+    <string name="credits_title">Credits</string>
+    <string name="developers_credits_title">Developers</string>
+    <string name="copyright_credits">Dudes In A Dungeon is a game licensed and created by Warlocks By the Sea. Confused Griffin Productions is in no way affiliated with them aside from the creation of this companion application.</string>
+    <string name="appLogo_createdBy">Application logo created bv\nNicholas Allaire</string>
+    <string name="armourCreatedBy">Chainmail and Leather Armour images created by\nNicholas Allaire</string>
+    <string name="originalLogoCredits">Original Griffin from Wikipedia Commons:\nhttps://commons.wikimedia.org/wiki/File:Sk%%C3%A5ne_l%%C3%%A4nsvapen_-_Riksarkivet_Sverige.png</string>
     <string name="add_items">Add Items</string>
     <string name="add_spells">Add Spells</string>
-
     <string name="remove_item">Remove\nItem</string>
     <string name="reset_changes">Reset\nChanges</string>
 
+    <string name="language_preference_title">Language</string>
+    <string name="all_rights_reserved">&#169; Confused Griffin Productions 2017 - All Rights Reserved</string>
 
 </resources>
