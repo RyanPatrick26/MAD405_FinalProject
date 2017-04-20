@@ -71,7 +71,7 @@
     <string name="resilience">Résistance</string>
     <string name="resurrect">Ressusciter</string>
     <string name="reset_skills">Réinitialiser\nvos compétences</string>
-    <string name="reset_character">Réinitialiser votre personnage</string>
+    <string name="reset_character">Réinitialiser</string>
     <string name="remove_curse_effects">Supprimer une seule malédiction d\'un allié voisin</string>
     <string name="race">Race</string>
     <string name="priest">Prêtre</string>
@@ -245,5 +245,5 @@
     <string name="confirm_changes">Confirmer</string>
     <string name="items">Articles</string>
     <string name="res_character_label">Rés</string>
-    <string name="reset_changes">Réinitialiser changements</string>
+    <string name="reset_changes">Réinitialiser</string>
 </resources>
